@@ -10,9 +10,11 @@ export class HeaderComponent extends React.Component{
     render(){
         return(
             <div>
-                <Navbar bg="dark" variant="dark">
+                <Navbar bg="light" variant="light">
 
-                    <Navbar.Brand href="/">K&J Home Care</Navbar.Brand>
+                    <Navbar.Brand href="/">
+                        <img cclassName="logo-main" src="/kj.png" alt="image" />
+                    </Navbar.Brand>
                     <Nav className="mr-auto">
                         <NavDropdown title="About" id="basic-nav-dropdown">
                             <NavDropdown.Item componentClass={Link} href="/AboutKJ">
