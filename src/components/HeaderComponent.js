@@ -1,6 +1,6 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Navbar, Nav, NavDropdown} from 'react-bootstrap';
+import {Navbar, Nav, NavDropdown, Form,Button,FormControl} from 'react-bootstrap';
 import "font-awesome/css/font-awesome.css";
 import {route,Link} from "react-router-dom";
 import SearchContentComponent from "./SearchContent/SearchContentComponent"
@@ -48,7 +48,20 @@ export class HeaderComponent extends React.Component{
                         <Nav.Link componentClass={Link} href="/Login">Login/Signup</Nav.Link>
                         <Nav.Link componentClass={Link} href="/ContactForm">Contact Us</Nav.Link>
                     </Nav>
-                    <SearchContentComponent />
+                    <Form inline>
+                        <FormControl
+                            type="text"
+                            placeholder="Search"
+                            className="mr-sm-2"
+                        />
+                        <Button
+                            variant="outline-info"
+                        >
+                            <Nav.Link componentClass={Link} href="/Result">Search</Nav.Link>
+                        </Button>
+
+                    </Form>
+                    {/*<SearchContentComponent />*/}
                 </Navbar>
             </div>
         )

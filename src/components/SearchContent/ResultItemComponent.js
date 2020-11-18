@@ -4,6 +4,7 @@ class ResultItemComponent extends React.Component {
     render() {
         return (
             <li className="list-group-item">
+                <h2>Results</h2>
                 {this.props.title}
             </li>
         )}}

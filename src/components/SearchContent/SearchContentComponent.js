@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Form,Button,FormControl} from 'react-bootstrap';
+import {Form,Button,FormControl, Nav} from 'react-bootstrap';
 import SearchResultComponent from "./SearchResultComponent"
+import {Link} from "react-router-dom";
 
 
 class SearchContentComponent extends Component {
@@ -62,7 +63,9 @@ class SearchContentComponent extends Component {
                         onClick={this.handleSubmit}
                     >
                         Search
+                        {/*<Nav.Link componentClass={Link} href="/Result">Search</Nav.Link>*/}
                     </Button>
+
                 </Form>
                 <SearchResultComponent results={this.state.results}/>
             </div>

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ResultItemComponent from "./ResultItemComponent"
 
+
 class SearchResultComponent extends Component {
     constructor(props) {
         super(props);
@@ -17,15 +18,13 @@ class SearchResultComponent extends Component {
         }
     }
 
-
-render() {
-            return (
-                <div>
-                    <h2>Results</h2>
-                    {this.renderResults()}
-                </div>
-            );
+    render() {
+                return (
+                    <div>
+                        {this.renderResults()}
+                    </div>
+                );
+            }
         }
-    }
 
 export default SearchResultComponent;
