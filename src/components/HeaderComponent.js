@@ -48,20 +48,20 @@ export class HeaderComponent extends React.Component{
                         <Nav.Link componentClass={Link} href="/Login">Login/Signup</Nav.Link>
                         <Nav.Link componentClass={Link} href="/ContactForm">Contact Us</Nav.Link>
                     </Nav>
-                    <Form inline>
-                        <FormControl
-                            type="text"
-                            placeholder="Search"
-                            className="mr-sm-2"
-                        />
-                        <Button
-                            variant="outline-info"
-                        >
-                            <Nav.Link componentClass={Link} href="/Result">Search</Nav.Link>
-                        </Button>
+                    {/*<Form inline>*/}
+                    {/*    <FormControl*/}
+                    {/*        type="text"*/}
+                    {/*        placeholder="Search"*/}
+                    {/*        className="mr-sm-2"*/}
+                    {/*    />*/}
+                    {/*    <Button*/}
+                    {/*        variant="outline-info"*/}
+                    {/*    >*/}
+                    {/*        <Nav.Link componentClass={Link} href="/Result">Search</Nav.Link>*/}
+                    {/*    </Button>*/}
 
-                    </Form>
-                    {/*<SearchContentComponent />*/}
+                    {/*</Form>*/}
+                    <SearchContentComponent />
                 </Navbar>
             </div>
         )
