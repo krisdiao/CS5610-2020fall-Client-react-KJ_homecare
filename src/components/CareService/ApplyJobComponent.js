@@ -24,6 +24,14 @@ export class ApplyJobComponent extends React.Component{
                             <Form.Label>Email*</Form.Label>
                             <Form.Control type="email" placeholder="Enter email" />
                         </Form.Group>
+                        <Form.Group as={Col} controlId="formGridPassword">
+                            <Form.Label>Job Position*</Form.Label>
+                            <Form.Control as="select" defaultValue="Choose...">
+                                <option>Companion/Sitter</option>
+                                <option>Certified Nursing Assistant I & II</option>
+                                <option>Personal Care Assistant</option>
+                            </Form.Control>
+                        </Form.Group>
                     </Form.Row>
 
                     <Form.Group controlId="formGridAddress1">
@@ -44,10 +52,7 @@ export class ApplyJobComponent extends React.Component{
 
                         <Form.Group as={Col} controlId="formGridState">
                             <Form.Label>State*</Form.Label>
-                            <Form.Control as="select" defaultValue="Choose...">
-                                <option>Choose...</option>
-                                <option>...</option>
-                            </Form.Control>
+                            <Form.Control type="state" placeholder="North Carolina" />
                         </Form.Group>
 
                         <Form.Group as={Col} controlId="formGridZip">

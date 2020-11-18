@@ -26,6 +26,7 @@ import {CompanionSitterComponent} from "./CareService/CompanionSitterComponent";
 import {PersonalCareComponent} from "./CareService/PersonalCareComponent";
 import {LoginComponent} from "./Login/LoginComponent";
 import {RegisterComponent} from "./Login/RegisterComponent";
+import {LandingPageComponent} from "./LandingPageComponent";
 
 
 export class MainPageComponent extends React.Component{
@@ -33,6 +34,7 @@ export class MainPageComponent extends React.Component{
         return(
             <div>
                 <HeaderComponent/>
+                <LandingPageComponent/>
                 <BrowserRouter>
                     <div>
                         <Route path="/AboutKJ"
@@ -79,6 +81,7 @@ export class MainPageComponent extends React.Component{
                                exact component={ContactFormComponent}/>
                     </div>
                 </BrowserRouter>
+
             </div>
 
 
