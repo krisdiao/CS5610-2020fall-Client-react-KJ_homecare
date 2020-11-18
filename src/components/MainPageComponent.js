@@ -26,6 +26,7 @@ import {CompanionSitterComponent} from "./CareService/CompanionSitterComponent";
 import {PersonalCareComponent} from "./CareService/PersonalCareComponent";
 import {LoginComponent} from "./Login/LoginComponent";
 import {RegisterComponent} from "./Login/RegisterComponent";
+import ResultComponent from "./SearchContent/ResultComponent"
 import {LandingPageComponent} from "./LandingPageComponent";
 
 
@@ -79,6 +80,8 @@ export class MainPageComponent extends React.Component{
                                exact component={RegisterComponent}/>
                         <Route path="/ContactForm"
                                exact component={ContactFormComponent}/>
+                        <Route path="/Result"
+                               exact component={ResultComponent}/>
                     </div>
                 </BrowserRouter>
 
