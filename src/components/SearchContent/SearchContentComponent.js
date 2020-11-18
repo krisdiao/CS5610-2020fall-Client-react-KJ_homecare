@@ -38,16 +38,24 @@ class SearchContentComponent extends Component {
         // var url = 'http://www.omdbapi.com';
         // url += '?apikey=YOURKEY;
         // url += '&s=' + this.state.keyword;
-        var url = "https://health.gov/myhealthfinder/api/v3/myhealthfinder.json?age=10&sex=male"
+        var url = "https://jsonplaceholder.typicode.com/posts"
 
         fetch(url)
-            .then(res => res.json())
-            .then(status => {
-                this.setState({results: status.result});
-            })}
+            .then(response =>
+            {
+                console.log("response： ", response)
+                return response.json()
+            })
+
+            .then(data => {
+                console.log("data: ", data)
+                this.setState({results: data});
+            })
+    }
 
 
     render() {
+        console.log("here: ", this.state.results)
         return (
             <div>
                 <Form inline>
