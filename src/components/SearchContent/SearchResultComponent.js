@@ -7,22 +7,18 @@ class SearchResultComponent extends Component {
         super(props);
     }
 
-    renderResults() {
-        var items;
-        if (this.props.results) {
-            items = this.props.results
-                .map(function (item, index) {
-                    return
-                    <ResultItemComponent key={index} title={item.Title}/>
-                });
-        }
-    }
-
     render() {
-                return (
-                    <div>
-                        {this.renderResults()}
-                    </div>
+        console.log("prop : ", this.props.results)
+
+        return (
+            <div>
+                <ul className="list-group list-group-hover">
+                    {
+                        this.props.results
+                            .map(result =>
+                            <ResultItemComponent title={result.title}/>)}
+                </ul>
+            </div>
                 );
             }
         }
