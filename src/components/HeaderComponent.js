@@ -16,7 +16,7 @@ export class HeaderComponent extends React.Component{
                 <Navbar bg="light" variant="light">
 
                     <Navbar.Brand href="/">
-                        <img cclassName="logo-main" src="/kj.png" alt="image" />
+                        <img className="logo-main" src="/kj.png" alt="image" />
                     </Navbar.Brand>
                     <Nav className="mr-auto">
                         <NavDropdown title="About" id="basic-nav-dropdown">

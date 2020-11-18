@@ -27,6 +27,7 @@ import {PersonalCareComponent} from "./CareService/PersonalCareComponent";
 import {LoginComponent} from "./Login/LoginComponent";
 import {RegisterComponent} from "./Login/RegisterComponent";
 import ResultComponent from "./SearchContent/ResultComponent"
+import {LandingPageComponent} from "./LandingPageComponent";
 
 
 export class MainPageComponent extends React.Component{
@@ -34,6 +35,7 @@ export class MainPageComponent extends React.Component{
         return(
             <div>
                 <HeaderComponent/>
+                <LandingPageComponent/>
                 <BrowserRouter>
                     <div>
                         <Route path="/AboutKJ"
@@ -82,6 +84,7 @@ export class MainPageComponent extends React.Component{
                                exact component={ResultComponent}/>
                     </div>
                 </BrowserRouter>
+
             </div>
 
 
