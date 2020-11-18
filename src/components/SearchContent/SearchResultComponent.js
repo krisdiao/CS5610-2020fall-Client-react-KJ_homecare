@@ -16,7 +16,7 @@ class SearchResultComponent extends Component {
                     {
                         this.props.results
                             .map(result =>
-                            <ResultItemComponent title={result.title}/>)}
+                            <ResultItemComponent title={result.title} body={result.body}/>)}
                 </ul>
             </div>
                 );
