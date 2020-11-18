@@ -1,12 +1,15 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Navbar,Nav,Form,Button,FormControl,NavDropdown} from 'react-bootstrap';
+import {Navbar, Nav, NavDropdown} from 'react-bootstrap';
 import "font-awesome/css/font-awesome.css";
 import {route,Link} from "react-router-dom";
+import SearchContentComponent from "./SearchContent/SearchContentComponent"
 import {AboutKJComponent} from './AboutKJ/AboutKJComponent';
 import { LinkContainer } from "react-router-bootstrap";
 
 export class HeaderComponent extends React.Component{
+
+
     render(){
         return(
             <div>
@@ -44,12 +47,8 @@ export class HeaderComponent extends React.Component{
                         </NavDropdown>
                         <Nav.Link componentClass={Link} href="/Login">Login/Signup</Nav.Link>
                         <Nav.Link componentClass={Link} href="/ContactForm">Contact Us</Nav.Link>
-
                     </Nav>
-                    <Form inline>
-                        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                        <Button variant="outline-info">Search</Button>
-                    </Form>
+                    <SearchContentComponent />
                 </Navbar>
             </div>
         )
