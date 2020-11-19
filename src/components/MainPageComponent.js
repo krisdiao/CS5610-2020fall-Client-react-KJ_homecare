@@ -1,12 +1,10 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Navbar,Nav,Form,Button,FormControl,NavDropdown} from 'react-bootstrap';
 import "font-awesome/css/font-awesome.css";
 import {HeaderComponent} from "./HeaderComponent";
 import {ContactFormComponent} from "./ContactFormComponent";
 import {AboutKJComponent} from "./AboutKJ/AboutKJComponent";
 import {BrowserRouter, Route, Link} from "react-router-dom";
-import { LinkContainer } from "react-router-bootstrap";
 import {ReviewsComponent} from "./AboutKJ/ReviewsComponent";
 import {BlogsComponent} from "./AboutKJ/BlogsComponent";
 import {ClientStoryComponent} from "./AboutKJ/ClientStoryComponent";
@@ -29,6 +27,8 @@ import {RegisterComponent} from "./Login/RegisterComponent";
 import ResultComponent from "./SearchContent/ResultComponent"
 import {LandingPageComponent} from "./LandingPageComponent";
 import SearchContentComponent from "./SearchContent/SearchContentComponent";
+import {FooterComponent} from "./FooterComponent";
+import {PetCareComponent} from "./CaregiverResource/PetCareComponent";
 
 
 export class MainPageComponent extends React.Component{
@@ -36,6 +36,7 @@ export class MainPageComponent extends React.Component{
         return(
             <div>
                 <HeaderComponent/>
+                <FooterComponent/>
                 <BrowserRouter>
                     <div>
                         <Route path="/"
@@ -64,6 +65,8 @@ export class MainPageComponent extends React.Component{
                                exact component={MedicationMonitoringComponent}/>
                         <Route path="/Respite"
                                exact component={RespiteComponent}/>
+                        <Route path="/PetCare"
+                               exact component={PetCareComponent}/>
                         <Route path="/SafetyObservation"
                                exact component={SafetyObservationComponent}/>
                         <Route path="/Transportation"

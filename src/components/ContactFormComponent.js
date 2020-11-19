@@ -7,6 +7,11 @@ export class ContactFormComponent extends React.Component{
     render() {
         return (
                 <div className="container">
+                    <h1>K&J Home Care</h1>
+                    <p><i className="fa fa-phone" aria-hidden="true"></i>: 336-457-1167</p>
+                    <p><i className="fa fa-envelope-o" aria-hidden="true"></i>: kjtotalcare@gmail.com</p>
+                    <p><i className="fa fa-internet-explorer" aria-hidden="true"></i>: kjtotalcare.com</p>
+
                     <Form>
                         <Form.Row>
                             <Form.Group as={Col} controlId="formGridFirstName">

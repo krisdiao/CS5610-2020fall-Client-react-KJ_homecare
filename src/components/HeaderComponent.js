@@ -13,8 +13,7 @@ export class HeaderComponent extends React.Component{
     render(){
         return(
             <div>
-                <Navbar bg="light" variant="light">
-
+                <Navbar bg="light" variant="light"  class="sticky-top" >
                     <Navbar.Brand href="/">
                         <img className="logo-main" src="/kj.png" alt="image" />
                     </Navbar.Brand>
@@ -24,7 +23,7 @@ export class HeaderComponent extends React.Component{
                                 About K&J
                             </NavDropdown.Item>
                             <NavDropdown.Item componentClass={Link} href="/Reviews">Reviews</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/Blogs">Blogs</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/Blogs"> K&J’s Korner</NavDropdown.Item>
                             <NavDropdown.Item componentClass={Link} href="/ClientStory">Client stories</NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown title="Care Service" id="basic-nav-dropdown">
@@ -38,6 +37,8 @@ export class HeaderComponent extends React.Component{
                             <NavDropdown.Item componentClass={Link} href="/SafetyObservation">Safety/Behavioral Observations</NavDropdown.Item>
                             <NavDropdown.Item componentClass={Link} href="/Respite">Respite</NavDropdown.Item>
                             <NavDropdown.Item componentClass={Link} href="/LiveIns">Live-Ins</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/PetCare">Pet Care</NavDropdown.Item>
+
                         </NavDropdown>
                         <NavDropdown title="Caregiver Resource" id="basic-nav-dropdown">
                             <NavDropdown.Item componentClass={Link} href="/ApplyJob">Apply for a job</NavDropdown.Item>
@@ -49,23 +50,10 @@ export class HeaderComponent extends React.Component{
                         <Nav.Link componentClass={Link} href="/ContactForm">Contact Us</Nav.Link>
                         <Nav.Link componentClass={Link} href="/Search">Search</Nav.Link>
                     </Nav>
-                    {/*<Form inline>*/}
-                    {/*    <FormControl*/}
-                    {/*        type="text"*/}
-                    {/*        placeholder="Search"*/}
-                    {/*        className="mr-sm-2"*/}
-                    {/*    />*/}
-                    {/*    <Button*/}
-                    {/*        variant="outline-info"*/}
-                    {/*    >*/}
-                    {/*        <Nav.Link componentClass={Link} href="/Result">Search</Nav.Link>*/}
-                    {/*    </Button>*/}
-
-                    {/*</Form>*/}
-
-                    {/*<SearchContentComponent />*/}
                 </Navbar>
+
             </div>
+
         )
 
     }
