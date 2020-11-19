@@ -57,7 +57,7 @@ class SearchContentComponent extends Component {
     render() {
         console.log("here: ", this.state.results)
         return (
-            <div>
+            <div className="container">
                 <Form inline>
                     <FormControl
                         type="text"
@@ -66,12 +66,14 @@ class SearchContentComponent extends Component {
                         value={this.state.keyword}
                         onChange={this.onInputChange}
                     />
+
                     <Button
+                        type = "button"
                         variant="outline-info"
-                        onClick={this.handleSubmit}
-                    >
-                        Search
-                        {/*<Nav.Link componentClass={Link} href="/Result">Search</Nav.Link>*/}
+                        onClick={this.handleSubmit}>
+                            Search
+
+                        {/*<Nav.Link componentClass={Link} href="/Search">Search</Nav.Link>*/}
                     </Button>
 
                 </Form>

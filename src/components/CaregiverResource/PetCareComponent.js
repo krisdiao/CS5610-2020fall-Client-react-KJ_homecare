@@ -1,11 +1,11 @@
 import React from 'react';
 
 
-export class CompanionshipComponent extends React.Component{
+export class PetCareComponent extends React.Component{
     render() {
         return(
             <div className="container">
-                <h1>Companionship</h1>
+                <h1>Pet Care</h1>
 
             </div>
         )
