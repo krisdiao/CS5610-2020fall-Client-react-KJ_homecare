@@ -41,13 +41,13 @@ export class HeaderComponent extends React.Component{
 
                         </NavDropdown>
                         <NavDropdown title="Caregiver Resource" id="basic-nav-dropdown">
-                            <NavDropdown.Item componentClass={Link} href="/applyJob">Apply for a job</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/job">Apply for a job</NavDropdown.Item>
                             <NavDropdown.Item componentClass={Link} href="/companionSitter">Companion/Sitter</NavDropdown.Item>
                             <NavDropdown.Item componentClass={Link} href="/certifiedNursing">Certified Nursing Assistant I & II</NavDropdown.Item>
                             <NavDropdown.Item componentClass={Link} href="/personalCare">Personal Care Assistant</NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link componentClass={Link} href="/login">Login/Signup</Nav.Link>
-                        <Nav.Link componentClass={Link} href="/contactForm">Contact Us</Nav.Link>
+                        <Nav.Link componentClass={Link} href="/contact">Contact Us</Nav.Link>
                         <Nav.Link componentClass={Link} href="/search">Search</Nav.Link>
                         <Nav.Link componentClass={Link} href="/profile">Profile</Nav.Link>
                     </Nav>

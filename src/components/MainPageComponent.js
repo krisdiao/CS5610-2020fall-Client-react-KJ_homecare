@@ -72,7 +72,7 @@ export class MainPageComponent extends React.Component{
                                exact component={SafetyObservationComponent}/>
                         <Route path="/transportation"
                                exact component={TransportationComponent}/>
-                        <Route path="/applyJob"
+                        <Route path="/job"
                                exact component={ApplyJobComponent}/>
                         <Route path="/certifiedNursing"
                                exact component={CertifiedNursingComponent}/>
@@ -86,7 +86,7 @@ export class MainPageComponent extends React.Component{
                                exact component={ProfileComponent}/>
                         <Route path="/register"
                                exact component={RegisterComponent}/>
-                        <Route path="/contactForm"
+                        <Route path="/contact"
                                exact component={ContactFormComponent}/>
                         <Route path="/search"
                                exact component={SearchContentComponent}/>
