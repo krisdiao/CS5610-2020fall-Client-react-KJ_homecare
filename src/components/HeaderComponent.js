@@ -19,36 +19,37 @@ export class HeaderComponent extends React.Component{
                     </Navbar.Brand>
                     <Nav className="mr-auto">
                         <NavDropdown title="About" id="basic-nav-dropdown">
-                            <NavDropdown.Item componentClass={Link} href="/AboutKJ">
+                            <NavDropdown.Item componentClass={Link} href="/aboutKJ">
                                 About K&J
                             </NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/Reviews">Reviews</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/Blogs"> K&J’s Korner</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/ClientStory">Client stories</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/reviews">Reviews</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/blogs"> K&J’s Korner</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/clientStory">Client stories</NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown title="Care Service" id="basic-nav-dropdown">
-                            <NavDropdown.Item componentClass={Link} href="/BathingDressing">Bathing and dressing</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/LightHousekeeping">Light housekeeping (laundry, vacuuming, etc.)</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/MedicationMonitoring">Medication monitoring</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/GroceryShopping">Grocery shopping</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/LightMealPreparation">Light meal preparation & planning</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/Transportation">Transportation to doctor’s offices and errands</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/Companionship">Companionship visits</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/SafetyObservation">Safety/Behavioral Observations</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/Respite">Respite</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/LiveIns">Live-Ins</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/PetCare">Pet Care</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/bathingDressing">Bathing and dressing</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/lightHousekeeping">Light housekeeping (laundry, vacuuming, etc.)</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/medicationMonitoring">Medication monitoring</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/groceryShopping">Grocery shopping</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/lightMealPreparation">Light meal preparation & planning</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/transportation">Transportation to doctor’s offices and errands</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/companionship">Companionship visits</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/safetyObservation">Safety/Behavioral Observations</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/respite">Respite</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/liveIns">Live-Ins</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/petCare">Pet Care</NavDropdown.Item>
 
                         </NavDropdown>
                         <NavDropdown title="Caregiver Resource" id="basic-nav-dropdown">
-                            <NavDropdown.Item componentClass={Link} href="/ApplyJob">Apply for a job</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/CompanionSitter">Companion/Sitter</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/CertifiedNursing">Certified Nursing Assistant I & II</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/PersonalCare">Personal Care Assistant</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/applyJob">Apply for a job</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/companionSitter">Companion/Sitter</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/certifiedNursing">Certified Nursing Assistant I & II</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/personalCare">Personal Care Assistant</NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link componentClass={Link} href="/Login">Login/Signup</Nav.Link>
-                        <Nav.Link componentClass={Link} href="/ContactForm">Contact Us</Nav.Link>
-                        <Nav.Link componentClass={Link} href="/Search">Search</Nav.Link>
+                        <Nav.Link componentClass={Link} href="/login">Login/Signup</Nav.Link>
+                        <Nav.Link componentClass={Link} href="/contactForm">Contact Us</Nav.Link>
+                        <Nav.Link componentClass={Link} href="/search">Search</Nav.Link>
+                        <Nav.Link componentClass={Link} href="/profile">Profile</Nav.Link>
                     </Nav>
                 </Navbar>
 

@@ -28,7 +28,7 @@ export default class Profile extends React.Component {
             }))
     }
 
-    logout = () =>
+    handleLogout = () =>
         logout()
             .then(status => {
                 this.props.history.push('/')
@@ -41,7 +41,7 @@ export default class Profile extends React.Component {
                 Hi {this.state.profile.username}!
                 <hr/>
                 <button
-                    onClick={this.logout}
+                    onClick={this.handleLogout}
                     className={`btn btn-danger`}>
                     Logout
                 </button>

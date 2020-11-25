@@ -29,6 +29,7 @@ export class LoginComponent extends React.Component{
     handleLogin(user){
         console.log(user);
         login(user)
+            //here to check whether or not allow the user to login before sending to profile page
             .then(currentUser => this.props.history.push('/profile'))
     }
 
@@ -73,7 +74,7 @@ export class LoginComponent extends React.Component{
                                 Forgot password?</a></p>
                         </Form.Group>
                         <Form.Group as={Col}>
-                                <Link to={`/Register`}>
+                                <Link to={`/register`}>
                                     <Button variant="success" >
                                         Sign Up
                                     </Button>

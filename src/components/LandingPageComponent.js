@@ -10,12 +10,12 @@ export class LandingPageComponent extends React.Component{
                 <Jumbotron>
                     <h1>Your Partner Is Here</h1>
                     <p>
-                        Serving K&J and surrounding areas.
+                        Serving Triad areas.
                     </p>
                     <p>
-                        <Nav.Link componentClass={Link} href="/ContactForm">
+                        <Nav.Link componentClass={Link} href="/contactForm">
                         <Button variant="success">
-                            GET STARTED
+                            CONTACT US
                         </Button>
                         </Nav.Link>
                     </p>
@@ -42,7 +42,7 @@ export class LandingPageComponent extends React.Component{
                     <Row>
                         <Col>
                             <h1>Your Story is Our Story</h1>
-                            <Link to="/Reviews">
+                            <Link to="/reviews">
                                 <button className="form-control-lg btn-success">
                                     Read More
                                 </button>
@@ -64,7 +64,6 @@ export class LandingPageComponent extends React.Component{
                 </Container>
                 <br/>
                 <ContactFormComponent/>
-
             </div>
         );
     }

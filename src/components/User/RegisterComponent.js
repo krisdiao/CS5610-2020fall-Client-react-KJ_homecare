@@ -55,8 +55,9 @@ export class RegisterComponent extends React.Component{
         if (this.state.valid){
             console.log("it is valid");
             register(user)
-                //.then(newUser => this.props.history.push('/profile'))
-                .then(newUser => console.log(newUser))
+            //here to check whether or not allow the user to login before
+            //sending to profile page if log in successfully
+                .then(newUser => this.props.history.push('/profile'))
         }
     }
 

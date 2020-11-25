@@ -29,6 +29,7 @@ import {LandingPageComponent} from "./LandingPageComponent";
 import SearchContentComponent from "./SearchContent/SearchContentComponent";
 import {FooterComponent} from "./FooterComponent";
 import {PetCareComponent} from "./CaregiverResource/PetCareComponent";
+import ProfileComponent from "./User/ProfileComponent";
 
 
 export class MainPageComponent extends React.Component{
@@ -41,51 +42,53 @@ export class MainPageComponent extends React.Component{
                     <div>
                         <Route path="/"
                                exact component={LandingPageComponent}/>
-                        <Route path="/AboutKJ"
+                        <Route path="/aboutKJ"
                                exact component={AboutKJComponent}/>
-                        <Route path="/Reviews"
+                        <Route path="/reviews"
                                exact component={ReviewsComponent}/>
-                        <Route path="/Blogs"
+                        <Route path="/bogs"
                                exact component={BlogsComponent}/>
-                        <Route path="/ClientStory"
+                        <Route path="/clientStory"
                                exact component={ClientStoryComponent}/>
-                        <Route path="/BathingDressing"
+                        <Route path="/bathingDressing"
                                exact component={BathingDressingComponent}/>
-                        <Route path="/Companionship"
+                        <Route path="/companionship"
                                exact component={CompanionshipComponent}/>
-                        <Route path="/GroceryShopping"
+                        <Route path="/groceryShopping"
                                exact component={GroceryShoppingComponent}/>
-                        <Route path="/LightHousekeeping"
+                        <Route path="/lightHousekeeping"
                                exact component={LightHousekeepingComponent}/>
-                        <Route path="/LightMealPreparation"
+                        <Route path="/lightMealPreparation"
                                exact component={LightMealPreparationComponent}/>
-                        <Route path="/LiveIns"
+                        <Route path="/liveIns"
                                exact component={LiveInsComponent}/>
-                        <Route path="/MedicationMonitoring"
+                        <Route path="/medicationMonitoring"
                                exact component={MedicationMonitoringComponent}/>
-                        <Route path="/Respite"
+                        <Route path="/respite"
                                exact component={RespiteComponent}/>
-                        <Route path="/PetCare"
+                        <Route path="/petCare"
                                exact component={PetCareComponent}/>
-                        <Route path="/SafetyObservation"
+                        <Route path="/safetyObservation"
                                exact component={SafetyObservationComponent}/>
-                        <Route path="/Transportation"
+                        <Route path="/transportation"
                                exact component={TransportationComponent}/>
-                        <Route path="/ApplyJob"
+                        <Route path="/applyJob"
                                exact component={ApplyJobComponent}/>
-                        <Route path="/CertifiedNursing"
+                        <Route path="/certifiedNursing"
                                exact component={CertifiedNursingComponent}/>
-                        <Route path="/CompanionSitter"
+                        <Route path="/companionSitter"
                                exact component={CompanionSitterComponent}/>
-                        <Route path="/PersonalCare"
+                        <Route path="/personalCare"
                                exact component={PersonalCareComponent}/>
-                        <Route path="/Login"
+                        <Route path="/login"
                                exact component={LoginComponent}/>
-                        <Route path="/Register"
+                        <Route path="/profile"
+                               exact component={ProfileComponent}/>
+                        <Route path="/register"
                                exact component={RegisterComponent}/>
-                        <Route path="/ContactForm"
+                        <Route path="/contactForm"
                                exact component={ContactFormComponent}/>
-                        <Route path="/Search"
+                        <Route path="/search"
                                exact component={SearchContentComponent}/>
                     </div>
                 </BrowserRouter>
