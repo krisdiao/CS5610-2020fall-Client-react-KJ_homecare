@@ -1,6 +1,6 @@
 import React from 'react';
 import {Navbar,Nav,Form,Button,FormControl,FormLabel,FormGroup,Col,Row,NavDropdown} from 'react-bootstrap';
-import {register} from "../../services/UserService";
+import {jobApplication} from "../../services/JobApplierService";
 
 
 export class ApplyJobComponent extends React.Component{
@@ -44,13 +44,13 @@ export class ApplyJobComponent extends React.Component{
         }
     }
 
-    handleApplyJob(applier){
-        console.log(applier);
+    handleApplyJob(application){
+        console.log(application);
         this.checkValidity();
         if (this.state.valid){
             console.log("it is valid");
-            register(applier)
-                .then(newApplier => console.log(newApplier))
+            jobApplication(application)
+                .then(newApplication => console.log(newApplication))
         }
     }
 
@@ -63,7 +63,7 @@ export class ApplyJobComponent extends React.Component{
                         <Form.Group as={Col} controlId="formGridFirstName">
                             <Form.Label>Your First Name*</Form.Label>
                             <Form.Control
-                                name="firstname"
+                                name="firstName"
                                 placeholder="Enter Your First Name"
                                 value={this.state.firstName}
                                 onChange={(e) => this.handleChange(e)}
@@ -72,7 +72,7 @@ export class ApplyJobComponent extends React.Component{
 
                         <Form.Group as={Col} controlId="formGridLastName">
                             <Form.Label>Your Last Name*</Form.Label>
-                            <Form.Control name="lastname" placeholder="Enter Your Last Name"
+                            <Form.Control name="lastName" placeholder="Enter Your Last Name"
                                           value={this.state.lastName}
                                           onChange={(e) => this.handleChange(e)}/>
                         </Form.Group>

@@ -2,7 +2,7 @@ import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Navbar,Nav,Form,Button,FormControl,FormLabel,FormGroup,Col,Row,NavDropdown} from 'react-bootstrap';
 import "font-awesome/css/font-awesome.css";
-import {register} from "../services/UserService";
+import {contact} from "../services/ContactService";
 
 export class ContactFormComponent extends React.Component{
 
@@ -43,7 +43,7 @@ export class ContactFormComponent extends React.Component{
         this.checkValidity();
         if (this.state.valid){
             console.log("it is valid");
-            register(contact)
+            contact(contact)
                 .then(newContact => console.log(newContact))
         }
     }
@@ -67,7 +67,7 @@ export class ContactFormComponent extends React.Component{
                             </Form.Group>
                             <Form.Group as={Col} controlId="formGridLastName">
                                 <Form.Label>Your Last Name*</Form.Label>
-                                <Form.Control name="LastName" placeholder="Please Enter Your Last Name"
+                                <Form.Control name="lastName" placeholder="Please Enter Your Last Name"
                                               value={this.state.lastName}
                                               onChange={(e) => this.handleChange(e)}/>
                             </Form.Group>
@@ -82,7 +82,9 @@ export class ContactFormComponent extends React.Component{
                         <Form.Row>
                             <Form.Group as={Col} controlId="formGridPhoneNumber">
                                 <Form.Label>Phone Number*</Form.Label>
-                                <Form.Control name="PhoneNumber" placeholder="Please Enter Your Phone Number"
+                                <Form.Control name="phoneNumber"
+                                              type="number"
+                                              placeholder="Please Enter Your Phone Number"
                                               value={this.state.phoneNumber}
                                               onChange={(e) => this.handleChange(e)}/>
                             </Form.Group>
