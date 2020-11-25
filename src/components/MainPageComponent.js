@@ -22,8 +22,8 @@ import {ApplyJobComponent} from "./CareService/ApplyJobComponent";
 import {CertifiedNursingComponent} from "./CareService/CertifiedNursingComponent";
 import {CompanionSitterComponent} from "./CareService/CompanionSitterComponent";
 import {PersonalCareComponent} from "./CareService/PersonalCareComponent";
-import {LoginComponent} from "./Login/LoginComponent";
-import {RegisterComponent} from "./Login/RegisterComponent";
+import {LoginComponent} from "./User/LoginComponent";
+import {RegisterComponent} from "./User/RegisterComponent";
 import ResultComponent from "./SearchContent/ResultComponent"
 import {LandingPageComponent} from "./LandingPageComponent";
 import SearchContentComponent from "./SearchContent/SearchContentComponent";
