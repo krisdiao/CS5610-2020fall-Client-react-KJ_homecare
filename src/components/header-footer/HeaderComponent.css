@@ -1,0 +1,9 @@
+.wbdv-sticky-header {
+    position: fixed;
+    top: 0px;
+    background-color: lightgray;
+    left: 0px;
+    right: 0px;
+    padding-top: 10px;
+    z-index: 1;
+}

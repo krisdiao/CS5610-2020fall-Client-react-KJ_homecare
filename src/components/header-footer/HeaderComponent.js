@@ -3,9 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {Navbar, Nav, NavDropdown, Form,Button,FormControl} from 'react-bootstrap';
 import "font-awesome/css/font-awesome.css";
 import {route,Link} from "react-router-dom";
-import SearchContentComponent from "./SearchContent/SearchContentComponent"
-import {AboutKJComponent} from './AboutKJ/AboutKJComponent';
+import SearchContentComponent from "../SearchContent/SearchContentComponent"
+import {AboutKJComponent} from '../AboutKJ/AboutKJComponent';
 import { LinkContainer } from "react-router-bootstrap";
+import "./HeaderComponent.css"
 
 export class HeaderComponent extends React.Component{
 

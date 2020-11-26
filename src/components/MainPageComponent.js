@@ -1,7 +1,7 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.css";
-import {HeaderComponent} from "./HeaderComponent";
+import {HeaderComponent} from "./header-footer/HeaderComponent";
 import {ContactFormComponent} from "./ContactFormComponent";
 import {AboutKJComponent} from "./AboutKJ/AboutKJComponent";
 import {BrowserRouter, Route, Link} from "react-router-dom";
@@ -27,7 +27,7 @@ import {RegisterComponent} from "./User/RegisterComponent";
 import ResultComponent from "./SearchContent/ResultComponent"
 import {LandingPageComponent} from "./LandingPageComponent";
 import SearchContentComponent from "./SearchContent/SearchContentComponent";
-import {FooterComponent} from "./FooterComponent";
+import {FooterComponent} from "./header-footer/FooterComponent";
 import {PetCareComponent} from "./CaregiverResource/PetCareComponent";
 import ProfileComponent from "./User/ProfileComponent";
 
@@ -37,7 +37,9 @@ export class MainPageComponent extends React.Component{
         return(
             <div>
                 <HeaderComponent/>
-                <FooterComponent/>
+                <br/>
+                <br/>
+                <br/>
                 <BrowserRouter>
                     <div>
                         <Route path="/"
@@ -92,7 +94,10 @@ export class MainPageComponent extends React.Component{
                                exact component={SearchContentComponent}/>
                     </div>
                 </BrowserRouter>
-
+                <br/>
+                <br/>
+                <br/>
+                <FooterComponent/>
             </div>
 
 
