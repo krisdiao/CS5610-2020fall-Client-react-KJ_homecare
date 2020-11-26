@@ -31,3 +31,14 @@ export const login = (user) =>
         },
         credentials: "include"
     }).then(response => response.json())
+
+
+//admin
+const findAllUsers = () =>
+    fetch(`http://localhost:8080/users`)
+        .then(response => response.json())
+
+export const deleteUser = (userId) =>
+    fetch(`http://localhost:8080/users/${userId}`, {
+        method: "DELETE"
+        }).then(response => response.json())

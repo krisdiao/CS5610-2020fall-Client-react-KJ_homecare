@@ -19,32 +19,32 @@ export class HeaderComponent extends React.Component{
                     </Navbar.Brand>
                     <Nav className="mr-auto">
                         <NavDropdown title="About" id="basic-nav-dropdown">
-                            <NavDropdown.Item componentClass={Link} href="/aboutKJ">
+                            <NavDropdown.Item componentClass={Link} href="/about-KJ">
                                 About K&J
                             </NavDropdown.Item>
                             <NavDropdown.Item componentClass={Link} href="/reviews">Reviews</NavDropdown.Item>
                             <NavDropdown.Item componentClass={Link} href="/blogs"> K&J’s Korner</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/clientStory">Client stories</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/client-story">Client stories</NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown title="Care Service" id="basic-nav-dropdown">
-                            <NavDropdown.Item componentClass={Link} href="/bathingDressing">Bathing and dressing</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/lightHousekeeping">Light housekeeping (laundry, vacuuming, etc.)</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/medicationMonitoring">Medication monitoring</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/groceryShopping">Grocery shopping</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/lightMealPreparation">Light meal preparation & planning</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/bathing-dressing">Bathing and dressing</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/light-housekeeping">Light housekeeping (laundry, vacuuming, etc.)</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/medication-monitoring">Medication monitoring</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/grocery-shopping">Grocery shopping</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/light-meal-preparation">Light meal preparation & planning</NavDropdown.Item>
                             <NavDropdown.Item componentClass={Link} href="/transportation">Transportation to doctor’s offices and errands</NavDropdown.Item>
                             <NavDropdown.Item componentClass={Link} href="/companionship">Companionship visits</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/safetyObservation">Safety/Behavioral Observations</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/safety-observation">Safety/Behavioral Observations</NavDropdown.Item>
                             <NavDropdown.Item componentClass={Link} href="/respite">Respite</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/liveIns">Live-Ins</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/petCare">Pet Care</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/live-ins">Live-Ins</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/pet-care">Pet Care</NavDropdown.Item>
 
                         </NavDropdown>
                         <NavDropdown title="Caregiver Resource" id="basic-nav-dropdown">
-                            <NavDropdown.Item componentClass={Link} href="/job">Apply for a job</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/companionSitter">Companion/Sitter</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/certifiedNursing">Certified Nursing Assistant I & II</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/personalCare">Personal Care Assistant</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/job-application">Apply for a job</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/companion-sitter">Companion/Sitter</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/certified-nursing">Certified Nursing Assistant I & II</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/personal-care">Personal Care Assistant</NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link componentClass={Link} href="/login">Login/Signup</Nav.Link>
                         <Nav.Link componentClass={Link} href="/contact">Contact Us</Nav.Link>

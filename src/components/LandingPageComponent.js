@@ -13,7 +13,7 @@ export class LandingPageComponent extends React.Component{
                         Serving Triad areas.
                     </p>
                     <p>
-                        <Nav.Link componentClass={Link} href="/contactForm">
+                        <Nav.Link componentClass={Link} href="/contact-form">
                         <Button variant="success">
                             CONTACT US
                         </Button>
