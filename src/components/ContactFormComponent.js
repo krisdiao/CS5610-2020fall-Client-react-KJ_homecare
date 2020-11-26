@@ -49,6 +49,7 @@ export class ContactFormComponent extends React.Component{
     }
 
     render() {
+        console.log(this.state)
         return (
                 <div className="container">
                     <h1>K&J Home Care</h1>
