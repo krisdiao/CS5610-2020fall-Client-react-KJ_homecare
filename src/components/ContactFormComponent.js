@@ -2,7 +2,7 @@ import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Navbar,Nav,Form,Button,FormControl,FormLabel,FormGroup,Col,Row,NavDropdown} from 'react-bootstrap';
 import "font-awesome/css/font-awesome.css";
-import {contact} from "../services/ContactService";
+import {createContact} from "../services/ContactService";
 
 export class ContactFormComponent extends React.Component{
 
@@ -43,7 +43,7 @@ export class ContactFormComponent extends React.Component{
         this.checkValidity();
         if (this.state.valid){
             console.log("it is valid");
-            contact(contact)
+            createContact(contact)
                 .then(newContact => console.log(newContact))
         }
     }

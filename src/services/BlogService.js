@@ -1,4 +1,4 @@
-export const writeBlog = (blog) =>
+export const createBlog = (blog) =>
     fetch(`http://localhost:8080/blog`, {
         method: 'POST',
         body: JSON.stringify(blog),
@@ -9,7 +9,7 @@ export const writeBlog = (blog) =>
     }).then(response => response.json())
 
 
-const findAllBlogs = () =>
+export const findAllBlogs = () =>
     fetch(`http://localhost:8080/blogs`)
         .then(response => response.json())
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Navbar,Nav,Form,Button,FormControl,FormLabel,FormGroup,Col,Row,NavDropdown} from 'react-bootstrap';
-import {jobApplication} from "../../services/JobApplierService";
+import {createJobApplication} from "../../services/JobApplicationService";
 
 
 export class ApplyJobComponent extends React.Component{
@@ -11,6 +11,7 @@ export class ApplyJobComponent extends React.Component{
             firstName: '',
             lastName: '',
             email: '',
+            phoneNumber: '',
             jobPosition: '',
             add1: '',
             add2: '',
@@ -49,7 +50,7 @@ export class ApplyJobComponent extends React.Component{
         this.checkValidity();
         if (this.state.valid){
             console.log("it is valid");
-            jobApplication(application)
+            createJobApplication(application)
                 .then(newApplication => console.log(newApplication))
         }
     }

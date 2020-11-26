@@ -1,14 +1,14 @@
-export const contact = (contactperson) =>
+export const createContact = (contact) =>
     fetch(`http://localhost:8080/contact`, {
         method: 'POST',
-        body: JSON.stringify(contactperson),
+        body: JSON.stringify(contact),
         headers: {
             'content-type': 'application/json'
         },
     }).then(response => response.json())
 
 //admin
-const findAllContacts = () =>
+export const findAllContacts = () =>
     fetch(`http://localhost:8080/contacts`)
         .then(response => response.json())
 

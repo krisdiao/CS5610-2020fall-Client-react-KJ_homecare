@@ -34,7 +34,7 @@ export const login = (user) =>
 
 
 //admin
-const findAllUsers = () =>
+export const findAllUsers = () =>
     fetch(`http://localhost:8080/users`)
         .then(response => response.json())
 

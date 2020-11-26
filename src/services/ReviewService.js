@@ -1,4 +1,4 @@
-export const writeReview = (review) =>
+export const createReview = (review) =>
     fetch(`http://localhost:8080/review`, {
         method: 'POST',
         body: JSON.stringify(review),
@@ -9,7 +9,7 @@ export const writeReview = (review) =>
     }).then(response => response.json())
 
 
-const findAllReviews = () =>
+export const findAllReviews = () =>
     fetch(`http://localhost:8080/reviews`)
         .then(response => response.json())
 

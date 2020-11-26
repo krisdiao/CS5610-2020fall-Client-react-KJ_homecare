@@ -1,7 +1,7 @@
-export const jobApplication = (applier) =>
+export const createJobApplication = (application) =>
     fetch(`http://localhost:8080/job-application`, {
         method: 'POST',
-        body: JSON.stringify(applier),
+        body: JSON.stringify(application),
         headers: {
             'content-type': 'application/json'
         },
@@ -9,7 +9,7 @@ export const jobApplication = (applier) =>
 
 
 //admin
-const findAllApplications = () =>
+export const findAllApplicationsSubmitted = () =>
     fetch(`http://localhost:8080/applications`)
         .then(response => response.json())
 
