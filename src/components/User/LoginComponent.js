@@ -50,7 +50,15 @@ export class LoginComponent extends React.Component{
             .then(currentUser => {
                 console.log("currentUser", currentUser)
                 if(currentUser.status === 200){
+
+                    this.setState({
+                        email: currentUser.email,
+                        password: currentUser.password,
+                        valid: currentUser.valid,
+                    })
+
                     this.leadToCorrectLoginUserPage(currentUser)
+
                 } else{
                     alert("login failure")
                 }
@@ -79,7 +87,6 @@ export class LoginComponent extends React.Component{
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control name="password" type="password" placeholder="Password" value={this.state.password}
-                                      // onChange={(e) => this.setState({[e.target.type]: e.target.value})}
                                       onChange={(e) => this.handleChange(e)}
                         />
                     </Form.Group>

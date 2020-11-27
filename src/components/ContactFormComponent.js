@@ -45,9 +45,24 @@ export class ContactFormComponent extends React.Component{
             console.log("it is valid");
             createContact(contact)
                 .then(newContact => {
+
                     console.log("newContact", newContact)
-                    this.props.history.push('/profile')})
-                //.then(newContact => console.log("newContact", newContact))
+
+                    //not really need this part
+                    this.setState({
+                        firstName: newContact.firstName,
+                        lastName: newContact.label,
+                        email: newContact.email,
+                        phoneNumber: newContact.phoneNumber,
+                        zip: newContact.zip,
+                        agreed: newContact.agreed,
+                        valid: newContact.valid,
+                    })
+
+                    alert("Thank you, we will contact you shortly!")
+
+                    this.props.history.push('/')
+                })
         // }
     }
 

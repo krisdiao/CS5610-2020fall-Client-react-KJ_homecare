@@ -52,10 +52,28 @@ export class ApplyJobComponent extends React.Component{
             console.log("it is valid");
             createJobApplication(application)
                 .then(newApplication => {
+
                     console.log("newApplication", newApplication)
-                    this.setState()
-                    this.props.history.push('/profile')})
-                //.then(newApplication => console.log("newApplication", newApplication))
+
+                    //not really need this part
+                    this.setState({
+                        firstName: newApplication.firstName,
+                        lastName: newApplication.label,
+                        email: newApplication.email,
+                        phoneNumber: newApplication.phoneNumber,
+                        add1: newApplication.add1,
+                        add2: newApplication.add1,
+                        city: newApplication.city,
+                        state: newApplication.state,
+                        zip: newApplication.zip,
+                        jobPosition: newApplication.jobPosition,
+                        agreed: newApplication.agreed,
+                        valid: newApplication.valid,
+                    })
+
+                    alert("Thank you, we will contact you shortly!")
+
+                    this.props.history.push('/')})
         // }
     }
 

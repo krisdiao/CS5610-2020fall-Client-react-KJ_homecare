@@ -14,7 +14,7 @@ export class HeaderComponent extends React.Component{
     render(){
         return(
             <div>
-                <Navbar bg="light" variant="light"  class="sticky-top" >
+                <Navbar bg="light" variant="light"  class="wbdv-sticky-header" >
                     <Navbar.Brand href="/">
                         <img className="logo-main" src="/kj.png" alt="image" />
                     </Navbar.Brand>

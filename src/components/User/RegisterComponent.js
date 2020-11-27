@@ -59,7 +59,26 @@ export class RegisterComponent extends React.Component{
             //here to check whether or not allow the user to login before
             //sending to profile page if log in successfully
                 .then(newUser => {
+
                     console.log("newUser", newUser)
+
+                    this.setState({
+                        firstName: newUser.firstName,
+                        lastName: newUser.label,
+                        password: newUser.password,
+                        verifyPassword: newUser.verifyPassword,
+                        email: newUser.email,
+                        phoneNumber: newUser.phoneNumber,
+                        add1: newUser.add1,
+                        add2: newUser.add1,
+                        city: newUser.city,
+                        state: newUser.state,
+                        zip: newUser.zip,
+                        role: newUser.role,
+                        agreed: newUser.agreed,
+                        valid: newUser.valid,
+                    })
+
                     this.props.history.push('/profile')})
         //}
     }
