@@ -26,11 +26,36 @@ export class LoginComponent extends React.Component{
         }
     }
 
+
+    leadToCorrectLoginUserPage(currentUser){
+
+        switch (currentUser.role) {
+            case "ADMIN":
+                this.props.history.push('/admin')
+            case "STAFF":
+                this.props.history.push('/staff')
+            case "LOGIN-USER":
+                this.props.history.push('/profile')
+            default:
+                this.props.history.push('/')
+        }
+    }
+
+
     handleLogin(user){
         console.log(user);
         login(user)
             //here to check whether or not allow the user to login before sending to profile page
-            .then(currentUser => this.props.history.push('/profile'))
+        //here also to check if user is Admin then load to admin page, if staff, load to staff page
+            .then(currentUser => {
+                console.log("currentUser", currentUser)
+                if(currentUser.status === 200){
+                    this.leadToCorrectLoginUserPage(currentUser)
+                } else{
+                    alert("login failure")
+                }
+
+            })
     }
 
 

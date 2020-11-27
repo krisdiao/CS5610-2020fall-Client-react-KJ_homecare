@@ -38,7 +38,7 @@ export default class Profile extends React.Component {
         return(
             <div>
                 <h1>Profile</h1>
-                Hi {this.state.profile.username}!
+                Hi {this.state.profile.firstName} {this.state.profile.lastName}!
                 <hr/>
                 <button
                     onClick={this.handleLogout}

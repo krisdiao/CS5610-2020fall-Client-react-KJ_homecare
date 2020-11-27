@@ -41,11 +41,14 @@ export class ContactFormComponent extends React.Component{
     handleContactUs(contact){
         console.log(contact);
         this.checkValidity();
-        if (this.state.valid){
+        // if (this.state.valid){
             console.log("it is valid");
             createContact(contact)
-                .then(newContact => console.log(newContact))
-        }
+                .then(newContact => {
+                    console.log("newContact", newContact)
+                    this.props.history.push('/profile')})
+                //.then(newContact => console.log("newContact", newContact))
+        // }
     }
 
     render() {

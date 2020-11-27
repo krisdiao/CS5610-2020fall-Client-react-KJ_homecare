@@ -20,6 +20,7 @@ export class RegisterComponent extends React.Component{
             city: '',
             state: '',
             zip: '',
+            role: '',
             agreed: false,
             valid: false,
         }
@@ -52,13 +53,15 @@ export class RegisterComponent extends React.Component{
     handleRegister(user){
         console.log(user);
         this.checkValidity();
-        if (this.state.valid){
-            console.log("it is valid");
+        // if (this.state.valid){
+        //     console.log("it is valid");
             register(user)
             //here to check whether or not allow the user to login before
             //sending to profile page if log in successfully
-                .then(newUser => this.props.history.push('/profile'))
-        }
+                .then(newUser => {
+                    console.log("newUser", newUser)
+                    this.props.history.push('/profile')})
+        //}
     }
 
     render() {

@@ -1,11 +1,15 @@
 export const createJobApplication = (application) =>
-    fetch(`http://localhost:8080/job-application`, {
+{
+    //debugger
+    return fetch(`http://localhost:8080/job-application`, {
         method: 'POST',
         body: JSON.stringify(application),
         headers: {
             'content-type': 'application/json'
         },
     }).then(response => response.json())
+}
+
 
 
 //admin

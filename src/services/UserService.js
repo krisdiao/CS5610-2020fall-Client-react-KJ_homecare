@@ -9,10 +9,12 @@ export const profile = () =>
     fetch(`http://localhost:8080/profile`, {
         method: 'POST',
         credentials: "include"
-    }).then(reseponse => reseponse.json())
+    }).then(response => response.json())
 
 export const register = (user) =>
-    fetch(`http://localhost:8080/register`, {
+{
+    //debugger
+    return fetch(`http://localhost:8080/register`, {
         method: 'POST',
         body: JSON.stringify(user),
         headers: {
@@ -20,17 +22,19 @@ export const register = (user) =>
         },
         credentials: "include"
     }).then(response => response.json())
+}
 
+export const login = (user) => {
+    //debugger
+    return fetch(`http://localhost:8080/login`, {
+    method: 'POST',
+    body: JSON.stringify(user),
+    headers: {
+        'content-type': 'application/json'
+    },
+    credentials: "include"
+}).then(response => response.json())}
 
-export const login = (user) =>
-    fetch(`http://localhost:8080/login`, {
-        method: 'POST',
-        body: JSON.stringify(user),
-        headers: {
-            'content-type': 'application/json'
-        },
-        credentials: "include"
-    }).then(response => response.json())
 
 
 //admin

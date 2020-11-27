@@ -10,19 +10,21 @@ export const FooterComponent = () => {
     return (
         <div className="container-fluid">
             <Navbar bg="light" variant="light" >
-                <MDBFooter color="blue" className="font-small pt-4 mt-4">
+                <MDBFooter color="green" className="font-small pt-4 mt-4">
                     <MDBContainer fluid className="text-center text-md-left">
                         <MDBRow >
                             <MDBCol md="6">
-                                <h4 className="text-uppercase font-weight-bold">
-                                    <strong>K&J Total Care</strong>
-                                </h4>
+                                <Nav.Link componentClass={Link} href="/">
+                                    <h4 color="green" className="text-uppercase font-weight-bold">
+                                        <strong>K&J Total Care</strong>
+                                    </h4>
+                                </Nav.Link>
                                 <p>
                                     Here you can totally trust us!
                                 </p>
                             </MDBCol>
                             <MDBCol md="6" className="text-center text-md-left align-top">
-                                <h4 className="text-uppercase font-weight-bold text-warning">
+                                <h4 color="green" className="text-uppercase font-weight-bold text-warning">
                                     <Nav.Link componentClass={Link} href="/contact">
                                         <strong>Contact US</strong>
                                     </Nav.Link>

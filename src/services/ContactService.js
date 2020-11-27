@@ -1,11 +1,15 @@
 export const createContact = (contact) =>
-    fetch(`http://localhost:8080/contact`, {
+{
+    //debugger
+    return fetch(`http://localhost:8080/contact`, {
         method: 'POST',
         body: JSON.stringify(contact),
         headers: {
             'content-type': 'application/json'
         },
     }).then(response => response.json())
+}
+
 
 //admin
 export const findAllContacts = () =>

@@ -48,11 +48,15 @@ export class ApplyJobComponent extends React.Component{
     handleApplyJob(application){
         console.log(application);
         this.checkValidity();
-        if (this.state.valid){
+        // if (this.state.valid){
             console.log("it is valid");
             createJobApplication(application)
-                .then(newApplication => console.log(newApplication))
-        }
+                .then(newApplication => {
+                    console.log("newApplication", newApplication)
+                    this.setState()
+                    this.props.history.push('/profile')})
+                //.then(newApplication => console.log("newApplication", newApplication))
+        // }
     }
 
     render() {
