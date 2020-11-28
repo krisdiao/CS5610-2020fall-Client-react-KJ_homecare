@@ -1,20 +1,12 @@
+import {BASE_URL, USER_URL} from "../common/constants"
 
-export const logout = () =>
-    fetch(`http://localhost:8080/logout`, {
-        method: 'POST',
-        credentials: "include"
-    })
+//const USER_URL = `${BASE_URL}/api/users`
 
-export const profile = () =>
-    fetch(`http://localhost:8080/profile`, {
-        method: 'POST',
-        credentials: "include"
-    }).then(response => response.json())
-
+//all user
 export const register = (user) =>
 {
     //debugger
-    return fetch(`http://localhost:8080/register`, {
+    return fetch(`${BASE_URL}/api/register`, {
         method: 'POST',
         body: JSON.stringify(user),
         headers: {
@@ -24,25 +16,40 @@ export const register = (user) =>
     }).then(response => response.json())
 }
 
+//all user to login user
 export const login = (user) => {
     //debugger
-    return fetch(`http://localhost:8080/login`, {
-    method: 'POST',
-    body: JSON.stringify(user),
-    headers: {
-        'content-type': 'application/json'
-    },
-    credentials: "include"
-}).then(response => response.json())}
+    return fetch(`${BASE_URL}/api/login`, {
+        method: 'POST',
+        body: JSON.stringify(user),
+        headers: {
+            'content-type': 'application/json'
+        },
+        credentials: "include"
+    }).then(response => response.json())}
 
 
+//login-user
+export const logout = () =>
+    fetch(`${BASE_URL}/api/logout`, {
+        method: 'POST',
+        credentials: "include"
+    })
+
+//login-user
+export const profile = () =>
+    fetch(`${BASE_URL}/api/profile`, {
+        method: 'POST',
+        credentials: "include"
+    }).then(response => response.json())
 
 //admin
 export const findAllUsers = () =>
-    fetch(`http://localhost:8080/users`)
+    fetch(USER_URL)
         .then(response => response.json())
 
+//admin
 export const deleteUser = (userId) =>
-    fetch(`http://localhost:8080/users/${userId}`, {
+    fetch(`${USER_URL}/${userId}`, {
         method: "DELETE"
         }).then(response => response.json())

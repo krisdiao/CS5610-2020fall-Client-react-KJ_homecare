@@ -1,7 +1,12 @@
+import {BASE_URL, CONTACT_URL} from "../common/constants"
+
+//const CONTACT_URL = `${BASE_URL}/api/contacts`
+
+//all users
 export const createContact = (contact) =>
 {
     //debugger
-    return fetch(`http://localhost:8080/contact`, {
+    return fetch(CONTACT_URL, {
         method: 'POST',
         body: JSON.stringify(contact),
         headers: {
@@ -13,10 +18,13 @@ export const createContact = (contact) =>
 
 //admin
 export const findAllContacts = () =>
-    fetch(`http://localhost:8080/contacts`)
-        .then(response => response.json())
+    fetch(CONTACT_URL, {
+        credentials: "include"
+    }).then(response => response.json())
 
+//admin
 export const downloadContactById = (contactId) =>
-    fetch(`http://localhost:8080/contacts/${contactId}`, {
-        method: "GET"
+    fetch(`${CONTACT_URL}/${contactId}`, {
+        method: "GET",
+        credentials: "include"
     }).then(response => response.json())

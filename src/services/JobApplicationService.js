@@ -1,7 +1,12 @@
+import {BASE_URL, APPLICATION_URL} from "../common/constants"
+
+//const APPLICATION_URL = `${BASE_URL}/api/applications`
+
+//all users
 export const createJobApplication = (application) =>
 {
     //debugger
-    return fetch(`http://localhost:8080/job-application`, {
+    return fetch(APPLICATION_URL, {
         method: 'POST',
         body: JSON.stringify(application),
         headers: {
@@ -14,10 +19,13 @@ export const createJobApplication = (application) =>
 
 //admin
 export const findAllApplicationsSubmitted = () =>
-    fetch(`http://localhost:8080/applications`)
-        .then(response => response.json())
+    fetch(`APPLICATION_URL`, {
+        credentials: "include"
+    }).then(response => response.json())
 
+//admin
 export const downloadApplicationById = (applicationId) =>
-    fetch(`http://localhost:8080/applications/${applicationId}`, {
-        method: "GET"
+    fetch(`${APPLICATION_URL}/${applicationId}`, {
+        method: "GET",
+        credentials: "include"
     }).then(response => response.json())
