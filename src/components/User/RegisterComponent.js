@@ -50,6 +50,21 @@ export class RegisterComponent extends React.Component{
         }
     }
 
+    leadToCorrectLoginUserPage(newUser){
+
+        switch (newUser.role) {
+            case "ADMIN":
+                this.props.history.push('/admin')
+            case "STAFF":
+                this.props.history.push('/staff')
+            case "LOGIN-USER":
+                this.props.history.push('/profile')
+            default:
+                this.props.history.push('/')
+        }
+    }
+
+
     handleRegister(user){
         console.log(user);
         this.checkValidity();
@@ -75,11 +90,11 @@ export class RegisterComponent extends React.Component{
                         state: newUser.state,
                         zip: newUser.zip,
                         role: newUser.role,
-                        agreed: newUser.agreed,
-                        valid: newUser.valid,
+                        agreed: true,
+                        valid: true,
                     })
-
-                    this.props.history.push('/profile')})
+                    this.leadToCorrectLoginUserPage(newUser)
+                })
         //}
     }
 

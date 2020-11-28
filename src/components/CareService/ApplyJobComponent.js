@@ -36,6 +36,7 @@ export class ApplyJobComponent extends React.Component{
             && this.state.firstName !== null
             && this.state.lastName !== null
             && this.state.email !== null
+            && this.state.phoneNumber !== null
             && this.state.jobPosition !== null
             && this.state.add1 !== null
             && this.state.city !== null
@@ -49,7 +50,7 @@ export class ApplyJobComponent extends React.Component{
         console.log(application);
         this.checkValidity();
         // if (this.state.valid){
-            console.log("it is valid");
+            //console.log("it is valid");
             createJobApplication(application)
                 .then(newApplication => {
 
@@ -101,6 +102,7 @@ export class ApplyJobComponent extends React.Component{
                                           onChange={(e) => this.handleChange(e)}/>
                         </Form.Group>
                     </Form.Row>
+
                     <Form.Row>
                         <Form.Group as={Col} controlId="formGridEmail">
                             <Form.Label>Email*</Form.Label>
@@ -108,16 +110,13 @@ export class ApplyJobComponent extends React.Component{
                                           value={this.state.email}
                                           onChange={(e) => this.handleChange(e)}/>
                         </Form.Group>
-                        <Form.Group as={Col} controlId="formGridJobPosition">
-                            <Form.Label>Job Position*</Form.Label>
-                            <Form.Control as="select" defaultValue="Choose..."
-                                          name="jobPosition"
-                                          value={this.state.jobPosition}
-                                          onChange={(e) => this.handleChange(e)}>
-                                <option>Companion/Sitter</option>
-                                <option>Certified Nursing Assistant I & II</option>
-                                <option>Personal Care Assistant</option>
-                            </Form.Control>
+                        <Form.Group as={Col} controlId="formGridPhoneNumber">
+                            <Form.Label>Phone Number*</Form.Label>
+                            <Form.Control name="phoneNumber"
+                                          type="number"
+                                          placeholder="Please Enter Your Phone Number"
+                                          value={this.state.phoneNumber}
+                                          onChange={(e) => this.handleChange(e)}/>
                         </Form.Group>
                     </Form.Row>
 
@@ -220,6 +219,21 @@ export class ApplyJobComponent extends React.Component{
                             <Form.Control name="zip"
                                           value={this.state.zip}
                                           onChange={(e) => this.handleChange(e)}/>
+                        </Form.Group>
+                    </Form.Row>
+
+                    <Form.Row>
+                        <Form.Group as={Col} controlId="formGridJobPosition">
+                            <Form.Label>Job Position*</Form.Label>
+                            <Form.Control as="select" defaultValue="Choose..."
+                                          name="jobPosition"
+                                          value={this.state.jobPosition}
+                                          onChange={(e) => this.handleChange(e)}>
+                                            <option value>- Select -</option>
+                                            <option value="CompanionOrSitter">Companion/Sitter</option>
+                                            <option value="CNA">Certified Nursing Assistant I & II</option>
+                                            <option value="PCA">Personal Care Assistant</option>
+                            </Form.Control>
                         </Form.Group>
                     </Form.Row>
 
