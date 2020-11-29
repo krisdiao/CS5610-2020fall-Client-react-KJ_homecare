@@ -45,7 +45,6 @@ export class ContactFormComponent extends React.Component{
             console.log("it is valid");
             createContact(contact)
                 .then(newContact => {
-
                     console.log("newContact", newContact)
 
                     //not really need this part
