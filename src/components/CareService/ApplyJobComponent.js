@@ -1,6 +1,6 @@
 import React from 'react';
 import {Form,Button,Col} from 'react-bootstrap';
-import {createJobApplication} from "../../services/JobApplicationService";
+import jobApplicationService from "../../services/JobApplicationService";
 
 
 export class ApplyJobComponent extends React.Component{
@@ -51,7 +51,7 @@ export class ApplyJobComponent extends React.Component{
         //this.checkValidity();
         // if (this.state.valid){
             //console.log("it is valid");
-            createJobApplication(application)
+        jobApplicationService.createJobApplication(application)
                 .then(newApplication => {
                     debugger
                     console.log("newApplication", newApplication)

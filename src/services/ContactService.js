@@ -2,19 +2,29 @@ import {BASE_URL, CONTACT_URL} from "../common/constants"
 
 //const CONTACT_URL = `${BASE_URL}/api/contacts`
 
+
+// export const createContact = (contact) =>
+//     fetch(CONTACT_URL, {
+//         method: 'POST',
+//         body: JSON.stringify(contact),
+//         headers: {
+//             'content-type': 'application/json'
+//         }
+//     }).then(response => response.json())
+
 //all users
-export const createContact = (contact) =>
+export const createContact = async (contact) =>
 {
-    //debugger
-    return fetch(CONTACT_URL, {
-        method: 'POST',
+    const response = await fetch(CONTACT_URL, {
+        method: "POST",
         body: JSON.stringify(contact),
         headers: {
             'content-type': 'application/json'
-        },
-    }).then(response => response.json())
+        }
+    })
+    debugger
+    return await response.json()
 }
-
 
 //admin
 export const findAllContacts = () =>
@@ -28,3 +38,7 @@ export const downloadContactById = (contactId) =>
         method: "GET",
         credentials: "include"
     }).then(response => response.json())
+
+export default {
+    createContact, findAllContacts, downloadContactById
+}

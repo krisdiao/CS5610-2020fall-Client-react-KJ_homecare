@@ -2,7 +2,7 @@ import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Form,Button,Col} from 'react-bootstrap';
 import "font-awesome/css/font-awesome.css";
-import {register} from "../../services/UserService";
+import userService from "../../services/UserService";
 
 var leadToCorrectLoginUserPage = require('../../common/util.js').leadToCorrectLoginUserPage;
 
@@ -56,7 +56,7 @@ export class RegisterComponent extends React.Component{
         this.checkValidity();
         // if (this.state.valid){
         //     console.log("it is valid");
-            register(user)
+        userService.register(user)
             //here to check whether or not allow the user to login before
             //sending to profile page if log in successfully
                 .then(newUser => {

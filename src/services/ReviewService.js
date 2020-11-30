@@ -36,3 +36,7 @@ export const updateReview = (reviewId, review) =>
         },
         credentials: "include"
     }).then(response => response.json())
+
+export default {
+    findAllReviews, createReview, deleteReview, updateReview
+}

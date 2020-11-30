@@ -2,7 +2,7 @@ import React from 'react';
 import {Form,Button,Col} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import ProfileComponent from "./ProfileComponent"
-import {login} from "../../services/UserService";
+import userService from "../../services/UserService";
 
 var leadToCorrectLoginUserPage = require('../../common/util.js').leadToCorrectLoginUserPage;
 
@@ -34,7 +34,7 @@ export class LoginComponent extends React.Component{
 
     handleLogin(user){
         console.log(user);
-        login(user)
+        userService.login(user)
             //here to check whether or not allow the user to login before sending to profile page
         //here also to check if user is Admin then load to admin page, if staff, load to staff page
             .then(currentUser => {

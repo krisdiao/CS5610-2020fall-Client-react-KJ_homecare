@@ -29,3 +29,7 @@ export const downloadApplicationById = (applicationId) =>
         method: "GET",
         credentials: "include"
     }).then(response => response.json())
+
+export default {
+    createJobApplication, findAllApplicationsSubmitted, downloadApplicationById
+}

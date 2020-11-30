@@ -53,3 +53,7 @@ export const deleteUser = (userId) =>
     fetch(`${USER_URL}/${userId}`, {
         method: "DELETE"
         }).then(response => response.json())
+
+export default {
+    register, login, logout, profile, findAllUsers, deleteUser
+}
