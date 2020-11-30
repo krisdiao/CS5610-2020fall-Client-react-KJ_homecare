@@ -1,5 +1,5 @@
 import React from "react";
-import {profile, logout} from "../../services/UserService";
+import userService from "../../services/UserService";
 
 export default class Profile extends React.Component {
 
@@ -22,14 +22,14 @@ export default class Profile extends React.Component {
     }
 
     componentDidMount() {
-        profile()
+        userService.profile()
             .then(profile => this.setState({
                 profile: profile
             }))
     }
 
     handleLogout = () =>
-        logout()
+        userService.logout()
             .then(status => {
                 this.props.history.push('/')
             })
@@ -37,10 +37,13 @@ export default class Profile extends React.Component {
     render() {
         return(
             <div>
-                <h1>Profile</h1>
-                Hi {this.state.profile.firstName} {this.state.profile.lastName}!
-                <hr/>
+                <h3>Welcome back, my dear <strong>{this.state.profile.firstName} {this.state.profile.lastName}!</strong>
+                </h3>
+                <br/>
+                <br/>
+                <br/>
                 <button
+                    type="button"
                     onClick={this.handleLogout}
                     className={`btn btn-danger`}>
                     Logout

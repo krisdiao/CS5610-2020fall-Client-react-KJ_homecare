@@ -1,7 +1,8 @@
 import React from 'react';
-import {Navbar,Nav,Form,Button,FormControl,FormLabel,FormGroup,Col,Row,NavDropdown} from 'react-bootstrap';
-import {createJobApplication} from "../../services/JobApplicationService";
-
+import {Form,Button,Col} from 'react-bootstrap';
+import jobApplicationService from "../../services/JobApplicationService";
+import History from "../../common/History";
+// import FileUploadComponent  from "./fileUploadComponent"
 
 export class ApplyJobComponent extends React.Component{
 
@@ -18,15 +19,33 @@ export class ApplyJobComponent extends React.Component{
             city: '',
             state: '',
             zip: '',
+            resume: null,
+            selectedFile: null,
             agreed: false,
             valid: false,
         }
     }
 
+    //for input variables
     handleChange(e) {
         //console.log("new value", e.target.value);
         this.setState({
             [e.target.name]: e.target.value
+        });
+    }
+
+    //TODO: resume data is not right yet!
+    //for resume field
+    handleUpload(e){
+        this.setState({
+            selectedFile: e.target.files[0]
+        });
+
+        const data = new FormData()
+        data.append('file', this.state.selectedFile)
+
+        this.setState({
+            resume: data
         });
     }
 
@@ -48,12 +67,13 @@ export class ApplyJobComponent extends React.Component{
 
     handleApplyJob(application){
         console.log(application);
-        this.checkValidity();
+        //this.checkValidity();
         // if (this.state.valid){
             //console.log("it is valid");
-            createJobApplication(application)
+        //debugger
+        jobApplicationService.createJobApplication(application)
                 .then(newApplication => {
-
+                    alert("Thank you, we will contact you shortly! May God Bless you!")
                     console.log("newApplication", newApplication)
 
                     //not really need this part
@@ -68,13 +88,12 @@ export class ApplyJobComponent extends React.Component{
                         state: newApplication.state,
                         zip: newApplication.zip,
                         jobPosition: newApplication.jobPosition,
-                        agreed: newApplication.agreed,
-                        valid: newApplication.valid,
+                        valid: true,
                     })
 
-                    alert("Thank you, we will contact you shortly!")
-
-                    this.props.history.push('/')})
+                    this.props.history.push('/')
+                })
+        //History.push('/')
         // }
     }
 
@@ -82,7 +101,9 @@ export class ApplyJobComponent extends React.Component{
         console.log(this.state)
         return(
             <div className="container">
-                <h1>ApplyJob</h1>
+                <h1>Come to Work @ K&J Total Care! </h1>
+                <br/>
+                <br/>
                 <Form>
                     <Form.Row>
                         <Form.Group as={Col} controlId="formGridFirstName">
@@ -237,14 +258,16 @@ export class ApplyJobComponent extends React.Component{
                         </Form.Group>
                     </Form.Row>
 
-                    <Form.Group>
-                        <Form.File
-                            id="file"
-                            label="Please upload your resume"
-                            custom
-                        />
-                    </Form.Group>
-
+                    <Form.Row>
+                        <Form.Group as={Col} controlId="formGridResume">
+                            <Form.Label>Resume*</Form.Label>
+                            <div id="upload-box">
+                                <input type="file" onChange={(e) => this.handleUpload(e)}/>
+                            </div>
+                        </Form.Group>
+                    </Form.Row>
+                    <br/>
+                    {/*<FileUploadComponent resume={this.state.resume}/>*/}
                     <Form.Group id="formGridCheckbox">
                         <Form.Check type="checkbox" label="Agree to our all terms and conditions"
                                     name="agreed"

@@ -1,7 +1,7 @@
 import React from "react";
 import {Jumbotron,Button,Nav,Container,Row,Col} from 'react-bootstrap';
 import {Link} from "react-router-dom";
-import {ContactFormComponent} from "./ContactFormComponent";
+import {ContactFormComponent} from "./User/ContactFormComponent";
 
 export class LandingPageComponent extends React.Component{
     render() {
@@ -13,7 +13,7 @@ export class LandingPageComponent extends React.Component{
                         Serving Triad areas.
                     </p>
                     <p>
-                        <Nav.Link componentClass={Link} href="/contact-form">
+                        <Nav.Link componentClass={Link} href="/contact">
                         <Button variant="success">
                             CONTACT US
                         </Button>

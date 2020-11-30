@@ -36,3 +36,7 @@ export const updateBlog = (blogId, blog) =>
         },
         credentials: "include"
     }).then(response => response.json())
+
+export default {
+    findAllBlogs, createBlog, deleteBlog, updateBlog
+}

@@ -1,9 +1,10 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Navbar,Nav,Form,Button,FormControl,FormLabel,FormGroup,Col,Row,NavDropdown} from 'react-bootstrap';
+import {Form,Button,Col} from 'react-bootstrap';
 import "font-awesome/css/font-awesome.css";
-import {register} from "../../services/UserService";
-import PhoneInput from 'react-phone-number-input'
+import userService from "../../services/UserService";
+
+var leadToCorrectLoginUserPage = require('../../common/util.js').leadToCorrectLoginUserPage;
 
 export class RegisterComponent extends React.Component{
     constructor(props) {
@@ -50,51 +51,39 @@ export class RegisterComponent extends React.Component{
         }
     }
 
-    leadToCorrectLoginUserPage(newUser){
-
-        switch (newUser.role) {
-            case "ADMIN":
-                this.props.history.push('/admin')
-            case "STAFF":
-                this.props.history.push('/staff')
-            case "LOGIN-USER":
-                this.props.history.push('/profile')
-            default:
-                this.props.history.push('/')
-        }
-    }
-
-
     handleRegister(user){
         console.log(user);
         this.checkValidity();
         // if (this.state.valid){
         //     console.log("it is valid");
-            register(user)
-            //here to check whether or not allow the user to login before
-            //sending to profile page if log in successfully
-                .then(newUser => {
+        //debugger
+        userService.register(user)
+        //here to check whether or not allow the user to login before
+        //sending to profile page if log in successfully
+            .then(newUser => {
 
-                    console.log("newUser", newUser)
+                //userService.login(newUser)
+                console.log("newUser", newUser)
 
-                    this.setState({
-                        firstName: newUser.firstName,
-                        lastName: newUser.label,
-                        password: newUser.password,
-                        verifyPassword: newUser.verifyPassword,
-                        email: newUser.email,
-                        phoneNumber: newUser.phoneNumber,
-                        add1: newUser.add1,
-                        add2: newUser.add1,
-                        city: newUser.city,
-                        state: newUser.state,
-                        zip: newUser.zip,
-                        role: newUser.role,
-                        agreed: true,
-                        valid: true,
-                    })
-                    this.leadToCorrectLoginUserPage(newUser)
+                this.setState({
+                    firstName: newUser.firstName,
+                    lastName: newUser.label,
+                    password: newUser.password,
+                    verifyPassword: newUser.verifyPassword,
+                    email: newUser.email,
+                    phoneNumber: newUser.phoneNumber,
+                    add1: newUser.add1,
+                    add2: newUser.add1,
+                    city: newUser.city,
+                    state: newUser.state,
+                    zip: newUser.zip,
+                    role: newUser.role,
+                    valid: true,
                 })
+                //this.props.history.push('/profile')
+                leadToCorrectLoginUserPage(newUser, this.props.history)
+            })
+
         //}
     }
 
@@ -258,7 +247,7 @@ export class RegisterComponent extends React.Component{
                                         onChange={(e) => this.setState({agreed: true})}/>
                         </Form.Group>
 
-                        <Button variant="primary" type="submit"
+                        <Button variant="primary" type="button"
                                 onClick={() => this.handleRegister(this.state)}>
                             Register
                         </Button>

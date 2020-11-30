@@ -1,8 +1,9 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Navbar,Nav,Form,Button,FormControl,FormLabel,FormGroup,Col,Row,NavDropdown} from 'react-bootstrap';
+import {Form,Button,Col} from 'react-bootstrap';
 import "font-awesome/css/font-awesome.css";
-import {createContact} from "../services/ContactService";
+import contactService from "../../services/ContactService";
+import History from '../../common/History'
 
 export class ContactFormComponent extends React.Component{
 
@@ -15,8 +16,13 @@ export class ContactFormComponent extends React.Component{
             phoneNumber: '',
             zip: '',
             agreed: false,
+            hasSubmitted: false,
             valid: false,
         }
+    }
+
+    componentDidMount() {
+        this.setState({hasSubmitted: this.state.hasSubmitted})
     }
 
     handleChange(e) {
@@ -25,7 +31,6 @@ export class ContactFormComponent extends React.Component{
             [e.target.name]: e.target.value
         });
     }
-
     checkValidity(){
         if(
             this.state.agreed === true
@@ -40,13 +45,17 @@ export class ContactFormComponent extends React.Component{
 
     handleContactUs(contact){
         console.log(contact);
-        this.checkValidity();
+        //this.checkValidity();
         // if (this.state.valid){
             console.log("it is valid");
-            createContact(contact)
+        //debugger
+        contactService.createContact(contact)
                 .then(newContact => {
-                    console.log("newContact", newContact)
+                    //alert(newContact)
+                    alert("Thank you, we will contact you shortly! May God Bless you!")
 
+                    console.log("newContact", newContact)
+                    //debugger
                     //not really need this part
                     this.setState({
                         firstName: newContact.firstName,
@@ -54,26 +63,27 @@ export class ContactFormComponent extends React.Component{
                         email: newContact.email,
                         phoneNumber: newContact.phoneNumber,
                         zip: newContact.zip,
-                        agreed: newContact.agreed,
-                        valid: newContact.valid,
+                        valid: true,
+                        hasSubmitted: true,
                     })
-
-                    alert("Thank you, we will contact you shortly!")
-
                     this.props.history.push('/')
                 })
+        //History.push('/')
+
         // }
     }
 
     render() {
-        console.log(this.state)
-        return (
+        //console.log(this.state)
+            return (
                 <div className="container">
-                    <h1>K&J Home Care</h1>
+                    <h1>K&J Total Care</h1>
+                    <br/>
                     <p><i className="fa fa-phone" aria-hidden="true"></i>: 336-457-1167</p>
                     <p><i className="fa fa-envelope-o" aria-hidden="true"></i>: kjtotalcare@gmail.com</p>
                     <p><i className="fa fa-internet-explorer" aria-hidden="true"></i>: kjtotalcare.com</p>
-
+                    <br/>
+                    <br/>
                     <Form>
                         <Form.Row>
                             <Form.Group as={Col} controlId="formGridFirstName">
@@ -119,13 +129,14 @@ export class ContactFormComponent extends React.Component{
                                         value={this.state.agreed}
                                         onChange={(e) => this.setState({agreed: true})}/>
                         </Form.Group>
-                        <Button variant="primary" type="submit"
+                        <Button variant="primary" type="button"
                                 onClick={() => this.handleContactUs(this.state)}>
                             Submit
                         </Button>
                     </Form>
                 </div>
 
-        );
+            );
+
     }
 }

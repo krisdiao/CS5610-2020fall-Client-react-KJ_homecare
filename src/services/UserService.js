@@ -26,7 +26,9 @@ export const login = (user) => {
             'content-type': 'application/json'
         },
         credentials: "include"
-    }).then(response => response.json())}
+    }).then(response => response.json())
+        .catch(()=>console.log("error"))
+}
 
 
 //login-user
@@ -42,14 +44,24 @@ export const profile = () =>
         method: 'POST',
         credentials: "include"
     }).then(response => response.json())
+        .catch(()=>console.log("error"))
+
 
 //admin
 export const findAllUsers = () =>
     fetch(USER_URL)
         .then(response => response.json())
+        .catch(()=>console.log("error"))
+
 
 //admin
 export const deleteUser = (userId) =>
     fetch(`${USER_URL}/${userId}`, {
         method: "DELETE"
         }).then(response => response.json())
+        .catch(()=>console.log("error"))
+
+
+export default {
+    register, login, logout, profile, findAllUsers, deleteUser
+}
