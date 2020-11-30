@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {Form,Button,Col} from 'react-bootstrap';
 import "font-awesome/css/font-awesome.css";
 import contactService from "../../services/ContactService";
+import History from '../../common/History'
 
 export class ContactFormComponent extends React.Component{
 
@@ -47,6 +48,9 @@ export class ContactFormComponent extends React.Component{
         //debugger
         contactService.createContact(contact)
                 .then(newContact => {
+                    //alert(newContact)
+                    alert("Thank you, we will contact you shortly! May God Bless you!")
+
                     console.log("newContact", newContact)
                     //debugger
                     //not really need this part
@@ -59,10 +63,9 @@ export class ContactFormComponent extends React.Component{
                         valid: true,
                     })
 
-                    alert("Thank you, we will contact you shortly! May God Bless you!")
-
-                    this.props.history.push('/')
                 })
+        History.push('/')
+
         // }
     }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Form,Button,Col} from 'react-bootstrap';
 import jobApplicationService from "../../services/JobApplicationService";
+import History from "../../common/History";
 // import FileUploadComponent  from "./fileUploadComponent"
 
 export class ApplyJobComponent extends React.Component{
@@ -72,6 +73,7 @@ export class ApplyJobComponent extends React.Component{
         //debugger
         jobApplicationService.createJobApplication(application)
                 .then(newApplication => {
+                    alert("Thank you, we will contact you shortly! May God Bless you!")
                     console.log("newApplication", newApplication)
 
                     //not really need this part
@@ -89,11 +91,9 @@ export class ApplyJobComponent extends React.Component{
                         valid: true,
                     })
 
-                    //TODO: not right yet!
-                    alert("Thank you, we will contact you shortly! May God Bless you!")
-
-                    this.props.history.push('/')
+                    //this.props.history.push('/')
                 })
+        History.push('/')
         // }
     }
 

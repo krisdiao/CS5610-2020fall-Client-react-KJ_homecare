@@ -18,6 +18,13 @@ export class LoginComponent extends React.Component{
         }
     }
 
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //     this.setState({isLoggedIn: this.state.isLoggedIn})
+    // }
+    componentDidMount() {
+        this.setState({isLoggedIn: this.state.isLoggedIn})
+    }
+
     handleChange(e) {
         //console.log("new value", e.target.value);
         this.setState({
@@ -25,20 +32,13 @@ export class LoginComponent extends React.Component{
         });
     }
 
-    checkValidity(){
-        if(this.state.password !== null && this.state.email !== null){
-            this.setState({valid: true});
-        }
-    }
-
 
     handleLogin(user){
         console.log(user);
         userService.login(user)
-            //here to check whether or not allow the user to login before sending to profile page
-        //here also to check if user is Admin then load to admin page, if staff, load to staff page
             .then(currentUser => {
                 console.log("currentUser", currentUser)
+                //here to check whether or not allow the user to login before sending to profile page
                 if(currentUser !== undefined){
 
                     this.setState({
@@ -47,25 +47,29 @@ export class LoginComponent extends React.Component{
                         valid: true,
                         isLoggedIn: true,
                     })
-
+                    //check if user is Admin then load to admin page, if staff, load to staff page
                     leadToCorrectLoginUserPage(currentUser, this.props.history)
 
                 } else{
                     alert("login failure")
                 }
-
             })
     }
 
     render() {
-        console.log(this.state)
-        return(
-            <div>
-                //TODO: not right yet!
-                {this.state.isLoggedIn &&
-                <ProfileComponent />
-                }
-                {!this.state.isLoggedIn &&
+        if (this.state.isLoggedIn) {
+            return (<div>
+                logged in
+            </div>)
+        } else {
+
+
+            console.log(this.state)
+            return (
+                <div>
+                    //TODO: not right yet!
+                    {this.state.isLoggedIn && <ProfileComponent/>}
+                    {!this.state.isLoggedIn &&
                     <div className="container">
                         <h1>Login</h1>
                         <Form>
@@ -79,16 +83,18 @@ export class LoginComponent extends React.Component{
 
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control name="password" type="password" placeholder="Password" value={this.state.password}
+                                <Form.Control name="password" type="password" placeholder="Password"
+                                              value={this.state.password}
                                               onChange={(e) => this.handleChange(e)}
                                 />
                             </Form.Group>
                             <Form.Group controlId="formBasicCheckbox">
-                                <Form.Check type="checkbox" label="Remember Me" />
+                                <Form.Check type="checkbox" label="Remember Me"/>
                             </Form.Group>
                             <Form.Row>
                                 <Form.Group as={Col}>
-                                    <Button variant="primary" type = "button" onClick={() => this.handleLogin(this.state)}>
+                                    <Button variant="primary" type="button"
+                                            onClick={() => this.handleLogin(this.state)}>
                                         Login
                                     </Button>
                                     <br/>
@@ -100,7 +106,7 @@ export class LoginComponent extends React.Component{
                                 </Form.Group>
                                 <Form.Group as={Col}>
                                     <Link to={`/register`}>
-                                        <Button variant="success" >
+                                        <Button variant="success">
                                             Sign Up
                                         </Button>
                                     </Link>
@@ -108,8 +114,9 @@ export class LoginComponent extends React.Component{
                             </Form.Row>
                         </Form>
                     </div>
-                }
-            </div>
-        )
+                    }
+                </div>
+            )
+        }
     }
 }

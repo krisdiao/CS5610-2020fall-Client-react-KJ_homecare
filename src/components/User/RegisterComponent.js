@@ -51,58 +51,18 @@ export class RegisterComponent extends React.Component{
         }
     }
 
-    // handleRegister(user){
-    //     console.log(user);
-    //     this.checkValidity();
-    //     // if (this.state.valid){
-    //     //     console.log("it is valid");
-    //     userService.register(user)
-    //         //here to check whether or not allow the user to login before
-    //         //sending to profile page if log in successfully
-    //             .then(newUser => {
-    //
-    //                 this.props.history.push('/profile')
-    //
-    //                 console.log("newUser", newUser)
-    //
-    //                 this.setState({
-    //                     firstName: newUser.firstName,
-    //                     lastName: newUser.label,
-    //                     password: newUser.password,
-    //                     verifyPassword: newUser.verifyPassword,
-    //                     email: newUser.email,
-    //                     phoneNumber: newUser.phoneNumber,
-    //                     add1: newUser.add1,
-    //                     add2: newUser.add1,
-    //                     city: newUser.city,
-    //                     state: newUser.state,
-    //                     zip: newUser.zip,
-    //                     role: newUser.role,
-    //                     valid: true,
-    //                 })
-    //
-    //                 //leadToCorrectLoginUserPage(newUser, this.props.history)
-    //             })
-    //     //}
-    // }
-
     handleRegister(user){
         console.log(user);
         this.checkValidity();
         // if (this.state.valid){
         //     console.log("it is valid");
-        debugger
+        //debugger
         userService.register(user)
         //here to check whether or not allow the user to login before
         //sending to profile page if log in successfully
             .then(newUser => {
 
                 userService.login(newUser)
-                console.log("logged in");
-
-                //TODO: not right yet!
-                this.props.history.push('/profile')
-
                 console.log("newUser", newUser)
 
                 this.setState({
@@ -123,6 +83,7 @@ export class RegisterComponent extends React.Component{
 
                 //leadToCorrectLoginUserPage(newUser, this.props.history)
             })
+        this.props.history.push('/profile')
         //}
     }
 
