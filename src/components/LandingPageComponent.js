@@ -1,7 +1,7 @@
 import React from "react";
 import {Jumbotron,Button,Nav,Container,Row,Col} from 'react-bootstrap';
 import {Link} from "react-router-dom";
-import {ContactFormComponent} from "./ContactFormComponent";
+import {ContactFormComponent} from "./User/ContactFormComponent";
 
 export class LandingPageComponent extends React.Component{
     render() {

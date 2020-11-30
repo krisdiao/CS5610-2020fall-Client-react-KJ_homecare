@@ -2,7 +2,7 @@ import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.css";
 import {HeaderComponent} from "./header-footer/HeaderComponent";
-import {ContactFormComponent} from "./ContactFormComponent";
+import {ContactFormComponent} from "./User/ContactFormComponent";
 import {AboutKJComponent} from "./AboutKJ/AboutKJComponent";
 import {BrowserRouter, Route, Link} from "react-router-dom";
 import {ReviewsComponent} from "./AboutKJ/ReviewsComponent";

@@ -2,7 +2,7 @@ import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Form,Button,Col} from 'react-bootstrap';
 import "font-awesome/css/font-awesome.css";
-import {createContact} from "../services/ContactService";
+import {createContact} from "../../services/ContactService";
 
 export class ContactFormComponent extends React.Component{
 
