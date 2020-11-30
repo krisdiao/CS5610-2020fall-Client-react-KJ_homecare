@@ -1,6 +1,6 @@
 import React from "react";
 
-export class StaffComponent extends React.Component{
+export class UsersManagementComponent extends React.Component{
     render() {
         return(
             <div>

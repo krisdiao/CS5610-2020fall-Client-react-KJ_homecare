@@ -1,10 +1,8 @@
 import React, { useState }from 'react';
 import {Form,Col,Row,Button} from 'react-bootstrap';
-import { MDBContainer, MDBRating } from 'mdbreact';
-import {createJobApplication} from "../../services/JobApplicationService";
-import {createReview} from "../../services/ReviewService";
+import {createBlog} from "../../services/BlogService";
 
-export class LeaveReviewsComponent extends React.Component{
+export class CreateBlogsComponent extends React.Component{
 
     constructor(props) {
         super(props);
@@ -35,24 +33,23 @@ export class LeaveReviewsComponent extends React.Component{
         }
     }
 
-    handleLeaveReviews(reviews){
-        console.log(reviews);
+    handleCreateBlog(blog){
+        console.log(blog);
         this.checkValidity();
         // if (this.state.valid){
         //console.log("it is valid");
-        createReview(reviews)
-            .then(newReview => {
-                console.log("newReview", newReview)
+        createBlog(blog)
+            .then(newBlog => {
+                console.log("newBlog", newBlog)
 
                 //not really need this part
                 this.setState({
-                    firstName: newReview.firstName,
-                    lastName: newReview.lastName,
-                    email: newReview.email,
-                    title: newReview.title,
-                    content: newReview.content,
-                    agreed: newReview.agreed,
-                    valid: newReview.valid,
+                    firstName: newBlog.firstName,
+                    lastName: newBlog.lastName,
+                    title: newBlog.title,
+                    content: newBlog.content,
+                    agreed: newBlog.agreed,
+                    valid: newBlog.valid,
                 })
 
                 alert("Success! Thanks!")
@@ -131,7 +128,7 @@ export class LeaveReviewsComponent extends React.Component{
                     <Form.Group as={Row}>
                         <Col sm={{ span: 10, offset: 2 }}>
                             <Button type="submit"
-                                    onClick={() => this.handleLeaveReviews(this.state)}>Share</Button>
+                                    onClick={() => this.handleCreateBlog(this.state)}>Create</Button>
                         </Col>
                     </Form.Group>
                 </Form>

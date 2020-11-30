@@ -8,26 +8,21 @@ import {Link} from "react-router-dom";
 
 export const FooterComponent = () => {
     return (
-        <div className="container-fluid">
-            <Navbar bg="light" variant="light" >
-                <MDBFooter color="green" className="font-small pt-4 mt-4">
-                    <MDBContainer fluid className="text-center text-md-left">
+        // <div className="container-fluid">
+        //     <Navbar bg="light" variant="light" >
+                <MDBFooter color="blue" className="font-small pt-4 mt-4 ">
+                    <MDBContainer fluid className="text-center text-md">
                         <MDBRow >
-                            <MDBCol md="6">
-                                <Nav.Link componentClass={Link} href="/">
-                                    <h4 color="green" className="text-uppercase font-weight-bold">
-                                        <strong>K&J Total Care</strong>
-                                    </h4>
-                                </Nav.Link>
-                                <p>
-                                    Here you can totally trust us!
-                                </p>
+                            <MDBCol md="4" className="text-center text-md align-top">
+                                <img className="logo-main" src="/kj.png" alt="image"/>
                             </MDBCol>
-                            <MDBCol md="6" className="text-center text-md-left align-top">
+                            <MDBCol md="4"
+                                    className="text-center text-md align-top"
+                            >
                                 <h4 color="green" className="text-uppercase font-weight-bold text-warning">
-                                    <Nav.Link componentClass={Link} href="/contact">
+                                    <a href="/contact">
                                         <strong>Contact US</strong>
-                                    </Nav.Link>
+                                    </a>
                                 </h4>
                                 <hr className="green accent-2 mb-4 mt-0 d-inline-block mx-auto" style={{ width: "120px" }} />
                                 <p>
@@ -39,10 +34,18 @@ export const FooterComponent = () => {
                                 <p>
                                     <i className="fa fa-phone mr-3" /> 336-457-1167
                                 </p>
-                                {/*<p>*/}
-                                {/*    <i className="fa fa-print mr-3" /> + 01 234 567 89*/}
-                                {/*</p>*/}
                             </MDBCol>
+                            <MDBCol md="4" className="text-center text-md align-top">
+                                <a href="/">
+                                    <h4 color="green" className="text-uppercase font-weight-bold">
+                                        <strong>K&J Total Care</strong>
+                                    </h4>
+                                </a>
+                                <p>
+                                    Here you can totally trust us!
+                                </p>
+                            </MDBCol>
+
                         </MDBRow>
                     </MDBContainer>
                     <div className="footer-copyright text-center py-3">
@@ -51,8 +54,8 @@ export const FooterComponent = () => {
                         </MDBContainer>
                     </div>
                 </MDBFooter>
-            </Navbar>
-        </div>
+             // </Navbar>
+         // </div>
     );
 }
 
