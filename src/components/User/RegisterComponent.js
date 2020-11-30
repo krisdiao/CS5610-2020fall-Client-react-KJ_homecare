@@ -62,7 +62,7 @@ export class RegisterComponent extends React.Component{
         //sending to profile page if log in successfully
             .then(newUser => {
 
-                userService.login(newUser)
+                //userService.login(newUser)
                 console.log("newUser", newUser)
 
                 this.setState({
@@ -80,10 +80,10 @@ export class RegisterComponent extends React.Component{
                     role: newUser.role,
                     valid: true,
                 })
-
-                //leadToCorrectLoginUserPage(newUser, this.props.history)
+                //this.props.history.push('/profile')
+                leadToCorrectLoginUserPage(newUser, this.props.history)
             })
-        this.props.history.push('/profile')
+
         //}
     }
 
@@ -247,7 +247,7 @@ export class RegisterComponent extends React.Component{
                                         onChange={(e) => this.setState({agreed: true})}/>
                         </Form.Group>
 
-                        <Button variant="primary" type="submit"
+                        <Button variant="primary" type="button"
                                 onClick={() => this.handleRegister(this.state)}>
                             Register
                         </Button>

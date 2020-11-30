@@ -63,7 +63,6 @@ export class LoginComponent extends React.Component{
             </div>)
         } else {
 
-
             console.log(this.state)
             return (
                 <div>
@@ -106,7 +105,7 @@ export class LoginComponent extends React.Component{
                                 </Form.Group>
                                 <Form.Group as={Col}>
                                     <Link to={`/register`}>
-                                        <Button variant="success">
+                                        <Button variant="success" type="button">
                                             Sign Up
                                         </Button>
                                     </Link>

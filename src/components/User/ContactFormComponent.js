@@ -16,8 +16,13 @@ export class ContactFormComponent extends React.Component{
             phoneNumber: '',
             zip: '',
             agreed: false,
+            hasSubmitted: false,
             valid: false,
         }
+    }
+
+    componentDidMount() {
+        this.setState({hasSubmitted: this.state.hasSubmitted})
     }
 
     handleChange(e) {
@@ -26,7 +31,6 @@ export class ContactFormComponent extends React.Component{
             [e.target.name]: e.target.value
         });
     }
-
     checkValidity(){
         if(
             this.state.agreed === true
@@ -40,7 +44,6 @@ export class ContactFormComponent extends React.Component{
     }
 
     handleContactUs(contact){
-        //alert("Thank you")
         console.log(contact);
         //this.checkValidity();
         // if (this.state.valid){
@@ -61,17 +64,18 @@ export class ContactFormComponent extends React.Component{
                         phoneNumber: newContact.phoneNumber,
                         zip: newContact.zip,
                         valid: true,
+                        hasSubmitted: true,
                     })
-
+                    this.props.history.push('/')
                 })
-        History.push('/')
+        //History.push('/')
 
         // }
     }
 
     render() {
         //console.log(this.state)
-        return (
+            return (
                 <div className="container">
                     <h1>K&J Total Care</h1>
                     <br/>
@@ -125,13 +129,14 @@ export class ContactFormComponent extends React.Component{
                                         value={this.state.agreed}
                                         onChange={(e) => this.setState({agreed: true})}/>
                         </Form.Group>
-                        <Button variant="primary" type="submit"
+                        <Button variant="primary" type="button"
                                 onClick={() => this.handleContactUs(this.state)}>
                             Submit
                         </Button>
                     </Form>
                 </div>
 
-        );
+            );
+
     }
 }

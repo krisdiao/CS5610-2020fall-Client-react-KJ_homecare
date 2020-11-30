@@ -43,6 +43,7 @@ export default class Profile extends React.Component {
                 <br/>
                 <br/>
                 <button
+                    type="button"
                     onClick={this.handleLogout}
                     className={`btn btn-danger`}>
                     Logout

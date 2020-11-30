@@ -91,9 +91,9 @@ export class ApplyJobComponent extends React.Component{
                         valid: true,
                     })
 
-                    //this.props.history.push('/')
+                    this.props.history.push('/')
                 })
-        History.push('/')
+        //History.push('/')
         // }
     }
 
