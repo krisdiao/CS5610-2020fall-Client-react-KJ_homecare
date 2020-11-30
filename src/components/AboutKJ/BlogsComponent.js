@@ -26,9 +26,9 @@ export class BlogsComponent extends React.Component{
                 <h1 className="form-inline">
                     Welcome to K&J's Korner
                 </h1>
-                <Link to={`/createBlogs`}
-                    className="btn btn-success pull-right">Create</Link>
-                <br/><br/>
+                {/*<Link to={`/createBlogs`}*/}
+                {/*    className="btn btn-success pull-right">Create</Link>*/}
+                {/*<br/><br/>*/}
                 <div>
                     <table className="table table-hover ">
                         <thead>
