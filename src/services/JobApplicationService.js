@@ -5,7 +5,7 @@ import {BASE_URL, APPLICATION_URL} from "../common/constants"
 //all users
 export const createJobApplication = (application) =>
 {
-    debugger
+    //debugger
     return fetch(APPLICATION_URL, {
         method: 'POST',
         body: JSON.stringify(application),
@@ -13,6 +13,7 @@ export const createJobApplication = (application) =>
             'content-type': 'application/json'
         },
     }).then(response => response.json())
+        .catch(()=>console.log("error"))
 }
 
 
@@ -22,6 +23,8 @@ export const findAllApplicationsSubmitted = () =>
     fetch(`APPLICATION_URL`, {
         credentials: "include"
     }).then(response => response.json())
+        .catch(()=>console.log("error"))
+
 
 //admin
 export const downloadApplicationById = (applicationId) =>
@@ -29,6 +32,8 @@ export const downloadApplicationById = (applicationId) =>
         method: "GET",
         credentials: "include"
     }).then(response => response.json())
+        .catch(()=>console.log("error"))
+
 
 export default {
     createJobApplication, findAllApplicationsSubmitted, downloadApplicationById

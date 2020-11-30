@@ -22,7 +22,7 @@ export const createContact = async (contact) =>
             'content-type': 'application/json'
         }
     })
-    debugger
+    //debugger
     return await response.json()
 }
 

@@ -39,7 +39,7 @@ export class LoginComponent extends React.Component{
         //here also to check if user is Admin then load to admin page, if staff, load to staff page
             .then(currentUser => {
                 console.log("currentUser", currentUser)
-                if(currentUser){
+                if(currentUser !== undefined){
 
                     this.setState({
                         email: currentUser.email,

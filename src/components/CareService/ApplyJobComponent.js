@@ -69,7 +69,7 @@ export class ApplyJobComponent extends React.Component{
         //this.checkValidity();
         // if (this.state.valid){
             //console.log("it is valid");
-        debugger
+        //debugger
         jobApplicationService.createJobApplication(application)
                 .then(newApplication => {
                     console.log("newApplication", newApplication)
