@@ -57,6 +57,7 @@ export class ContactFormComponent extends React.Component{
                         valid: true,
                     })
 
+                    //TODO: not right yet!
                     alert("Thank you, we will contact you shortly! May God Bless you!")
 
                     this.props.history.push('/')

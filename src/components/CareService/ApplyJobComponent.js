@@ -1,7 +1,7 @@
 import React from 'react';
 import {Form,Button,Col} from 'react-bootstrap';
 import jobApplicationService from "../../services/JobApplicationService";
-
+// import FileUploadComponent  from "./fileUploadComponent"
 
 export class ApplyJobComponent extends React.Component{
 
@@ -18,15 +18,33 @@ export class ApplyJobComponent extends React.Component{
             city: '',
             state: '',
             zip: '',
+            resume: null,
+            selectedFile: null,
             agreed: false,
             valid: false,
         }
     }
 
+    //for input variables
     handleChange(e) {
         //console.log("new value", e.target.value);
         this.setState({
             [e.target.name]: e.target.value
+        });
+    }
+
+    //TODO: resume data is not right yet!
+    //for resume field
+    handleUpload(e){
+        this.setState({
+            selectedFile: e.target.files[0]
+        });
+
+        const data = new FormData()
+        data.append('file', this.state.selectedFile)
+
+        this.setState({
+            resume: data
         });
     }
 
@@ -51,9 +69,9 @@ export class ApplyJobComponent extends React.Component{
         //this.checkValidity();
         // if (this.state.valid){
             //console.log("it is valid");
+        debugger
         jobApplicationService.createJobApplication(application)
                 .then(newApplication => {
-                    debugger
                     console.log("newApplication", newApplication)
 
                     //not really need this part
@@ -71,6 +89,7 @@ export class ApplyJobComponent extends React.Component{
                         valid: true,
                     })
 
+                    //TODO: not right yet!
                     alert("Thank you, we will contact you shortly! May God Bless you!")
 
                     this.props.history.push('/')
@@ -239,14 +258,16 @@ export class ApplyJobComponent extends React.Component{
                         </Form.Group>
                     </Form.Row>
 
-                    <Form.Group>
-                        <Form.File
-                            id="file"
-                            label="Please upload your resume"
-                            custom
-                        />
-                    </Form.Group>
-
+                    <Form.Row>
+                        <Form.Group as={Col} controlId="formGridResume">
+                            <Form.Label>Resume*</Form.Label>
+                            <div id="upload-box">
+                                <input type="file" onChange={(e) => this.handleUpload(e)}/>
+                            </div>
+                        </Form.Group>
+                    </Form.Row>
+                    <br/>
+                    {/*<FileUploadComponent resume={this.state.resume}/>*/}
                     <Form.Group id="formGridCheckbox">
                         <Form.Check type="checkbox" label="Agree to our all terms and conditions"
                                     name="agreed"
