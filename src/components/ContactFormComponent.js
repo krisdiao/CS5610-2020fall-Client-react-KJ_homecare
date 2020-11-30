@@ -1,6 +1,6 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Navbar,Nav,Form,Button,FormControl,FormLabel,FormGroup,Col,Row,NavDropdown} from 'react-bootstrap';
+import {Form,Button,Col} from 'react-bootstrap';
 import "font-awesome/css/font-awesome.css";
 import {createContact} from "../services/ContactService";
 
@@ -40,13 +40,14 @@ export class ContactFormComponent extends React.Component{
 
     handleContactUs(contact){
         console.log(contact);
-        this.checkValidity();
+        //this.checkValidity();
         // if (this.state.valid){
             console.log("it is valid");
+        //debugger
             createContact(contact)
                 .then(newContact => {
                     console.log("newContact", newContact)
-
+                    debugger
                     //not really need this part
                     this.setState({
                         firstName: newContact.firstName,
@@ -54,11 +55,10 @@ export class ContactFormComponent extends React.Component{
                         email: newContact.email,
                         phoneNumber: newContact.phoneNumber,
                         zip: newContact.zip,
-                        agreed: newContact.agreed,
-                        valid: newContact.valid,
+                        valid: true,
                     })
 
-                    alert("Thank you, we will contact you shortly!")
+                    alert("Thank you, we will contact you shortly! May God Bless you!")
 
                     this.props.history.push('/')
                 })
@@ -66,14 +66,16 @@ export class ContactFormComponent extends React.Component{
     }
 
     render() {
-        console.log(this.state)
+        //console.log(this.state)
         return (
                 <div className="container">
-                    <h1>K&J Home Care</h1>
+                    <h1>K&J Total Care</h1>
+                    <br/>
                     <p><i className="fa fa-phone" aria-hidden="true"></i>: 336-457-1167</p>
                     <p><i className="fa fa-envelope-o" aria-hidden="true"></i>: kjtotalcare@gmail.com</p>
                     <p><i className="fa fa-internet-explorer" aria-hidden="true"></i>: kjtotalcare.com</p>
-
+                    <br/>
+                    <br/>
                     <Form>
                         <Form.Row>
                             <Form.Group as={Col} controlId="formGridFirstName">

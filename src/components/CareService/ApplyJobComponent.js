@@ -1,5 +1,5 @@
 import React from 'react';
-import {Navbar,Nav,Form,Button,FormControl,FormLabel,FormGroup,Col,Row,NavDropdown} from 'react-bootstrap';
+import {Form,Button,Col} from 'react-bootstrap';
 import {createJobApplication} from "../../services/JobApplicationService";
 
 
@@ -48,12 +48,12 @@ export class ApplyJobComponent extends React.Component{
 
     handleApplyJob(application){
         console.log(application);
-        this.checkValidity();
+        //this.checkValidity();
         // if (this.state.valid){
             //console.log("it is valid");
             createJobApplication(application)
                 .then(newApplication => {
-
+                    debugger
                     console.log("newApplication", newApplication)
 
                     //not really need this part
@@ -68,13 +68,13 @@ export class ApplyJobComponent extends React.Component{
                         state: newApplication.state,
                         zip: newApplication.zip,
                         jobPosition: newApplication.jobPosition,
-                        agreed: newApplication.agreed,
-                        valid: newApplication.valid,
+                        valid: true,
                     })
 
-                    alert("Thank you, we will contact you shortly!")
+                    alert("Thank you, we will contact you shortly! May God Bless you!")
 
-                    this.props.history.push('/')})
+                    this.props.history.push('/')
+                })
         // }
     }
 
@@ -82,7 +82,9 @@ export class ApplyJobComponent extends React.Component{
         console.log(this.state)
         return(
             <div className="container">
-                <h1>ApplyJob</h1>
+                <h1>Come to Work @ K&J Total Care! </h1>
+                <br/>
+                <br/>
                 <Form>
                     <Form.Row>
                         <Form.Group as={Col} controlId="formGridFirstName">

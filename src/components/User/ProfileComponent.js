@@ -37,9 +37,11 @@ export default class Profile extends React.Component {
     render() {
         return(
             <div>
-                <h1>Profile</h1>
-                Hi {this.state.profile.firstName} {this.state.profile.lastName}!
-                <hr/>
+                <h3>Welcome back, my dear <strong>{this.state.profile.firstName} {this.state.profile.lastName}!</strong>
+                </h3>
+                <br/>
+                <br/>
+                <br/>
                 <button
                     onClick={this.handleLogout}
                     className={`btn btn-danger`}>

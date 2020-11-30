@@ -1,9 +1,10 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Navbar,Nav,Form,Button,FormControl,FormLabel,FormGroup,Col,Row,NavDropdown} from 'react-bootstrap';
+import {Form,Button,Col} from 'react-bootstrap';
 import "font-awesome/css/font-awesome.css";
 import {register} from "../../services/UserService";
-import PhoneInput from 'react-phone-number-input'
+
+var leadToCorrectLoginUserPage = require('../../common/util.js').leadToCorrectLoginUserPage;
 
 export class RegisterComponent extends React.Component{
     constructor(props) {
@@ -50,21 +51,6 @@ export class RegisterComponent extends React.Component{
         }
     }
 
-    leadToCorrectLoginUserPage(newUser){
-
-        switch (newUser.role) {
-            case "ADMIN":
-                this.props.history.push('/admin')
-            case "STAFF":
-                this.props.history.push('/staff')
-            case "LOGIN-USER":
-                this.props.history.push('/profile')
-            default:
-                this.props.history.push('/')
-        }
-    }
-
-
     handleRegister(user){
         console.log(user);
         this.checkValidity();
@@ -74,6 +60,8 @@ export class RegisterComponent extends React.Component{
             //here to check whether or not allow the user to login before
             //sending to profile page if log in successfully
                 .then(newUser => {
+
+                    this.props.history.push('/profile')
 
                     console.log("newUser", newUser)
 
@@ -90,10 +78,10 @@ export class RegisterComponent extends React.Component{
                         state: newUser.state,
                         zip: newUser.zip,
                         role: newUser.role,
-                        agreed: true,
                         valid: true,
                     })
-                    this.leadToCorrectLoginUserPage(newUser)
+
+                    //leadToCorrectLoginUserPage(newUser, this.props.history)
                 })
         //}
     }
