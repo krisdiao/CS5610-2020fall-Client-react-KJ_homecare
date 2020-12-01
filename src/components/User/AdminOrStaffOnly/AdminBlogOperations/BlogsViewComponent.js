@@ -17,9 +17,10 @@ export class BlogsViewComponent extends React.Component{
 
     handleSaveBlog(blog){
         console.log(blog);
-        this.checkValidity();
+        //this.checkValidity();
         // if (this.state.valid){
         //console.log("it is valid");
+        debugger
         blogService.updateBlog(blog)
             .then(newBlog => {
                 console.log("newBlog", newBlog)
@@ -42,11 +43,6 @@ export class BlogsViewComponent extends React.Component{
         console.log(this.state.blog)
         return(
             <div className="container">
-                {/*<h1>{this.state.blog.title}</h1>*/}
-                {/*<h3>{this.state.blog.firstName}</h3>*/}
-                {/*<h3>{this.state.blog.lastName}</h3>*/}
-                {/*<p>{this.state.blog.content}</p>*/}
-
                 <Form>
                     <Form.Group as={Row} controlId="formHorizontalName">
                         <Form.Label column sm={2}>
@@ -70,7 +66,12 @@ export class BlogsViewComponent extends React.Component{
                         <Col sm={10}>
                             <Form.Control name="title"
                                           value={this.state.blog.title}
-                                          onChange={(e) => this.setState({blog: e.target.value})}
+                                          onChange={(event) => {
+                                              const newTitle = event.target.value
+                                              this.setState(prevState => ({
+                                                  course: {...prevState.blog, title: newTitle}
+                                              }))
+                                          }}
                             />
                         </Col>
                     </Form.Group>
@@ -81,7 +82,12 @@ export class BlogsViewComponent extends React.Component{
                             <Form.Control as="textarea" rows={5}
                                           name="content"
                                           value={this.state.blog.content}
-                                          onChange={(e) => this.setState({blog: e.target.value})}
+                                          onChange={(event) => {
+                                              const newContent = event.target.value
+                                              this.setState(prevState => ({
+                                                  course: {...prevState.blog, content: newContent}
+                                              }))
+                                          }}
                             />
                         </Col>
 
