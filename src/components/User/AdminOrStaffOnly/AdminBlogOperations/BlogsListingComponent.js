@@ -9,7 +9,6 @@ import blogService from "../../../../services/BlogService";
 
 export class BlogsListingComponent extends React.Component{
 
-    //TOdo： remove hard coded blogs
     state ={
         blogs:[
             {
@@ -66,12 +65,14 @@ export class BlogsListingComponent extends React.Component{
     render() {
         return(
                 <Container>
-                    <Link to={`/create-blog`}
-                          className="btn btn-success pull-right">Create</Link>
-                    <br/><br/>
                     <Row>
                         <Col sm={3}><AdminComponent/></Col>
                         <Col sm={9}>
+                            <h1>Blogs</h1>
+                            <Link to={`/create-blog`}
+                                  className="btn btn-success pull-right">Create</Link>
+                            <br/>
+                            <br/>
                             <table className="table table-hover ">
                                 <thead>
                                 <tr>
@@ -82,19 +83,6 @@ export class BlogsListingComponent extends React.Component{
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {/*<tr>*/}
-                                    {/*<td>1</td>*/}
-                                    {/*<td>2</td>*/}
-                                    {/*<td>3</td>*/}
-                                    {/*<td>4</td>*/}
-                                    {/*<td>*/}
-                                    {/*    <button*/}
-                                    {/*        onClick={ ()=> deleteBlog()}*/}
-                                    {/*        className="btn btn-danger">*/}
-                                    {/*        <i className="fa fa-trash-o" aria-hidden="true"></i>*/}
-                                    {/*    </button>*/}
-                                    {/*</td>*/}
-                                {/*</tr>*/}
                                 {this.state.blogs.map(blog =>
                                 <tr>
                                     {/*<BlogsViewComponent*/}

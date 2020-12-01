@@ -13,7 +13,7 @@ export class AdminComponent extends React.Component{
                         </Link>
                     </li>
                     <li className="list-group-item">
-                            <Link to={`/editingReviews`}>
+                            <Link to={`/update-review`}>
                                 Reviews
                             </Link>
                     </li>
@@ -23,12 +23,12 @@ export class AdminComponent extends React.Component{
                         </Link>
                     </li>
                     <li className="list-group-item">
-                        <Link to={`/contacts`}>
-                        Contacts
+                        <Link to={`/contacts-management`}>
+                        Contacts Management
                         </Link>
                     </li>
-                    <li className="list-group-item"><Link to={`/jobApplications`}>Job Application</Link></li>
-                    <li className="list-group-item"><Link to={`/userManagement`}>User Management</Link></li>
+                    <li className="list-group-item"><Link to={`/job-applications`}>Job Application</Link></li>
+                    <li className="list-group-item"><Link to={`/user-management`}>User Management</Link></li>
                     <li className="list-group-item">Schedule</li>
                 </ul>
             </div>

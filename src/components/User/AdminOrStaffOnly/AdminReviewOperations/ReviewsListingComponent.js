@@ -1,11 +1,11 @@
 import React from "react";
-import {AdminComponent} from "../User/AdminComponent";
-import {Container , Row , Col , Form,Button,FormControl} from 'react-bootstrap';
-import {findAllBlogs} from "../../services/BlogService";
-import {deleteReview, findAllReviews} from "../../services/ReviewService";
+import {AdminComponent} from "../../AdminComponent";
+import {Container , Row , Col} from 'react-bootstrap';
+import {deleteReview, findAllReviews} from "../../../../services/ReviewService";
 import {Link} from "react-router-dom";
+import reviewService from "../../../../services/ReviewService"
 
-export class ReviewsEditorComponent extends React.Component{
+export class ReviewsListingComponent extends React.Component{
 
     state ={
         reviews:[
@@ -42,6 +42,15 @@ export class ReviewsEditorComponent extends React.Component{
             })
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        reviewService.findAllReviews()
+            .then(reviews =>{
+                this.setState( {
+                    reviews: reviews
+                })
+            })
+    }
+
     deleteReview =(review)=> {
         deleteReview(review.id)
             .then(status => this.setState(prevState => ({
@@ -59,6 +68,11 @@ export class ReviewsEditorComponent extends React.Component{
                     <Col sm={3}><AdminComponent/></Col>
                     <Col sm={9}>
                         <h1>Reviews</h1>
+                        <Link to={`/leave-review`}
+                              className="btn btn-success pull-right">Create</Link>
+                        <br/>
+                        <br/>
+
                         <table className="table table-hover ">
                             <thead>
                             <tr>
@@ -72,14 +86,15 @@ export class ReviewsEditorComponent extends React.Component{
                             {this.state.reviews.map(review =>
                                 <tr>
                                     <td>
-                                        <Link to ={`/reviews/${review.id}`}>
-                                            {review.title}
-                                            {/*{review.id}*/}
-                                        </Link>
+                                        <Link to={{
+                                            pathname: `/update-review/${review.id}`,
+                                            reviewViewProps: { review: review }
+                                        }}
+                                        > {review.title}</Link>
                                     </td>
                                     <td>{review.lastName}</td>
                                     <td>{review.firstName}</td>
-                                    <td>{review.timeStamp.toUTCString()}</td>
+                                    <td>{review.timeStamp.toString()}</td>
                                     <td>
                                         <button
                                             onClick={ ()=> this.deleteReview(review)}

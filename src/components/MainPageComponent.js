@@ -30,16 +30,17 @@ import SearchContentComponent from "./SearchContent/SearchContentComponent";
 import {FooterComponent} from "./header-footer/FooterComponent";
 import {PetCareComponent} from "./CaregiverResource/PetCareComponent";
 import ProfileComponent from "./User/ProfileComponent";
-import {LeaveReviewsComponent} from "./AboutKJ/LeaveReviewsComponent";
+import {LeaveReviewsComponent} from "./User/LoginUsers/LeaveReviewsComponent";
 import {BlogsEditingComponent} from "./User/AdminOrStaffOnly/AdminBlogOperations/BlogsEditingComponent";
-import {ReviewsEditorComponent} from "./AboutKJ/ReviewsEditorComponent";
+import {ReviewsListingComponent} from "./User/AdminOrStaffOnly/AdminReviewOperations/ReviewsListingComponent";
 import {AdminComponent} from "./User/AdminComponent";
 import {CreateBlogsComponent} from "./User/AdminOrStaffOnly/AdminBlogOperations/CreateBlogsComponent";
 import {BlogsListingComponent} from "./User/AdminOrStaffOnly/AdminBlogOperations/BlogsListingComponent";
-import {ContactsComponent} from "./User/ContactsComponent";
-import {JobApplicationsComponent} from "./User/JobApplicationsComponent";
-import {UsersManagementComponent} from "./User/UsersManagementComponent";
+import {ContactsManagementComponent} from "./User/AdminOrStaffOnly/AdminContactOperations/ContactsManagementComponent";
+import {JobApplicationsComponent} from "./User/AdminOrStaffOnly/AdminJobApplicationsOperations/JobApplicationsComponent";
+import {UsersManagementComponent} from "./User/AdminOrStaffOnly/AdminUserOperations/UsersManagementComponent";
 import {BlogViewComponent} from "./AboutKJ/BlogViewComponent"
+import {ReviewsEditingComponent} from "./User/AdminOrStaffOnly/AdminReviewOperations/ReviewsEditingComponent";
 
 export class MainPageComponent extends React.Component{
     render(){
@@ -57,13 +58,15 @@ export class MainPageComponent extends React.Component{
                                exact component={AboutKJComponent}/>
                         <Route path="/reviews"
                                exact component={ReviewsComponent}/>
-                        <Route path="/leaveReviews"
+                        <Route path="/leave-review"
                                exact component={LeaveReviewsComponent}/>
                         <Route path=
-                                   {["/editingReviews/:reviewId","/editingReviews",
+                                   {["/update-review/:reviewId",
 
                                    ]}
-                               exact component={ReviewsEditorComponent}/>
+                               exact component={ReviewsEditingComponent}/>
+                        <Route path={["/update-review",]}
+                               exact component={ReviewsListingComponent}/>
                         <Route path="/blogs"
                                exact component={BlogsComponent}/>
                         <Route path=
@@ -123,11 +126,11 @@ export class MainPageComponent extends React.Component{
                                exact component={ContactFormComponent}/>
                         <Route path="/search"
                                exact component={SearchContentComponent}/>
-                        <Route path="/contacts"
-                               exact component={ContactsComponent}/>
-                        <Route path="/jobApplications"
+                        <Route path="/contacts-management"
+                               exact component={ContactsManagementComponent}/>
+                        <Route path="/job-applications"
                                exact component={JobApplicationsComponent}/>
-                        <Route path="/usersManagement"
+                        <Route path="/users-management"
                                exact component={UsersManagementComponent}/>
                     </div>
                 </BrowserRouter>

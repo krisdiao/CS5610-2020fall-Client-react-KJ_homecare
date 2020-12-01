@@ -1,6 +1,6 @@
 import React, { useState }from 'react';
 import {Form,Col,Row,Button} from 'react-bootstrap';
-import {createReview} from "../../services/ReviewService";
+import {createReview} from "../../../services/ReviewService";
 
 export class LeaveReviewsComponent extends React.Component{
 

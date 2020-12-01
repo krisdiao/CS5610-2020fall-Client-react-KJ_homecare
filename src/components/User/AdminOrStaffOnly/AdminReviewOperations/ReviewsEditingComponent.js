@@ -1,38 +1,37 @@
 import React from "react";
 import {Form,Col,Row,Button} from 'react-bootstrap';
-import blogService from "../../../../services/BlogService";
+import reviewService from "../../../../services/ReviewService"
 
 
-
-export class BlogsEditingComponent extends React.Component{
+export class ReviewsEditingComponent extends React.Component{
 
     constructor(props) {
         super(props);
         this.state = {
-            blog: this.props.location.blogViewProps.blog,
+            review: this.props.location.reviewViewProps.review,
             editing: false
         }
     }
 
-    handleSaveBlog(blog){
-        console.log(blog);
+    handleSaveReview(review){
+        console.log(review);
         //this.checkValidity();
         // if (this.state.valid){
         //console.log("it is valid");
         debugger
-        blogService.updateBlog(blog)
-            .then(newBlog => {
-                console.log("newBlog", newBlog)
+        reviewService.updateReview(review)
+            .then(newReview => {
+                console.log("newReview", newReview)
 
                 //not really need this part
                 this.setState({
-                   blog: newBlog,
+                    review: newReview,
                     editing: false,
                 })
 
                 alert("Success! Thanks!")
 
-                this.props.history.push('/update-blog')
+                this.props.history.push('/update-review')
             })
         // }
     }
@@ -48,13 +47,13 @@ export class BlogsEditingComponent extends React.Component{
                             First Name
                         </Form.Label>
                         <Col sm={4}>
-                            <h4>{this.state.blog.firstName}</h4>
+                            <h4>{this.state.review.firstName}</h4>
                         </Col>
                         <Form.Label column sm={2}>
                             Last Name
                         </Form.Label>
                         <Col sm={4}>
-                            <h4>{this.state.blog.lastName}</h4>
+                            <h4>{this.state.review.lastName}</h4>
                         </Col>
                     </Form.Group>
 
@@ -65,11 +64,11 @@ export class BlogsEditingComponent extends React.Component{
                         <Col sm={10}>
                             <Form.Control
                                           types="text"
-                                          value={this.state.blog.title}
+                                          value={this.state.review.title}
                                           onChange={(event) => {
                                               const newTitle = event.target.value
                                               this.setState(prevState => ({
-                                                  blog: {...prevState.blog, title: newTitle}
+                                                  review: {...prevState.review, title: newTitle}
                                               }))
                                           }}
                             />
@@ -81,11 +80,11 @@ export class BlogsEditingComponent extends React.Component{
                         <Col sm={10}>
                             <Form.Control as="textarea" rows={5}
                                           name="content"
-                                          value={this.state.blog.content}
+                                          value={this.state.review.content}
                                           onChange={(event) => {
                                               const newContent = event.target.value
                                               this.setState(prevState => ({
-                                                  blog: {...prevState.blog, content: newContent}
+                                                  review: {...prevState.review, content: newContent}
                                               }))
                                           }}
                             />
@@ -96,7 +95,7 @@ export class BlogsEditingComponent extends React.Component{
                     <Form.Group as={Row}>
                         <Col sm={{ span: 10, offset: 2 }}>
                             <Button type="button"
-                                    onClick={() => this.handleSaveBlog(this.state)}>Save</Button>
+                                    onClick={() => this.handleSaveReview(this.state)}>Save</Button>
                         </Col>
                     </Form.Group>
                 </Form>
