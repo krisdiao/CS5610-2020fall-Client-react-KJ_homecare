@@ -1,6 +1,6 @@
 import React from "react";
 
-export class ContactsComponent extends React.Component{
+export class ContactsManagementComponent extends React.Component{
     render() {
         return(
             <div>

@@ -9,7 +9,35 @@ import {Container , Row , Col} from 'react-bootstrap';
 export class BlogsComponent extends React.Component{
 
     state ={
-        blogs:[],
+        blogs:[
+            {
+                id:"1",
+                title: "a",
+                firstName: "qqqqq",
+                lastName: "mmmmm",
+                timeStamp: new Date(),
+                content: "I love K&J",
+            },
+            {
+                id:"2",
+                title: "b",
+                firstName: "wwwwwww",
+                lastName: "nnnnnn",
+                timeStamp: new Date(),
+                content: "I love K&J",
+
+            },
+            {
+                id:"3",
+                title: "c",
+                firstName: "eeeee",
+                lastName: "zzzzz",
+                timeStamp: new Date(),
+                content: "I love K&J",
+
+            },
+
+        ],
     }
 
     componentDidMount() {

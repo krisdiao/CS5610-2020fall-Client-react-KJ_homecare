@@ -9,7 +9,6 @@ import blogService from "../../../../services/BlogService";
 
 export class BlogsListingComponent extends React.Component{
 
-    //TOdo： remove hard coded blogs
     state ={
         blogs:[
             {
@@ -66,12 +65,14 @@ export class BlogsListingComponent extends React.Component{
     render() {
         return(
                 <Container>
-                    <Link to={`/create-blog`}
-                          className="btn btn-success pull-right">Create</Link>
-                    <br/><br/>
                     <Row>
                         <Col sm={3}><AdminComponent/></Col>
                         <Col sm={9}>
+                            <h1>Blogs</h1>
+                            <Link to={`/create-blog`}
+                                  className="btn btn-success pull-right">Create</Link>
+                            <br/>
+                            <br/>
                             <table className="table table-hover ">
                                 <thead>
                                 <tr>
