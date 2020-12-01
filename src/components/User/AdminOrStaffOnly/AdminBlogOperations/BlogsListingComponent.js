@@ -1,15 +1,13 @@
 import React from "react";
 import {AdminComponent} from "../../AdminComponent";
-import {Container , Row , Col , Form,Button,FormControl} from 'react-bootstrap';
-// import {findAllBlogs,deleteBlog,createBlog,updateBlog} from "../../../../services/BlogService";
+import {Container , Row , Col} from 'react-bootstrap';
 import {Link} from "react-router-dom";
-import {BlogsViewComponent} from "./BlogsViewComponent";
 import blogService from "../../../../services/BlogService";
 
 
 
 
-export class BlogsEditorComponent extends React.Component{
+export class BlogsListingComponent extends React.Component{
 
     //TOdo： remove hard coded blogs
     state ={
@@ -46,6 +44,16 @@ export class BlogsEditorComponent extends React.Component{
                 })
             })
     }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        blogService.findAllBlogs()
+            .then(blogs =>{
+                this.setState( {
+                    blogs: blogs
+                })
+            })
+    }
+
 
     deleteBlog =(blog)=> {
         blogService.deleteBlog(blog.id)

@@ -54,7 +54,7 @@ export class CreateBlogsComponent extends React.Component{
 
                 alert("Success! Thanks!")
 
-                this.props.history.push('/')
+                this.props.history.push('/update-blog')
             })
         // }
     }

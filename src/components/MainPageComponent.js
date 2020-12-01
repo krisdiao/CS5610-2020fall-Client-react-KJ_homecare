@@ -31,14 +31,15 @@ import {FooterComponent} from "./header-footer/FooterComponent";
 import {PetCareComponent} from "./CaregiverResource/PetCareComponent";
 import ProfileComponent from "./User/ProfileComponent";
 import {LeaveReviewsComponent} from "./AboutKJ/LeaveReviewsComponent";
-import {BlogsViewComponent} from "./User/AdminOrStaffOnly/AdminBlogOperations/BlogsViewComponent";
+import {BlogsEditingComponent} from "./User/AdminOrStaffOnly/AdminBlogOperations/BlogsEditingComponent";
 import {ReviewsEditorComponent} from "./AboutKJ/ReviewsEditorComponent";
 import {AdminComponent} from "./User/AdminComponent";
 import {CreateBlogsComponent} from "./User/AdminOrStaffOnly/AdminBlogOperations/CreateBlogsComponent";
-import {BlogsEditorComponent} from "./User/AdminOrStaffOnly/AdminBlogOperations/BlogsEditorComponent";
+import {BlogsListingComponent} from "./User/AdminOrStaffOnly/AdminBlogOperations/BlogsListingComponent";
 import {ContactsComponent} from "./User/ContactsComponent";
 import {JobApplicationsComponent} from "./User/JobApplicationsComponent";
 import {UsersManagementComponent} from "./User/UsersManagementComponent";
+import {BlogViewComponent} from "./AboutKJ/BlogViewComponent"
 
 export class MainPageComponent extends React.Component{
     render(){
@@ -65,15 +66,19 @@ export class MainPageComponent extends React.Component{
                                exact component={ReviewsEditorComponent}/>
                         <Route path="/blogs"
                                exact component={BlogsComponent}/>
+                        <Route path=
+                                   {["/blogs/:blogId",
+                                   ]}
+                               exact component={BlogViewComponent}/>
                         <Route path="/create-blog"
                                exact component={CreateBlogsComponent}/>
                         <Route path=
                                    {["/update-blog/:blogId",
                                    ]}
-                               exact component={BlogsViewComponent}/>
+                               exact component={BlogsEditingComponent}/>
                         <Route path=
-                                   {["/update-blog/:blogId","/update-blog",]}
-                               exact component={BlogsEditorComponent}/>
+                                   {["/update-blog",]}
+                               exact component={BlogsListingComponent}/>
                         <Route path="/client-story"
                                exact component={ClientStoryComponent}/>
                         <Route path="/bathing-dressing"

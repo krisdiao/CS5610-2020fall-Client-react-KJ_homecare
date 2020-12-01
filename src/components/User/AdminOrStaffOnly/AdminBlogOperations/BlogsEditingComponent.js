@@ -1,11 +1,10 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import {Form,Col,Row,Button} from 'react-bootstrap';
 import blogService from "../../../../services/BlogService";
 
 
 
-export class BlogsViewComponent extends React.Component{
+export class BlogsEditingComponent extends React.Component{
 
     constructor(props) {
         super(props);
@@ -33,7 +32,7 @@ export class BlogsViewComponent extends React.Component{
 
                 alert("Success! Thanks!")
 
-                this.props.history.push('/')
+                this.props.history.push('/update-blog')
             })
         // }
     }
@@ -64,7 +63,8 @@ export class BlogsViewComponent extends React.Component{
                             Title
                         </Form.Label>
                         <Col sm={10}>
-                            <Form.Control name="title"
+                            <Form.Control
+                                          types="text"
                                           value={this.state.blog.title}
                                           onChange={(event) => {
                                               const newTitle = event.target.value
