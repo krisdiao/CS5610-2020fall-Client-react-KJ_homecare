@@ -82,34 +82,9 @@ export class BlogsListingComponent extends React.Component{
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {/*<tr>*/}
-                                    {/*<td>1</td>*/}
-                                    {/*<td>2</td>*/}
-                                    {/*<td>3</td>*/}
-                                    {/*<td>4</td>*/}
-                                    {/*<td>*/}
-                                    {/*    <button*/}
-                                    {/*        onClick={ ()=> deleteBlog()}*/}
-                                    {/*        className="btn btn-danger">*/}
-                                    {/*        <i className="fa fa-trash-o" aria-hidden="true"></i>*/}
-                                    {/*    </button>*/}
-                                    {/*</td>*/}
-                                {/*</tr>*/}
                                 {this.state.blogs.map(blog =>
                                 <tr>
-                                    {/*<BlogsViewComponent*/}
-                                    {/*    blog={blog}*/}
-                                    {/*    deleteBlog={this.deleteBlog}*/}
-
-                                    {/*/>*/}
-
                                     <td>
-                                            {/*<Link to ={`/blogs/${blog.id}`}*/}
-                                            {/*      params={{ blog: blog }}*/}
-                                            {/*>*/}
-                                            {/*    {blog.title}*/}
-                                            {/*</Link>*/}
-
                                         <Link to={{
                                                 pathname: `/update-blog/${blog.id}`,
                                                 blogViewProps: { blog: blog }

@@ -19,7 +19,7 @@ export class BlogsEditingComponent extends React.Component{
         //this.checkValidity();
         // if (this.state.valid){
         //console.log("it is valid");
-        debugger
+        //debugger
         blogService.updateBlog(blog)
             .then(newBlog => {
                 console.log("newBlog", newBlog)
@@ -69,7 +69,7 @@ export class BlogsEditingComponent extends React.Component{
                                           onChange={(event) => {
                                               const newTitle = event.target.value
                                               this.setState(prevState => ({
-                                                  course: {...prevState.blog, title: newTitle}
+                                                  blog: {...prevState.blog, title: newTitle}
                                               }))
                                           }}
                             />
@@ -85,7 +85,7 @@ export class BlogsEditingComponent extends React.Component{
                                           onChange={(event) => {
                                               const newContent = event.target.value
                                               this.setState(prevState => ({
-                                                  course: {...prevState.blog, content: newContent}
+                                                  blog: {...prevState.blog, content: newContent}
                                               }))
                                           }}
                             />
