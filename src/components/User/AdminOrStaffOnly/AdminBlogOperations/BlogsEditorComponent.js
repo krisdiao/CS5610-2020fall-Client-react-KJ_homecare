@@ -1,8 +1,11 @@
 import React from "react";
-import {AdminComponent} from "../User/AdminComponent";
+import {AdminComponent} from "../../AdminComponent";
 import {Container , Row , Col , Form,Button,FormControl} from 'react-bootstrap';
-import {findAllBlogs,deleteBlog,createBlog,updateBlog} from "../../services/BlogService";
+// import {findAllBlogs,deleteBlog,createBlog,updateBlog} from "../../../../services/BlogService";
 import {Link} from "react-router-dom";
+import {BlogsViewComponent} from "./BlogsViewComponent";
+import blogService from "../../../../services/BlogService";
+
 
 
 
@@ -36,7 +39,7 @@ export class BlogsEditorComponent extends React.Component{
     }
 
     componentDidMount() {
-        findAllBlogs()
+        blogService.findAllBlogs()
             .then(blogs =>{
                 this.setState( {
                     blogs: blogs
@@ -45,7 +48,7 @@ export class BlogsEditorComponent extends React.Component{
     }
 
     deleteBlog =(blog)=> {
-        deleteBlog(blog.id)
+        blogService.deleteBlog(blog.id)
             .then(status => this.setState(prevState => ({
                     blogs: prevState.blogs.filter(blogs => blogs.id !== blogs.id)
                 })
@@ -55,7 +58,7 @@ export class BlogsEditorComponent extends React.Component{
     render() {
         return(
                 <Container>
-                    <Link to={`/createBlogs`}
+                    <Link to={`/create-blog`}
                           className="btn btn-success pull-right">Create</Link>
                     <br/><br/>
                     <Row>
@@ -86,10 +89,24 @@ export class BlogsEditorComponent extends React.Component{
                                 {/*</tr>*/}
                                 {this.state.blogs.map(blog =>
                                 <tr>
+                                    {/*<BlogsViewComponent*/}
+                                    {/*    blog={blog}*/}
+                                    {/*    deleteBlog={this.deleteBlog}*/}
+
+                                    {/*/>*/}
+
                                     <td>
-                                            <Link to ={`/blogs/${blog.id}`}>
-                                                {blog.title}
-                                            </Link>
+                                            {/*<Link to ={`/blogs/${blog.id}`}*/}
+                                            {/*      params={{ blog: blog }}*/}
+                                            {/*>*/}
+                                            {/*    {blog.title}*/}
+                                            {/*</Link>*/}
+
+                                        <Link to={{
+                                                pathname: `/update-blog/${blog.id}`,
+                                                blogViewProps: { blog: blog }
+                                            }}
+                                        > {blog.title}</Link>
                                     </td>
                                     <td>{blog.lastName}</td>
                                     <td>{blog.firstName}</td>

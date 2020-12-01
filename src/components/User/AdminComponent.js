@@ -18,7 +18,7 @@ export class AdminComponent extends React.Component{
                             </Link>
                     </li>
                     <li className="list-group-item">
-                        <Link to={`/editingBlogs`}>
+                        <Link to={`/update-blog`}>
                             Blogs
                         </Link>
                     </li>
