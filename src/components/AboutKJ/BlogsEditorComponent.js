@@ -11,21 +11,21 @@ export class BlogsEditorComponent extends React.Component{
     state ={
         blogs:[
             {
-                _id:"1",
+                id:"1",
                 title: "a",
                 firstName: "qqqqq",
                 lastName: "mmmmm",
                 timeStamp: new Date(),
             },
             {
-                _id:"2",
+                id:"2",
                 title: "b",
                 firstName: "wwwwwww",
                 lastName: "nnnnnn",
                 timeStamp: new Date(),
             },
             {
-                _id:"3",
+                id:"3",
                 title: "c",
                 firstName: "eeeee",
                 lastName: "zzzzz",
@@ -44,9 +44,9 @@ export class BlogsEditorComponent extends React.Component{
     }
 
     deleteBlog =(blog)=> {
-        deleteBlog(blog._id)
+        deleteBlog(blog.id)
             .then(status => this.setState(prevState => ({
-                    blogs: prevState.blogs.filter(blogs => blogs._id !== blogs._id)
+                    blogs: prevState.blogs.filter(blogs => blogs.id !== blogs.id)
                 })
             ))
 
@@ -59,6 +59,7 @@ export class BlogsEditorComponent extends React.Component{
                     <Row>
                         <Col sm={3}><AdminComponent/></Col>
                         <Col sm={9}>
+                            <h1>Blogs</h1>
                             <table className="table table-hover ">
                                 <thead>
                                 <tr>
@@ -69,25 +70,12 @@ export class BlogsEditorComponent extends React.Component{
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {/*<tr>*/}
-                                    {/*<td>1</td>*/}
-                                    {/*<td>2</td>*/}
-                                    {/*<td>3</td>*/}
-                                    {/*<td>4</td>*/}
-                                    {/*<td>*/}
-                                    {/*    <button*/}
-                                    {/*        onClick={ ()=> deleteBlog()}*/}
-                                    {/*        className="btn btn-danger">*/}
-                                    {/*        <i className="fa fa-trash-o" aria-hidden="true"></i>*/}
-                                    {/*    </button>*/}
-                                    {/*</td>*/}
-                                {/*</tr>*/}
                                 {this.state.blogs.map(blog =>
                                 <tr>
                                     <td>
-                                            <Link to ={`/blogs/${blog._id}`}>
+                                            <Link to ={`/update-blogs/${blog.id}`}>
                                                 {blog.title}
-                                                {/*{blog._id}*/}
+                                                {/*{blog.id}*/}
                                             </Link>
                                     </td>
                                     <td>{blog.lastName}</td>
@@ -95,7 +83,7 @@ export class BlogsEditorComponent extends React.Component{
                                     <td>{blog.timeStamp.toUTCString()}</td>
                                     <td>
                                         <button
-                                            onClick={ ()=> deleteBlog()}
+                                            onClick={ ()=> this.deleteBlog(blog)}
                                             className="btn btn-danger">
                                             <i className="fa fa-trash-o" aria-hidden="true"></i>
                                         </button>

@@ -1,6 +1,6 @@
 import React from "react";
 
-export class BlogsViewComponent extends React.Component{
+export class BlogViewComponent extends React.Component{
     render() {
         return(
             <div className="container">

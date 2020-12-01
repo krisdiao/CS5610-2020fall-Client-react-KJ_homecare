@@ -6,7 +6,29 @@ import {Link} from "react-router-dom";
 export class BlogsComponent extends React.Component{
 
     state ={
-        blogs:[],
+        blogs:[
+            {
+                id:"1",
+                title: "a",
+                firstName: "qqqqq",
+                lastName: "mmmmm",
+                timeStamp: new Date(),
+            },
+            {
+                id:"2",
+                title: "b",
+                firstName: "wwwwwww",
+                lastName: "nnnnnn",
+                timeStamp: new Date(),
+            },
+            {
+                id:"3",
+                title: "c",
+                firstName: "eeeee",
+                lastName: "zzzzz",
+                timeStamp: new Date(),
+            },
+        ],
     }
 
     componentDidMount() {
@@ -18,15 +40,13 @@ export class BlogsComponent extends React.Component{
             })
     }
 
-
-
     render() {
         return(
             <div className="container">
                 <h1 className="form-inline">
                     Welcome to K&J's Korner
                 </h1>
-                <Link to={`/createBlogs`}
+                <Link to={`/create-blogs`}
                     className="btn btn-success pull-right">Create</Link>
                 <br/><br/>
                 <div>
@@ -34,26 +54,25 @@ export class BlogsComponent extends React.Component{
                         <thead>
                             <tr>
                                 <th>Title</th>
-                                <th>Author</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
                                 <th>Last Modified</th>
                             </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                        </tr>
-                        {/*<tr>*/}
-                        {/*    <td>*/}
-                        {/*        <Link to ={`/blogs/${this.props.blogs._id}`}>*/}
-                        {/*            {this.props.blogs.title} */}
-                        {/*            {this.props.blogs._id}*/}
-                        {/*        </Link>*/}
-                        {/*    </td>*/}
-                        {/*    <td>{this.props.blogs.author}</td>*/}
-                        {/*    <td>{this.props.blogs.lastModified}</td>*/}
-                        {/*</tr>*/}
+                        {this.state.blogs.map(blog =>
+                            <tr>
+                                <td>
+                                    <Link to ={`/update-blogs/${blog.id}`}>
+                                        {blog.title}
+                                        {/*{blog.id}*/}
+                                    </Link>
+                                </td>
+                                <td>{blog.lastName}</td>
+                                <td>{blog.firstName}</td>
+                                <td>{blog.timeStamp.toUTCString()}</td>
+                            </tr>
+                        )}
                         </tbody>
                     </table>
 

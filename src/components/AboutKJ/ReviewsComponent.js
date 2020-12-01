@@ -36,7 +36,7 @@ export class ReviewsComponent extends React.Component{
                     <Card bg="warning" text="white" className="text-center p-3">
                         <blockquote className="blockquote mb-0 card-body">
                             <h1>Our Reviews</h1>
-                            <Link to={`/leaveReviews`} className="btn form-control btn-success">
+                            <Link to={`/leave-reviews`} className="btn form-control btn-success">
                                 {/*<button className="form-control btn-success">*/}
                                     LEAVE A REVIEW
                                 {/*</button>*/}

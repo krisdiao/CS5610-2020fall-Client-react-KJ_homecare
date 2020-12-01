@@ -31,7 +31,7 @@ import {FooterComponent} from "./header-footer/FooterComponent";
 import {PetCareComponent} from "./CaregiverResource/PetCareComponent";
 import ProfileComponent from "./User/ProfileComponent";
 import {LeaveReviewsComponent} from "./AboutKJ/LeaveReviewsComponent";
-import {BlogsViewComponent} from "./AboutKJ/BlogsViewComponent";
+import {BlogViewComponent} from "./AboutKJ/BlogViewComponent";
 import {ReviewsEditorComponent} from "./AboutKJ/ReviewsEditorComponent";
 import {AdminComponent} from "./User/AdminComponent";
 import {CreateBlogsComponent} from "./AboutKJ/CreateBlogsComponent";
@@ -56,23 +56,23 @@ export class MainPageComponent extends React.Component{
                                exact component={AboutKJComponent}/>
                         <Route path="/reviews"
                                exact component={ReviewsComponent}/>
-                        <Route path="/leaveReviews"
+                        <Route path="/leave-reviews"
                                exact component={LeaveReviewsComponent}/>
                         <Route path=
-                                   {["/editingReviews/:reviewId","/editingReviews",
+                                   {["/update-reviews/:reviewId","/update-reviews",
 
                                    ]}
                                exact component={ReviewsEditorComponent}/>
                         <Route path="/blogs"
                                exact component={BlogsComponent}/>
-                        <Route path="/createBlogs"
+                        <Route path="/create-blogs"
                                exact component={CreateBlogsComponent}/>
                         <Route path=
                                    {["/blogs/:blogId",
                                    ]}
-                               exact component={BlogsViewComponent}/>
+                               exact component={BlogViewComponent}/>
                         <Route path=
-                                   {["/editingBlogs/:blogId","/editingBlogs",
+                                   {["/update-blogs/:blogId","/update-blogs",
 
                                    ]}
                                exact component={BlogsEditorComponent}/>
@@ -122,9 +122,9 @@ export class MainPageComponent extends React.Component{
                                exact component={SearchContentComponent}/>
                         <Route path="/contacts"
                                exact component={ContactsComponent}/>
-                        <Route path="/jobApplications"
+                        <Route path="/job-applications"
                                exact component={JobApplicationsComponent}/>
-                        <Route path="/usersManagement"
+                        <Route path="/users-management"
                                exact component={UsersManagementComponent}/>
                     </div>
                 </BrowserRouter>
@@ -139,4 +139,3 @@ export class MainPageComponent extends React.Component{
 
     }
 }
-
