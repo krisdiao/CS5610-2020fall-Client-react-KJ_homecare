@@ -1,6 +1,6 @@
 import React from "react";
 import {Form,Col,Row,Button} from 'react-bootstrap';
-import reviewService from "../../../../services/ReviewService"
+import reviewService from "../../../services/ReviewService"
 
 
 export class ReviewsEditingComponent extends React.Component{
@@ -19,7 +19,7 @@ export class ReviewsEditingComponent extends React.Component{
         // if (this.state.valid){
         //console.log("it is valid");
         //debugger
-        reviewService.updateReview(review)
+        reviewService.updateReview(review.review.id, review.review)
             .then(newReview => {
                 console.log("newReview", newReview)
 

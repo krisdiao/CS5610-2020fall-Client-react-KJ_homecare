@@ -1,7 +1,6 @@
 import React from "react";
 import {AdminComponent} from "../../AdminComponent";
 import {Container , Row , Col} from 'react-bootstrap';
-import {deleteReview, findAllReviews} from "../../../../services/ReviewService";
 import {Link} from "react-router-dom";
 import reviewService from "../../../../services/ReviewService"
 
@@ -34,7 +33,7 @@ export class ReviewsListingComponent extends React.Component{
     }
 
     componentDidMount() {
-        findAllReviews()
+        reviewService.findAllReviews()
             .then(reviews =>{
                 this.setState( {
                     reviews: reviews
@@ -52,7 +51,7 @@ export class ReviewsListingComponent extends React.Component{
     }
 
     deleteReview =(review)=> {
-        deleteReview(review.id)
+        reviewService.deleteReview(review.id)
             .then(status => this.setState(prevState => ({
                 reviews: prevState.reviews.filter(reviews => reviews.id !== reviews.id)
                 })
