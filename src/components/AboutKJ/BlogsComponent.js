@@ -1,38 +1,19 @@
 import React from 'react';
-import {findAllBlogs} from "../../services/BlogService";
+import blogService from "../../services/BlogService";
 import {Link} from "react-router-dom";
+import {AdminComponent} from "../User/AdminComponent";
+import {Container , Row , Col} from 'react-bootstrap';
+
 
 
 export class BlogsComponent extends React.Component{
 
     state ={
-        blogs:[
-            {
-                id:"1",
-                title: "a",
-                firstName: "qqqqq",
-                lastName: "mmmmm",
-                timeStamp: new Date(),
-            },
-            {
-                id:"2",
-                title: "b",
-                firstName: "wwwwwww",
-                lastName: "nnnnnn",
-                timeStamp: new Date(),
-            },
-            {
-                id:"3",
-                title: "c",
-                firstName: "eeeee",
-                lastName: "zzzzz",
-                timeStamp: new Date(),
-            },
-        ],
+        blogs:[],
     }
 
     componentDidMount() {
-        findAllBlogs()
+        blogService.findAllBlogs()
             .then(blogs =>{
                 this.setState( {
                     blogs: blogs
@@ -42,43 +23,36 @@ export class BlogsComponent extends React.Component{
 
     render() {
         return(
-            <div className="container">
-                <h1 className="form-inline">
-                    Welcome to K&J's Korner
-                </h1>
-                <Link to={`/create-blogs`}
-                    className="btn btn-success pull-right">Create</Link>
-                <br/><br/>
-                <div>
-                    <table className="table table-hover ">
-                        <thead>
+            <Container>
+                <table className="table table-hover ">
+                            <thead>
                             <tr>
                                 <th>Title</th>
-                                <th>First Name</th>
                                 <th>Last Name</th>
+                                <th>First Name</th>
                                 <th>Last Modified</th>
                             </tr>
-                        </thead>
-                        <tbody>
-                        {this.state.blogs.map(blog =>
-                            <tr>
-                                <td>
-                                    <Link to ={`/update-blogs/${blog.id}`}>
-                                        {blog.title}
-                                        {/*{blog.id}*/}
-                                    </Link>
-                                </td>
-                                <td>{blog.lastName}</td>
-                                <td>{blog.firstName}</td>
-                                <td>{blog.timeStamp.toUTCString()}</td>
-                            </tr>
-                        )}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                            {this.state.blogs.map(blog =>
+                                <tr>
+                                    <td>
+                                        <Link to={{
+                                            pathname: `/blogs/${blog.id}`,
+                                            blogViewProps: { blog: blog }
+                                        }}
+                                        > {blog.title}</Link>
+                                    </td>
+                                    <td>{blog.lastName}</td>
+                                    <td>{blog.firstName}</td>
+                                    <td>{blog.timeStamp.toString()}</td>
 
-                </div>
+                                </tr>
+                            )}
+                            </tbody>
 
-            </div>
+                        </table>
+            </Container>
         )
     }
 }

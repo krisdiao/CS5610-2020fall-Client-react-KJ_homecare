@@ -31,14 +31,15 @@ import {FooterComponent} from "./header-footer/FooterComponent";
 import {PetCareComponent} from "./CaregiverResource/PetCareComponent";
 import ProfileComponent from "./User/ProfileComponent";
 import {LeaveReviewsComponent} from "./AboutKJ/LeaveReviewsComponent";
-import {BlogViewComponent} from "./AboutKJ/BlogViewComponent";
+import {BlogsEditingComponent} from "./User/AdminOrStaffOnly/AdminBlogOperations/BlogsEditingComponent";
 import {ReviewsEditorComponent} from "./AboutKJ/ReviewsEditorComponent";
 import {AdminComponent} from "./User/AdminComponent";
-import {CreateBlogsComponent} from "./AboutKJ/CreateBlogsComponent";
-import {BlogsEditorComponent} from "./AboutKJ/BlogsEditorComponent";
+import {CreateBlogsComponent} from "./User/AdminOrStaffOnly/AdminBlogOperations/CreateBlogsComponent";
+import {BlogsListingComponent} from "./User/AdminOrStaffOnly/AdminBlogOperations/BlogsListingComponent";
 import {ContactsComponent} from "./User/ContactsComponent";
 import {JobApplicationsComponent} from "./User/JobApplicationsComponent";
 import {UsersManagementComponent} from "./User/UsersManagementComponent";
+import {BlogViewComponent} from "./AboutKJ/BlogViewComponent"
 
 export class MainPageComponent extends React.Component{
     render(){
@@ -56,26 +57,28 @@ export class MainPageComponent extends React.Component{
                                exact component={AboutKJComponent}/>
                         <Route path="/reviews"
                                exact component={ReviewsComponent}/>
-                        <Route path="/leave-reviews"
+                        <Route path="/leaveReviews"
                                exact component={LeaveReviewsComponent}/>
                         <Route path=
-                                   {["/update-reviews/:reviewId","/update-reviews",
+                                   {["/editingReviews/:reviewId","/editingReviews",
 
                                    ]}
                                exact component={ReviewsEditorComponent}/>
                         <Route path="/blogs"
                                exact component={BlogsComponent}/>
-                        <Route path="/create-blogs"
-                               exact component={CreateBlogsComponent}/>
                         <Route path=
                                    {["/blogs/:blogId",
                                    ]}
                                exact component={BlogViewComponent}/>
+                        <Route path="/create-blog"
+                               exact component={CreateBlogsComponent}/>
                         <Route path=
-                                   {["/update-blogs/:blogId","/update-blogs",
-
+                                   {["/update-blog/:blogId",
                                    ]}
-                               exact component={BlogsEditorComponent}/>
+                               exact component={BlogsEditingComponent}/>
+                        <Route path=
+                                   {["/update-blog",]}
+                               exact component={BlogsListingComponent}/>
                         <Route path="/client-story"
                                exact component={ClientStoryComponent}/>
                         <Route path="/bathing-dressing"
@@ -122,9 +125,9 @@ export class MainPageComponent extends React.Component{
                                exact component={SearchContentComponent}/>
                         <Route path="/contacts"
                                exact component={ContactsComponent}/>
-                        <Route path="/job-applications"
+                        <Route path="/jobApplications"
                                exact component={JobApplicationsComponent}/>
-                        <Route path="/users-management"
+                        <Route path="/usersManagement"
                                exact component={UsersManagementComponent}/>
                     </div>
                 </BrowserRouter>
@@ -139,3 +142,4 @@ export class MainPageComponent extends React.Component{
 
     }
 }
+

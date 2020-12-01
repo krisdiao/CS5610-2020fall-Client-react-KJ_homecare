@@ -1,6 +1,6 @@
 import React, { useState }from 'react';
 import {Form,Col,Row,Button} from 'react-bootstrap';
-import {createBlog} from "../../services/BlogService";
+import blogService from "../../../../services/BlogService";
 
 export class CreateBlogsComponent extends React.Component{
 
@@ -11,7 +11,7 @@ export class CreateBlogsComponent extends React.Component{
             lastName: '',
             title: '',
             content: '',
-            agreed: false,
+            timeStamp: '',
             valid: false,
         }
     }
@@ -24,7 +24,7 @@ export class CreateBlogsComponent extends React.Component{
 
     checkValidity(){
         if(
-            this.state.agreed === true
+            this.state.timeStamp === null
             && this.state.firstName !== null
             && this.state.lastName !== null
             && this.state.title !== null
@@ -35,10 +35,10 @@ export class CreateBlogsComponent extends React.Component{
 
     handleCreateBlog(blog){
         console.log(blog);
-        this.checkValidity();
+        //this.checkValidity();
         // if (this.state.valid){
         //console.log("it is valid");
-        createBlog(blog)
+        blogService.createBlog(blog)
             .then(newBlog => {
                 console.log("newBlog", newBlog)
 
@@ -48,50 +48,22 @@ export class CreateBlogsComponent extends React.Component{
                     lastName: newBlog.lastName,
                     title: newBlog.title,
                     content: newBlog.content,
-                    agreed: newBlog.agreed,
-                    valid: newBlog.valid,
+                    timeStamp: newBlog.timeStamp,
+                    valid: true,
                 })
 
                 alert("Success! Thanks!")
 
-                this.props.history.push('/')})
+                this.props.history.push('/update-blog')
+            })
         // }
     }
 
     render() {
+        console.log(this.state)
         return(
             <div className="container">
                 <Form>
-                    <Form.Group as={Row} controlId="formHorizontalName">
-                        <Form.Label column sm={2}>
-                            First Name
-                        </Form.Label>
-                        <Col sm={4}>
-                            <Form.Control name ="firstName"
-                                          placeholder="Please Enter Your First Name"
-                                          value={this.state.firstName}
-                                          onChange={(e) => this.handleChange(e)}
-                            />
-                        </Col>
-                        <Form.Label column sm={2}>
-                            Last Name
-                        </Form.Label>
-                        <Col sm={4}>
-                            <Form.Control name="lastName"
-                                          placeholder="Please Enter Your Last Name"
-                                          value={this.state.lastName}
-                                          onChange={(e) => this.handleChange(e)}/>
-                        </Col>
-                    </Form.Group>
-
-                    {/*<Form.Group as={Row} controlId="formHorizontalEmail">*/}
-                    {/*    <Form.Label column sm={2}>*/}
-                    {/*        Email*/}
-                    {/*    </Form.Label>*/}
-                    {/*    <Col sm={10}>*/}
-                    {/*        <Form.Control type="email" placeholder="Please Enter Your Email" />*/}
-                    {/*    </Col>*/}
-                    {/*</Form.Group>*/}
                     <Form.Group as={Row} controlId="formHorizontalTitle">
                         <Form.Label column sm={2}>
                             Title
@@ -117,17 +89,9 @@ export class CreateBlogsComponent extends React.Component{
 
                     </Form.Group>
 
-                    <Form.Group as={Row} controlId="formHorizontalCheck">
-                        <Col sm={{ span: 10, offset: 2 }}>
-                            <Form.Check label="Agree to our all terms and conditions"
-                                        value={this.state.agreed}
-                                        onChange={(e) => this.setState({agreed: true})}/>
-                        </Col>
-                    </Form.Group>
-
                     <Form.Group as={Row}>
                         <Col sm={{ span: 10, offset: 2 }}>
-                            <Button type="submit"
+                            <Button type="button"
                                     onClick={() => this.handleCreateBlog(this.state)}>Create</Button>
                         </Col>
                     </Form.Group>

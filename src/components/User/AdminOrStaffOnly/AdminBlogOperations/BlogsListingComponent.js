@@ -1,13 +1,15 @@
 import React from "react";
-import {AdminComponent} from "../User/AdminComponent";
-import {Container , Row , Col , Form,Button,FormControl} from 'react-bootstrap';
-import {findAllBlogs,deleteBlog,createBlog,updateBlog} from "../../services/BlogService";
+import {AdminComponent} from "../../AdminComponent";
+import {Container , Row , Col} from 'react-bootstrap';
 import {Link} from "react-router-dom";
+import blogService from "../../../../services/BlogService";
 
 
 
-export class BlogsEditorComponent extends React.Component{
 
+export class BlogsListingComponent extends React.Component{
+
+    //TOdo： remove hard coded blogs
     state ={
         blogs:[
             {
@@ -35,7 +37,7 @@ export class BlogsEditorComponent extends React.Component{
     }
 
     componentDidMount() {
-        findAllBlogs()
+        blogService.findAllBlogs()
             .then(blogs =>{
                 this.setState( {
                     blogs: blogs
@@ -43,23 +45,33 @@ export class BlogsEditorComponent extends React.Component{
             })
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        blogService.findAllBlogs()
+            .then(blogs =>{
+                this.setState( {
+                    blogs: blogs
+                })
+            })
+    }
+
+
     deleteBlog =(blog)=> {
-        deleteBlog(blog.id)
+        blogService.deleteBlog(blog.id)
             .then(status => this.setState(prevState => ({
                     blogs: prevState.blogs.filter(blogs => blogs.id !== blogs.id)
                 })
             ))
-
-
     }
 
     render() {
         return(
                 <Container>
+                    <Link to={`/create-blog`}
+                          className="btn btn-success pull-right">Create</Link>
+                    <br/><br/>
                     <Row>
                         <Col sm={3}><AdminComponent/></Col>
                         <Col sm={9}>
-                            <h1>Blogs</h1>
                             <table className="table table-hover ">
                                 <thead>
                                 <tr>
@@ -70,17 +82,43 @@ export class BlogsEditorComponent extends React.Component{
                                 </tr>
                                 </thead>
                                 <tbody>
+                                {/*<tr>*/}
+                                    {/*<td>1</td>*/}
+                                    {/*<td>2</td>*/}
+                                    {/*<td>3</td>*/}
+                                    {/*<td>4</td>*/}
+                                    {/*<td>*/}
+                                    {/*    <button*/}
+                                    {/*        onClick={ ()=> deleteBlog()}*/}
+                                    {/*        className="btn btn-danger">*/}
+                                    {/*        <i className="fa fa-trash-o" aria-hidden="true"></i>*/}
+                                    {/*    </button>*/}
+                                    {/*</td>*/}
+                                {/*</tr>*/}
                                 {this.state.blogs.map(blog =>
                                 <tr>
+                                    {/*<BlogsViewComponent*/}
+                                    {/*    blog={blog}*/}
+                                    {/*    deleteBlog={this.deleteBlog}*/}
+
+                                    {/*/>*/}
+
                                     <td>
-                                            <Link to ={`/update-blogs/${blog.id}`}>
-                                                {blog.title}
-                                                {/*{blog.id}*/}
-                                            </Link>
+                                            {/*<Link to ={`/blogs/${blog.id}`}*/}
+                                            {/*      params={{ blog: blog }}*/}
+                                            {/*>*/}
+                                            {/*    {blog.title}*/}
+                                            {/*</Link>*/}
+
+                                        <Link to={{
+                                                pathname: `/update-blog/${blog.id}`,
+                                                blogViewProps: { blog: blog }
+                                            }}
+                                        > {blog.title}</Link>
                                     </td>
                                     <td>{blog.lastName}</td>
                                     <td>{blog.firstName}</td>
-                                    <td>{blog.timeStamp.toUTCString()}</td>
+                                    <td>{blog.timeStamp.toString()}</td>
                                     <td>
                                         <button
                                             onClick={ ()=> this.deleteBlog(blog)}
