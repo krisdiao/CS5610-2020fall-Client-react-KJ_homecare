@@ -18,7 +18,7 @@ export class ReviewsEditingComponent extends React.Component{
         //this.checkValidity();
         // if (this.state.valid){
         //console.log("it is valid");
-        debugger
+        //debugger
         reviewService.updateReview(review)
             .then(newReview => {
                 console.log("newReview", newReview)

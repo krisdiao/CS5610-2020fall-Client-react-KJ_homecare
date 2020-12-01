@@ -24,7 +24,7 @@ export class CreateBlogsComponent extends React.Component{
 
     checkValidity(){
         if(
-            this.state.timeStamp === null
+            this.state.timeStamp !== null
             && this.state.firstName !== null
             && this.state.lastName !== null
             && this.state.title !== null
