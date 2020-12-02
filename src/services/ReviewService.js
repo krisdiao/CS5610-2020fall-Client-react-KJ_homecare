@@ -17,6 +17,7 @@ export const createReview = (review) =>
         },
         credentials: "include"
     }).then(response => response.json())
+        .catch(()=>console.log("error"))
 
 //admin
 export const deleteReview = (reviewId) =>

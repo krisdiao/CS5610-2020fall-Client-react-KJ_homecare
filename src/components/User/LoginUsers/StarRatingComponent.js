@@ -3,29 +3,34 @@ import { FaStar} from "react-icons/fa";
 
 //https://www.youtube.com/watch?v=eDw46GYAIDQ
 
-const StarRatingComponent =(stars, editing) => {
+const StarRatingComponent = (props) => {
 
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(null);
 
-    console.log(stars)
+    const onTrigger = (ratingValue) => {
+        props.reivewCallback(ratingValue);
+    }
 
+    //console.log("editing: ", props.editing)
     return (
         <div>
-            {!editing &&
-                <div className="rating">
-                    {[...Array(5)].map((star, index) => {
-                        return <FaStar className="star" size={30}/>
-                    })}
-                    {/*<i className="fa fa-star-o" aria-hidden="true"></i>*/}
-                    {/*<i className="fa fa-star" aria-hidden="true"></i>*/}
-                    {/*<i className="fa fa-star-half-o" aria-hidden="true"></i>*/}
-                </div>
-            }
-            {editing &&
+            {!props.editing &&
                 <div className="rating">
                     {[...Array(5)].map((star, index) => {
                         const ratingValue = index + 1
+                        return <FaStar className="star"
+                                       color={ratingValue <= props.stars ? "#ffc107" : "#e4e5e9"}
+                                       size={30}/>
+                    })}
+                </div>
+            }
+            {props.editing &&
+                <div className="rating">
+                    {[...Array(5)].map((star, index) => {
+                        const ratingValue = index + 1
+                        // console.log("ratingValue: ", ratingValue)
+                        // console.log("star inside : ", props.stars)
                         return (
                             <label>
                                 <input
@@ -33,6 +38,7 @@ const StarRatingComponent =(stars, editing) => {
                                     name="rating"
                                     value={ratingValue}
                                     onClick={() => setRating(ratingValue)}
+
                                 />
                                 <FaStar
                                     className="star"
@@ -40,6 +46,8 @@ const StarRatingComponent =(stars, editing) => {
                                     size={30}
                                     onMouseEnter={() => setHover(ratingValue)}
                                     onMouseLeave={() => setHover(null)}
+                                    onMouseUp={() => onTrigger(ratingValue)}
+
                                 />
 
                             </label>

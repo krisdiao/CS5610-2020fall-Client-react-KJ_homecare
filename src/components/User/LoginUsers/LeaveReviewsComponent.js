@@ -1,6 +1,7 @@
 import React, { useState }from 'react';
 import {Form,Col,Row,Button} from 'react-bootstrap';
 import reviewService from "../../../services/ReviewService";
+import StarRatingComponent from "./StarRatingComponent";
 
 export class LeaveReviewsComponent extends React.Component{
 
@@ -12,6 +13,8 @@ export class LeaveReviewsComponent extends React.Component{
             title: '',
             content: '',
             timeStamp: '',
+            stars: 0,
+            editing: true,
             agreed: false,
             valid: false,
         }
@@ -43,26 +46,37 @@ export class LeaveReviewsComponent extends React.Component{
         reviewService.createReview(reviews)
             .then(newReview => {
                 console.log("newReview", newReview)
+                if(newReview !== undefined){
+                    //not really need this part
+                    this.setState({
+                        firstName: newReview.firstName,
+                        lastName: newReview.lastName,
+                        title: newReview.title,
+                        content: newReview.content,
+                        timeStamp: newReview.timeStamp,
+                        stars: newReview.stars,
+                        agreed: true,
+                        valid: newReview.valid,
+                    })
 
-                //not really need this part
-                this.setState({
-                    firstName: newReview.firstName,
-                    lastName: newReview.lastName,
-                    title: newReview.title,
-                    content: newReview.content,
-                    timeStamp: newReview.timeStamp,
-                    agreed: true,
-                    valid: newReview.valid,
-                })
+                    alert("Success! Thanks!")
 
-                alert("Success! Thanks!")
-
-                this.props.history.push('/update-review')
+                    this.props.history.push('/more-reviews')
+                } else{
+                    alert("Log in is required to leave reviews! Thank you!")
+                    this.props.history.push('/login')
+                }
             })
-        // }
+    }
+
+    //receiving data from child
+    handleCallback = (ratingValue) =>{
+        console.log(ratingValue)
+        this.setState({stars: ratingValue})
     }
 
     render() {
+        console.log(this.state)
         return(
             <div className="container">
                 <Form>
@@ -75,6 +89,22 @@ export class LeaveReviewsComponent extends React.Component{
                                           placeholder="Please Enter Your Title"
                                           value={this.state.title}
                                           onChange={(e) => this.handleChange(e)}
+                            />
+                        </Col>
+                    </Form.Group>
+
+                    <Form.Group as={Row} controlId="formHorizontalTitle">
+                        <Form.Label column sm={2}>
+                            Rating
+                        </Form.Label>
+                        <Col sm={10}>
+                            <StarRatingComponent
+                                name="stars"
+                                value={this.state.stars}
+                                stars={this.state.stars}
+                                editing={this.state.editing}
+                                reivewCallback={this.handleCallback}
+                                // onChange={(e) => this.handleChange(e)}
                             />
                         </Col>
                     </Form.Group>

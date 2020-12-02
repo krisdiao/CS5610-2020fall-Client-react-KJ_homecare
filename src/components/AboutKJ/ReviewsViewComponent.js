@@ -5,37 +5,8 @@ import StarRatingComponent from "../User/LoginUsers/StarRatingComponent"
 
 
 export class ReviewsViewComponent extends React.Component {
-    // state ={
-    //     reviews:[],
-    // }
     state = {
-        reviews: [
-            {
-                id: "1",
-                title: "a",
-                firstName: "qqqqq",
-                lastName: "mmmmm",
-                timeStamp: new Date(),
-                stars: 2.5
-            },
-            {
-                id: "2",
-                title: "b",
-                firstName: "wwwwwww",
-                lastName: "nnnnnn",
-                timeStamp: new Date(),
-                stars: 1
-            },
-            {
-                id: "3",
-                title: "c",
-                firstName: "eeeee",
-                lastName: "zzzzz",
-                timeStamp: new Date(),
-                stars: 5
-
-            },
-        ],
+        reviews: [],
         space: " "
     }
 
