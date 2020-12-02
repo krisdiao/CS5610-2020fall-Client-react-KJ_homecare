@@ -27,8 +27,16 @@ export class AdminComponent extends React.Component{
                         Contacts Management
                         </Link>
                     </li>
-                    <li className="list-group-item"><Link to={`/job-applications`}>Job Application</Link></li>
-                    <li className="list-group-item"><Link to={`/user-management`}>User Management</Link></li>
+                    <li className="list-group-item">
+                        <Link to={`/job-applications`}>
+                            Job Application
+                        </Link>
+                    </li>
+                    <li className="list-group-item">
+                        <Link to={`/users-management`}>
+                            User Management
+                        </Link>
+                    </li>
                     <li className="list-group-item">Schedule</li>
                 </ul>
             </div>

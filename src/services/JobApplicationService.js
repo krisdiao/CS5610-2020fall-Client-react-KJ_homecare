@@ -1,4 +1,4 @@
-import {BASE_URL, APPLICATION_URL} from "../common/constants"
+import {BASE_URL, APPLICATION_URL, CONTACT_URL} from "../common/constants"
 
 //const APPLICATION_URL = `${BASE_URL}/api/job-applications`
 
@@ -19,13 +19,17 @@ export const createJobApplication = (application) =>
 
 
 //admin
-export const findAllApplicationsSubmitted = () =>
+export const findAllJobApplications = () =>
     fetch(`APPLICATION_URL`, {
         credentials: "include"
     }).then(response => response.json())
         .catch(()=>console.log("error"))
 
-
+export const deleteApplication = (applicationId) =>
+    fetch(`${APPLICATION_URL}/${applicationId}`, {
+        method: "DELETE",
+        credentials: "include"
+    }).then(response => response.json())
 //admin
 export const downloadApplicationById = (applicationId) =>
     fetch(`${APPLICATION_URL}/${applicationId}`, {
@@ -36,5 +40,5 @@ export const downloadApplicationById = (applicationId) =>
 
 
 export default {
-    createJobApplication, findAllApplicationsSubmitted, downloadApplicationById
+    createJobApplication, findAllJobApplications, downloadApplicationById, deleteApplication
 }

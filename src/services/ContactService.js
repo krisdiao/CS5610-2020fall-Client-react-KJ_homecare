@@ -1,4 +1,4 @@
-import {BASE_URL, CONTACT_URL} from "../common/constants"
+import {BASE_URL, BLOG_URL, CONTACT_URL} from "../common/constants"
 
 //const CONTACT_URL = `${BASE_URL}/api/contacts`
 
@@ -32,6 +32,12 @@ export const findAllContacts = () =>
         credentials: "include"
     }).then(response => response.json())
 
+export const deleteContact = (contactId) =>
+    fetch(`${CONTACT_URL}/${contactId}`, {
+        method: "DELETE",
+        credentials: "include"
+    }).then(response => response.json())
+
 //admin
 export const downloadContactById = (contactId) =>
     fetch(`${CONTACT_URL}/${contactId}`, {
@@ -40,5 +46,5 @@ export const downloadContactById = (contactId) =>
     }).then(response => response.json())
 
 export default {
-    createContact, findAllContacts, downloadContactById
+    createContact, findAllContacts, downloadContactById,deleteContact
 }
