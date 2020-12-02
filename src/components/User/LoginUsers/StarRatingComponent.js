@@ -47,7 +47,6 @@ const StarRatingComponent = (props) => {
                                     onMouseEnter={() => setHover(ratingValue)}
                                     onMouseLeave={() => setHover(null)}
                                     onMouseUp={() => onTrigger(ratingValue)}
-
                                 />
 
                             </label>
