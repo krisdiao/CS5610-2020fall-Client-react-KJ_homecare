@@ -6,6 +6,7 @@ import {ContactFormComponent} from "./User/ContactFormComponent";
 import {AboutKJComponent} from "./AboutKJ/AboutKJComponent";
 import {BrowserRouter, Route, Link} from "react-router-dom";
 import {ReviewsComponent} from "./AboutKJ/ReviewsComponent";
+import {ReviewsViewComponent} from "./AboutKJ/ReviewsViewComponent";
 import {BlogsComponent} from "./AboutKJ/BlogsComponent";
 import {ClientStoryComponent} from "./AboutKJ/ClientStoryComponent";
 import {BathingDressingComponent} from "./CaregiverResource/BathingDressingComponent";
@@ -40,7 +41,7 @@ import {ContactsManagementComponent} from "./User/AdminOrStaffOnly/AdminContactO
 import {JobApplicationsComponent} from "./User/AdminOrStaffOnly/AdminJobApplicationsOperations/JobApplicationsComponent";
 import {UsersManagementComponent} from "./User/AdminOrStaffOnly/AdminUserOperations/UsersManagementComponent";
 import {BlogViewComponent} from "./AboutKJ/BlogViewComponent"
-import {ReviewsEditingComponent} from "./User/AdminOrStaffOnly/AdminReviewOperations/ReviewsEditingComponent";
+import {ReviewsEditingComponent} from "./User/LoginUsers/ReviewsEditingComponent";
 
 export class MainPageComponent extends React.Component{
     render(){
@@ -58,6 +59,8 @@ export class MainPageComponent extends React.Component{
                                exact component={AboutKJComponent}/>
                         <Route path="/reviews"
                                exact component={ReviewsComponent}/>
+                        <Route path="/more-reviews"
+                               exact component={ReviewsViewComponent}/>
                         <Route path="/leave-review"
                                exact component={LeaveReviewsComponent}/>
                         <Route path=

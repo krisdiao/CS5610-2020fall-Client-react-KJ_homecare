@@ -15,12 +15,12 @@ export class BlogsEditingComponent extends React.Component{
     }
 
     handleSaveBlog(blog){
-        console.log(blog);
+        console.log(blog.blog.id);
         //this.checkValidity();
         // if (this.state.valid){
         //console.log("it is valid");
-        debugger
-        blogService.updateBlog(blog)
+        //debugger
+        blogService.updateBlog(blog.blog.id, blog.blog)
             .then(newBlog => {
                 console.log("newBlog", newBlog)
 

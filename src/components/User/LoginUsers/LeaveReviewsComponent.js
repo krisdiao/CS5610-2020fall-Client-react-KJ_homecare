@@ -1,6 +1,6 @@
 import React, { useState }from 'react';
 import {Form,Col,Row,Button} from 'react-bootstrap';
-import {createReview} from "../../../services/ReviewService";
+import reviewService from "../../../services/ReviewService";
 
 export class LeaveReviewsComponent extends React.Component{
 
@@ -11,6 +11,7 @@ export class LeaveReviewsComponent extends React.Component{
             lastName: '',
             title: '',
             content: '',
+            timeStamp: '',
             agreed: false,
             valid: false,
         }
@@ -25,6 +26,7 @@ export class LeaveReviewsComponent extends React.Component{
     checkValidity(){
         if(
             this.state.agreed === true
+            && this.state.timeStamp !== null
             && this.state.firstName !== null
             && this.state.lastName !== null
             && this.state.title !== null
@@ -35,10 +37,10 @@ export class LeaveReviewsComponent extends React.Component{
 
     handleLeaveReviews(reviews){
         console.log(reviews);
-        this.checkValidity();
+        //this.checkValidity();
         // if (this.state.valid){
         //console.log("it is valid");
-        createReview(reviews)
+        reviewService.createReview(reviews)
             .then(newReview => {
                 console.log("newReview", newReview)
 
@@ -48,13 +50,15 @@ export class LeaveReviewsComponent extends React.Component{
                     lastName: newReview.lastName,
                     title: newReview.title,
                     content: newReview.content,
-                    agreed: newReview.agreed,
+                    timeStamp: newReview.timeStamp,
+                    agreed: true,
                     valid: newReview.valid,
                 })
 
                 alert("Success! Thanks!")
 
-                this.props.history.push('/')})
+                this.props.history.push('/update-review')
+            })
         // }
     }
 
@@ -62,36 +66,6 @@ export class LeaveReviewsComponent extends React.Component{
         return(
             <div className="container">
                 <Form>
-                    <Form.Group as={Row} controlId="formHorizontalName">
-                        <Form.Label column sm={2}>
-                            First Name
-                        </Form.Label>
-                        <Col sm={4}>
-                            <Form.Control name ="firstName"
-                                          placeholder="Please Enter Your First Name"
-                                          value={this.state.firstName}
-                                          onChange={(e) => this.handleChange(e)}
-                            />
-                        </Col>
-                        <Form.Label column sm={2}>
-                            Last Name
-                        </Form.Label>
-                        <Col sm={4}>
-                            <Form.Control name="lastName"
-                                          placeholder="Please Enter Your Last Name"
-                                          value={this.state.lastName}
-                                          onChange={(e) => this.handleChange(e)}/>
-                        </Col>
-                    </Form.Group>
-
-                    {/*<Form.Group as={Row} controlId="formHorizontalEmail">*/}
-                    {/*    <Form.Label column sm={2}>*/}
-                    {/*        Email*/}
-                    {/*    </Form.Label>*/}
-                    {/*    <Col sm={10}>*/}
-                    {/*        <Form.Control type="email" placeholder="Please Enter Your Email" />*/}
-                    {/*    </Col>*/}
-                    {/*</Form.Group>*/}
                     <Form.Group as={Row} controlId="formHorizontalTitle">
                         <Form.Label column sm={2}>
                             Title
@@ -127,7 +101,7 @@ export class LeaveReviewsComponent extends React.Component{
 
                     <Form.Group as={Row}>
                         <Col sm={{ span: 10, offset: 2 }}>
-                            <Button type="submit"
+                            <Button type="button"
                                     onClick={() => this.handleLeaveReviews(this.state)}>Share</Button>
                         </Col>
                     </Form.Group>

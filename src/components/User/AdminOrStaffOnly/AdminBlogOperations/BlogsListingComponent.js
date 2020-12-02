@@ -85,19 +85,7 @@ export class BlogsListingComponent extends React.Component{
                                 <tbody>
                                 {this.state.blogs.map(blog =>
                                 <tr>
-                                    {/*<BlogsViewComponent*/}
-                                    {/*    blog={blog}*/}
-                                    {/*    deleteBlog={this.deleteBlog}*/}
-
-                                    {/*/>*/}
-
                                     <td>
-                                            {/*<Link to ={`/blogs/${blog.id}`}*/}
-                                            {/*      params={{ blog: blog }}*/}
-                                            {/*>*/}
-                                            {/*    {blog.title}*/}
-                                            {/*</Link>*/}
-
                                         <Link to={{
                                                 pathname: `/update-blog/${blog.id}`,
                                                 blogViewProps: { blog: blog }
