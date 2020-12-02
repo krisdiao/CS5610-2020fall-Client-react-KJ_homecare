@@ -49,7 +49,9 @@ export const profile = () =>
 
 //admin
 export const findAllUsers = () =>
-    fetch(USER_URL)
+    fetch(USER_URL,{
+        credentials: "include"
+    })
         .then(response => response.json())
         .catch(()=>console.log("error"))
 

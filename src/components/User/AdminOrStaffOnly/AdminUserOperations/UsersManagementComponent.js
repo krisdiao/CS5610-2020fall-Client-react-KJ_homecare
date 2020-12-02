@@ -56,20 +56,21 @@ export class UsersManagementComponent extends React.Component{
     componentDidMount() {
         userService.findAllUsers()
             .then(users =>{
+                console.log(users)
                 this.setState( {
                     users: users
                 })
             })
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        userService.findAllUsers()
-            .then(users =>{
-                this.setState( {
-                    users: users
-                })
-            })
-    }
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //     userService.findAllUsers()
+    //         .then(users =>{
+    //             this.setState( {
+    //                 users: users
+    //             })
+    //         })
+    // }
 
     deleteUser =(user)=> {
         userService.deleteUser(user.id)

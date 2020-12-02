@@ -62,14 +62,14 @@ export class JobApplicationsComponent extends React.Component{
             })
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        jobApplicationService.findAllJobApplications()
-            .then(jobs =>{
-                this.setState( {
-                    jobs: jobs
-                })
-            })
-    }
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //     jobApplicationService.findAllJobApplications()
+    //         .then(jobs =>{
+    //             this.setState( {
+    //                 jobs: jobs
+    //             })
+    //         })
+    // }
 
     deleteApplication =(job)=> {
         jobApplicationService.deleteApplication(job.id)
