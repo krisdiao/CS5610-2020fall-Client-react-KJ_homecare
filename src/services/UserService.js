@@ -49,7 +49,9 @@ export const profile = () =>
 
 //admin
 export const findAllUsers = () =>
-    fetch(USER_URL)
+    fetch(USER_URL, {
+        credentials: "include"
+        })
         .then(response => response.json())
         .catch(()=>console.log("error"))
 
@@ -57,7 +59,8 @@ export const findAllUsers = () =>
 //admin
 export const deleteUser = (userId) =>
     fetch(`${USER_URL}/${userId}`, {
-        method: "DELETE"
+        method: "DELETE",
+        credentials: "include"
         }).then(response => response.json())
         .catch(()=>console.log("error"))
 
