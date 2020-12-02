@@ -71,7 +71,6 @@ export class LeaveReviewsComponent extends React.Component{
 
     //receiving data from child
     handleCallback = (ratingValue) =>{
-        console.log(ratingValue)
         this.setState({stars: ratingValue})
     }
 
