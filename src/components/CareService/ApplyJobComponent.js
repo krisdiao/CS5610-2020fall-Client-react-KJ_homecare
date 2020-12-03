@@ -90,7 +90,6 @@ export class ApplyJobComponent extends React.Component{
                         jobPosition: newApplication.jobPosition,
                         valid: true,
                     })
-
                     this.props.history.push('/')
                 })
         //History.push('/')
