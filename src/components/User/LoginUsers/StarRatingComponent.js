@@ -12,7 +12,8 @@ const StarRatingComponent = (props) => {
         props.reivewCallback(ratingValue);
     }
 
-    //console.log("editing: ", props.editing)
+    console.log("editing: ", props.editing)
+    console.log("stars: ", props.stars)
     return (
         <div>
             {!props.editing &&
@@ -36,7 +37,7 @@ const StarRatingComponent = (props) => {
                                 <input
                                     type="radio"
                                     name="rating"
-                                    value={ratingValue}
+                                    value={props.stars}
                                     onClick={() => setRating(ratingValue)}
 
                                 />

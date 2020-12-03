@@ -58,13 +58,22 @@ export const findAllUsers = () =>
 
 //admin
 export const deleteUser = (userId) =>
-    fetch(`${USER_URL}/${userId}`, {
+{
+    //debugger
+    return   fetch(`${USER_URL}/${userId}`, {
         method: "DELETE",
         credentials: "include"
-        }).then(response => response.json())
+    }).then(response => response.json())
         .catch(()=>console.log("error"))
+}
+
+// for credential purposes
+export const findUserById = (userId) =>
+    fetch(`${USER_URL}/${userId}`)
+        .then(response => response.json())
+
 
 
 export default {
-    register, login, logout, profile, findAllUsers, deleteUser
+    register, login, logout, profile, findAllUsers, deleteUser, findUserById
 }

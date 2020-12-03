@@ -4,6 +4,7 @@ import {Form,Button,Col} from 'react-bootstrap';
 import "font-awesome/css/font-awesome.css";
 import contactService from "../../services/ContactService";
 import History from '../../common/History'
+import modalsPoppingComponent from "../../common/modals"
 
 export class ContactFormComponent extends React.Component{
 
@@ -17,6 +18,7 @@ export class ContactFormComponent extends React.Component{
             zip: '',
             agreed: false,
             hasSubmitted: false,
+            show: false,
             valid: false,
         }
     }
@@ -51,12 +53,12 @@ export class ContactFormComponent extends React.Component{
         //debugger
         contactService.createContact(contact)
                 .then(newContact => {
-                    //alert(newContact)
-                    alert("Thank you, we will contact you shortly! May God Bless you!")
+
+                    this.handleShow()
+                    this.alertMessage("Thank you, we will contact you shortly! May God Bless you!")
 
                     console.log("newContact", newContact)
-                    //debugger
-                    //not really need this part
+
                     this.setState({
                         firstName: newContact.firstName,
                         lastName: newContact.label,
@@ -71,6 +73,22 @@ export class ContactFormComponent extends React.Component{
         //History.push('/')
 
         // }
+    }
+
+    handleClose = () => this.setState({show: false});
+    handleShow = () => this.setState({show: true});
+
+    alertMessage = (message) => {
+
+        console.log("show: ",this.state.show)
+        //debugger
+        return <div>
+                    <modalsPoppingComponent
+                        message={message}
+                        show={this.state.show}
+                        handleClose={this.handleClose}
+                    />
+               </div>
     }
 
     render() {

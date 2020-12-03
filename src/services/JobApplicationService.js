@@ -20,16 +20,15 @@ export const createJobApplication = (application) =>
 
 //admin
 export const findAllJobApplications = () =>
-    fetch(`APPLICATION_URL`, {
+{
+    //debugger
+    return fetch(APPLICATION_URL, {
         credentials: "include"
     }).then(response => response.json())
         .catch(()=>console.log("error"))
+}
 
-export const deleteApplication = (applicationId) =>
-    fetch(`${APPLICATION_URL}/${applicationId}`, {
-        method: "DELETE",
-        credentials: "include"
-    }).then(response => response.json())
+
 //admin
 export const downloadApplicationById = (applicationId) =>
     fetch(`${APPLICATION_URL}/${applicationId}`, {
@@ -38,6 +37,13 @@ export const downloadApplicationById = (applicationId) =>
     }).then(response => response.json())
         .catch(()=>console.log("error"))
 
+//admin
+export const deleteApplication = (applicationId) =>
+    fetch(`${APPLICATION_URL}/${applicationId}`, {
+        method: "DELETE",
+        credentials: "include"
+    }).then(response => response.json())
+        .catch(()=>console.log("error"))
 
 export default {
     createJobApplication, findAllJobApplications, downloadApplicationById, deleteApplication

@@ -46,5 +46,5 @@ export const downloadContactById = (contactId) =>
     }).then(response => response.json())
 
 export default {
-    createContact, findAllContacts, downloadContactById,deleteContact
+    createContact, findAllContacts, downloadContactById, deleteContact
 }

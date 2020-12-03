@@ -1,6 +1,7 @@
 import React from "react";
 import {Form,Col,Row,Button} from 'react-bootstrap';
 import reviewService from "../../../services/ReviewService"
+import StarRatingComponent from "./StarRatingComponent";
 
 
 export class ReviewsEditingComponent extends React.Component{
@@ -9,7 +10,7 @@ export class ReviewsEditingComponent extends React.Component{
         super(props);
         this.state = {
             review: this.props.location.reviewViewProps.review,
-            editing: false
+            editing: true
         }
     }
 
@@ -34,6 +35,15 @@ export class ReviewsEditingComponent extends React.Component{
                 this.props.history.push('/update-review')
             })
         // }
+    }
+
+
+    //receiving data from child
+    handleCallback = (ratingValue) =>{
+        console.log("ratingValue : ", ratingValue)
+        this.setState(prevState => ({
+            review: {...prevState.review, star: ratingValue}
+        }))
     }
 
 
@@ -71,6 +81,22 @@ export class ReviewsEditingComponent extends React.Component{
                                                   review: {...prevState.review, title: newTitle}
                                               }))
                                           }}
+                            />
+                        </Col>
+                    </Form.Group>
+
+                    <Form.Group as={Row} controlId="formHorizontalTitle">
+                        <Form.Label column sm={2}>
+                            Rating
+                        </Form.Label>
+                        <Col sm={10}>
+                            <StarRatingComponent
+                                name="stars"
+                                value={this.state.review.stars}
+                                stars={this.state.review.stars}
+                                editing={this.state.editing}
+                                reivewCallback={this.handleCallback}
+                                // onChange={(e) => this.handleChange(e)}
                             />
                         </Col>
                     </Form.Group>
