@@ -39,6 +39,25 @@
  exports.getContactReport = getContactReport;
 
 
+ var getOneContactReport = function(json) {
+     console.log(json)
+
+     const data = json.map(row => ({
+         firstName: row.firstName,
+         lastName: row.lastName,
+         email: row.email,
+         phoneNumber: row.phoneNumber,
+         zip: row.zip,
+     }));
+     console.log("data: ", data)
+
+     const csvData = objectToCsv(data);
+     console.log("csvData: ", csvData)
+     downloadCSV(csvData, 'contacts-download.csv');
+
+ }
+ exports.getOneContactReport = getOneContactReport;
+
  var getJobApplicantsReport = function(json) {
      console.log(json)
 

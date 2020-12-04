@@ -64,14 +64,14 @@ export class JobApplicationsComponent extends React.Component{
             })
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        jobApplicationService.findAllJobApplications()
-            .then(jobs =>{
-                this.setState( {
-                    jobs: jobs
-                })
-            })
-    }
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //     jobApplicationService.findAllJobApplications()
+    //         .then(jobs =>{
+    //             this.setState( {
+    //                 jobs: jobs
+    //             })
+    //         })
+    // }
 
     downloadAllJobApplicants = () => {
         jobApplicationService.findAllJobApplications()
@@ -100,7 +100,7 @@ export class JobApplicationsComponent extends React.Component{
                             <button
                                 onClick={ ()=> this.downloadAllJobApplicants()}
                                 className="btn btn-success pull-right">
-                                <i className="fa fa-download" aria-hidden="true"></i>
+                                <i className="fa fa-download fa-4x" aria-hidden="true"></i>
                             </button>
                             <br/>
                             <br/>

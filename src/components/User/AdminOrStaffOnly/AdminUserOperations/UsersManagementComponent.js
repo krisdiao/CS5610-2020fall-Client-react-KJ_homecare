@@ -65,14 +65,14 @@ export class UsersManagementComponent extends React.Component{
             })
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        userService.findAllUsers()
-            .then(users =>{
-                this.setState( {
-                    users: users
-                })
-            })
-    }
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //     userService.findAllUsers()
+    //         .then(users =>{
+    //             this.setState( {
+    //                 users: users
+    //             })
+    //         })
+    // }
 
     downloadAllUsers = () => {
         userService.findAllUsers()
@@ -101,7 +101,7 @@ export class UsersManagementComponent extends React.Component{
                             <button
                                 onClick={ ()=> this.downloadAllUsers()}
                                 className="btn btn-success pull-right">
-                                <i className="fa fa-download" aria-hidden="true"></i>
+                                <i className="fa fa-download fa-4x" aria-hidden="true"></i>
                             </button>
                             <br/>
                             <br/>
