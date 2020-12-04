@@ -46,20 +46,20 @@ export class ContactsManagementComponent extends React.Component{
             })
     }
 
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     contactService.findAllContacts()
-    //         .then(contacts =>{
-    //             this.setState( {
-    //                 contacts: contacts
-    //             })
-    //         })
-    // }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        contactService.findAllContacts()
+            .then(contacts =>{
+                this.setState( {
+                    contacts: contacts
+                })
+            })
+    }
 
     downloadAllContacts = () => {
         contactService.findAllContacts()
             .then(json =>{
                 console.log(json)
-                getContactReport(json)
+                getContactReport(json, false)
             })
     }
 
@@ -67,7 +67,7 @@ export class ContactsManagementComponent extends React.Component{
         contactService.downloadContactById(contactId)
             .then(json =>{
                 console.log(json)
-                getOneContactReport(json)
+                getContactReport(json, true)
             })
     }
 
@@ -86,12 +86,16 @@ export class ContactsManagementComponent extends React.Component{
                     <Row>
                         <Col sm={3}><AdminComponent/></Col>
                         <Col sm={9}>
-                            <h1>Contacts</h1>
-                            <button
-                                onClick={()=> this.downloadAllContacts()}
-                                className="btn btn-success pull-right">
-                                <i className="fa fa-download fa-4x" aria-hidden="true"></i>
-                            </button>
+                            <Row>
+                                <Col sm={9}><h1>Contacts</h1></Col>
+                                <Col sm={3}>
+                                    <button
+                                        onClick={()=> this.downloadAllContacts()}
+                                        className="btn btn-success fa-pull-right">
+                                        <i className="fa fa-download fa-2x" aria-hidden="true"></i>
+                                    </button>
+                                </Col>
+                            </Row>
                             <br/>
                             <br/>
                             <table className="table table-hover ">

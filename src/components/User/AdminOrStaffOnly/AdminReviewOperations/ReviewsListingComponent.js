@@ -67,15 +67,19 @@ export class ReviewsListingComponent extends React.Component{
     }
 
     render() {
-        console.log("role: ", this.state.role)
+        // console.log("role: ", this.state.role)
         return(
             <Container>
                 <Row>
                     <Col sm={3}><AdminComponent/></Col>
                     <Col sm={9}>
-                        <h1>Reviews</h1>
-                        <Link to={`/leave-review`}
-                              className="btn btn-success pull-right">Create</Link>
+                        <Row>
+                            <Col sm={9}><h1>Reviews</h1></Col>
+                            <Col sm={3}>
+                                <Link to={`/leave-review`}
+                                      className="btn btn-success pull-right">Create</Link>
+                            </Col>
+                        </Row>
                         <br/>
                         <br/>
 

@@ -31,7 +31,7 @@ export const findAllJobApplications = () =>
 
 
 //admin
-export const downloadApplicationById = (applicationId) =>
+export const findApplicationById = (applicationId) =>
     fetch(`${APPLICATION_URL}/${applicationId}`, {
         method: "GET",
         credentials: "include"
@@ -47,5 +47,5 @@ export const deleteApplication = (applicationId) =>
         .catch(()=>console.log("error"))
 
 export default {
-    createJobApplication, findAllJobApplications, downloadApplicationById, deleteApplication
+    createJobApplication, findAllJobApplications, findApplicationById, deleteApplication
 }
