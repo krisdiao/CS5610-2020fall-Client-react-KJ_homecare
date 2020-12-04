@@ -24,7 +24,8 @@ export default class Profile extends React.Component {
             zip: '02010',
             role:'ADMIN',
             // roles: [],
-        }
+        },
+        space: ' '
 
     }
 
@@ -61,7 +62,7 @@ export default class Profile extends React.Component {
                             >
                                 <i className="fa fa-arrow-left " aria-hidden="true"></i>
                             </button>
-                        Welcome back, my dear
+                        Welcome back, my dear {this.state.space}
                         <strong>
                             {this.state.profile.firstName} {this.state.profile.lastName}!
                         </strong>
