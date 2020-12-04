@@ -1,4 +1,4 @@
-import {BASE_URL, APPLICATION_URL} from "../common/constants"
+import {BASE_URL, APPLICATION_URL, USER_URL} from "../common/constants"
 
 //const APPLICATION_URL = `${BASE_URL}/api/job-applications`
 
@@ -46,6 +46,12 @@ export const deleteApplication = (applicationId) =>
     }).then(response => response.json())
         .catch(()=>console.log("error"))
 
+//login user
+export const findApplicationsForUser = (userId) =>
+    //    @GetMapping("/api/users/{userId}/job-applications")
+    fetch(`${USER_URL}/${userId}/job-applications`)
+        .then(response => response.json())
+
 export default {
-    createJobApplication, findAllJobApplications, findApplicationById, deleteApplication
+    createJobApplication, findAllJobApplications, findApplicationById, deleteApplication, findApplicationsForUser
 }

@@ -1,4 +1,4 @@
-import {BASE_URL, BLOG_URL} from "../common/constants"
+import {BASE_URL, BLOG_URL, USER_URL} from "../common/constants"
 
 //const BLOG_URL = `${BASE_URL}/api/blogs`
 
@@ -37,6 +37,13 @@ export const updateBlog = (blogId, blog) =>
         credentials: "include"
     }).then(response => response.json())
 
+//login user
+export const findBlogsForUser = (userId) =>
+    //    @GetMapping("/api/users/{userId}/blogs")
+    fetch(`${USER_URL}/${userId}/blogs`)
+        .then(response => response.json())
+
+
 export default {
-    findAllBlogs, createBlog, deleteBlog, updateBlog
+    findAllBlogs, createBlog, deleteBlog, updateBlog, findBlogsForUser
 }
