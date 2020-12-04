@@ -39,16 +39,14 @@ export default class Profile extends React.Component {
             }))
     }
 
-    handleNavi(user){
-        // console.log(user);
-        userService.login(user)
-            .then(currentUser =>
-                // console.log("currentUser", currentUser)
-                    //check if user is Admin then load to admin page, if staff, load to staff page
-                    leadToCorrectLoginUserPage(currentUser, this.props.history)
-
-
-            )}
+    // handleNavi(user){
+    //     // console.log(user);
+    //     userService.login(user)
+    //         .then(currentUser =>
+    //             // console.log("currentUser", currentUser)
+    //                 //check if user is Admin then load to admin page, if staff, load to staff page
+    //                 leadToCorrectLoginUserPage(currentUser, this.props.history)
+    //         )}
 
     handleLogout = () =>
         userService.logout()
@@ -62,7 +60,7 @@ export default class Profile extends React.Component {
                 <Container>
                     <h3>
                             <button className="form-control-lg btn btn-success"
-                                  onClick={() => this.handleNavi(this.state.user)}
+                                  onClick={() => leadToCorrectLoginUserPage(this.state.profile, this.props.history)}
                             >
                                 <i className="fa fa-arrow-left " aria-hidden="true"></i>
                             </button>
