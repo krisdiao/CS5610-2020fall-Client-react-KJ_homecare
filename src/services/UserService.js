@@ -1,4 +1,4 @@
-import {BASE_URL, USER_URL} from "../common/constants"
+import {BASE_URL, REVIEW_URL, USER_URL} from "../common/constants"
 
 //const USER_URL = `${BASE_URL}/api/users`
 
@@ -46,6 +46,17 @@ export const profile = () =>
     }).then(response => response.json())
         .catch(()=>console.log("error"))
 
+//login-user
+export const updateUser = (userId, user) =>
+
+    fetch(`${USER_URL}/${userId}`, {
+        method: "PUT",
+        body: JSON.stringify(user),
+        headers: {
+            "content-type": "application/json"
+        },
+        credentials: "include"
+    }).then(response => response.json())
 
 //admin
 export const findAllUsers = () =>
@@ -75,5 +86,5 @@ export const findUserById = (userId) =>
 
 
 export default {
-    register, login, logout, profile, findAllUsers, deleteUser, findUserById
+    register, login, logout, profile, findAllUsers, deleteUser, findUserById, updateUser
 }

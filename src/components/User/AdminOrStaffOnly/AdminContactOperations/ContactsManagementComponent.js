@@ -1,8 +1,9 @@
 import React from "react";
 import {AdminComponent} from "../../AdminComponent";
-import {Link} from "react-router-dom";
 import {Container , Row , Col} from 'react-bootstrap';
 import contactService from "../../../../services/ContactService"
+
+var getContactReport = require('../../../../common/util.js').getContactReport;
 
 export class ContactsManagementComponent extends React.Component{
 
@@ -53,7 +54,15 @@ export class ContactsManagementComponent extends React.Component{
             })
     }
 
-    deleteContact =(contact)=> {
+    downloadAllContacts = () => {
+        contactService.findAllContacts()
+            .then(json =>{
+                console.log(json)
+                getContactReport(json)
+            })
+    }
+
+    deleteContact = (contact)=> {
         contactService.deleteContact(contact.id)
             .then(status => this.setState(prevState => ({
                 contacts: prevState.contacts.filter(contacts => contacts.id !== contacts.id)
@@ -70,7 +79,7 @@ export class ContactsManagementComponent extends React.Component{
                         <Col sm={9}>
                             <h1>Contacts</h1>
                             <button
-                                // onClick={ ()=> this.downloadContactById(contact)}
+                                onClick={()=> this.downloadAllContacts()}
                                 className="btn btn-success pull-right">
                                 <i className="fa fa-download" aria-hidden="true"></i>
                             </button>

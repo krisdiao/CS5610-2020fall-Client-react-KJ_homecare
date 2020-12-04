@@ -39,7 +39,7 @@ export default class Profile extends React.Component {
             <div className="container">
                 <h3>Welcome back, my dear
                     <strong>
-                        {/*{this.state.profile.firstName} {this.state.profile.lastName}!*/}
+                        {this.state.profile.firstName} {this.state.profile.lastName}!
                     </strong>
                 </h3>
                 <br/>

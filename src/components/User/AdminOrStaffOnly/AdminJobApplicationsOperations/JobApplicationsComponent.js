@@ -3,6 +3,8 @@ import {AdminComponent} from "../../AdminComponent";
 import {Container , Row , Col} from 'react-bootstrap';
 import jobApplicationService from "../../../../services/JobApplicationService";
 
+var getJobApplicantsReport = require('../../../../common/util.js').getJobApplicantsReport;
+
 export class JobApplicationsComponent extends React.Component{
 
     state ={
@@ -55,7 +57,7 @@ export class JobApplicationsComponent extends React.Component{
 
     componentDidMount() {
         jobApplicationService.findAllJobApplications()
-            .then(jobs =>{
+            .then(jobs => {
                 this.setState( {
                     jobs: jobs
                 })
@@ -71,14 +73,18 @@ export class JobApplicationsComponent extends React.Component{
             })
     }
 
-    deleteApplication =(job)=> {
+    downloadAllJobApplicants = () => {
+        jobApplicationService.findAllJobApplications()
+            .then(json =>{
+                getJobApplicantsReport(json);
+            })
+    }
+        deleteApplication = (job) => {
         jobApplicationService.deleteApplication(job.id)
             .then(status => this.setState(prevState => ({
                 jobs: prevState.jobs.filter(jobs => jobs.id !== jobs.id)
                 })
             ))
-
-
     }
 
     render() {
@@ -92,7 +98,7 @@ export class JobApplicationsComponent extends React.Component{
                         >
                             <h1>Jobs</h1>
                             <button
-                                // onClick={ ()=> this.downloadContactById(contact)}
+                                onClick={ ()=> this.downloadAllJobApplicants()}
                                 className="btn btn-success pull-right">
                                 <i className="fa fa-download" aria-hidden="true"></i>
                             </button>

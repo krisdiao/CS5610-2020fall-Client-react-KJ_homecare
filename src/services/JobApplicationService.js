@@ -1,4 +1,4 @@
-import {BASE_URL, APPLICATION_URL, CONTACT_URL} from "../common/constants"
+import {BASE_URL, APPLICATION_URL} from "../common/constants"
 
 //const APPLICATION_URL = `${BASE_URL}/api/job-applications`
 

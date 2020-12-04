@@ -2,6 +2,8 @@ import React from "react";
 import {AdminComponent} from "../../AdminComponent";
 import {Container , Row , Col} from 'react-bootstrap';
 import userService from "../../../../services/UserService";
+var getUsersRegistrationReport = require('../../../../common/util.js').getUsersRegistrationReport;
+
 
 export class UsersManagementComponent extends React.Component{
 
@@ -72,7 +74,14 @@ export class UsersManagementComponent extends React.Component{
             })
     }
 
-    deleteUser =(user)=> {
+    downloadAllUsers = () => {
+        userService.findAllUsers()
+            .then(json =>{
+                getUsersRegistrationReport(json)
+            })
+    }
+
+    deleteUser = (user) => {
         userService.deleteUser(user.id)
             .then(status => this.setState(prevState => ({
                 users: prevState.users.filter(users => users.id !== users.id)
@@ -90,7 +99,7 @@ export class UsersManagementComponent extends React.Component{
                         <Col sm={9}>
                             <h1>Users</h1>
                             <button
-                                // onClick={ ()=> this.downloadContactById(contact)}
+                                onClick={ ()=> this.downloadAllUsers()}
                                 className="btn btn-success pull-right">
                                 <i className="fa fa-download" aria-hidden="true"></i>
                             </button>
