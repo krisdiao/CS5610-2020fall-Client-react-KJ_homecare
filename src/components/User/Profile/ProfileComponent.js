@@ -33,20 +33,17 @@ export default class Profile extends React.Component {
             .then(profile => this.setState({
                 profile: profile
             }))
-        userService.profile()
-            .then(profile => this.setState({
-                role: profile.role
-            }))
+        console.log("updated? ",this.state.profile)
     }
 
-    // handleNavi(user){
-    //     // console.log(user);
-    //     userService.login(user)
-    //         .then(currentUser =>
-    //             // console.log("currentUser", currentUser)
-    //                 //check if user is Admin then load to admin page, if staff, load to staff page
-    //                 leadToCorrectLoginUserPage(currentUser, this.props.history)
-    //         )}
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        userService.profile()
+            .then(newProfile => this.setState({
+                profile: newProfile
+            }))
+        console.log("updated? ",this.state.profile)
+
+    }
 
     handleLogout = () =>
         userService.logout()

@@ -3,6 +3,8 @@ import {Container , Row , Col,Form,Button} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import * as userService from "../../../services/UserService";
 
+var leadToCorrectLoginUserPage = require('../../../common/util').leadToCorrectLoginUserPage;
+
 
 export default class UpdateInformation extends React.Component {
 
@@ -13,6 +15,20 @@ export default class UpdateInformation extends React.Component {
             editing: false
         }
     }
+
+    componentDidMount() {
+        userService.profile()
+            .then(profile => this.setState({
+                profile: profile
+            }))
+    }
+
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //     userService.profile()
+    //         .then(profile => this.setState({
+    //             profile: profile
+    //         }))
+    // }
 
     handleLogout = () =>
         userService.logout()
@@ -39,7 +55,7 @@ export default class UpdateInformation extends React.Component {
 
     handleSaveProfile(profile){
         console.log(profile.profile.id);
-        this.checkValidity();
+        //this.checkValidity();
         userService.updateUser(profile.profile.id, profile.profile)
             .then(newProfile => {
                 console.log("newProfile", newProfile)
@@ -47,13 +63,17 @@ export default class UpdateInformation extends React.Component {
                     profile: newProfile,
                     editing: false,
                 })
+                console.log(this.state.profile)
                 alert("Success! Thanks!")
-                this.props.history.push('/update-information')
+                leadToCorrectLoginUserPage(newProfile, this.props.history)
+
+                //this.props.history.push('/update-information')
             })
         // }
     }
 
     render() {
+
         return(
             <div>
                 <Container>
