@@ -40,8 +40,9 @@ export const updateBlog = (blogId, blog) =>
 //login user
 export const findBlogsForUser = (userId) =>
     //    @GetMapping("/api/users/{userId}/blogs")
-    fetch(`${USER_URL}/${userId}/blogs`)
-        .then(response => response.json())
+    fetch(`${USER_URL}/${userId}/blogs`, {
+        credentials: "include"
+    }).then(response => response.json())
 
 
 export default {

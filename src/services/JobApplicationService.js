@@ -49,8 +49,9 @@ export const deleteApplication = (applicationId) =>
 //login user
 export const findApplicationsForUser = (userId) =>
     //    @GetMapping("/api/users/{userId}/job-applications")
-    fetch(`${USER_URL}/${userId}/job-applications`)
-        .then(response => response.json())
+    fetch(`${USER_URL}/${userId}/job-applications`, {
+        credentials: "include"
+    }).then(response => response.json())
 
 export default {
     createJobApplication, findAllJobApplications, findApplicationById, deleteApplication, findApplicationsForUser
