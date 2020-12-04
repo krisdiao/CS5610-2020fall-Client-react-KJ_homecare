@@ -23,6 +23,7 @@ export const findAllJobApplications = () =>
 {
     //debugger
     return fetch(APPLICATION_URL, {
+        method: 'GET',
         credentials: "include"
     }).then(response => response.json())
         .catch(()=>console.log("error"))

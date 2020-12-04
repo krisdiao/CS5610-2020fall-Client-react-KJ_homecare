@@ -4,7 +4,9 @@ import {BASE_URL, REVIEW_URL} from "../common/constants"
 
 //all users
 export const findAllReviews = () =>
-    fetch(REVIEW_URL)
+    fetch(REVIEW_URL,{
+        credentials: "include"
+    })
         .then(response => response.json())
 
 //login-user

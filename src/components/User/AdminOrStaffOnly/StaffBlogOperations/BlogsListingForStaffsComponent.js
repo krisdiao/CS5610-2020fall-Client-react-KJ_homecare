@@ -70,7 +70,7 @@ export class BlogsListingForStaffsComponent extends React.Component{
                         <Col sm={3}><StaffComponent/></Col>
                         <Col sm={9}>
                             <h1>Blogs</h1>
-                            <Link to={`/create-blog`}
+                            <Link to={`/create-blog-by-staff`}
                                   className="btn btn-success pull-right">Create</Link>
                             <br/>
                             <br/>
