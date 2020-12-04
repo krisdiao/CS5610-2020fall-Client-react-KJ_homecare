@@ -1,7 +1,9 @@
 import React from "react";
 import {Form,Col,Row,Button} from 'react-bootstrap';
 import blogService from "../../../../services/BlogService";
+import userService from "../../../../services/UserService";
 
+var leadToCorrectLoginUserPage = require('../../../../common/util').leadToCorrectLoginUserPage;
 
 
 export class BlogsEditingComponent extends React.Component{
@@ -10,8 +12,16 @@ export class BlogsEditingComponent extends React.Component{
         super(props);
         this.state = {
             blog: this.props.location.blogViewProps.blog,
-            editing: false
+            editing: false,
+            profile: ''
         }
+    }
+
+    componentDidMount() {
+        userService.profile()
+            .then(profile => this.setState({
+                profile: profile
+            }))
     }
 
     handleSaveBlog(blog){
@@ -31,8 +41,9 @@ export class BlogsEditingComponent extends React.Component{
                 })
 
                 alert("Success! Thanks!")
+                leadToCorrectLoginUserPage(this.state.profile, this.props.history)
 
-                this.props.history.push('/update-blog')
+                //this.props.history.push('/update-blog')
             })
         // }
     }

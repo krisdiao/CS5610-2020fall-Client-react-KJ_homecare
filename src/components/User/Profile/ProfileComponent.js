@@ -24,7 +24,8 @@ export default class Profile extends React.Component {
             zip: '02010',
             role:'ADMIN',
             // roles: [],
-        }
+        },
+        space: ' '
 
     }
 
@@ -33,16 +34,17 @@ export default class Profile extends React.Component {
             .then(profile => this.setState({
                 profile: profile
             }))
+        console.log("updated? ",this.state.profile)
     }
 
-    // handleNavi(user){
-    //     // console.log(user);
-    //     userService.login(user)
-    //         .then(currentUser =>
-    //             // console.log("currentUser", currentUser)
-    //                 //check if user is Admin then load to admin page, if staff, load to staff page
-    //                 leadToCorrectLoginUserPage(currentUser, this.props.history)
-    //         )}
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        userService.profile()
+            .then(newProfile => this.setState({
+                profile: newProfile
+            }))
+        console.log("updated? ",this.state.profile)
+
+    }
 
     handleLogout = () =>
         userService.logout()
@@ -60,7 +62,7 @@ export default class Profile extends React.Component {
                             >
                                 <i className="fa fa-arrow-left " aria-hidden="true"></i>
                             </button>
-                        Welcome back, my dear
+                        Welcome back, my dear {this.state.space}
                         <strong>
                             {this.state.profile.firstName} {this.state.profile.lastName}!
                         </strong>
