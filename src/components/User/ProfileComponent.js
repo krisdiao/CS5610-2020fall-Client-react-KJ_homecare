@@ -16,7 +16,7 @@ export default class Profile extends React.Component {
             city: '',
             state: '',
             zip: '',
-            roles: []
+            roles: [],
 
         }
     }
@@ -36,8 +36,11 @@ export default class Profile extends React.Component {
 
     render() {
         return(
-            <div>
-                <h3>Welcome back, my dear <strong>{this.state.profile.firstName} {this.state.profile.lastName}!</strong>
+            <div className="container">
+                <h3>Welcome back, my dear
+                    <strong>
+                        {/*{this.state.profile.firstName} {this.state.profile.lastName}!*/}
+                    </strong>
                 </h3>
                 <br/>
                 <br/>

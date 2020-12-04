@@ -46,6 +46,8 @@ import {StaffComponent} from "./User/StaffComponent";
 import {ReviewsListingForStaffsComponent} from "./User/AdminOrStaffOnly/StaffReviewOperations/ReviewsListingForStaffsComponent";
 import {BlogsListingForStaffsComponent} from "./User/AdminOrStaffOnly/StaffBlogOperations/BlogsListingForStaffsComponent";
 import {ReviewsViewForStaffsComponent} from "./User/AdminOrStaffOnly/StaffReviewOperations/ReviewsViewForStaffsComponent";
+import {UserComponent} from "./User/UserComponent";
+import {CreateBlogsByStaffsComponent} from "./User/AdminOrStaffOnly/StaffBlogOperations/CreateBlogsByStaffsComponent";
 
 export class MainPageComponent extends React.Component{
     render(){
@@ -86,6 +88,8 @@ export class MainPageComponent extends React.Component{
                                exact component={BlogViewComponent}/>
                         <Route path="/create-blog"
                                exact component={CreateBlogsComponent}/>
+                        <Route path="/create-blog-by-staff"
+                               exact component={CreateBlogsByStaffsComponent}/>
                         <Route path=
                                    {["/update-blog/:blogId",
                                    ]}
@@ -142,6 +146,8 @@ export class MainPageComponent extends React.Component{
                                exact component={AdminComponent}/>
                         <Route path="/staff"
                                exact component={StaffComponent}/>
+                        <Route path="/user"
+                               exact component={UserComponent}/>
                         <Route path="/contacts-management"
                                exact component={ContactsManagementComponent}/>
                         <Route path="/job-applications"

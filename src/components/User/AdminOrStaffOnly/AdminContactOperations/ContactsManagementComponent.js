@@ -8,31 +8,31 @@ export class ContactsManagementComponent extends React.Component{
 
     state ={
         contacts:[
-            {
-                id:"1",
-                firstName: "qqqqq",
-                lastName: "mmmmm",
-                email: "123456@gmail.com",
-                phoneNumber: "987-654321",
-                zip: "022022"
-            },
-            {
-                id:"2",
-                firstName: "wwwwwww",
-                lastName: "nnnnnn",
-                email: "abcdefg@gmail.com",
-                phoneNumber: "456-654789",
-                zip: "020122"
-            },
-            {
-                id:"3",
-                firstName: "eeeee",
-                lastName: "zzzzz",
-                email: "abc123@gmail.com",
-                phoneNumber: "123-654778",
-                zip: "012022"
-            },
-        ],
+            // {
+            //     id:"1",
+            //     firstName: "qqqqq",
+            //     lastName: "mmmmm",
+            //     email: "123456@gmail.com",
+            //     phoneNumber: "987-654321",
+            //     zip: "022022"
+            // },
+            // {
+            //     id:"2",
+            //     firstName: "wwwwwww",
+            //     lastName: "nnnnnn",
+            //     email: "abcdefg@gmail.com",
+            //     phoneNumber: "456-654789",
+            //     zip: "020122"
+            // },
+            // {
+            //     id:"3",
+            //     firstName: "eeeee",
+            //     lastName: "zzzzz",
+            //     email: "abc123@gmail.com",
+            //     phoneNumber: "123-654778",
+            //     zip: "012022"
+            // },
+        ]
     }
 
     componentDidMount() {
