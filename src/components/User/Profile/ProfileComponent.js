@@ -33,10 +33,6 @@ export default class Profile extends React.Component {
             .then(profile => this.setState({
                 profile: profile
             }))
-        userService.profile()
-            .then(profile => this.setState({
-                role: profile.role
-            }))
     }
 
     // handleNavi(user){

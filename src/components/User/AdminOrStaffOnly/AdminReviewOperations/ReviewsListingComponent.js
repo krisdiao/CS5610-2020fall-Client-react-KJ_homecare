@@ -9,27 +9,27 @@ export class ReviewsListingComponent extends React.Component{
 
     state ={
         reviews:[
-            {
-                id:"1",
-                title: "a",
-                firstName: "qqqqq",
-                lastName: "mmmmm",
-                timeStamp: new Date(),
-            },
-            {
-                id:"2",
-                title: "b",
-                firstName: "wwwwwww",
-                lastName: "nnnnnn",
-                timeStamp: new Date(),
-            },
-            {
-                id:"3",
-                title: "c",
-                firstName: "eeeee",
-                lastName: "zzzzz",
-                timeStamp: new Date(),
-            },
+            // {
+            //     id:"1",
+            //     title: "a",
+            //     firstName: "qqqqq",
+            //     lastName: "mmmmm",
+            //     timeStamp: new Date(),
+            // },
+            // {
+            //     id:"2",
+            //     title: "b",
+            //     firstName: "wwwwwww",
+            //     lastName: "nnnnnn",
+            //     timeStamp: new Date(),
+            // },
+            // {
+            //     id:"3",
+            //     title: "c",
+            //     firstName: "eeeee",
+            //     lastName: "zzzzz",
+            //     timeStamp: new Date(),
+            // },
         ],
         role: '',
     }
@@ -41,10 +41,6 @@ export class ReviewsListingComponent extends React.Component{
                     reviews: reviews
                 })
             })
-        userService.profile()
-            .then(profile => this.setState({
-                role: profile.role
-            }))
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {

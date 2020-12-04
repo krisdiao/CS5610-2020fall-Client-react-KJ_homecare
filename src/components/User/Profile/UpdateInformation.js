@@ -59,7 +59,7 @@ export default class UpdateInformation extends React.Component {
                 <Container>
                     <h3>Welcome back, my dear
                         <strong>
-                            {/*{this.state.profile.firstName} {this.state.profile.lastName}!*/}
+                             {this.state.profile.firstName} {this.state.profile.lastName}!
                         </strong>
                     </h3>
                     <Row>
