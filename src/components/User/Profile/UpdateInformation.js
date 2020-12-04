@@ -77,7 +77,8 @@ export default class UpdateInformation extends React.Component {
         return(
             <div>
                 <Container>
-                    <h3>Welcome back, my dear
+                    <h3>Welcome back, my dear {this.state.space}
+
                         <strong>
                              {this.state.profile.firstName} {this.state.profile.lastName}!
                         </strong>
