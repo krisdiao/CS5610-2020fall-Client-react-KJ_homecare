@@ -56,7 +56,6 @@ export class RegisterComponent extends React.Component{
         this.checkValidity();
         // if (this.state.valid){
         //     console.log("it is valid");
-        //debugger
         userService.register(user)
         //here to check whether or not allow the user to login before
         //sending to profile page if log in successfully

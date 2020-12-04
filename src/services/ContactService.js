@@ -29,7 +29,7 @@ export const createContact = async (contact) =>
 //admin
 export const findAllContacts = () =>
     fetch(CONTACT_URL, {
-        // credentials: "include"
+        credentials: "include"
     }).then(response => response.json())
 
 export const deleteContact = (contactId) =>

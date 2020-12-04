@@ -55,6 +55,16 @@ export const findAllUsers = () =>
         .then(response => response.json())
         .catch(()=>console.log("error"))
 
+export const updateUser = (userId, user) =>
+    fetch(`${USER_URL}/${userId}`,{
+        method: 'PUT',
+        body: JSON.stringify(user),
+        headers: {
+            'content-type': 'application/json'
+        },
+        credentials: "include"
+    }).then(response => response.json())
+
 
 //admin
 export const deleteUser = (userId) =>

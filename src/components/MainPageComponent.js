@@ -30,7 +30,7 @@ import {LandingPageComponent} from "./LandingPageComponent";
 import SearchContentComponent from "./SearchContent/SearchContentComponent";
 import {FooterComponent} from "./header-footer/FooterComponent";
 import {PetCareComponent} from "./CaregiverResource/PetCareComponent";
-import ProfileComponent from "./User/ProfileComponent";
+import ProfileComponent from "./User/Profile/ProfileComponent";
 import {LeaveReviewsComponent} from "./User/LoginUsers/LeaveReviewsComponent";
 import {BlogsEditingComponent} from "./User/AdminOrStaffOnly/AdminBlogOperations/BlogsEditingComponent";
 import {ReviewsListingComponent} from "./User/AdminOrStaffOnly/AdminReviewOperations/ReviewsListingComponent";
@@ -48,6 +48,7 @@ import {BlogsListingForStaffsComponent} from "./User/AdminOrStaffOnly/StaffBlogO
 import {ReviewsViewForStaffsComponent} from "./User/AdminOrStaffOnly/StaffReviewOperations/ReviewsViewForStaffsComponent";
 import {UserComponent} from "./User/UserComponent";
 import {CreateBlogsByStaffsComponent} from "./User/AdminOrStaffOnly/StaffBlogOperations/CreateBlogsByStaffsComponent";
+import UpdateInformation from "./User/Profile/UpdateInformation";
 
 export class MainPageComponent extends React.Component{
     render(){
@@ -136,6 +137,9 @@ export class MainPageComponent extends React.Component{
                                exact component={LoginComponent}/>
                         <Route path="/profile"
                                exact component={ProfileComponent}/>
+                        <Route path="/update-information"
+                               exact component={UpdateInformation}/>
+
                         <Route path="/register"
                                exact component={RegisterComponent}/>
                         <Route path="/contact"

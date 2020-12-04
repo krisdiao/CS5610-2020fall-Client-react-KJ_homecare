@@ -6,7 +6,7 @@ export class StaffComponent extends React.Component{
         return(
             <div>
                 <div className="container">
-                    <h3>Personal Page</h3>
+                    <h3>Dashboard</h3>
                     <ul className="list-group text-center">
                         <li className="list-group-item">
                             <Link to={`/profile`}>
