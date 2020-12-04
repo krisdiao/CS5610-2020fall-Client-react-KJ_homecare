@@ -3,6 +3,7 @@ import {AdminComponent} from "../../AdminComponent";
 import {Container , Row , Col} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import reviewService from "../../../../services/ReviewService"
+import userService from "../../../../services/UserService";
 
 export class ReviewsListingComponent extends React.Component{
 
@@ -30,6 +31,7 @@ export class ReviewsListingComponent extends React.Component{
                 timeStamp: new Date(),
             },
         ],
+        role: '',
     }
 
     componentDidMount() {
@@ -39,6 +41,10 @@ export class ReviewsListingComponent extends React.Component{
                     reviews: reviews
                 })
             })
+        userService.profile()
+            .then(profile => this.setState({
+                role: profile.role
+            }))
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -61,14 +67,19 @@ export class ReviewsListingComponent extends React.Component{
     }
 
     render() {
+        // console.log("role: ", this.state.role)
         return(
             <Container>
                 <Row>
                     <Col sm={3}><AdminComponent/></Col>
                     <Col sm={9}>
-                        <h1>Reviews</h1>
-                        <Link to={`/leave-review`}
-                              className="btn btn-success pull-right">Create</Link>
+                        <Row>
+                            <Col sm={9}><h1>Reviews</h1></Col>
+                            <Col sm={3}>
+                                <Link to={`/leave-review`}
+                                      className="btn btn-success pull-right">Create</Link>
+                            </Col>
+                        </Row>
                         <br/>
                         <br/>
 

@@ -3,6 +3,8 @@ import {AdminComponent} from "../../AdminComponent";
 import {Container , Row , Col} from 'react-bootstrap';
 import jobApplicationService from "../../../../services/JobApplicationService";
 
+var getJobApplicantsReport = require('../../../../common/util.js').getJobApplicantsReport;
+
 export class JobApplicationsComponent extends React.Component{
 
     state ={
@@ -55,7 +57,7 @@ export class JobApplicationsComponent extends React.Component{
 
     componentDidMount() {
         jobApplicationService.findAllJobApplications()
-            .then(jobs =>{
+            .then(jobs => {
                 this.setState( {
                     jobs: jobs
                 })
@@ -71,14 +73,27 @@ export class JobApplicationsComponent extends React.Component{
             })
     }
 
-    deleteApplication =(job)=> {
+    downloadAllJobApplicants = () => {
+        jobApplicationService.findAllJobApplications()
+            .then(json =>{
+                getJobApplicantsReport(json, false);
+            })
+    }
+
+    downloadJobApplicantById = (jobId) => {
+        jobApplicationService.findApplicationById(jobId)
+            .then(json =>{
+                getJobApplicantsReport(json, true);
+            })
+    }
+
+
+    deleteApplication = (job) => {
         jobApplicationService.deleteApplication(job.id)
             .then(status => this.setState(prevState => ({
                 jobs: prevState.jobs.filter(jobs => jobs.id !== jobs.id)
                 })
             ))
-
-
     }
 
     render() {
@@ -87,15 +102,17 @@ export class JobApplicationsComponent extends React.Component{
                 <Container>
                     <Row>
                         <Col sm={3}><AdminComponent/></Col>
-                        <Col
-                            sm={9}
-                        >
-                            <h1>Jobs</h1>
+                        <Col sm={9}>
+                            <Row>
+                                <Col sm={9}><h1>Jobs</h1></Col>
+                                <Col sm={3}>
                             <button
-                                // onClick={ ()=> this.downloadContactById(contact)}
-                                className="btn btn-success pull-right">
-                                <i className="fa fa-download" aria-hidden="true"></i>
+                                onClick={ ()=> this.downloadAllJobApplicants()}
+                                className="btn btn-success fa-pull-right">
+                                <i className="fa fa-download fa-2x" aria-hidden="true"></i>
                             </button>
+                                </Col>
+                            </Row>
                             <br/>
                             <br/>
                             <table className="table table-hover ">
@@ -133,6 +150,13 @@ export class JobApplicationsComponent extends React.Component{
                                                 onClick={ ()=> this.deleteApplication(job)}
                                                 className="btn btn-danger">
                                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button
+                                                onClick={ ()=> this.downloadJobApplicantById(job.id)}
+                                                className="btn btn-success">
+                                                <i className="fa fa-download" aria-hidden="true"></i>
                                             </button>
                                         </td>
                                     </tr>

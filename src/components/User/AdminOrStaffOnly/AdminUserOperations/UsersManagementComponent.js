@@ -2,6 +2,8 @@ import React from "react";
 import {AdminComponent} from "../../AdminComponent";
 import {Container , Row , Col} from 'react-bootstrap';
 import userService from "../../../../services/UserService";
+var getUsersRegistrationReport = require('../../../../common/util.js').getUsersRegistrationReport;
+
 
 export class UsersManagementComponent extends React.Component{
 
@@ -72,7 +74,21 @@ export class UsersManagementComponent extends React.Component{
             })
     }
 
-    deleteUser =(user)=> {
+    downloadAllUsers = () => {
+        userService.findAllUsers()
+            .then(json =>{
+                getUsersRegistrationReport(json, false)
+            })
+    }
+
+    downloadUserById = (userId) => {
+        userService.findUserById(userId)
+            .then(json =>{
+                getUsersRegistrationReport(json, true)
+            })
+    }
+
+    deleteUser = (user) => {
         userService.deleteUser(user.id)
             .then(status => this.setState(prevState => ({
                 users: prevState.users.filter(users => users.id !== users.id)
@@ -88,12 +104,16 @@ export class UsersManagementComponent extends React.Component{
                     <Row>
                         <Col sm={3}><AdminComponent/></Col>
                         <Col sm={9}>
-                            <h1>Users</h1>
-                            <button
-                                // onClick={ ()=> this.downloadContactById(contact)}
-                                className="btn btn-success pull-right">
-                                <i className="fa fa-download" aria-hidden="true"></i>
-                            </button>
+                            <Row>
+                                <Col sm={9}><h1>Users</h1></Col>
+                                <Col sm={3}>
+                                    <button
+                                        onClick={ ()=> this.downloadAllUsers()}
+                                        className="btn btn-success fa-pull-right">
+                                        <i className="fa fa-download fa-2x" aria-hidden="true"></i>
+                                    </button>
+                                </Col>
+                            </Row>
                             <br/>
                             <br/>
                             <table className="table table-hover ">
@@ -131,6 +151,13 @@ export class UsersManagementComponent extends React.Component{
                                                 onClick={ ()=> this.deleteUser(user)}
                                                 className="btn btn-danger">
                                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button
+                                                onClick={ ()=> this.downloadUserById(user.id)}
+                                                className="btn btn-success">
+                                                <i className="fa fa-download" aria-hidden="true"></i>
                                             </button>
                                         </td>
                                     </tr>
