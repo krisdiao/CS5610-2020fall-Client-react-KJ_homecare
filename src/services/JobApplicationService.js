@@ -5,7 +5,7 @@ import {BASE_URL, APPLICATION_URL, CONTACT_URL} from "../common/constants"
 //all users
 export const createJobApplication = (application) =>
 {
-    debugger
+    //debugger
     return fetch(APPLICATION_URL, {
         method: 'POST',
         body: JSON.stringify(application),
