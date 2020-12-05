@@ -274,7 +274,7 @@ export class ApplyJobComponent extends React.Component{
                                     onChange={(e) => this.setState({agreed: true})}/>
                     </Form.Group>
 
-                    <Button variant="primary" type="submit"
+                    <Button variant="primary" type="button"
                             onClick={() => this.handleApplyJob(this.state)}>
                         Submit
                     </Button>
