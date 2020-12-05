@@ -38,7 +38,7 @@ export class ReviewsListingComponent extends React.Component{
         reviewService.findAllReviews()
             .then(reviews =>{
                 this.setState( {
-                    reviews: reviews
+                    blogs: reviews
                 })
             })
     }
@@ -47,7 +47,7 @@ export class ReviewsListingComponent extends React.Component{
         reviewService.findAllReviews()
             .then(reviews =>{
                 this.setState( {
-                    reviews: reviews
+                    blogs: reviews
                 })
             })
     }
@@ -55,7 +55,7 @@ export class ReviewsListingComponent extends React.Component{
     deleteReview =(review)=> {
         reviewService.deleteReview(review.id)
             .then(status => this.setState(prevState => ({
-                reviews: prevState.reviews.filter(reviews => reviews.id !== reviews.id)
+                blogs: prevState.blogs.filter(reviews => reviews.id !== reviews.id)
                 })
             ))
 
@@ -89,27 +89,27 @@ export class ReviewsListingComponent extends React.Component{
                             </tr>
                             </thead>
                             <tbody>
-                            {this.state.reviews.map(review =>
-                                <tr>
-                                    <td>
-                                        <Link to={{
-                                            pathname: `/update-review/${review.id}`,
-                                            reviewViewProps: { review: review }
-                                        }}
-                                        > {review.title}</Link>
-                                    </td>
-                                    <td>{review.lastName}</td>
-                                    <td>{review.firstName}</td>
-                                    <td>{review.timeStamp.toString()}</td>
-                                    <td>
-                                        <button
-                                            onClick={ ()=> this.deleteReview(review)}
-                                            className="btn btn-danger">
-                                            <i className="fa fa-trash-o" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            )}
+                                {this.state.reviews.map(review =>
+                                    <tr>
+                                        <td>
+                                            <Link to={{
+                                                pathname: `/update-review/${review.id}`,
+                                                reviewViewProps: { review: review }
+                                            }}
+                                            > {review.title}</Link>
+                                        </td>
+                                        <td>{review.lastName}</td>
+                                        <td>{review.firstName}</td>
+                                        <td>{review.timeStamp.toString()}</td>
+                                        <td>
+                                            <button
+                                                onClick={ ()=> this.deleteReview(review)}
+                                                className="btn btn-danger">
+                                                <i className="fa fa-trash-o" aria-hidden="true"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                )}
                             </tbody>
                         </table>
                     </Col>

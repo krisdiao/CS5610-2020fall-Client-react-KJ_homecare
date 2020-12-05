@@ -106,11 +106,11 @@ export class JobApplicationsComponent extends React.Component{
                             <Row>
                                 <Col sm={9}><h1>Jobs</h1></Col>
                                 <Col sm={3}>
-                            <button
-                                onClick={ ()=> this.downloadAllJobApplicants()}
-                                className="btn btn-success fa-pull-right">
-                                <i className="fa fa-download fa-2x" aria-hidden="true"></i>
-                            </button>
+                                    <button
+                                        onClick={ ()=> this.downloadAllJobApplicants()}
+                                        className="btn btn-success fa-pull-right">
+                                        <i className="fa fa-download fa-2x" aria-hidden="true"></i>
+                                    </button>
                                 </Col>
                             </Row>
                             <br/>

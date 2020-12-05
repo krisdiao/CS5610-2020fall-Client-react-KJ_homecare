@@ -1,6 +1,6 @@
 import {BASE_URL, REVIEW_URL, USER_URL} from "../common/constants"
 
-//const REVIEW_URL = `${BASE_URL}/api/reviews`
+//const REVIEW_URL = `${BASE_URL}/api/blogs`
 
 //all users
 export const findAllReviews = () =>
@@ -42,7 +42,7 @@ export const updateReview = (reviewId, review) =>
 
 //login user
 export const findReviewsForUser = (userId) =>
-    //    @GetMapping("/api/users/{userId}/reviews")
+    //    @GetMapping("/api/users/{userId}/blogs")
     fetch(`${USER_URL}/${userId}/reviews`, {
         credentials: "include"
     }).then(response => response.json())

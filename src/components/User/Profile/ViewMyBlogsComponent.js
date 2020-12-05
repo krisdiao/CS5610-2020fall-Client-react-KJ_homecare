@@ -1,10 +1,10 @@
 import React from "react";
-import reviewService from "../../../services/ReviewService";
 import {Link} from "react-router-dom";
 import {Container , Row , Col} from 'react-bootstrap';
 import ProfileComponent from "./ProfileComponent"
+import blogService from "../../../services/BlogService";
 
-export class ViewMyReviewsComponent extends React.Component{
+export class ViewMyBlogsComponent extends React.Component{
 
     constructor(props) {
         super(props);
@@ -16,16 +16,7 @@ export class ViewMyReviewsComponent extends React.Component{
     }
 
     componentDidMount() {
-        reviewService.findReviewsForUser(this.state.profile.id)
-            .then(reviews =>{
-                this.setState( {
-                    blogs: reviews
-                })
-            })
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        reviewService.findReviewsForUser(this.state.profile.id)
+        blogService.findBlogsForUser(this.state.profile.id)
             .then(blogs =>{
                 this.setState( {
                     blogs: blogs
@@ -33,10 +24,19 @@ export class ViewMyReviewsComponent extends React.Component{
             })
     }
 
-    deleteReview =(review)=> {
-        reviewService.deleteReview(review.id)
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        blogService.findBlogsForUser(this.state.profile.id)
+            .then(blogs =>{
+                this.setState( {
+                    blogs: blogs
+                })
+            })
+    }
+
+    deleteBlog =(blog)=> {
+        blogService.deleteBlog(blog.id)
             .then(status => this.setState(prevState => ({
-                    blogs: prevState.blogs.filter(reviews => reviews.id !== reviews.id)
+                    blogs: prevState.blogs.filter(blogs => blogs.id !== blogs.id)
                 })
             ))
     }
@@ -49,7 +49,7 @@ export class ViewMyReviewsComponent extends React.Component{
                     <Row>
                         <Col sm={3}><ProfileComponent profile={this.state.profile}/></Col>
                         <Col sm={9}>
-                            <h1>My Reviews</h1>
+                            <h1>My Blogs</h1>
                             <br/>
                             <br/>
                             <table className="table table-hover ">
@@ -62,25 +62,26 @@ export class ViewMyReviewsComponent extends React.Component{
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {this.state.blogs.map(review =>
+                                {this.state.blogs.map(blog =>
                                     <tr>
                                         <td>
                                             <Link to={{
-                                                pathname: `/update-review/${review.id}`,
-                                                reviewViewProps: { review: review }
+                                                pathname: `/update-blog/${blog.id}`,
+                                                blogViewProps: { blog: blog }
                                             }}
-                                            > {review.title}</Link>
+                                            > {blog.title}</Link>
                                         </td>
-                                        <td>{review.lastName}</td>
-                                        <td>{review.firstName}</td>
-                                        <td>{review.timeStamp.toString()}</td>
+                                        <td>{blog.lastName}</td>
+                                        <td>{blog.firstName}</td>
+                                        <td>{blog.timeStamp.toString()}</td>
                                         <td>
                                             <button
-                                                onClick={ ()=> this.deleteReview(review)}
+                                                onClick={ ()=> this.deleteBlog(blog)}
                                                 className="btn btn-danger">
                                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
                                             </button>
                                         </td>
+
                                     </tr>
                                 )}
                                 </tbody>

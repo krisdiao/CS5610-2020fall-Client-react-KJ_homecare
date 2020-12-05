@@ -87,28 +87,28 @@ export class BlogsListingComponent extends React.Component{
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {this.state.blogs.map(blog =>
-                                <tr>
-                                    <td>
-                                        <Link to={{
-                                                pathname: `/update-blog/${blog.id}`,
-                                                blogViewProps: { blog: blog }
-                                            }}
-                                        > {blog.title}</Link>
-                                    </td>
-                                    <td>{blog.lastName}</td>
-                                    <td>{blog.firstName}</td>
-                                    <td>{blog.timeStamp.toString()}</td>
-                                    <td>
-                                        <button
-                                            onClick={ ()=> this.deleteBlog(blog)}
-                                            className="btn btn-danger">
-                                            <i className="fa fa-trash-o" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
+                                    {this.state.blogs.map(blog =>
+                                    <tr>
+                                        <td>
+                                            <Link to={{
+                                                    pathname: `/update-blog/${blog.id}`,
+                                                    blogViewProps: { blog: blog }
+                                                }}
+                                            > {blog.title}</Link>
+                                        </td>
+                                        <td>{blog.lastName}</td>
+                                        <td>{blog.firstName}</td>
+                                        <td>{blog.timeStamp.toString()}</td>
+                                        <td>
+                                            <button
+                                                onClick={ ()=> this.deleteBlog(blog)}
+                                                className="btn btn-danger">
+                                                <i className="fa fa-trash-o" aria-hidden="true"></i>
+                                            </button>
+                                        </td>
 
-                                </tr>
-                                )}
+                                    </tr>
+                                    )}
                                 </tbody>
 
                             </table>

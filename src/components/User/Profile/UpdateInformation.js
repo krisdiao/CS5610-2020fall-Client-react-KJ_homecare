@@ -2,6 +2,7 @@ import React from "react";
 import {Container , Row , Col,Form,Button} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import * as userService from "../../../services/UserService";
+import ProfileComponent from "./ProfileComponent";
 
 var leadToCorrectLoginUserPage = require('../../../common/util').leadToCorrectLoginUserPage;
 
@@ -22,13 +23,6 @@ export default class UpdateInformation extends React.Component {
                 profile: profile
             }))
     }
-
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     userService.profile()
-    //         .then(profile => this.setState({
-    //             profile: profile
-    //         }))
-    // }
 
     handleLogout = () =>
         userService.logout()
@@ -77,43 +71,48 @@ export default class UpdateInformation extends React.Component {
         return(
             <div>
                 <Container>
-                    <h3>Welcome back, my dear {this.state.space}
+                    {/*<h3>Welcome back, my dear {this.state.space}*/}
 
-                        <strong>
-                             {this.state.profile.firstName} {this.state.profile.lastName}!
-                        </strong>
-                    </h3>
+                    {/*    <strong>*/}
+                    {/*         {this.state.profile.firstName} {this.state.profile.lastName}!*/}
+                    {/*    </strong>*/}
+                    {/*</h3>*/}
+                    {/*<Row>*/}
+                    {/*    <Col  sm={3}>*/}
+                    {/*        <ul className="list-group text-center">*/}
+                    {/*            <li className="list-group-item">*/}
+                    {/*                <Link to={`/profile`}>*/}
+                    {/*                    Main Page*/}
+                    {/*                </Link>*/}
+                    {/*            </li>*/}
+                    {/*            <li className="list-group-item">*/}
+                    {/*                <Link to={`/view-my-reviews`}>*/}
+                    {/*                    Update My Information*/}
+                    {/*                </Link>*/}
+                    {/*            </li>*/}
+                    {/*            <li className="list-group-item">*/}
+                    {/*                <Link to={`/profile`}>*/}
+                    {/*                    View My Reviews*/}
+                    {/*                </Link>*/}
+                    {/*            </li>*/}
+                    {/*            <li className="list-group-item">*/}
+                    {/*                <Link to={`/profile`}>*/}
+                    {/*                    View My Job Application*/}
+                    {/*                </Link>*/}
+                    {/*            </li>*/}
+                    {/*            <li className="list-group-item">*/}
+                    {/*                <Link to={`/profile`}>*/}
+                    {/*                    My Schedule*/}
+                    {/*                </Link>*/}
+                    {/*            </li>*/}
+                    {/*        </ul>*/}
+                    {/*    </Col>*/}
                     <Row>
-                        <Col  sm={3}>
-                            <ul className="list-group text-center">
-                                <li className="list-group-item">
-                                    <Link to={`/profile`}>
-                                        Main Page
-                                    </Link>
-                                </li>
-                                <li className="list-group-item">
-                                    <Link to={`/view-my-reviews`}>
-                                        Update My Information
-                                    </Link>
-                                </li>
-                                <li className="list-group-item">
-                                    <Link to={`/profile`}>
-                                        View My Reviews
-                                    </Link>
-                                </li>
-                                <li className="list-group-item">
-                                    <Link to={`/profile`}>
-                                        View My Job Application
-                                    </Link>
-                                </li>
-                                <li className="list-group-item">
-                                    <Link to={`/profile`}>
-                                        My Schedule
-                                    </Link>
-                                </li>
-                            </ul>
-                        </Col>
+                        <Col sm={3}><ProfileComponent profile={this.state.profile}/></Col>
                         <Col sm={9}>
+                            <h1>My Profile</h1>
+                            <br/>
+                            <br/>
                             <Form>
                                 <Form.Group as={Row} controlId="formHorizontalName">
                                     <Form.Label column sm={2}>

@@ -37,14 +37,14 @@ export default class Profile extends React.Component {
         console.log("updated? ",this.state.profile)
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        userService.profile()
-            .then(newProfile => this.setState({
-                profile: newProfile
-            }))
-        console.log("updated? ",this.state.profile)
-
-    }
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //     userService.profile()
+    //         .then(newProfile => this.setState({
+    //             profile: newProfile
+    //         }))
+    //     console.log("updated? ",this.state.profile)
+    //
+    // }
 
     handleLogout = () =>
         userService.logout()
@@ -67,7 +67,7 @@ export default class Profile extends React.Component {
                         </strong>
                     </h3>
                     <Row>
-                        <Col  sm={3}>
+                        {/*<Col  sm={3}>*/}
                             <ul className="list-group text-center">
                                 <li className="list-group-item">
                                     <Link to={`/profile`}>
@@ -90,7 +90,15 @@ export default class Profile extends React.Component {
                                     </Link>
                                 </li>
                                 <li className="list-group-item">
-                                    <Link to={`/profile`}>
+                                    <Link to={{pathname:`/view-my-blogs`,
+                                        profileViewProps: {profile: this.state.profile}
+                                    }}>
+                                        View My Blogs                                    </Link>
+                                </li>
+                                <li className="list-group-item">
+                                    <Link to={{pathname:`/view-my-jobs`,
+                                        profileViewProps: {profile: this.state.profile}
+                                    }}>
                                         View My Job Application
                                     </Link>
                                 </li>
@@ -100,7 +108,7 @@ export default class Profile extends React.Component {
                                     </Link>
                                 </li>
                             </ul>
-                        </Col>
+                        {/*</Col>*/}
                     </Row>
                     <br/>
                     <br/>

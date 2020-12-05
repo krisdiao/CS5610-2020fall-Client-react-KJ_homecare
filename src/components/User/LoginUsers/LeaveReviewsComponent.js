@@ -61,9 +61,9 @@ export class LeaveReviewsComponent extends React.Component{
 
                     alert("Success! Thanks!")
 
-                    this.props.history.push('/more-reviews')
+                    this.props.history.push('/more-blogs')
                 } else{
-                    alert("Log in is required to leave reviews! Thank you!")
+                    alert("Log in is required to leave blogs! Thank you!")
                     this.props.history.push('/login')
                 }
             })
