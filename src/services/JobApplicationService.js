@@ -12,6 +12,7 @@ export const createJobApplication = (application) =>
         headers: {
             'content-type': 'application/json'
         },
+        credentials: "include"
     }).then(response => response.json())
         .catch(()=>console.log("error"))
 }
