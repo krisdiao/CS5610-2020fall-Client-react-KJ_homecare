@@ -92,7 +92,7 @@ export default class UpdateInformation extends React.Component {
                                     </Link>
                                 </li>
                                 <li className="list-group-item">
-                                    <Link to={`/update-information`}>
+                                    <Link to={`/view-my-reviews`}>
                                         Update My Information
                                     </Link>
                                 </li>

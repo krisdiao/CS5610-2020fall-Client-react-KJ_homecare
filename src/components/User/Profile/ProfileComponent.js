@@ -57,11 +57,10 @@ export default class Profile extends React.Component {
             <div>
                 <Container>
                     <h3>
-                            <button className="form-control-lg btn btn-success"
-                                  onClick={() => leadToCorrectLoginUserPage(this.state.profile, this.props.history)}
-                            >
+                        <button className="form-control-lg btn btn-success"
+                                  onClick={() => leadToCorrectLoginUserPage(this.state.profile, this.props.history)}>
                                 <i className="fa fa-arrow-left " aria-hidden="true"></i>
-                            </button>
+                        </button>
                         Welcome back, my dear {this.state.space}
                         <strong>
                             {this.state.profile.firstName} {this.state.profile.lastName}!
@@ -84,7 +83,9 @@ export default class Profile extends React.Component {
                                     </Link>
                                 </li>
                                 <li className="list-group-item">
-                                    <Link to={`/profile`}>
+                                    <Link to={{pathname:`/view-my-reviews`,
+                                        profileViewProps: {profile: this.state.profile}
+                                    }}>
                                         View My Reviews
                                     </Link>
                                 </li>

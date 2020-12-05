@@ -49,6 +49,7 @@ import {ReviewsViewForStaffsComponent} from "./User/AdminOrStaffOnly/StaffReview
 import {UserComponent} from "./User/UserComponent";
 import {CreateBlogsByStaffsComponent} from "./User/AdminOrStaffOnly/StaffBlogOperations/CreateBlogsByStaffsComponent";
 import UpdateInformation from "./User/Profile/UpdateInformation";
+import {ViewMyReviewsComponent} from "./User/Profile/ViewMyReviewsComponent";
 
 export class MainPageComponent extends React.Component{
     render(){
@@ -68,6 +69,8 @@ export class MainPageComponent extends React.Component{
                                exact component={ReviewsComponent}/>
                         <Route path="/more-reviews"
                                exact component={ReviewsViewComponent}/>
+                        <Route path="/view-my-reviews"
+                               exact component={ViewMyReviewsComponent}/>
                         <Route path="/reviews-for-staffs"
                                exact component={ReviewsListingForStaffsComponent}/>
                         <Route path="/reviews-for-staffs/:reviewId"

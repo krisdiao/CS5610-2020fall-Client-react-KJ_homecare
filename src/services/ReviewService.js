@@ -41,12 +41,12 @@ export const updateReview = (reviewId, review) =>
     }).then(response => response.json())
 
 //login user
-export const findReivewsForUser = (userId) =>
+export const findReviewsForUser = (userId) =>
     //    @GetMapping("/api/users/{userId}/reviews")
     fetch(`${USER_URL}/${userId}/reviews`, {
         credentials: "include"
     }).then(response => response.json())
 
 export default {
-    findAllReviews, createReview, deleteReview, updateReview, findReivewsForUser
+    findAllReviews, createReview, deleteReview, updateReview, findReviewsForUser
 }
