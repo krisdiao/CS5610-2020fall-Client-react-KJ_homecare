@@ -13,7 +13,8 @@ export default class UpdateInformation extends React.Component {
         super(props);
         this.state = {
             profile: this.props.location.profileViewProps.profile,
-            editing: false
+            editing: false,
+            agree: ''
         }
     }
 
@@ -23,29 +24,13 @@ export default class UpdateInformation extends React.Component {
                 profile: profile
             }))
     }
-
-    handleLogout = () =>
-        userService.logout()
-            .then(status => {
-                this.props.history.push('/')
-            })
-
-    checkValidity(){
-        if(this.state.password === this.state.verifyPassword
-            && this.state.agreed === true
-            && this.state.firstName !== null
-            && this.state.lastName !== null
-            && this.state.password !== null
-            && this.state.verifyPassword !== null
-            && this.state.email !== null
-            && this.state.add1 !== null
-            && this.state.city !== null
-            && this.state.state !== null
-            && this.state.zip !== null){
-
-            this.setState({valid: true});
-        }
-    }
+    //
+    // handleLogout = () =>
+    //     userService.logout()
+    //         .then(status => {
+    //             this.props.history.push('/')
+    //         })
+    //
 
     handleSaveProfile(profile){
         console.log(profile.profile.id);
@@ -63,50 +48,28 @@ export default class UpdateInformation extends React.Component {
 
                 //this.props.history.push('/update-information')
             })
-        // }
     }
 
     render() {
+        console.log(this.state)
 
+        const { firstName,lastName, email, password, verifyPassword, phoneNumber, add1, add2, city, state, zip} = this.state.profile;
+
+        const inEnabled = this.state.agreed
+            && (firstName.length) > 0
+            && (lastName.length) > 0
+            && email.includes("@")
+            && (zip.length) === 5
+            && (add1.length) > 0
+            && (city.length) > 0
+            && (state.length) > 0
+            && (password.length) > 0
+            && password === verifyPassword
+
+        console.log("inEnabled: ", inEnabled)
         return(
             <div>
                 <Container>
-                    {/*<h3>Welcome back, my dear {this.state.space}*/}
-
-                    {/*    <strong>*/}
-                    {/*         {this.state.profile.firstName} {this.state.profile.lastName}!*/}
-                    {/*    </strong>*/}
-                    {/*</h3>*/}
-                    {/*<Row>*/}
-                    {/*    <Col  sm={3}>*/}
-                    {/*        <ul className="list-group text-center">*/}
-                    {/*            <li className="list-group-item">*/}
-                    {/*                <Link to={`/profile`}>*/}
-                    {/*                    Main Page*/}
-                    {/*                </Link>*/}
-                    {/*            </li>*/}
-                    {/*            <li className="list-group-item">*/}
-                    {/*                <Link to={`/view-my-reviews`}>*/}
-                    {/*                    Update My Information*/}
-                    {/*                </Link>*/}
-                    {/*            </li>*/}
-                    {/*            <li className="list-group-item">*/}
-                    {/*                <Link to={`/profile`}>*/}
-                    {/*                    View My Reviews*/}
-                    {/*                </Link>*/}
-                    {/*            </li>*/}
-                    {/*            <li className="list-group-item">*/}
-                    {/*                <Link to={`/profile`}>*/}
-                    {/*                    View My Job Application*/}
-                    {/*                </Link>*/}
-                    {/*            </li>*/}
-                    {/*            <li className="list-group-item">*/}
-                    {/*                <Link to={`/profile`}>*/}
-                    {/*                    My Schedule*/}
-                    {/*                </Link>*/}
-                    {/*            </li>*/}
-                    {/*        </ul>*/}
-                    {/*    </Col>*/}
                     <Row>
                         <Col sm={3}><ProfileComponent profile={this.state.profile}/></Col>
                         <Col sm={9}>
@@ -344,27 +307,28 @@ export default class UpdateInformation extends React.Component {
                                 <Form.Group id="formGridCheckbox">
                                     <Form.Check type="checkbox" label="Agree to our all terms and conditions" name="agreed"
                                                 value={this.state.agreed}
-                                                onChange={(e) => this.setState({agreed: true})}/>
+                                                onChange={(e) => this.setState({agreed: e.target.checked})} />
                                 </Form.Group>
 
                                 <Form.Group as={Row}>
                                     <Col>
-                                        <Button type="button" className="pull-left"
+                                        <Button variant="primary" type="button" className="pull-left"
+                                                disabled={!inEnabled}
                                                 onClick={() => this.handleSaveProfile(this.state)}>Save</Button>
                                     </Col>
                                 </Form.Group>
                             </Form>
                         </Col>
                     </Row>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <button
-                        type="button"
-                        onClick={this.handleLogout}
-                        className={`btn btn-danger pull-right`}>
-                        Logout
-                    </button>
+                    {/*<br/>*/}
+                    {/*<br/>*/}
+                    {/*<br/>*/}
+                    {/*<button*/}
+                    {/*    type="button"*/}
+                    {/*    onClick={this.handleLogout}*/}
+                    {/*    className={`btn btn-danger pull-right`}>*/}
+                    {/*    Logout*/}
+                    {/*</button>*/}
                 </Container>
             </div>
 

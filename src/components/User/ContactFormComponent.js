@@ -3,8 +3,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {Form,Button,Col} from 'react-bootstrap';
 import "font-awesome/css/font-awesome.css";
 import contactService from "../../services/ContactService";
-import History from '../../common/History'
-import modalsPoppingComponent from "../../common/modals"
 
 export class ContactFormComponent extends React.Component{
 
@@ -17,144 +15,121 @@ export class ContactFormComponent extends React.Component{
             phoneNumber: '',
             zip: '',
             agreed: false,
-            hasSubmitted: false,
-            show: false,
-            valid: false,
+            // nameError: "",
+            // emailError: "",
+            // passwordError: ""
         }
     }
 
-    componentDidMount() {
-        this.setState({hasSubmitted: this.state.hasSubmitted})
-    }
+    //for input variables
+    handleChange(event) {
+        //console.log("new value", event.target.value);
 
-    handleChange(e) {
-        //console.log("new value", e.target.value);
+        const isCheckbox = event.target.type === "checkbox";
+
         this.setState({
-            [e.target.name]: e.target.value
+            [event.target.name]: isCheckbox
+                ? event.target.checked
+                : event.target.value
         });
-    }
-    checkValidity(){
-        if(
-            this.state.agreed === true
-            && this.state.firstName !== null
-            && this.state.lastName !== null
-            && this.state.email !== null
-            && this.state.phoneNumber !== null
-            && this.state.zip !== null){
-            this.setState({valid: true});
-        }
     }
 
     handleContactUs(contact){
         console.log(contact);
-        //this.checkValidity();
-        // if (this.state.valid){
-            console.log("it is valid");
-        //debugger
+        this.setState({isValid: false});
         contactService.createContact(contact)
                 .then(newContact => {
 
-                    this.handleShow()
-                    this.alertMessage("Thank you, we will contact you shortly! May God Bless you!")
+                    alert("Thank you, we will contact you shortly! May God Bless you!")
 
                     console.log("newContact", newContact)
-
                     this.setState({
                         firstName: newContact.firstName,
                         lastName: newContact.label,
                         email: newContact.email,
                         phoneNumber: newContact.phoneNumber,
                         zip: newContact.zip,
-                        valid: true,
-                        hasSubmitted: true,
                     })
                     this.props.history.push('/')
                 })
-        //History.push('/')
-
-        // }
-    }
-
-    handleClose = () => this.setState({show: false});
-    handleShow = () => this.setState({show: true});
-
-    alertMessage = (message) => {
-
-        console.log("show: ",this.state.show)
-        //debugger
-        return <div>
-                    <modalsPoppingComponent
-                        message={message}
-                        show={this.state.show}
-                        handleClose={this.handleClose}
-                    />
-               </div>
     }
 
     render() {
-        //console.log(this.state)
-            return (
-                <div className="container">
-                    <h1>K&J Total Care</h1>
-                    <br/>
-                    <p><i className="fa fa-phone" aria-hidden="true"></i>: 336-457-1167</p>
-                    <p><i className="fa fa-envelope-o" aria-hidden="true"></i>: kjtotalcare@gmail.com</p>
-                    <p><i className="fa fa-internet-explorer" aria-hidden="true"></i>: kjtotalcare.com</p>
-                    <br/>
-                    <br/>
-                    <Form>
-                        <Form.Row>
-                            <Form.Group as={Col} controlId="formGridFirstName">
-                                <Form.Label>Your First Name*</Form.Label>
-                                <Form.Control name="firstName"
-                                              placeholder="Please Enter Your First Name"
-                                              value={this.state.firstName}
-                                              onChange={(e) => this.handleChange(e)}/>
-                            </Form.Group>
-                            <Form.Group as={Col} controlId="formGridLastName">
-                                <Form.Label>Your Last Name*</Form.Label>
-                                <Form.Control name="lastName" placeholder="Please Enter Your Last Name"
-                                              value={this.state.lastName}
-                                              onChange={(e) => this.handleChange(e)}/>
-                            </Form.Group>
-                        </Form.Row>
-                        <Form.Group controlId="formGridEmail">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control name="email"
-                                          placeholder="Please Enter Your Email"
-                                          value={this.state.email}
+        console.log(this.state)
+        const { firstName,lastName, email, phoneNumber, zip, agreed } = this.state;
+
+        const inEnabled = agreed
+                            && firstName.length > 0
+                            && lastName.length > 0
+                            && email.includes("@")
+                            && phoneNumber.length === 10
+                            && zip.length === 5
+        console.log("inEnabled: ", inEnabled)
+
+        return (
+            <div className="container">
+                <h1>K&J Total Care</h1>
+                <br/>
+                <p><i className="fa fa-phone" aria-hidden="true"></i>: 336-457-1167</p>
+                <p><i className="fa fa-envelope-o" aria-hidden="true"></i>: kjtotalcare@gmail.com</p>
+                <p><i className="fa fa-internet-explorer" aria-hidden="true"></i>: kjtotalcare.com</p>
+                <br/>
+                <br/>
+                <Form>
+                    <Form.Row>
+                        <Form.Group as={Col} controlId="formGridFirstName">
+                            <Form.Label>Your First Name*</Form.Label>
+                            <Form.Control name="firstName"
+                                          placeholder="Please Enter Your First Name"
+                                          value={firstName}
                                           onChange={(e) => this.handleChange(e)}/>
                         </Form.Group>
-                        <Form.Row>
-                            <Form.Group as={Col} controlId="formGridPhoneNumber">
-                                <Form.Label>Phone Number*</Form.Label>
-                                <Form.Control name="phoneNumber"
-                                              type="number"
-                                              placeholder="Please Enter Your Phone Number"
-                                              value={this.state.phoneNumber}
-                                              onChange={(e) => this.handleChange(e)}/>
-                            </Form.Group>
-                            <Form.Group as={Col} controlId="formGridZipCode">
-                                <Form.Label>Zip Code Where Care Is Needed*</Form.Label>
-                                <Form.Control placeholder="Please Enter Your ZipCode"
-                                              name="zip" value={this.state.zip}
-                                              onChange={(e) => this.handleChange(e)}/>
-                            </Form.Group>
-                        </Form.Row>
-                        <Form.Group id="formGridCheckbox">
-                            <Form.Check type="checkbox" label="Agree to our all terms and conditions"
-                                        name="agreed"
-                                        value={this.state.agreed}
-                                        onChange={(e) => this.setState({agreed: true})}/>
+                        <Form.Group as={Col} controlId="formGridLastName">
+                            <Form.Label>Your Last Name*</Form.Label>
+                            <Form.Control name="lastName" placeholder="Please Enter Your Last Name"
+                                          value={lastName}
+                                          onChange={(e) => this.handleChange(e)}/>
                         </Form.Group>
-                        <Button variant="primary" type="button"
-                                onClick={() => this.handleContactUs(this.state)}>
-                            Submit
-                        </Button>
-                    </Form>
-                </div>
+                    </Form.Row>
+                    <Form.Group controlId="formGridEmail">
+                        <Form.Label>Email*</Form.Label>
+                        <Form.Control name="email"
+                                      placeholder="Please Enter Your Email"
+                                      value={email}
+                                      onChange={(e) => this.handleChange(e)}/>
+                    </Form.Group>
+                    <Form.Row>
+                        <Form.Group as={Col} controlId="formGridPhoneNumber">
+                            <Form.Label>Phone Number*</Form.Label>
+                            <Form.Control name="phoneNumber"
+                                          type="number"
+                                          placeholder="Please Enter Your Phone Number"
+                                          value={phoneNumber}
+                                          onChange={(e) => this.handleChange(e)}/>
+                        </Form.Group>
+                        <Form.Group as={Col} controlId="formGridZipCode">
+                            <Form.Label>Zip Code Where Care Is Needed</Form.Label>
+                            <Form.Control placeholder="Please Enter Your ZipCode"
+                                          name="zip" value={zip}
+                                          onChange={(e) => this.handleChange(e)}/>
+                        </Form.Group>
+                    </Form.Row>
+                    <Form.Group id="formGridCheckbox">
+                        <Form.Check type="checkbox" label="Agree to our all terms and conditions"
+                                    name="agreed"
+                                    value={agreed}
+                                    onChange={(e) => this.handleChange(e)}/>
 
-            );
+                    </Form.Group>
+                    <Button variant="primary" type="button"
+                            disabled={!inEnabled}
+                            onClick={() => this.handleContactUs(this.state)}>
+                        Submit
+                    </Button>
+                </Form>
+            </div>
+
+        );
 
     }
 }

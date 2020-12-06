@@ -1,56 +1,61 @@
-import React, { useState }from 'react';
+import React from 'react';
 import {Form,Col,Row,Button} from 'react-bootstrap';
 import reviewService from "../../../services/ReviewService";
 import StarRatingComponent from "./StarRatingComponent";
+import userService from "../../../services/UserService";
 
 export class LeaveReviewsComponent extends React.Component{
 
     constructor(props) {
         super(props);
         this.state = {
-            firstName: '',
-            lastName: '',
             title: '',
             content: '',
             timeStamp: '',
             stars: 0,
             editing: true,
             agreed: false,
-            valid: false,
+            profile: {}
         }
     }
 
-    handleChange(e) {
+    componentDidMount() {
+        userService.profile()
+            .then(profile =>  {
+
+                if(profile !== undefined) {
+                    this.setState({
+                        profile: profile
+                    })
+                }else{
+                    alert("Log in is required to leave reviews! Thank you!")
+                    this.props.history.push('/login')
+                }
+        })
+    }
+
+    //for input variables
+    handleChange(event) {
+        //console.log("new value", event.target.value);
+
+        const isCheckbox = event.target.type === "checkbox";
+
         this.setState({
-            [e.target.name]: e.target.value
+            [event.target.name]: isCheckbox
+                ? event.target.checked
+                : event.target.value
         });
-    }
-
-    checkValidity(){
-        if(
-            this.state.agreed === true
-            && this.state.timeStamp !== null
-            && this.state.firstName !== null
-            && this.state.lastName !== null
-            && this.state.title !== null
-            && this.state.content !== null){
-            this.setState({valid: true});
-        }
     }
 
     handleLeaveReviews(reviews){
         console.log(reviews);
-        //this.checkValidity();
-        // if (this.state.valid){
-        //console.log("it is valid");
+
         reviewService.createReview(reviews)
             .then(newReview => {
                 console.log("newReview", newReview)
                 if(newReview !== undefined){
                     //not really need this part
                     this.setState({
-                        firstName: newReview.firstName,
-                        lastName: newReview.lastName,
                         title: newReview.title,
                         content: newReview.content,
                         timeStamp: newReview.timeStamp,
@@ -61,10 +66,7 @@ export class LeaveReviewsComponent extends React.Component{
 
                     alert("Success! Thanks!")
 
-                    this.props.history.push('/more-blogs')
-                } else{
-                    alert("Log in is required to leave blogs! Thank you!")
-                    this.props.history.push('/login')
+                    this.props.history.push('/more-reviews')
                 }
             })
     }
@@ -76,6 +78,16 @@ export class LeaveReviewsComponent extends React.Component{
 
     render() {
         console.log(this.state)
+        const { title, content, stars, agreed} = this.state;
+
+        const inEnabled = agreed
+            && title.length > 0
+            && stars >= 0
+            && content.length > 0
+
+
+        console.log("inEnabled: ", inEnabled)
+
         return(
             <div className="container">
                 <Form>
@@ -86,7 +98,7 @@ export class LeaveReviewsComponent extends React.Component{
                         <Col sm={10}>
                             <Form.Control name="title"
                                           placeholder="Please Enter Your Title"
-                                          value={this.state.title}
+                                          value={title}
                                           onChange={(e) => this.handleChange(e)}
                             />
                         </Col>
@@ -99,8 +111,8 @@ export class LeaveReviewsComponent extends React.Component{
                         <Col sm={10}>
                             <StarRatingComponent
                                 name="stars"
-                                value={this.state.stars}
-                                stars={this.state.stars}
+                                value={stars}
+                                stars={stars}
                                 editing={this.state.editing}
                                 reivewCallback={this.handleCallback}
                                 // onChange={(e) => this.handleChange(e)}
@@ -114,7 +126,7 @@ export class LeaveReviewsComponent extends React.Component{
                             <Form.Control as="textarea" rows={5}
                                           name="content"
                                           placeholder="I Love K&J"
-                                          value={this.state.content}
+                                          value={content}
                                           onChange={(e) => this.handleChange(e)}/>
                         </Col>
 
@@ -123,14 +135,16 @@ export class LeaveReviewsComponent extends React.Component{
                     <Form.Group as={Row} controlId="formHorizontalCheck">
                         <Col sm={{ span: 10, offset: 2 }}>
                             <Form.Check label="Agree to our all terms and conditions"
-                                        value={this.state.agreed}
-                                        onChange={(e) => this.setState({agreed: true})}/>
+                                        value={agreed}
+                                        name="agreed"
+                                        onChange={(e) => this.handleChange(e)}/>
                         </Col>
                     </Form.Group>
 
                     <Form.Group as={Row}>
                         <Col sm={{ span: 10, offset: 2 }}>
                             <Button type="button"
+                                    disabled={!inEnabled}
                                     onClick={() => this.handleLeaveReviews(this.state)}>Share</Button>
                         </Col>
                     </Form.Group>

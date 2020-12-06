@@ -14,7 +14,7 @@ export class ReviewsViewComponent extends React.Component {
         reviewService.findAllReviews()
             .then(reviews => {
                 this.setState({
-                    blogs: reviews
+                    reviews: reviews
                 })
             })
     }

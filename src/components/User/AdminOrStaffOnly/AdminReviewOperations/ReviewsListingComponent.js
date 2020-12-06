@@ -38,7 +38,7 @@ export class ReviewsListingComponent extends React.Component{
         reviewService.findAllReviews()
             .then(reviews =>{
                 this.setState( {
-                    blogs: reviews
+                    reviews: reviews
                 })
             })
     }
@@ -47,7 +47,7 @@ export class ReviewsListingComponent extends React.Component{
         reviewService.findAllReviews()
             .then(reviews =>{
                 this.setState( {
-                    blogs: reviews
+                    reviews: reviews
                 })
             })
     }
@@ -55,7 +55,7 @@ export class ReviewsListingComponent extends React.Component{
     deleteReview =(review)=> {
         reviewService.deleteReview(review.id)
             .then(status => this.setState(prevState => ({
-                blogs: prevState.blogs.filter(reviews => reviews.id !== reviews.id)
+                reviews: prevState.reviews.filter(reviews => reviews.id !== reviews.id)
                 })
             ))
 

@@ -23,46 +23,32 @@ export class RegisterComponent extends React.Component{
             zip: '',
             role: '',
             agreed: false,
-            valid: false,
         }
     }
 
-    handleChange(e) {
-        //console.log("new value", e.target.value);
+    //for input variables
+    handleChange(event) {
+        //console.log("new value", event.target.value);
+
+        const isCheckbox = event.target.type === "checkbox";
+
         this.setState({
-            [e.target.name]: e.target.value
+            [event.target.name]: isCheckbox
+                ? event.target.checked
+                : event.target.value
         });
-    }
-
-    checkValidity(){
-        if(this.state.password === this.state.verifyPassword
-            && this.state.agreed === true
-            && this.state.firstName !== null
-            && this.state.lastName !== null
-            && this.state.password !== null
-            && this.state.verifyPassword !== null
-            && this.state.email !== null
-            && this.state.add1 !== null
-            && this.state.city !== null
-            && this.state.state !== null
-            && this.state.zip !== null){
-
-            this.setState({valid: true});
-        }
     }
 
     handleRegister(user){
         console.log(user);
-        this.checkValidity();
-        // if (this.state.valid){
-        //     console.log("it is valid");
+
         userService.register(user)
         //here to check whether or not allow the user to login before
         //sending to profile page if log in successfully
             .then(newUser => {
 
-                //userService.login(newUser)
                 console.log("newUser", newUser)
+                this.props.history.push('/profile')
 
                 this.setState({
                     firstName: newUser.firstName,
@@ -77,17 +63,28 @@ export class RegisterComponent extends React.Component{
                     state: newUser.state,
                     zip: newUser.zip,
                     role: newUser.role,
-                    valid: true,
                 })
-                //this.props.history.push('/profile')
-                leadToCorrectLoginUserPage(newUser, this.props.history)
+                // leadToCorrectLoginUserPage(newUser, this.props.history)
             })
-
-        //}
     }
 
     render() {
         console.log(this.state)
+        const { firstName,lastName, email, password, verifyPassword, phoneNumber, add1, add2, city, state, zip, agreed} = this.state;
+
+        const inEnabled = agreed
+            && (firstName.length) > 0
+            && (lastName.length) > 0
+            && email.includes("@")
+            && (zip.length) === 5
+            && (add1.length) > 0
+            && (city.length) > 0
+            && (state.length) > 0
+            && (password.length) > 0
+            && password === verifyPassword
+
+        console.log("inEnabled: ", inEnabled)
+
         return (
                 <div className="container">
                     <Form>
@@ -95,14 +92,14 @@ export class RegisterComponent extends React.Component{
                             <Form.Group as={Col} controlId="formGridFirstName">
                                 <Form.Label>Your First Name*</Form.Label>
                                 <Form.Control name="firstName" placeholder="Enter First Name"
-                                              value={this.state.firstName}
+                                              value={firstName}
                                               onChange={(e) => this.handleChange(e)}/>
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridLastName">
                                 <Form.Label>Your Last Name*</Form.Label>
                                 <Form.Control name="lastName" placeholder="Enter Last Name"
-                                              value={this.state.lastName}
+                                              value={lastName}
                                               onChange={(e) => this.handleChange(e)}/>
                             </Form.Group>
                         </Form.Row>
@@ -110,21 +107,16 @@ export class RegisterComponent extends React.Component{
                             <Form.Group as={Col} controlId="formGridEmail">
                                 <Form.Label>Email*</Form.Label>
                                 <Form.Control name="email" placeholder="Enter email"
-                                              value={this.state.email}
+                                              value={email}
                                               onChange={(e) => this.handleChange(e)}/>
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridPhoneNumber">
                                 <Form.Label>Phone Number</Form.Label>
                                 <Form.Control type="number" name="phoneNumber" placeholder="Enter Phone Number"
-                                              value={this.state.phoneNumber}
+                                              value={phoneNumber}
                                               onChange={(e) => this.handleChange(e)}/>
                             </Form.Group>
-                            {/*<PhoneInput*/}
-                            {/*    country="US"*/}
-                            {/*    name="phoneNumber"*/}
-                            {/*    value={this.state.phoneNumber}*/}
-                            {/*    onChange={(e) => this.handleChange(e)} />*/}
 
                         </Form.Row>
 
@@ -132,14 +124,14 @@ export class RegisterComponent extends React.Component{
                             <Form.Group as={Col} controlId="formGridPassword">
                                 <Form.Label>Password*</Form.Label>
                                 <Form.Control type="password" name="password" placeholder="Password"
-                                              value={this.state.password}
+                                              value={password}
                                               onChange={(e) => this.handleChange(e)}/>
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridVerifyPassword">
                                 <Form.Label>Password*</Form.Label>
                                 <Form.Control type="password" name="verifyPassword" placeholder="Verify Password"
-                                              value={this.state.verifyPassword}
+                                              value={verifyPassword}
                                               onChange={(e) => this.handleChange(e)}/>
                             </Form.Group>
                         </Form.Row>
@@ -148,14 +140,14 @@ export class RegisterComponent extends React.Component{
                             <Form.Group as={Col} controlId="formGridAddress1">
                                 <Form.Label>Address*</Form.Label>
                                 <Form.Control name="add1" placeholder="1234 Main St"
-                                              value={this.state.add1}
+                                              value={add1}
                                               onChange={(e) => this.handleChange(e)}/>
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridAddress2">
                                 <Form.Label>Address 2</Form.Label>
                                 <Form.Control name="add2" placeholder="Apartment, studio, or floor"
-                                              value={this.state.add2}
+                                              value={add2}
                                               onChange={(e) => this.handleChange(e)}/>
                             </Form.Group>
                         </Form.Row>
@@ -163,7 +155,7 @@ export class RegisterComponent extends React.Component{
                         <Form.Row>
                             <Form.Group as={Col} controlId="formGridCity">
                                 <Form.Label>City*</Form.Label>
-                                <Form.Control name="city" value={this.state.city}
+                                <Form.Control name="city" value={city}
                                               onChange={(e) => this.handleChange(e)}/>
                             </Form.Group>
 
@@ -235,18 +227,19 @@ export class RegisterComponent extends React.Component{
 
                             <Form.Group as={Col} controlId="formGridZip">
                                 <Form.Label>Zip*</Form.Label>
-                                <Form.Control name="zip" value={this.state.zip}
+                                <Form.Control name="zip" value={zip}
                                               onChange={(e) => this.handleChange(e)} />
                             </Form.Group>
                         </Form.Row>
 
                         <Form.Group id="formGridCheckbox">
                             <Form.Check type="checkbox" label="Agree to our all terms and conditions" name="agreed"
-                                        value={this.state.agreed}
-                                        onChange={(e) => this.setState({agreed: true})}/>
+                                        value={agreed}
+                                        onChange={(e) => this.handleChange(e)}/>
                         </Form.Group>
 
                         <Button variant="primary" type="button"
+                                disabled={!inEnabled}
                                 onClick={() => this.handleRegister(this.state)}>
                             Register
                         </Button>

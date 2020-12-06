@@ -13,28 +13,39 @@ export class LoginComponent extends React.Component{
         this.state = {
             email: '',
             password: '',
-            valid: false,
             isLoggedIn: false
         }
     }
 
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     this.setState({isLoggedIn: this.state.isLoggedIn})
-    // }
     componentDidMount() {
-        this.setState({isLoggedIn: this.state.isLoggedIn})
+        userService.profile()
+            .then(profile =>  {
+
+                if(profile !== undefined) {
+                    this.setState({isLoggedIn: !this.state.isLoggedIn})
+                }else{
+                    this.setState({isLoggedIn: false})
+                }
+            })
     }
 
-    handleChange(e) {
-        //console.log("new value", e.target.value);
+    //for input variables
+    handleChange(event) {
+        //console.log("new value", event.target.value);
+
+        const isCheckbox = event.target.type === "checkbox";
+
         this.setState({
-            [e.target.name]: e.target.value
+            [event.target.name]: isCheckbox
+                ? event.target.checked
+                : event.target.value
         });
     }
 
 
     handleLogin(user){
         console.log(user);
+
         userService.login(user)
             .then(currentUser => {
                 console.log("currentUser", currentUser)
@@ -57,65 +68,65 @@ export class LoginComponent extends React.Component{
     }
 
     render() {
-        if (this.state.isLoggedIn) {
-            return (<div>
-                logged in
-            </div>)
-        } else {
+        console.log(this.state)
+        const { email, password, isLoggedIn } = this.state;
 
-            console.log(this.state)
-            return (
-                <div>
-                    //TODO: not right yet!
-                    {this.state.isLoggedIn && <ProfileComponent/>}
-                    {!this.state.isLoggedIn &&
-                    <div className="container">
-                        <h1>Login</h1>
-                        <Form>
-                            <Form.Group controlId="formBasicEmail">
-                                <Form.Label>Email address</Form.Label>
-                                <Form.Control name="email" placeholder="Enter email" value={this.state.email}
-                                    // onChange={(e) => this.setState({email: e.target.value})}
-                                              onChange={(e) => this.handleChange(e)}
-                                />
-                            </Form.Group>
+        const inEnabled = email.includes("@") && password.length > 0
 
-                            <Form.Group controlId="formBasicPassword">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control name="password" type="password" placeholder="Password"
-                                              value={this.state.password}
-                                              onChange={(e) => this.handleChange(e)}
-                                />
+        console.log("inEnabled: ", inEnabled)
+
+        return (
+            <div>
+                {isLoggedIn && <ProfileComponent/>}
+                {!isLoggedIn &&
+                <div className="container">
+                    <h1>Login</h1>
+                    <Form>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control name="email" placeholder="Enter email" value={email}
+                                // onChange={(e) => this.setState({email: e.target.value})}
+                                          onChange={(e) => this.handleChange(e)}
+                            />
+                        </Form.Group>
+
+                        <Form.Group controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control name="password" type="password" placeholder="Password"
+                                          value={password}
+                                          onChange={(e) => this.handleChange(e)}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicCheckbox">
+                            <Form.Check type="checkbox" label="Remember Me"/>
+                        </Form.Group>
+                        <Form.Row>
+                            <Form.Group as={Col}>
+                                <Button variant="primary" type="button"
+                                        disabled={!inEnabled}
+                                        onClick={() => this.handleLogin(this.state)}>
+                                    Login
+                                </Button>
+                                <br/>
+                                <br/>
+                                <p><a href="/forgot" title="Forgot username">
+                                    Forgot username?</a></p>
+                                <p><a href="/forgot" title="Forgot password">
+                                    Forgot password?</a></p>
                             </Form.Group>
-                            <Form.Group controlId="formBasicCheckbox">
-                                <Form.Check type="checkbox" label="Remember Me"/>
-                            </Form.Group>
-                            <Form.Row>
-                                <Form.Group as={Col}>
-                                    <Button variant="primary" type="button"
-                                            onClick={() => this.handleLogin(this.state)}>
-                                        Login
+                            <Form.Group as={Col}>
+                                <Link to={`/register`}>
+                                    <Button variant="success" type="button">
+                                        Sign Up
                                     </Button>
-                                    <br/>
-                                    <br/>
-                                    <p><a href="/forgot" title="Forgot username">
-                                        Forgot username?</a></p>
-                                    <p><a href="/forgot" title="Forgot password">
-                                        Forgot password?</a></p>
-                                </Form.Group>
-                                <Form.Group as={Col}>
-                                    <Link to={`/register`}>
-                                        <Button variant="success" type="button">
-                                            Sign Up
-                                        </Button>
-                                    </Link>
-                                </Form.Group>
-                            </Form.Row>
-                        </Form>
-                    </div>
-                    }
+                                </Link>
+                            </Form.Group>
+                        </Form.Row>
+                    </Form>
                 </div>
-            )
-        }
+                }
+            </div>
+        )
+
     }
 }

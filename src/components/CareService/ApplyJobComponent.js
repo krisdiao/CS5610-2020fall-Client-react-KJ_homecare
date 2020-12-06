@@ -22,15 +22,19 @@ export class ApplyJobComponent extends React.Component{
             resume: null,
             selectedFile: null,
             agreed: false,
-            valid: false,
         }
     }
 
     //for input variables
-    handleChange(e) {
-        //console.log("new value", e.target.value);
+    handleChange(event) {
+        //console.log("new value", event.target.value);
+
+        const isCheckbox = event.target.type === "checkbox";
+
         this.setState({
-            [e.target.name]: e.target.value
+            [event.target.name]: isCheckbox
+                ? event.target.checked
+                : event.target.value
         });
     }
 
@@ -49,31 +53,14 @@ export class ApplyJobComponent extends React.Component{
         });
     }
 
-    checkValidity(){
-        if(
-            this.state.agreed === true
-            && this.state.firstName !== null
-            && this.state.lastName !== null
-            && this.state.email !== null
-            && this.state.phoneNumber !== null
-            && this.state.jobPosition !== null
-            && this.state.add1 !== null
-            && this.state.city !== null
-            && this.state.state !== null
-            && this.state.zip !== null){
-            this.setState({valid: true});
-        }
-    }
-
     handleApplyJob(application){
         console.log(application);
-        //this.checkValidity();
-        // if (this.state.valid){
-            //console.log("it is valid");
-        //debugger
+
         jobApplicationService.createJobApplication(application)
                 .then(newApplication => {
+
                     alert("Thank you, we will contact you shortly! May God Bless you!")
+
                     console.log("newApplication", newApplication)
 
                     //not really need this part
@@ -88,16 +75,28 @@ export class ApplyJobComponent extends React.Component{
                         state: newApplication.state,
                         zip: newApplication.zip,
                         jobPosition: newApplication.jobPosition,
-                        valid: true,
                     })
                     this.props.history.push('/')
                 })
-        //History.push('/')
-        // }
     }
 
     render() {
         console.log(this.state)
+        const { firstName,lastName, email, phoneNumber, add1, add2, city, state, zip, agreed, jobPosition, resume, selectedFile } = this.state;
+
+        const inEnabled = agreed
+            && firstName.length > 0
+            && lastName.length > 0
+            && email.includes("@")
+            && phoneNumber.length === 10
+            && zip.length === 5
+            && add1.length > 0
+            && city.length > 0
+            && state.length > 0
+            && jobPosition.length > 0
+
+        console.log("inEnabled: ", inEnabled)
+
         return(
             <div className="container">
                 <h1>Come to Work @ K&J Total Care! </h1>
@@ -110,7 +109,7 @@ export class ApplyJobComponent extends React.Component{
                             <Form.Control
                                 name="firstName"
                                 placeholder="Enter Your First Name"
-                                value={this.state.firstName}
+                                value={firstName}
                                 onChange={(e) => this.handleChange(e)}
                             />
                         </Form.Group>
@@ -118,7 +117,7 @@ export class ApplyJobComponent extends React.Component{
                         <Form.Group as={Col} controlId="formGridLastName">
                             <Form.Label>Your Last Name*</Form.Label>
                             <Form.Control name="lastName" placeholder="Enter Your Last Name"
-                                          value={this.state.lastName}
+                                          value={lastName}
                                           onChange={(e) => this.handleChange(e)}/>
                         </Form.Group>
                     </Form.Row>
@@ -127,7 +126,7 @@ export class ApplyJobComponent extends React.Component{
                         <Form.Group as={Col} controlId="formGridEmail">
                             <Form.Label>Email*</Form.Label>
                             <Form.Control name="email" placeholder="Enter email"
-                                          value={this.state.email}
+                                          value={email}
                                           onChange={(e) => this.handleChange(e)}/>
                         </Form.Group>
                         <Form.Group as={Col} controlId="formGridPhoneNumber">
@@ -135,7 +134,7 @@ export class ApplyJobComponent extends React.Component{
                             <Form.Control name="phoneNumber"
                                           type="number"
                                           placeholder="Please Enter Your Phone Number"
-                                          value={this.state.phoneNumber}
+                                          value={phoneNumber}
                                           onChange={(e) => this.handleChange(e)}/>
                         </Form.Group>
                     </Form.Row>
@@ -145,7 +144,7 @@ export class ApplyJobComponent extends React.Component{
                             <Form.Label>Address*</Form.Label>
                             <Form.Control name="add1"
                                           placeholder="1234 Main St"
-                                          value={this.state.add1}
+                                          value={add1}
                                           onChange={(e) => this.handleChange(e)} />
                         </Form.Group>
 
@@ -153,7 +152,7 @@ export class ApplyJobComponent extends React.Component{
                             <Form.Label>Address 2</Form.Label>
                             <Form.Control name="add2"
                                           placeholder="Apartment, studio, or floor"
-                                          value={this.state.add2}
+                                          value={add2}
                                           onChange={(e) => this.handleChange(e)}/>
                         </Form.Group>
                     </Form.Row>
@@ -162,7 +161,7 @@ export class ApplyJobComponent extends React.Component{
                         <Form.Group as={Col} controlId="formGridCity">
                             <Form.Label>City*</Form.Label>
                             <Form.Control name="city"
-                                          value={this.state.city}
+                                          value={city}
                                           onChange={(e) => this.handleChange(e)}/>
                         </Form.Group>
 
@@ -237,7 +236,7 @@ export class ApplyJobComponent extends React.Component{
                         <Form.Group as={Col} controlId="formGridZip">
                             <Form.Label>Zip*</Form.Label>
                             <Form.Control name="zip"
-                                          value={this.state.zip}
+                                          value={zip}
                                           onChange={(e) => this.handleChange(e)}/>
                         </Form.Group>
                     </Form.Row>
@@ -247,7 +246,7 @@ export class ApplyJobComponent extends React.Component{
                             <Form.Label>Job Position*</Form.Label>
                             <Form.Control as="select" defaultValue="Choose..."
                                           name="jobPosition"
-                                          value={this.state.jobPosition}
+                                          value={jobPosition}
                                           onChange={(e) => this.handleChange(e)}>
                                             <option value>- Select -</option>
                                             <option value="CompanionOrSitter">Companion/Sitter</option>
@@ -270,11 +269,12 @@ export class ApplyJobComponent extends React.Component{
                     <Form.Group id="formGridCheckbox">
                         <Form.Check type="checkbox" label="Agree to our all terms and conditions"
                                     name="agreed"
-                                    value={this.state.agreed}
-                                    onChange={(e) => this.setState({agreed: true})}/>
+                                    value={agreed}
+                                    onChange={(e) => this.handleChange(e)}/>
                     </Form.Group>
 
                     <Button variant="primary" type="button"
+                            disabled={!inEnabled}
                             onClick={() => this.handleApplyJob(this.state)}>
                         Submit
                     </Button>

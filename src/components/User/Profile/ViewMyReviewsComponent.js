@@ -9,7 +9,7 @@ export class ViewMyReviewsComponent extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            blogs:[],
+            reviews:[],
             profile: this.props.location.profileViewProps.profile,
             editing: false
         }
@@ -19,16 +19,16 @@ export class ViewMyReviewsComponent extends React.Component{
         reviewService.findReviewsForUser(this.state.profile.id)
             .then(reviews =>{
                 this.setState( {
-                    blogs: reviews
+                    reviews: reviews
                 })
             })
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         reviewService.findReviewsForUser(this.state.profile.id)
-            .then(blogs =>{
+            .then(reviews =>{
                 this.setState( {
-                    blogs: blogs
+                    reviews: reviews
                 })
             })
     }
@@ -36,13 +36,13 @@ export class ViewMyReviewsComponent extends React.Component{
     deleteReview =(review)=> {
         reviewService.deleteReview(review.id)
             .then(status => this.setState(prevState => ({
-                    blogs: prevState.blogs.filter(reviews => reviews.id !== reviews.id)
+                reviews: prevState.reviews.filter(reviews => reviews.id !== reviews.id)
                 })
             ))
     }
 
     render() {
-        // console.log(this.state.blogs)
+        // console.log(this.state.reviews)
         return(
             <div>
                 <Container>
@@ -62,7 +62,7 @@ export class ViewMyReviewsComponent extends React.Component{
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {this.state.blogs.map(review =>
+                                {this.state.reviews.map(review =>
                                     <tr>
                                         <td>
                                             <Link to={{

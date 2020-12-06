@@ -48,7 +48,7 @@ export class ReviewsEditingComponent extends React.Component{
 
 
     render() {
-        console.log(this.state.blog)
+        console.log(this.state.review)
         return(
             <div className="container">
                 <Form>
