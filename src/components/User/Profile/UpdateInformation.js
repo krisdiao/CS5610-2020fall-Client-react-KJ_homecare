@@ -1,5 +1,5 @@
 import React from "react";
-import {Container , Row , Col,Form,Button} from 'react-bootstrap';
+import {Container , Row , Col,Form,Button, Modal} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import * as userService from "../../../services/UserService";
 import ProfileComponent from "./ProfileComponent";
@@ -14,7 +14,8 @@ export default class UpdateInformation extends React.Component {
         this.state = {
             profile: this.props.location.profileViewProps.profile,
             editing: false,
-            agree: ''
+            agree: '',
+            isOpen: false
         }
     }
 
@@ -24,6 +25,13 @@ export default class UpdateInformation extends React.Component {
                 profile: profile
             }))
     }
+
+    openModal = () => this.setState({ isOpen: true });
+    closeModal = () => {
+        this.setState({ isOpen: false })
+        leadToCorrectLoginUserPage(this.state.profile, this.props.history)
+    };
+
     //
     // handleLogout = () =>
     //     userService.logout()
@@ -34,17 +42,17 @@ export default class UpdateInformation extends React.Component {
 
     handleSaveProfile(profile){
         console.log(profile.profile.id);
-        //this.checkValidity();
         userService.updateUser(profile.profile.id, profile.profile)
             .then(newProfile => {
+                this.openModal();
+
                 console.log("newProfile", newProfile)
                 this.setState({
                     profile: newProfile,
                     editing: false,
                 })
                 console.log(this.state.profile)
-                alert("Success! Thanks!")
-                leadToCorrectLoginUserPage(newProfile, this.props.history)
+                // leadToCorrectLoginUserPage(newProfile, this.props.history)
 
                 //this.props.history.push('/update-information')
             })
@@ -314,7 +322,18 @@ export default class UpdateInformation extends React.Component {
                                     <Col>
                                         <Button variant="primary" type="button" className="pull-left"
                                                 disabled={!inEnabled}
-                                                onClick={() => this.handleSaveProfile(this.state)}>Save</Button>
+                                                onClick={() => this.handleSaveProfile(this.state)}>
+                                            Save
+                                        </Button>
+                                        <Modal show={this.state.isOpen} onHide={this.closeModal}>
+                                            <Modal.Header>
+                                                <Modal.Title>Hi there!</Modal.Title>
+                                            </Modal.Header>
+                                            <Modal.Body>Success! Thanks!</Modal.Body>
+                                            <Modal.Footer>
+                                                <button onClick={this.closeModal}>Close</button>
+                                            </Modal.Footer>
+                                        </Modal>
                                     </Col>
                                 </Form.Group>
                             </Form>

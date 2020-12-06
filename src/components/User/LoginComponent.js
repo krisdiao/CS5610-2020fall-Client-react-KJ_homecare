@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form,Button,Col} from 'react-bootstrap';
+import {Form,Button,Col, Modal} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import ProfileComponent from "./Profile/ProfileComponent"
 import userService from "../../services/UserService";
@@ -13,7 +13,8 @@ export class LoginComponent extends React.Component{
         this.state = {
             email: '',
             password: '',
-            isLoggedIn: false
+            isLoggedIn: false,
+            isOpen: false
         }
     }
 
@@ -28,6 +29,11 @@ export class LoginComponent extends React.Component{
                 }
             })
     }
+
+    openModal = () => this.setState({ isOpen: true });
+    closeModal = () => {
+        this.setState({ isOpen: false })
+    };
 
     //for input variables
     handleChange(event) {
@@ -62,7 +68,8 @@ export class LoginComponent extends React.Component{
                     leadToCorrectLoginUserPage(currentUser, this.props.history)
 
                 } else{
-                    alert("login failure")
+                    // alert("login failure")
+                    this.openModal()
                 }
             })
     }
@@ -107,6 +114,21 @@ export class LoginComponent extends React.Component{
                                         onClick={() => this.handleLogin(this.state)}>
                                     Login
                                 </Button>
+                                <Modal show={this.state.isOpen} onHide={this.closeModal}>
+                                    <Modal.Header>
+                                        <Modal.Title>Hi there!</Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>Login Failure</Modal.Body>
+                                    <Modal.Body>Have you registered?</Modal.Body>
+                                    <Modal.Footer>
+                                        <Button variant="success" onClick={this.closeModal}>Yes</Button>
+                                        <Link to={`/register`}>
+                                            <Button variant="outline-primary" type="button">
+                                                Sign Up
+                                            </Button>
+                                        </Link>
+                                    </Modal.Footer>
+                                </Modal>
                                 <br/>
                                 <br/>
                                 <p><a href="/forgot" title="Forgot username">

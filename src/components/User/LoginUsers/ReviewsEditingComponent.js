@@ -1,5 +1,5 @@
 import React from "react";
-import {Form,Col,Row,Button} from 'react-bootstrap';
+import {Form,Col,Row,Button, Modal} from 'react-bootstrap';
 import reviewService from "../../../services/ReviewService"
 import StarRatingComponent from "./StarRatingComponent";
 
@@ -10,18 +10,23 @@ export class ReviewsEditingComponent extends React.Component{
         super(props);
         this.state = {
             review: this.props.location.reviewViewProps.review,
-            editing: true
+            editing: true,
+            isOpen: false
         }
     }
 
+    openModal = () => this.setState({ isOpen: true });
+    closeModal = () => {
+        this.setState({ isOpen: false })
+        this.props.history.push('/update-review')
+    };
+
     handleSaveReview(review){
         console.log(review);
-        //this.checkValidity();
-        // if (this.state.valid){
-        //console.log("it is valid");
-        //debugger
         reviewService.updateReview(review.review.id, review.review)
             .then(newReview => {
+                this.openModal();
+
                 console.log("newReview", newReview)
 
                 //not really need this part
@@ -30,9 +35,9 @@ export class ReviewsEditingComponent extends React.Component{
                     editing: false,
                 })
 
-                alert("Success! Thanks!")
-
-                this.props.history.push('/update-review')
+                // alert("Success! Thanks!")
+                //
+                // this.props.history.push('/update-review')
             })
         // }
     }
@@ -121,7 +126,18 @@ export class ReviewsEditingComponent extends React.Component{
                     <Form.Group as={Row}>
                         <Col sm={{ span: 10, offset: 2 }}>
                             <Button type="button"
-                                    onClick={() => this.handleSaveReview(this.state)}>Save</Button>
+                                    onClick={() => this.handleSaveReview(this.state)}>
+                                Save
+                            </Button>
+                            <Modal show={this.state.isOpen} onHide={this.closeModal}>
+                                <Modal.Header>
+                                    <Modal.Title>Hi there!</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>Success! Thanks!</Modal.Body>
+                                <Modal.Footer>
+                                    <button onClick={this.closeModal}>Close</button>
+                                </Modal.Footer>
+                            </Modal>
                         </Col>
                     </Form.Group>
                 </Form>

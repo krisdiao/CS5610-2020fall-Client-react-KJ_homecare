@@ -1,5 +1,5 @@
-import React, { useState }from 'react';
-import {Form,Col,Row,Button} from 'react-bootstrap';
+import React from 'react';
+import {Form,Col,Row,Button, Modal} from 'react-bootstrap';
 import blogService from "../../../../services/BlogService";
 
 export class CreateBlogsByStaffsComponent extends React.Component{
@@ -13,33 +13,36 @@ export class CreateBlogsByStaffsComponent extends React.Component{
             content: '',
             timeStamp: '',
             valid: false,
+            isOpen: false
         }
     }
 
-    handleChange(e) {
+    openModal = () => this.setState({ isOpen: true });
+    closeModal = () => {
+        this.setState({ isOpen: false })
+        this.props.history.push('/update-blog-for-staff')
+    };
+
+    //for input variables
+    handleChange(event) {
+        //console.log("new value", event.target.value);
+
+        const isCheckbox = event.target.type === "checkbox";
+
         this.setState({
-            [e.target.name]: e.target.value
+            [event.target.name]: isCheckbox
+                ? event.target.checked
+                : event.target.value
         });
-    }
-
-    checkValidity(){
-        if(
-            this.state.timeStamp !== null
-            && this.state.firstName !== null
-            && this.state.lastName !== null
-            && this.state.title !== null
-            && this.state.content !== null){
-            this.setState({valid: true});
-        }
     }
 
     handleCreateBlog(blog){
         console.log(blog);
-        //this.checkValidity();
-        // if (this.state.valid){
-        //console.log("it is valid");
+
         blogService.createBlog(blog)
             .then(newBlog => {
+                this.openModal();
+
                 console.log("newBlog", newBlog)
 
                 //not really need this part
@@ -51,10 +54,10 @@ export class CreateBlogsByStaffsComponent extends React.Component{
                     timeStamp: newBlog.timeStamp,
                     valid: true,
                 })
-
-                alert("Success! Thanks!")
-
-                this.props.history.push('/update-blog-for-staff')
+                //
+                // alert("Success! Thanks!")
+                //
+                // this.props.history.push('/update-blog-for-staff')
             })
         // }
     }
@@ -93,6 +96,15 @@ export class CreateBlogsByStaffsComponent extends React.Component{
                         <Col sm={{ span: 10, offset: 2 }}>
                             <Button type="button"
                                     onClick={() => this.handleCreateBlog(this.state)}>Create</Button>
+                            <Modal show={this.state.isOpen} onHide={this.closeModal}>
+                                <Modal.Header>
+                                    <Modal.Title>Hi there!</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>Success! Thanks!</Modal.Body>
+                                <Modal.Footer>
+                                    <button onClick={this.closeModal}>Close</button>
+                                </Modal.Footer>
+                            </Modal>
                         </Col>
                     </Form.Group>
                 </Form>

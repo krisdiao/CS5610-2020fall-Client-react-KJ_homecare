@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form,Button,Col} from 'react-bootstrap';
+import {Form,Button,Col, Modal} from 'react-bootstrap';
 import jobApplicationService from "../../services/JobApplicationService";
 import History from "../../common/History";
 // import FileUploadComponent  from "./fileUploadComponent"
@@ -22,8 +22,15 @@ export class ApplyJobComponent extends React.Component{
             resume: null,
             selectedFile: null,
             agreed: false,
+            isOpen: false
         }
     }
+
+    openModal = () => this.setState({ isOpen: true });
+    closeModal = () => {
+        this.setState({ isOpen: false })
+        this.props.history.push('/')
+    };
 
     //for input variables
     handleChange(event) {
@@ -58,25 +65,8 @@ export class ApplyJobComponent extends React.Component{
 
         jobApplicationService.createJobApplication(application)
                 .then(newApplication => {
-
-                    alert("Thank you, we will contact you shortly! May God Bless you!")
-
+                    this.openModal();
                     console.log("newApplication", newApplication)
-
-                    //not really need this part
-                    this.setState({
-                        firstName: newApplication.firstName,
-                        lastName: newApplication.label,
-                        email: newApplication.email,
-                        phoneNumber: newApplication.phoneNumber,
-                        add1: newApplication.add1,
-                        add2: newApplication.add1,
-                        city: newApplication.city,
-                        state: newApplication.state,
-                        zip: newApplication.zip,
-                        jobPosition: newApplication.jobPosition,
-                    })
-                    this.props.history.push('/')
                 })
     }
 
@@ -278,6 +268,16 @@ export class ApplyJobComponent extends React.Component{
                             onClick={() => this.handleApplyJob(this.state)}>
                         Submit
                     </Button>
+                    <Modal show={this.state.isOpen} onHide={this.closeModal}>
+                        <Modal.Header>
+                            <Modal.Title>Hi there!</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>Thank you, we will contact you shortly!</Modal.Body>
+                        <Modal.Body>May God Bless you!</Modal.Body>
+                        <Modal.Footer>
+                            <button onClick={this.closeModal}>Close</button>
+                        </Modal.Footer>
+                    </Modal>
                 </Form>
             </div>
         )

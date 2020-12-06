@@ -1,6 +1,6 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Form,Button,Col} from 'react-bootstrap';
+import {Form,Button,Col, Modal} from 'react-bootstrap';
 import "font-awesome/css/font-awesome.css";
 import userService from "../../services/UserService";
 
@@ -41,14 +41,13 @@ export class RegisterComponent extends React.Component{
 
     handleRegister(user){
         console.log(user);
-
         userService.register(user)
         //here to check whether or not allow the user to login before
         //sending to profile page if log in successfully
             .then(newUser => {
 
-                console.log("newUser", newUser)
                 this.props.history.push('/profile')
+                console.log("newUser", newUser)
 
                 this.setState({
                     firstName: newUser.firstName,

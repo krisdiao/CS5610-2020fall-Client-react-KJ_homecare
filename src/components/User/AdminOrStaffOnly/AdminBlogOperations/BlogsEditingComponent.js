@@ -1,5 +1,5 @@
 import React from "react";
-import {Form,Col,Row,Button} from 'react-bootstrap';
+import {Form,Col,Row,Button, Modal} from 'react-bootstrap';
 import blogService from "../../../../services/BlogService";
 import userService from "../../../../services/UserService";
 
@@ -13,7 +13,8 @@ export class BlogsEditingComponent extends React.Component{
         this.state = {
             blog: this.props.location.blogViewProps.blog,
             editing: false,
-            profile: ''
+            profile: '',
+            isOpen: false
         }
     }
 
@@ -24,14 +25,19 @@ export class BlogsEditingComponent extends React.Component{
             }))
     }
 
+    openModal = () => this.setState({ isOpen: true });
+    closeModal = () => {
+        this.setState({ isOpen: false })
+        leadToCorrectLoginUserPage(this.state.profile, this.props.history)
+    };
+
     handleSaveBlog(blog){
         console.log(blog.blog.id);
-        //this.checkValidity();
-        // if (this.state.valid){
-        //console.log("it is valid");
-        //debugger
+
         blogService.updateBlog(blog.blog.id, blog.blog)
             .then(newBlog => {
+                this.openModal();
+
                 console.log("newBlog", newBlog)
 
                 //not really need this part
@@ -40,8 +46,8 @@ export class BlogsEditingComponent extends React.Component{
                     editing: false,
                 })
 
-                alert("Success! Thanks!")
-                leadToCorrectLoginUserPage(this.state.profile, this.props.history)
+                // alert("Success! Thanks!")
+                // leadToCorrectLoginUserPage(this.state.profile, this.props.history)
 
                 //this.props.history.push('/update-blog')
             })
@@ -107,7 +113,18 @@ export class BlogsEditingComponent extends React.Component{
                     <Form.Group as={Row}>
                         <Col sm={{ span: 10, offset: 2 }}>
                             <Button type="button"
-                                    onClick={() => this.handleSaveBlog(this.state)}>Save</Button>
+                                    onClick={() => this.handleSaveBlog(this.state)}
+                            >Save
+                            </Button>
+                            <Modal show={this.state.isOpen} onHide={this.closeModal}>
+                                <Modal.Header>
+                                    <Modal.Title>Hi there!</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>Success! Thanks!</Modal.Body>
+                                <Modal.Footer>
+                                    <button onClick={this.closeModal}>Close</button>
+                                </Modal.Footer>
+                            </Modal>
                         </Col>
                     </Form.Group>
                 </Form>

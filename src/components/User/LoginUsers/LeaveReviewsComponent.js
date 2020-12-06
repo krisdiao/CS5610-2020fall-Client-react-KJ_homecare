@@ -1,8 +1,9 @@
 import React from 'react';
-import {Form,Col,Row,Button} from 'react-bootstrap';
+import {Form,Col,Row,Button, Modal} from 'react-bootstrap';
 import reviewService from "../../../services/ReviewService";
 import StarRatingComponent from "./StarRatingComponent";
 import userService from "../../../services/UserService";
+import modalsPoppingComponent from "../../../common/modals"
 
 export class LeaveReviewsComponent extends React.Component{
 
@@ -15,6 +16,7 @@ export class LeaveReviewsComponent extends React.Component{
             stars: 0,
             editing: true,
             agreed: false,
+            isOpen: false,
             profile: {}
         }
     }
@@ -28,11 +30,27 @@ export class LeaveReviewsComponent extends React.Component{
                         profile: profile
                     })
                 }else{
+                    // return <modalsPoppingComponent
+                    //     message="Log in is required to leave reviews! Thank you!"
+                    //     isOpen={true}
+                    //     modalCallback={this.handleModalCallback}
+                    // />
                     alert("Log in is required to leave reviews! Thank you!")
                     this.props.history.push('/login')
                 }
         })
     }
+
+    openModal = () => this.setState({ isOpen: true });
+    closeModal = () => {
+        this.setState({ isOpen: false })
+        this.props.history.push('/login')
+    };
+
+    // //receiving data from child
+    // handleModalCallback = () =>{
+    //    this.closeModal();
+    // }
 
     //for input variables
     handleChange(event) {
@@ -52,6 +70,7 @@ export class LeaveReviewsComponent extends React.Component{
 
         reviewService.createReview(reviews)
             .then(newReview => {
+                this.openModal();
                 console.log("newReview", newReview)
                 if(newReview !== undefined){
                     //not really need this part
@@ -63,10 +82,6 @@ export class LeaveReviewsComponent extends React.Component{
                         agreed: true,
                         valid: newReview.valid,
                     })
-
-                    alert("Success! Thanks!")
-
-                    this.props.history.push('/more-reviews')
                 }
             })
     }
@@ -145,7 +160,19 @@ export class LeaveReviewsComponent extends React.Component{
                         <Col sm={{ span: 10, offset: 2 }}>
                             <Button type="button"
                                     disabled={!inEnabled}
-                                    onClick={() => this.handleLeaveReviews(this.state)}>Share</Button>
+                                    onClick={() => this.handleLeaveReviews(this.state)}>
+                                Share
+                            </Button>
+                            <Modal show={this.state.isOpen} onHide={this.closeModal}>
+                                <Modal.Header>
+                                    <Modal.Title>Hi there!</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>Thank you, we will contact you shortly!</Modal.Body>
+                                <Modal.Body>May God Bless you!</Modal.Body>
+                                <Modal.Footer>
+                                    <button onClick={this.closeModal}>Close</button>
+                                </Modal.Footer>
+                            </Modal>
                         </Col>
                     </Form.Group>
                 </Form>

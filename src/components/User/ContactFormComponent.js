@@ -1,6 +1,6 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Form,Button,Col} from 'react-bootstrap';
+import {Form, Button, Col, Modal} from 'react-bootstrap';
 import "font-awesome/css/font-awesome.css";
 import contactService from "../../services/ContactService";
 
@@ -15,11 +15,18 @@ export class ContactFormComponent extends React.Component{
             phoneNumber: '',
             zip: '',
             agreed: false,
+            isOpen: false
             // nameError: "",
             // emailError: "",
             // passwordError: ""
         }
     }
+
+    openModal = () => this.setState({ isOpen: true });
+    closeModal = () => {
+        this.setState({ isOpen: false })
+        this.props.history.push('/')
+    };
 
     //for input variables
     handleChange(event) {
@@ -36,21 +43,10 @@ export class ContactFormComponent extends React.Component{
 
     handleContactUs(contact){
         console.log(contact);
-        this.setState({isValid: false});
         contactService.createContact(contact)
                 .then(newContact => {
-
-                    alert("Thank you, we will contact you shortly! May God Bless you!")
-
+                    this.openModal();
                     console.log("newContact", newContact)
-                    this.setState({
-                        firstName: newContact.firstName,
-                        lastName: newContact.label,
-                        email: newContact.email,
-                        phoneNumber: newContact.phoneNumber,
-                        zip: newContact.zip,
-                    })
-                    this.props.history.push('/')
                 })
     }
 
@@ -126,9 +122,18 @@ export class ContactFormComponent extends React.Component{
                             onClick={() => this.handleContactUs(this.state)}>
                         Submit
                     </Button>
+                    <Modal show={this.state.isOpen} onHide={this.closeModal}>
+                        <Modal.Header>
+                            <Modal.Title>Hi there!</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>Thank you, we will contact you shortly!</Modal.Body>
+                        <Modal.Body>May God Bless you!</Modal.Body>
+                        <Modal.Footer>
+                            <button onClick={this.closeModal}>Close</button>
+                        </Modal.Footer>
+                    </Modal>
                 </Form>
             </div>
-
         );
 
     }
