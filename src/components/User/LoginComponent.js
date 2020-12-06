@@ -14,7 +14,8 @@ export class LoginComponent extends React.Component{
             email: '',
             password: '',
             isLoggedIn: false,
-            isOpen: false
+            isOpen: false,
+            isForgot: false
         }
     }
 
@@ -30,9 +31,14 @@ export class LoginComponent extends React.Component{
             })
     }
 
-    openModal = () => this.setState({ isOpen: true });
+    openModal = () => this.setState({ isForgot: true });
     closeModal = () => {
-        this.setState({ isOpen: false })
+        this.setState({ isForgot: false })
+    };
+
+    openForgot = () => this.setState({ isForgot: true });
+    closeForgot = () => {
+        this.setState({ isForgot: false })
     };
 
     //for input variables
@@ -131,10 +137,43 @@ export class LoginComponent extends React.Component{
                                 </Modal>
                                 <br/>
                                 <br/>
-                                <p><a href="/forgot" title="Forgot username">
-                                    Forgot username?</a></p>
-                                <p><a href="/forgot" title="Forgot password">
-                                    Forgot password?</a></p>
+                                <p><a title="Forgot password" type="button"
+                                    onClick={()=>this.openForgot()}>
+                                    Forgot password?
+                                </a></p>
+                                <Modal show={this.state.isForgot} onHide={this.closeForgot}>
+                                    <Modal.Header>
+                                        <Modal.Title>Hi there!</Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        <Form.Group controlId="formBasicEmail">
+                                            <Form.Label>Email address</Form.Label>
+                                            <Form.Control name="email" placeholder="Enter email" value={email}
+                                                // onChange={(e) => this.setState({email: e.target.value})}
+                                                          onChange={(e) => this.handleChange(e)}
+                                            />
+                                        </Form.Group>
+                                    </Modal.Body>
+                                    <Modal.Body>An email has been sent with a new password.</Modal.Body>
+                                    <Modal.Body>Please check!</Modal.Body>
+                                    <Modal.Footer>
+                                        <Button variant="success" onClick={this.closeForgot}>Got it!</Button>
+                                    </Modal.Footer>
+                                </Modal>
+                                {/*<p><a title="Forgot email" type="button"*/}
+                                {/*      onClick={()=>this.openForgot()}>*/}
+                                {/*    Forgot email?*/}
+                                {/*</a></p>*/}
+                                {/*<Modal show={this.state.isForgot} onHide={this.closeForgot}>*/}
+                                {/*    <Modal.Header>*/}
+                                {/*        <Modal.Title>Hi there!</Modal.Title>*/}
+                                {/*    </Modal.Header>*/}
+                                {/*    <Modal.Body>An email has been sent with a new password.</Modal.Body>*/}
+                                {/*    <Modal.Body>Please check!</Modal.Body>*/}
+                                {/*    <Modal.Footer>*/}
+                                {/*        <Button variant="success" onClick={this.closeForgot}>Got it!</Button>*/}
+                                {/*    </Modal.Footer>*/}
+                                {/*</Modal>*/}
                             </Form.Group>
                             <Form.Group as={Col}>
                                 <Link to={`/register`}>
