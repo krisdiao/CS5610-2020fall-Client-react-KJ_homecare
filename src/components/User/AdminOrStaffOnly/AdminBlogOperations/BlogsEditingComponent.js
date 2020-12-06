@@ -45,13 +45,7 @@ export class BlogsEditingComponent extends React.Component{
                    blog: newBlog,
                     editing: false,
                 })
-
-                // alert("Success! Thanks!")
-                // leadToCorrectLoginUserPage(this.state.profile, this.props.history)
-
-                //this.props.history.push('/update-blog')
             })
-        // }
     }
 
 

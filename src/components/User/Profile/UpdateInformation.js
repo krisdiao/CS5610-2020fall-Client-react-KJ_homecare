@@ -52,9 +52,6 @@ export default class UpdateInformation extends React.Component {
                     editing: false,
                 })
                 console.log(this.state.profile)
-                // leadToCorrectLoginUserPage(newProfile, this.props.history)
-
-                //this.props.history.push('/update-information')
             })
     }
 

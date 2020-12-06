@@ -34,12 +34,7 @@ export class ReviewsEditingComponent extends React.Component{
                     review: newReview,
                     editing: false,
                 })
-
-                // alert("Success! Thanks!")
-                //
-                // this.props.history.push('/update-review')
-            })
-        // }
+        })
     }
 
 

@@ -54,12 +54,7 @@ export class CreateBlogsComponent extends React.Component{
                     timeStamp: newBlog.timeStamp,
                     valid: true,
                 })
-
-                // alert("Success! Thanks!")
-                //
-                // this.props.history.push('/update-blog')
             })
-        // }
     }
 
     render() {
