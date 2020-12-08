@@ -121,7 +121,6 @@ export class UsersManagementComponent extends React.Component{
                                     <tr>
                                         <th>Last Name</th>
                                         <th>First Name</th>
-                                        <th>Password</th>
                                         <th>E-mail address</th>
                                         <th>Phone Number</th>
                                         <th>Address 1</th>
@@ -137,7 +136,6 @@ export class UsersManagementComponent extends React.Component{
                                     <tr>
                                         <td>{user.lastName}</td>
                                         <td>{user.firstName}</td>
-                                        <td>{user.password}</td>
                                         <td>{user.email}</td>
                                         <td>{user.phoneNumber}</td>
                                         <td>{user.add1}</td>

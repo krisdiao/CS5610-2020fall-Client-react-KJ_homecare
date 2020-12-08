@@ -12,9 +12,8 @@ export default class UpdateInformation extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            profile: this.props.location.profileViewProps.profile,
+            profile: '',
             editing: false,
-            agree: '',
             isOpen: false
         }
     }
@@ -56,7 +55,7 @@ export default class UpdateInformation extends React.Component {
     }
 
     render() {
-        console.log(this.state)
+        console.log(this.state.profile)
 
         const { firstName,lastName, email, password, verifyPassword, phoneNumber, add1, add2, city, state, zip} = this.state.profile;
 
@@ -155,7 +154,7 @@ export default class UpdateInformation extends React.Component {
                                     <Col sm={4}>
                                         <Form.Control
                                             types="text"
-                                            value={this.state.profile.password}
+                                            // value={this.state.profile.password}
                                             onChange={(event) => {
                                                 const newPassword = event.target.value
                                                 this.setState(prevState => ({
@@ -170,7 +169,7 @@ export default class UpdateInformation extends React.Component {
                                     <Col sm={4}>
                                         <Form.Control
                                             types="text"
-                                            value={this.state.profile.verifyPassword}
+                                            // value={this.state.profile.verifyPassword}
                                             onChange={(event) => {
                                                 const newVerifyPassword = event.target.value
                                                 this.setState(prevState => ({

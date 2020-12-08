@@ -31,9 +31,9 @@ export class LoginComponent extends React.Component{
             })
     }
 
-    openModal = () => this.setState({ isForgot: true });
+    openModal = () => this.setState({ isOpen: true });
     closeModal = () => {
-        this.setState({ isForgot: false })
+        this.setState({ isOpen: false })
     };
 
     openForgot = () => this.setState({ isForgot: true });
