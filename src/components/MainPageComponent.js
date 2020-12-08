@@ -66,11 +66,11 @@ export class MainPageComponent extends React.Component{
                     <div>
                         <Route path="/"
                                exact component={LandingPageComponent}/>
-                        <Route path="/about-KJ"
+                        <Route path="/about/about-KJ"
                                exact component={AboutKJComponent}/>
-                        <Route path="/reviews"
+                        <Route path="/about/reviews"
                                exact component={ReviewsComponent}/>
-                        <Route path="/more-reviews"
+                        <Route path="/about/reviews/more-reviews"
                                exact component={ReviewsViewComponent}/>
                         <Route path="/view-my-reviews"
                                exact component={ViewMyReviewsComponent}/>
@@ -82,7 +82,7 @@ export class MainPageComponent extends React.Component{
                                exact component={ReviewsListingForStaffsComponent}/>
                         <Route path="/reviews-for-staffs/:reviewId"
                                exact component={ReviewsViewForStaffsComponent}/>
-                        <Route path="/leave-review"
+                        <Route path="/about/reviews/leave-review"
                                exact component={LeaveReviewsComponent}/>
                         <Route path=
                                    {["/update-review/:reviewId",
@@ -91,10 +91,10 @@ export class MainPageComponent extends React.Component{
                                exact component={ReviewsEditingComponent}/>
                         <Route path={["/update-review",]}
                                exact component={ReviewsListingComponent}/>
-                        <Route path="/blogs"
+                        <Route path="/about/blogs"
                                exact component={BlogsComponent}/>
                         <Route path=
-                                   {["/blogs/:blogId",
+                                   {["/about/blogs/:blogId",
                                    ]}
                                exact component={BlogViewComponent}/>
                         <Route path="/create-blog"
@@ -111,7 +111,7 @@ export class MainPageComponent extends React.Component{
                         <Route path=
                                    {["/update-blog-for-staff",]}
                                exact component={BlogsListingForStaffsComponent}/>
-                        <Route path="/client-story"
+                        <Route path="/about/client-story"
                                exact component={ClientStoryComponent}/>
                         <Route path="/bathing-dressing"
                                exact component={BathingDressingComponent}/>
