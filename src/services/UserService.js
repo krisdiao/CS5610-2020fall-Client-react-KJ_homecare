@@ -14,6 +14,7 @@ export const register = (user) =>
         },
         credentials: "include"
     }).then(response => response.json())
+        .catch(()=>console.log("error"))
 }
 
 //all user to login user

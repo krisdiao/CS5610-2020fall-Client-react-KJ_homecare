@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {Form,Button,Col, Modal} from 'react-bootstrap';
 import "font-awesome/css/font-awesome.css";
 import userService from "../../services/UserService";
+import {Link} from "react-router-dom";
 
 var leadToCorrectLoginUserPage = require('../../common/util.js').leadToCorrectLoginUserPage;
 
@@ -22,9 +23,15 @@ export class RegisterComponent extends React.Component{
             state: '',
             zip: '',
             role: '',
+            isOpen: false,
             agreed: false,
         }
     }
+
+    openModal = () => this.setState({ isOpen: true });
+    closeModal = () => {
+        this.setState({ isOpen: false })
+    };
 
     //for input variables
     handleChange(event) {
@@ -55,26 +62,32 @@ export class RegisterComponent extends React.Component{
         //here to check whether or not allow the user to login before
         //sending to profile page if log in successfully
             .then(newUser => {
-
-                this.props.history.push('/profile')
                 console.log("newUser", newUser)
 
-                this.setState({
-                    firstName: newUser.firstName,
-                    lastName: newUser.label,
-                    password: newUser.password,
-                    verifyPassword: newUser.verifyPassword,
-                    email: newUser.email,
-                    phoneNumber: newUser.phoneNumber,
-                    add1: newUser.add1,
-                    add2: newUser.add1,
-                    city: newUser.city,
-                    state: newUser.state,
-                    zip: newUser.zip,
-                    role: newUser.role,
+                if(newUser !== undefined) {
+
+                    this.props.history.push('/profile')
+
+                    this.setState({
+                        firstName: newUser.firstName,
+                        lastName: newUser.label,
+                        password: newUser.password,
+                        verifyPassword: newUser.verifyPassword,
+                        email: newUser.email,
+                        phoneNumber: newUser.phoneNumber,
+                        add1: newUser.add1,
+                        add2: newUser.add1,
+                        city: newUser.city,
+                        state: newUser.state,
+                        zip: newUser.zip,
+                        role: newUser.role,
+                    })
+                    // leadToCorrectLoginUserPage(newUser, this.props.history)
+                }else {
+                    // alert("This email address has been registered before!")
+                    this.openModal()
+                }
                 })
-                // leadToCorrectLoginUserPage(newUser, this.props.history)
-            })
     }
 
     render() {
@@ -252,6 +265,21 @@ export class RegisterComponent extends React.Component{
                                 onClick={() => this.handleRegister(this.state)}>
                             Register
                         </Button>
+                        <Modal show={this.state.isOpen} onHide={this.closeModal}>
+                            <Modal.Header>
+                                <Modal.Title>Hi there!</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>Registration Failure</Modal.Body>
+                            <Modal.Body>This email address has been registered before!</Modal.Body>
+                            <Modal.Footer>
+                                <Button variant="success" onClick={this.closeModal}>Try a different one</Button>
+                                <Link to={`/login`}>
+                                    <Button variant="outline-primary" type="button">
+                                        Login
+                                    </Button>
+                                </Link>
+                            </Modal.Footer>
+                        </Modal>
                     </Form>
                 </div>
         );

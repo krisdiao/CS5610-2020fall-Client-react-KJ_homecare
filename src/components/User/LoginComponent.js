@@ -65,7 +65,7 @@ export class LoginComponent extends React.Component{
         // console.log("encodedStringBtoA: ", encodedStringBtoA);
 
         user.password = encodedStringBtoA
-        // console.log(this.state.password)
+        console.log(this.state.password)
 
         userService.login(user)
             .then(currentUser => {
