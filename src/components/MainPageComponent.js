@@ -145,10 +145,18 @@ export class MainPageComponent extends React.Component{
                                exact component={PersonalCareComponent}/>
                         <Route path="/login"
                                exact component={LoginComponent}/>
-                        <Route path="/profile"
+                        <Route path="/profile/:userId"
                                exact component={ProfileComponent}/>
-                        <Route path="/update-information"
+                        <Route path="/profile/:userId/update-information"
                                exact component={UpdateInformation}/>
+                        {/*<Route*/}
+                        {/*    path={[*/}
+                        {/*        "/profile/",*/}
+                        {/*        "/profile/:userId",*/}
+                        {/*        "/profile/:userId/update-information",*/}
+                        {/*    ]}*/}
+                        {/*    exact*/}
+                        {/*    component={ProfileComponent}/>*/}
 
                         <Route path="/register"
                                exact component={RegisterComponent}/>

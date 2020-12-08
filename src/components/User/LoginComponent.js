@@ -93,7 +93,9 @@ export class LoginComponent extends React.Component{
         // console.log(this.state)
         const { email, password, isLoggedIn } = this.state;
 
-        const inEnabled = email.includes("@") && password.length > 0
+        const inEnabled = email.includes("@")
+            // && password.length > 8 && password.length < 20
+
 
         console.log("inEnabled: ", inEnabled)
 
@@ -106,10 +108,13 @@ export class LoginComponent extends React.Component{
                     <Form>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control name="email" placeholder="Enter email" value={email}
+                            <Form.Control name="email" type="email" placeholder="Enter email" value={email}
                                 // onChange={(e) => this.setState({email: e.target.value})}
                                           onChange={(e) => this.handleChange(e)}
                             />
+                            <Form.Text className="text-muted">
+                                We'll never share your email with anyone else.
+                            </Form.Text>
                         </Form.Group>
 
                         <Form.Group controlId="formBasicPassword">
@@ -117,7 +122,12 @@ export class LoginComponent extends React.Component{
                             <Form.Control name="password" type="password" placeholder="Password"
                                           value={password}
                                           onChange={(e) => this.handleChange(e)}
+                                          aria-describedby="passwordHelpBlock"
                             />
+                            <Form.Text id="passwordHelpBlock" muted>
+                                Your password must be 8-20 characters long, contain letters and numbers, and
+                                must not contain spaces, special characters, or emoji.
+                            </Form.Text>
                         </Form.Group>
                         <Form.Group controlId="formBasicCheckbox">
                             <Form.Check type="checkbox" label="Remember Me"/>
