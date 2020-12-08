@@ -38,7 +38,6 @@ export class ContactsManagementComponent extends React.Component{
     }
 
     componentDidMount() {
-        console.log(this.props.match.params)
         contactService.findAllContacts()
             .then(contacts =>{
                 this.setState( {

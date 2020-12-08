@@ -20,12 +20,12 @@ export class HeaderComponent extends React.Component{
                     </Navbar.Brand>
                     <Nav className="mr-auto">
                         <NavDropdown title="About" id="basic-nav-dropdown">
-                            <NavDropdown.Item componentClass={Link} href="/about/about-KJ">
+                            <NavDropdown.Item componentClass={Link} href="/about-KJ">
                                 About K&J
                             </NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/about/reviews">Reviews</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/about/blogs"> K&J’s Korner</NavDropdown.Item>
-                            <NavDropdown.Item componentClass={Link} href="/about/client-story">Client stories</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/reviews">Reviews</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/blogs"> K&J’s Korner</NavDropdown.Item>
+                            <NavDropdown.Item componentClass={Link} href="/client-story">Client stories</NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown title="Care Service" id="basic-nav-dropdown">
                             <NavDropdown.Item componentClass={Link} href="/bathing-dressing">Bathing and dressing</NavDropdown.Item>

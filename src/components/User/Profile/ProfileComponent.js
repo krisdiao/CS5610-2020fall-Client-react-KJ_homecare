@@ -2,7 +2,6 @@ import React from "react";
 import userService from "../../../services/UserService";
 import {Container , Row , Col} from 'react-bootstrap';
 import {Link} from "react-router-dom";
-import UpdateInformation from "./UpdateInformation";
 
 var leadToCorrectLoginUserPage = require('../../../common/util').leadToCorrectLoginUserPage;
 
@@ -71,13 +70,13 @@ export default class Profile extends React.Component {
                         {/*<Col  sm={3}>*/}
                             <ul className="list-group text-center">
                                 <li className="list-group-item">
-                                    <Link to={`/profile/${this.state.profile.id}`}>
+                                    <Link to={`/profile`}>
                                         Main Page
                                     </Link>
                                 </li>
                                 <li className="list-group-item">
                                     <Link to={{
-                                        pathname: `/profile/${this.state.profile.id}/update-information`,
+                                        pathname: `/update-information`,
                                         profileViewProps: {profile: this.state.profile}
                                     }}>
                                         Update My Information
@@ -111,7 +110,6 @@ export default class Profile extends React.Component {
                             </ul>
                         {/*</Col>*/}
                     </Row>
-                    <UpdateInformation/>
                     <br/>
                     <br/>
                     <br/>

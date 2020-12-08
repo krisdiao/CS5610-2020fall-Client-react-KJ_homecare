@@ -66,11 +66,11 @@ export class MainPageComponent extends React.Component{
                     <div>
                         <Route path="/"
                                exact component={LandingPageComponent}/>
-                        <Route path="/about/about-KJ"
+                        <Route path="/about-KJ"
                                exact component={AboutKJComponent}/>
-                        <Route path="/about/reviews"
+                        <Route path="/reviews"
                                exact component={ReviewsComponent}/>
-                        <Route path="/about/reviews/more-reviews"
+                        <Route path="/more-reviews"
                                exact component={ReviewsViewComponent}/>
                         <Route path="/view-my-reviews"
                                exact component={ViewMyReviewsComponent}/>
@@ -82,7 +82,7 @@ export class MainPageComponent extends React.Component{
                                exact component={ReviewsListingForStaffsComponent}/>
                         <Route path="/reviews-for-staffs/:reviewId"
                                exact component={ReviewsViewForStaffsComponent}/>
-                        <Route path="/about/reviews/leave-review"
+                        <Route path="/leave-review"
                                exact component={LeaveReviewsComponent}/>
                         <Route path=
                                    {["/update-review/:reviewId",
@@ -91,10 +91,10 @@ export class MainPageComponent extends React.Component{
                                exact component={ReviewsEditingComponent}/>
                         <Route path={["/update-review",]}
                                exact component={ReviewsListingComponent}/>
-                        <Route path="/about/blogs"
+                        <Route path="/blogs"
                                exact component={BlogsComponent}/>
                         <Route path=
-                                   {["/about/blogs/:blogId",
+                                   {["/blogs/:blogId",
                                    ]}
                                exact component={BlogViewComponent}/>
                         <Route path="/create-blog"
@@ -111,7 +111,7 @@ export class MainPageComponent extends React.Component{
                         <Route path=
                                    {["/update-blog-for-staff",]}
                                exact component={BlogsListingForStaffsComponent}/>
-                        <Route path="/about/client-story"
+                        <Route path="/client-story"
                                exact component={ClientStoryComponent}/>
                         <Route path="/bathing-dressing"
                                exact component={BathingDressingComponent}/>
@@ -145,18 +145,10 @@ export class MainPageComponent extends React.Component{
                                exact component={PersonalCareComponent}/>
                         <Route path="/login"
                                exact component={LoginComponent}/>
-                        <Route path="/profile/:userId"
+                        <Route path="/profile"
                                exact component={ProfileComponent}/>
-                        <Route path="/profile/:userId/update-information"
+                        <Route path="/update-information"
                                exact component={UpdateInformation}/>
-                        {/*<Route*/}
-                        {/*    path={[*/}
-                        {/*        "/profile/",*/}
-                        {/*        "/profile/:userId",*/}
-                        {/*        "/profile/:userId/update-information",*/}
-                        {/*    ]}*/}
-                        {/*    exact*/}
-                        {/*    component={ProfileComponent}/>*/}
 
                         <Route path="/register"
                                exact component={RegisterComponent}/>
