@@ -40,7 +40,16 @@ export default class UpdateInformation extends React.Component {
     //
 
     handleSaveProfile(profile){
-        console.log(profile.profile.id);
+        // console.log(profile.profile.id);
+        // Define the string
+        var decodedStringBtoA = this.state.password;
+        // Encode the String
+        var encodedStringBtoA = btoa(decodedStringBtoA);
+        // console.log("encodedStringBtoA: ", encodedStringBtoA);
+
+        profile.profile.password = encodedStringBtoA
+        // console.log(this.state.profile.password)
+
         userService.updateUser(profile.profile.id, profile.profile)
             .then(newProfile => {
                 this.openModal();

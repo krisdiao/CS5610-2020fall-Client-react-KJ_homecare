@@ -40,7 +40,17 @@ export class RegisterComponent extends React.Component{
     }
 
     handleRegister(user){
-        console.log(user);
+        // console.log(user);
+
+        // Define the string
+        var decodedStringBtoA = this.state.password;
+        // Encode the String
+        var encodedStringBtoA = btoa(decodedStringBtoA);
+        // console.log("encodedStringBtoA: ", encodedStringBtoA);
+
+        user.password = encodedStringBtoA
+        // console.log(this.state.password)
+
         userService.register(user)
         //here to check whether or not allow the user to login before
         //sending to profile page if log in successfully

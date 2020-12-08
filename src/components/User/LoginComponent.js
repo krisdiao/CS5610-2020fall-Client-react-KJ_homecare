@@ -56,7 +56,16 @@ export class LoginComponent extends React.Component{
 
 
     handleLogin(user){
-        console.log(user);
+        // console.log(user);
+
+        // Define the string
+        var decodedStringBtoA = this.state.password;
+        // Encode the String
+        var encodedStringBtoA = btoa(decodedStringBtoA);
+        // console.log("encodedStringBtoA: ", encodedStringBtoA);
+
+        user.password = encodedStringBtoA
+        // console.log(this.state.password)
 
         userService.login(user)
             .then(currentUser => {
@@ -81,7 +90,7 @@ export class LoginComponent extends React.Component{
     }
 
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         const { email, password, isLoggedIn } = this.state;
 
         const inEnabled = email.includes("@") && password.length > 0
