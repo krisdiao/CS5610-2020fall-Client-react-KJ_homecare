@@ -20,7 +20,7 @@ export class CreateBlogsComponent extends React.Component{
     openModal = () => this.setState({ isOpen: true });
     closeModal = () => {
         this.setState({ isOpen: false })
-        this.props.history.push('/update-blog')
+        this.props.history.push('/admin/update-blog')
     };
 
     //for input variables

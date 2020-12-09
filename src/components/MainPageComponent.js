@@ -72,24 +72,19 @@ export class MainPageComponent extends React.Component{
                                exact component={ReviewsComponent}/>
                         <Route path="/about/reviews/more-reviews"
                                exact component={ReviewsViewComponent}/>
-                        <Route path="/view-my-reviews"
-                               exact component={ViewMyReviewsComponent}/>
-                        <Route path="/view-my-blogs"
-                               exact component={ViewMyBlogsComponent}/>
-                        <Route path="/view-my-jobs"
-                               exact component={ViewMyJobsComponent}/>
-                        <Route path="/reviews-for-staffs"
+                        <Route path="/staff/reviews-for-staffs"
                                exact component={ReviewsListingForStaffsComponent}/>
-                        <Route path="/reviews-for-staffs/:reviewId"
+                        <Route path="/staff/reviews-for-staffs/:reviewId"
                                exact component={ReviewsViewForStaffsComponent}/>
-                        <Route path="/about/reviews/leave-review"
+                        <Route path={["/about/reviews/leave-review",
+                                    "/admin/reviews/leave-review"
+                        ]}
                                exact component={LeaveReviewsComponent}/>
                         <Route path=
-                                   {["/update-review/:reviewId",
-
+                                   {["/admin/update-review/:reviewId",
                                    ]}
                                exact component={ReviewsEditingComponent}/>
-                        <Route path={["/update-review",]}
+                        <Route path={["/admin/update-review",]}
                                exact component={ReviewsListingComponent}/>
                         <Route path="/about/blogs"
                                exact component={BlogsComponent}/>
@@ -97,59 +92,65 @@ export class MainPageComponent extends React.Component{
                                    {["/about/blogs/:blogId",
                                    ]}
                                exact component={BlogViewComponent}/>
-                        <Route path="/create-blog"
+                        <Route path="/admin/create-blog"
                                exact component={CreateBlogsComponent}/>
-                        <Route path="/create-blog-by-staff"
+                        <Route path="/staff/create-blog-by-staff"
                                exact component={CreateBlogsByStaffsComponent}/>
                         <Route path=
-                                   {["/update-blog/:blogId",
+                                   {["/admin/update-blog/:blogId",
+                                       "/staff/update-blog/:blogId"
                                    ]}
                                exact component={BlogsEditingComponent}/>
                         <Route path=
-                                   {["/update-blog",]}
+                                   {["/admin/update-blog",]}
                                exact component={BlogsListingComponent}/>
                         <Route path=
-                                   {["/update-blog-for-staff",]}
+                                   {["/staff/update-blog-for-staff",]}
                                exact component={BlogsListingForStaffsComponent}/>
                         <Route path="/about/client-story"
                                exact component={ClientStoryComponent}/>
-                        <Route path="/bathing-dressing"
+                        <Route path="/care-service/bathing-dressing"
                                exact component={BathingDressingComponent}/>
-                        <Route path="/companionship"
+                        <Route path="/care-service/companionship"
                                exact component={CompanionshipComponent}/>
-                        <Route path="/grocery-shopping"
+                        <Route path="/care-service/grocery-shopping"
                                exact component={GroceryShoppingComponent}/>
-                        <Route path="/light-housekeeping"
+                        <Route path="/care-service/light-housekeeping"
                                exact component={LightHousekeepingComponent}/>
-                        <Route path="/light-meal-preparation"
+                        <Route path="/care-service/light-meal-preparation"
                                exact component={LightMealPreparationComponent}/>
-                        <Route path="/live-ins"
+                        <Route path="/care-service/live-ins"
                                exact component={LiveInsComponent}/>
-                        <Route path="/medication-monitoring"
+                        <Route path="/care-service/medication-monitoring"
                                exact component={MedicationMonitoringComponent}/>
-                        <Route path="/respite"
+                        <Route path="/care-service/respite"
                                exact component={RespiteComponent}/>
-                        <Route path="/pet-care"
+                        <Route path="/care-service/pet-care"
                                exact component={PetCareComponent}/>
-                        <Route path="/safety-observation"
+                        <Route path="/care-service/safety-observation"
                                exact component={SafetyObservationComponent}/>
-                        <Route path="/transportation"
+                        <Route path="/care-service/transportation"
                                exact component={TransportationComponent}/>
-                        <Route path="/job-application"
+                        <Route path="/caregiver-resource/job-application"
                                exact component={ApplyJobComponent}/>
-                        <Route path="/certified-nursing"
+                        <Route path="/caregiver-resource/certified-nursing"
                                exact component={CertifiedNursingComponent}/>
-                        <Route path="/companion-sitter"
+                        <Route path="/caregiver-resource/companion-sitter"
                                exact component={CompanionSitterComponent}/>
-                        <Route path="/personal-care"
+                        <Route path="/caregiver-resource/personal-care"
                                exact component={PersonalCareComponent}/>
                         <Route path="/login"
                                exact component={LoginComponent}/>
                         <Route path="/profile"
                                exact component={ProfileComponent}/>
-                        <Route path="/update-information"
+                        <Route path="/profile/view-my-reviews"
+                               exact component={ViewMyReviewsComponent}/>
+                        <Route path="/profile/view-my-blogs"
+                               exact component={ViewMyBlogsComponent}/>
+                        <Route path="/profile/view-my-jobs"
+                               exact component={ViewMyJobsComponent}/>
+                        <Route path="/profile/update-information"
                                exact component={UpdateInformation}/>
-
                         <Route path="/register"
                                exact component={RegisterComponent}/>
                         <Route path="/contact"
@@ -162,11 +163,11 @@ export class MainPageComponent extends React.Component{
                                exact component={StaffComponent}/>
                         <Route path="/user"
                                exact component={UserComponent}/>
-                        <Route path="/contacts-management"
+                        <Route path="/admin/contacts-management"
                                exact component={ContactsManagementComponent}/>
-                        <Route path="/job-applications"
+                        <Route path="/admin/job-applications"
                                exact component={JobApplicationsComponent}/>
-                        <Route path="/users-management"
+                        <Route path="/admin/users-management"
                                exact component={UsersManagementComponent}/>
                     </div>
                 </BrowserRouter>

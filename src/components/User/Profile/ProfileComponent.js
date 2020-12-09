@@ -76,27 +76,27 @@ export default class Profile extends React.Component {
                                 </li>
                                 <li className="list-group-item">
                                     <Link to={{
-                                        pathname: `/update-information`,
+                                        pathname: `/profile/update-information`,
                                         profileViewProps: {profile: this.state.profile}
                                     }}>
                                         Update My Information
                                     </Link>
                                 </li>
                                 <li className="list-group-item">
-                                    <Link to={{pathname:`/view-my-reviews`,
+                                    <Link to={{pathname:`/profile/view-my-reviews`,
                                         profileViewProps: {profile: this.state.profile}
                                     }}>
                                         View My Reviews
                                     </Link>
                                 </li>
                                 <li className="list-group-item">
-                                    <Link to={{pathname:`/view-my-blogs`,
+                                    <Link to={{pathname:`/profile/view-my-blogs`,
                                         profileViewProps: {profile: this.state.profile}
                                     }}>
                                         View My Blogs                                    </Link>
                                 </li>
                                 <li className="list-group-item">
-                                    <Link to={{pathname:`/view-my-jobs`,
+                                    <Link to={{pathname:`/profile/view-my-jobs`,
                                         profileViewProps: {profile: this.state.profile}
                                     }}>
                                         View My Job Application

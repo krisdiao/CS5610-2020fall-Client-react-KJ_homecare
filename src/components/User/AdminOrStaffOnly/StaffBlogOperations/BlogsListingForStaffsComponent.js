@@ -70,7 +70,7 @@ export class BlogsListingForStaffsComponent extends React.Component{
                         <Col sm={3}><StaffComponent/></Col>
                         <Col sm={9}>
                             <h1>Blogs</h1>
-                            <Link to={`/create-blog-by-staff`}
+                            <Link to={`/staff/create-blog-by-staff`}
                                   className="btn btn-success pull-right">Create</Link>
                             <br/>
                             <br/>
@@ -88,7 +88,7 @@ export class BlogsListingForStaffsComponent extends React.Component{
                                 <tr>
                                     <td>
                                         <Link to={{
-                                                pathname: `/update-blog/${blog.id}`,
+                                                pathname: `/staff/update-blog/${blog.id}`,
                                                 blogViewProps: { blog: blog }
                                             }}
                                         > {blog.title}</Link>

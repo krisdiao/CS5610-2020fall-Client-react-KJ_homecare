@@ -13,27 +13,27 @@ export class AdminComponent extends React.Component{
                         </Link>
                     </li>
                     <li className="list-group-item">
-                            <Link to={`/update-review`}>
+                            <Link to={`/admin/update-review`}>
                                 Reviews
                             </Link>
                     </li>
                     <li className="list-group-item">
-                        <Link to={`/update-blog`}>
+                        <Link to={`/admin/update-blog`}>
                             Blogs
                         </Link>
                     </li>
                     <li className="list-group-item">
-                        <Link to={`/contacts-management`}>
+                        <Link to={`/admin/contacts-management`}>
                         Contacts Management
                         </Link>
                     </li>
                     <li className="list-group-item">
-                        <Link to={`/job-applications`}>
+                        <Link to={`/admin/job-applications`}>
                             Job Application
                         </Link>
                     </li>
                     <li className="list-group-item">
-                        <Link to={`/users-management`}>
+                        <Link to={`/admin/users-management`}>
                             User Management
                         </Link>
                     </li>
