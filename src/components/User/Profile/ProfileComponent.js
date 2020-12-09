@@ -30,6 +30,7 @@ export default class Profile extends React.Component {
     }
 
     componentDidMount() {
+        console.log(this.props)
         userService.profile()
             .then(profile => this.setState({
                 profile: profile

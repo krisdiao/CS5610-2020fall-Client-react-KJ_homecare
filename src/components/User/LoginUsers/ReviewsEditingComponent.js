@@ -42,7 +42,7 @@ export class ReviewsEditingComponent extends React.Component{
     handleCallback = (ratingValue) =>{
         console.log("ratingValue : ", ratingValue)
         this.setState(prevState => ({
-            review: {...prevState.review, star: ratingValue}
+            review: {...prevState.review, stars: ratingValue}
         }))
     }
 
