@@ -34,7 +34,7 @@ export class LandingPageComponent extends React.Component{
                             special needs and there are times when we have to help people determine what their needs are.
                             </p>
                         </Col>
-                        <Col><img src="/hug.jpg"/></Col>
+                        <Col><img src="/shutterstock_1343180831.jpg" alt="Card image cap" height="500" width="720"/></Col>
                     </Row>
                 </Container>
                 <br/>
