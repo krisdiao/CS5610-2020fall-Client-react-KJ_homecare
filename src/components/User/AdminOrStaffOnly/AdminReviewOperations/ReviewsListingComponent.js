@@ -9,27 +9,27 @@ export class ReviewsListingComponent extends React.Component{
 
     state ={
         reviews:[
-            // {
-            //     id:"1",
-            //     title: "a",
-            //     firstName: "qqqqq",
-            //     lastName: "mmmmm",
-            //     timeStamp: new Date(),
-            // },
-            // {
-            //     id:"2",
-            //     title: "b",
-            //     firstName: "wwwwwww",
-            //     lastName: "nnnnnn",
-            //     timeStamp: new Date(),
-            // },
-            // {
-            //     id:"3",
-            //     title: "c",
-            //     firstName: "eeeee",
-            //     lastName: "zzzzz",
-            //     timeStamp: new Date(),
-            // },
+            {
+                id:"1",
+                title: "a",
+                firstName: "qqqqq",
+                lastName: "mmmmm",
+                timeStamp: new Date(),
+            },
+            {
+                id:"2",
+                title: "b",
+                firstName: "wwwwwww",
+                lastName: "nnnnnn",
+                timeStamp: new Date(),
+            },
+            {
+                id:"3",
+                title: "c",
+                firstName: "eeeee",
+                lastName: "zzzzz",
+                timeStamp: new Date(),
+            },
         ],
         role: '',
     }
@@ -72,7 +72,7 @@ export class ReviewsListingComponent extends React.Component{
                         <Row>
                             <Col sm={9}><h1>Reviews</h1></Col>
                             <Col sm={3}>
-                                <Link to={`/leave-review`}
+                                <Link to={`/admin/reviews/leave-review`}
                                       className="btn btn-success pull-right">Create</Link>
                             </Col>
                         </Row>
@@ -93,7 +93,7 @@ export class ReviewsListingComponent extends React.Component{
                                     <tr>
                                         <td>
                                             <Link to={{
-                                                pathname: `/update-review/${review.id}`,
+                                                pathname: `/admin/update-review/${review.id}`,
                                                 reviewViewProps: { review: review }
                                             }}
                                             > {review.title}</Link>

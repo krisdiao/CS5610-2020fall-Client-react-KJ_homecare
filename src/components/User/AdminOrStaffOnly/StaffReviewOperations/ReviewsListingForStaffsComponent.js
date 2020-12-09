@@ -85,7 +85,7 @@ export class ReviewsListingForStaffsComponent extends React.Component{
                                 <tr>
                                     <td>
                                         <Link to={{
-                                            pathname: `/reviews-for-staffs/${review.id}`,
+                                            pathname: `/staff/reviews-for-staffs/${review.id}`,
                                             reviewViewProps: { review: review }
                                         }}
                                         > {review.title}</Link>

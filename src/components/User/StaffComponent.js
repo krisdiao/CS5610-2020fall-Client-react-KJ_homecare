@@ -14,12 +14,12 @@ export class StaffComponent extends React.Component{
                             </Link>
                         </li>
                         <li className="list-group-item">
-                            <Link to={`/reviews-for-staffs`}>
+                            <Link to={`/staff/reviews-for-staffs`}>
                                 Reviews
                             </Link>
                         </li>
                         <li className="list-group-item">
-                            <Link to={`/update-blog-for-staff`}>
+                            <Link to={`/staff/update-blog-for-staff`}>
                                 Blogs
                             </Link>
                         </li>

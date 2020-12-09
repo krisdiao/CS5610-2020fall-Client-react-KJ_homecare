@@ -9,7 +9,7 @@ export class ReviewsComponent extends React.Component{
             <div className="container">
                 <CardColumns>
                     <Card>
-                        <Card.Img variant="top" src="/father.jpg" />
+                        <Card.Img variant="top" src="/shutterstock_245421769.jpg" />
                         <Card.Body>
                             <Card.Title>"We are deeply grateful to Kim"</Card.Title>
                             <Card.Text>
@@ -32,7 +32,7 @@ export class ReviewsComponent extends React.Component{
                         </Card.Footer>
                     </Card>
                     <Card>
-                        <Card.Img src="/mother.jpg" />
+                        <Card.Img src="/shutterstock_128133443.jpg" />
                     </Card>
                     <Card bg="warning" text="white" className="text-center p-3">
                         <blockquote className="blockquote mb-0 card-body">
@@ -53,7 +53,7 @@ export class ReviewsComponent extends React.Component{
                         </blockquote>
                     </Card>
                     <Card>
-                        <Card.Img src="/homecare.jpg" />
+                        <Card.Img src="/shutterstock_487258954.jpg" />
                     </Card>
                     <Card>
                         <Card.Body>
