@@ -82,6 +82,7 @@ export class MainPageComponent extends React.Component{
                                exact component={LeaveReviewsComponent}/>
                         <Route path=
                                    {["/admin/update-review/:reviewId",
+                                       "/update-review/:reviewId"
                                    ]}
                                exact component={ReviewsEditingComponent}/>
                         <Route path={["/admin/update-review",]}
@@ -98,7 +99,8 @@ export class MainPageComponent extends React.Component{
                                exact component={CreateBlogsByStaffsComponent}/>
                         <Route path=
                                    {["/admin/update-blog/:blogId",
-                                       "/staff/update-blog/:blogId"
+                                       "/staff/update-blog/:blogId",
+                                       "/update-blog/:blogId"
                                    ]}
                                exact component={BlogsEditingComponent}/>
                         <Route path=
