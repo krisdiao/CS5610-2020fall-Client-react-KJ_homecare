@@ -12,7 +12,7 @@ export class ReviewsEditingComponent extends React.Component{
         this.state = {
             profile: '',
             review: this.props.location.reviewViewProps.review,
-            editing: true,
+            editing: false,
             isOpen: false
         }
     }
@@ -54,6 +54,12 @@ export class ReviewsEditingComponent extends React.Component{
         return(
             <div className="container">
                 <Form>
+
+                    <button className="form-control-lg btn btn-success"
+                            onClick={() => leadToCorrectLoginUserPage(this.state.profile, this.props.history)}>
+                        <i className="fa fa-arrow-left " aria-hidden="true"></i>
+                    </button>
+
                     <Form.Group as={Row} controlId="formHorizontalName">
                         <Form.Label column sm={2}>
                             First Name
