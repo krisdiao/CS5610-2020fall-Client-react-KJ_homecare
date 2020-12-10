@@ -13,8 +13,8 @@ export class HeaderComponent extends React.Component{
 
     render(){
         return(
-            <div>
-                <Navbar bg="light" variant="light"  class="wbdv-sticky-header" >
+            <div class="wbdv-sticky-header">
+                <Navbar bg="light" variant="light">
                     <Navbar.Brand href="/">
                         <img className="logo-main" src="/kj.png" alt="image" />
                     </Navbar.Brand>
@@ -47,14 +47,12 @@ export class HeaderComponent extends React.Component{
                             <NavDropdown.Item componentClass={Link} href="/caregiver-resource/certified-nursing">Certified Nursing Assistant I & II</NavDropdown.Item>
                             <NavDropdown.Item componentClass={Link} href="/caregiver-resource/personal-care">Personal Care Assistant</NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link componentClass={Link} href="/login">Login/Signup</Nav.Link>
+                        <Nav.Link componentClass={Link} href="/login">Login/Sign Up</Nav.Link>
                         <Nav.Link componentClass={Link} href="/contact">Contact Us</Nav.Link>
-                        <Nav.Link componentClass={Link} href="/search">Search</Nav.Link>
+                        <Nav.Link componentClass={Link} href="/search">Health TIPS Search</Nav.Link>
                         <Nav.Link componentClass={Link} href="/admin">Admin</Nav.Link>
                         <Nav.Link componentClass={Link} href="/staff">Staff</Nav.Link>
                         <Nav.Link componentClass={Link} href="/user">User</Nav.Link>
-
-
                     </Nav>
                 </Navbar>
 

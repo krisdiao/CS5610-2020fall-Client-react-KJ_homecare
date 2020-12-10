@@ -1,9 +1,10 @@
 .wbdv-sticky-header {
     position: sticky;
-    top: 0px;
-    background-color: #98C354;
-    left: 0px;
-    right: 0px;
+    top: 0;
+    background-color: #99c355;
+    left: 0;
+    right: 0;
     padding-top: 10px;
+    padding-bottom: 10px;
     z-index: 1;
 }

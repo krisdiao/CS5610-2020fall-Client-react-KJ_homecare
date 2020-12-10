@@ -7,7 +7,7 @@ export class AboutKJComponent extends React.Component{
         return(
             <div className="container">
                 <Jumbotron>
-                    <h1>Welcome to K&J Total Care!</h1>
+                    <h1 className="orange">Welcome to K&J Total Care!</h1>
                     <p>Welcome to K&J Total Care! We are honored that you decided to visit our page to
                         learn about whom we are and who we serve!
                     </p>
@@ -16,7 +16,7 @@ export class AboutKJComponent extends React.Component{
                 <Container>
                     <Row>
                         <Col>
-                            <h1>Clients are the center of our hearts.</h1>
+                            <h1 className="orange">Clients are the center of our hearts.</h1>
                             <p>
                                 We start where they are and end when their needs have been met.
                                 We serve diverse populations including children, adolescents, middle aged adults and seniors citizens.
@@ -36,11 +36,12 @@ export class AboutKJComponent extends React.Component{
                         <Col><img src="/shutterstock_1451191475.jpg" alt="Card image cap" height="400" width="620"/></Col>
                         <Col>
 
-                            <h1>
+                            <h1 className="orange">
                                 About Me
                             </h1>
+                            <p className="red"><strong >“To whom much is given much is required” </strong>Luke 12:48 </p>
                             <p>
-                                “To whom much is given much is required” Luke 12:48 I have been blessed to work for so many amazing families.
+                                I have been blessed to work for so many amazing families.
                                 I have been able to travel with my clients and be able to take time from work to support and be with my own family.
                                 The friendships that I have made over the years will last a lifetime because I value and cherish those I worked with.
                                 I have been in the health care field my entire life. It started when I was a little girl.
@@ -65,29 +66,33 @@ export class AboutKJComponent extends React.Component{
                 <Container>
                     <img src="/shutterstock_1565217376.jpg" alt="Card image cap" height="700" width="1080"/>
                     <Jumbotron className="text-center p-6">
-                    <h1>
-                        Join Our Team, Work With Us!
-                    </h1>
-                    <p>
-                        It is our belief that we are as successful as our team.  We are all equal.
-                        Every person can bring  a multitude of work and life experiences to enhance themselves and other people.
-                        We value employees and hold them to a high standard as well as ourselves. The job that we do is essential and vital.
-                        We are dedicated to providing the best quality of care.
-                        The focus of the agency is honesty, communication, continuous training, and professionalism.
-                    </p>
+                        <a href="/caregiver-resource/job-application">
+                            <h1 className="orange">
+                                Join Our Team, Work With Us!
+                            </h1>
+                        </a>
+                        <p>
+                            It is our belief that we are as successful as our team.  We are all equal.
+                            Every person can bring  a multitude of work and life experiences to enhance themselves and other people.
+                            We value employees and hold them to a high standard as well as ourselves. The job that we do is essential and vital.
+                            We are dedicated to providing the best quality of care.
+                            The focus of the agency is honesty, communication, continuous training, and professionalism.
+                        </p>
                     <br/>
-                    <h1>
-                        Join Our Family, Let Us Serve You!
-                    </h1>
-                    <p>
-                        Why Us? Not only have I been in this field for more than half my life but my spiritual
-                        and professional journey sets this agency apart.
-                        At K&J we adhere to the 3F’s Faith, Family, Friendship and 3’Cs Commitment, Collaboration and Communication.
-                    </p>
+                        <a href="/contact">
+                            <h1 className="orange">
+                                Join Our Family, Let Us Serve You!
+                            </h1>
+                        </a>
+                        <p>
+                            Why Us? Not only have I been in this field for more than half my life but my spiritual
+                            and professional journey sets this agency apart.
+                            At K&J we adhere to the 3F’s Faith, Family, Friendship and 3’Cs Commitment, Collaboration and Communication.
+                        </p>
                     </Jumbotron>
                 </Container>
                 <Container>
-                    <h1>
+                    <h1 className="orange">
                         Our Future
                     </h1>
                     <p>
@@ -104,13 +109,13 @@ export class AboutKJComponent extends React.Component{
                     <img src="/shutterstock_1830020408.jpg" alt="Card image cap" height="700" width="1080"/>
                     <br/>
                     <br/>
-                    <p>
-                        *Due to the COVID-19 worldwide pandemic, safety and necessary precautions are even more a priority.
+                    <p className="red">
+                        *Due to the <strong>COVID-19</strong> worldwide pandemic, safety and necessary precautions are even more a priority.
                         We will focus and educate all employees to wear the proper PPE, when caring for each of our Clients.
                         We want to protect our vulnerable and at risk populations, our dedicated employees, and every family member involved.
                     </p>
-                    <p>
-                        * On behalf of K&J Total Care, we would like to say thank you to everyone who works on the front lines
+                    <p className="red">
+                        * On behalf of <strong className="orange">K&J Total Care</strong>, we would like to say thank you to everyone who works on the front lines
                         during this pandemic each and every day you sacrifice to serve our families. We would also salute our
                         Active Duty Military and Veterans of the US Armed Forces and all those who care for individuals with
                         intellectual and developmental disabilities.

@@ -1,0 +1,28 @@
+.wbdv-footer {
+    top: 0;
+    background-color: #f8f9fa!important;
+    left: 0;
+    right: 0;
+    padding-top: 10px;
+    z-index: 1;
+}
+
+.orange{
+    color: #E08A5E!important;
+}
+
+.green{
+    color: #99c355!important;
+}
+
+.orangeBg{
+    background: #E08A5E!important;
+}
+
+.greenBg{
+    background: #99c355!important;
+}
+
+.red{
+    color: red!important;
+}
