@@ -64,11 +64,11 @@ export class ContactFormComponent extends React.Component{
 
         return (
             <div className="container">
-                <h1>K&J Total Care</h1>
+                <h1 className="orange">K&J Total Care</h1>
                 <br/>
-                <p><i className="fa fa-phone" aria-hidden="true"></i>: 336-457-1167</p>
-                <p><i className="fa fa-envelope-o" aria-hidden="true"></i>: kjtotalcare@gmail.com</p>
-                <p><i className="fa fa-internet-explorer" aria-hidden="true"></i>: kjtotalcare.com</p>
+                <p className="green"><i className="orange fa fa-phone" aria-hidden="true"></i>: <strong>336-457-1167</strong></p>
+                <p className="green"><i className="orange fa fa-envelope-o" aria-hidden="true"></i>: <strong>kjtotalcare@gmail.com</strong></p>
+                <p className="green"><i className="orange fa fa-internet-explorer" aria-hidden="true"></i>: <strong>kjtotalcare.com</strong></p>
                 <br/>
                 <br/>
                 <Form>
@@ -117,7 +117,8 @@ export class ContactFormComponent extends React.Component{
                                     onChange={(e) => this.handleChange(e)}/>
 
                     </Form.Group>
-                    <Button variant="primary" type="button"
+                    <Button type="button"
+                            className="orangeBg btn-success"
                             disabled={!inEnabled}
                             onClick={() => this.handleContactUs(this.state)}>
                         Submit

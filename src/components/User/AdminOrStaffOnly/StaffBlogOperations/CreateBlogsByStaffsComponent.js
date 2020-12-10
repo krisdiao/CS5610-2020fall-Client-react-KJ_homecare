@@ -90,6 +90,7 @@ export class CreateBlogsByStaffsComponent extends React.Component{
                     <Form.Group as={Row}>
                         <Col sm={{ span: 10, offset: 2 }}>
                             <Button type="button"
+                                    className="orangeBg btn-success"
                                     onClick={() => this.handleCreateBlog(this.state)}>Create</Button>
                             <Modal show={this.state.isOpen} onHide={this.closeModal}>
                                 <Modal.Header>
@@ -97,7 +98,7 @@ export class CreateBlogsByStaffsComponent extends React.Component{
                                 </Modal.Header>
                                 <Modal.Body>Success! Thanks!</Modal.Body>
                                 <Modal.Footer>
-                                    <button onClick={this.closeModal}>Close</button>
+                                    <button className="orangeBg btn-success" onClick={this.closeModal}>Close</button>
                                 </Modal.Footer>
                             </Modal>
                         </Col>

@@ -66,7 +66,7 @@ export class BlogsComponent extends React.Component{
                                 <tr>
                                     <td>
                                         <Link to={{
-                                            pathname: `/blogs/${blog.id}`,
+                                            pathname: `/about/blogs/${blog.id}`,
                                             blogViewProps: { blog: blog }
                                         }}
                                         > {blog.title}</Link>

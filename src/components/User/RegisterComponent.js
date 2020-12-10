@@ -261,6 +261,7 @@ export class RegisterComponent extends React.Component{
                         </Form.Group>
 
                         <Button variant="primary" type="button"
+                                className="greenBg btn-success"
                                 disabled={!inEnabled}
                                 onClick={() => this.handleRegister(this.state)}>
                             Register
@@ -274,7 +275,7 @@ export class RegisterComponent extends React.Component{
                             <Modal.Footer>
                                 <Button variant="success" onClick={this.closeModal}>Try a different one</Button>
                                 <Link to={`/login`}>
-                                    <Button variant="outline-primary" type="button">
+                                    <Button className="orangeBg btn-success" variant="outline-primary" type="button">
                                         Login
                                     </Button>
                                 </Link>

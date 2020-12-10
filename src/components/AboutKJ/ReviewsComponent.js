@@ -40,12 +40,12 @@ export class ReviewsComponent extends React.Component{
                             <br/>
                             <Form.Group as={Row}>
                                 <Col sm={6}>
-                                <Link  to={`/leave-review`} className="orangeBg btn form-control btn-success">
+                                <Link  to={`/about/reviews/leave-review`} className="orangeBg btn form-control btn-success">
                                     LEAVE ONE
                                 </Link>
                                 </Col>
                                 <Col sm={6} className="green">
-                                    <Link to={`/more-reviews`} className="orangeBg btn form-control btn-success">
+                                    <Link to={`/about/reviews/more-reviews`} className="orangeBg btn form-control btn-success">
                                         READ MORE
                                     </Link>
                                 </Col>

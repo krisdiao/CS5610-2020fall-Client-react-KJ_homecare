@@ -5,7 +5,7 @@ export class MedicationMonitoringComponent extends React.Component{
     render() {
         return(
             <div className="container">
-                <h1>MedicationMonitoring</h1>
+                <h1 className="orange">MedicationMonitoring</h1>
 
             </div>
         )

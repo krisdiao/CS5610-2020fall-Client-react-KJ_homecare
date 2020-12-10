@@ -58,7 +58,7 @@ export default class Profile extends React.Component {
             <div>
                 <Container>
                     <h3>
-                        <button className="form-control-lg btn btn-success"
+                        <button className="greenBg form-control-lg btn btn-success"
                                   onClick={() => leadToCorrectLoginUserPage(this.state.profile, this.props.history)}>
                                 <i className="fa fa-arrow-left " aria-hidden="true"></i>
                         </button>
@@ -71,12 +71,12 @@ export default class Profile extends React.Component {
                         {/*<Col  sm={3}>*/}
                             <ul className="list-group text-center">
                                 <li className="list-group-item">
-                                    <Link to={`/profile`}>
+                                    <Link className="orange" to={`/profile`}>
                                         Main Page
                                     </Link>
                                 </li>
                                 <li className="list-group-item">
-                                    <Link to={{
+                                    <Link className="orange" to={{
                                         pathname: `/profile/update-information`,
                                         profileViewProps: {profile: this.state.profile}
                                     }}>
@@ -84,27 +84,27 @@ export default class Profile extends React.Component {
                                     </Link>
                                 </li>
                                 <li className="list-group-item">
-                                    <Link to={{pathname:`/profile/view-my-reviews`,
+                                    <Link className="orange" to={{pathname:`/profile/view-my-reviews`,
                                         profileViewProps: {profile: this.state.profile}
                                     }}>
                                         View My Reviews
                                     </Link>
                                 </li>
                                 <li className="list-group-item">
-                                    <Link to={{pathname:`/profile/view-my-blogs`,
+                                    <Link className="orange" to={{pathname:`/profile/view-my-blogs`,
                                         profileViewProps: {profile: this.state.profile}
                                     }}>
                                         View My Blogs                                    </Link>
                                 </li>
                                 <li className="list-group-item">
-                                    <Link to={{pathname:`/profile/view-my-jobs`,
+                                    <Link className="orange" to={{pathname:`/profile/view-my-jobs`,
                                         profileViewProps: {profile: this.state.profile}
                                     }}>
                                         View My Job Application
                                     </Link>
                                 </li>
                                 <li className="list-group-item">
-                                    <Link to={`/profile`}>
+                                    <Link className="orange" to={`/profile`}>
                                         My Schedule
                                     </Link>
                                 </li>
@@ -117,7 +117,7 @@ export default class Profile extends React.Component {
                     <button
                         type="button"
                         onClick={this.handleLogout}
-                        className={`btn btn-danger`}>
+                        className="orangeBg btn btn-danger">
                         Logout
                     </button>
                 </Container>

@@ -5,7 +5,7 @@ export class LightHousekeepingComponent extends React.Component{
     render() {
         return(
             <div className="container">
-                <h1>LightHousekeeping</h1>
+                <h1 className="orange">LightHousekeeping</h1>
 
             </div>
         )

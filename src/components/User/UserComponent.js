@@ -7,19 +7,19 @@ export class UserComponent
         return(
             <div>
                 <div className="container">
-                    <h3>Dashboard</h3>
+                    <h3 className="orange">Dashboard</h3>
                     <ul className="list-group text-center">
                         <li className="list-group-item">
-                            <Link to={`/profile`}>
+                            <Link className="orange" to={`/profile`}>
                                 Profile
                             </Link>
                         </li>
                         <li className="list-group-item">
-                            <Link to={`/`}>
+                            <Link className="orange" to={`/`}>
                                 My Application
                             </Link>
                         </li>
-                        <li className="list-group-item">Schedule</li>
+                        <li className="orange list-group-item">Schedule</li>
                     </ul>
                 </div>
             </div>
