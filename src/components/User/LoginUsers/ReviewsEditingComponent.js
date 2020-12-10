@@ -2,6 +2,8 @@ import React from "react";
 import {Form,Col,Row,Button, Modal} from 'react-bootstrap';
 import reviewService from "../../../services/ReviewService"
 import StarRatingComponent from "./StarRatingComponent";
+import userService from "../../../services/UserService";
+
 var leadToCorrectLoginUserPage = require('../../../common/util').leadToCorrectLoginUserPage;
 
 
@@ -10,11 +12,18 @@ export class ReviewsEditingComponent extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            profile: '',
             review: this.props.location.reviewViewProps.review,
-            editing: false,
+            editing: true,
+            profile: '',
             isOpen: false
         }
+    }
+
+    componentDidMount() {
+        userService.profile()
+            .then(profile => this.setState({
+                profile: profile
+            }))
     }
 
     openModal = () => this.setState({ isOpen: true });
@@ -24,7 +33,8 @@ export class ReviewsEditingComponent extends React.Component{
     };
 
     handleSaveReview(review){
-        console.log(review);
+        console.log("state: ", this.state);
+        //debugger
         reviewService.updateReview(review.review.id, review.review)
             .then(newReview => {
                 this.openModal();
@@ -50,12 +60,12 @@ export class ReviewsEditingComponent extends React.Component{
 
 
     render() {
-        console.log(this.state.review)
+        console.log(this.state)
         return(
             <div className="container">
                 <Form>
 
-                    <button className="form-control-lg btn btn-success"
+                    <button className="greenBg form-control-lg btn btn-success"
                             onClick={() => leadToCorrectLoginUserPage(this.state.profile, this.props.history)}>
                         <i className="fa fa-arrow-left " aria-hidden="true"></i>
                     </button>
@@ -129,6 +139,7 @@ export class ReviewsEditingComponent extends React.Component{
                     <Form.Group as={Row}>
                         <Col sm={{ span: 10, offset: 2 }}>
                             <Button type="button"
+                                    className="orangeBg btn-success"
                                     onClick={() => this.handleSaveReview(this.state)}>
                                 Save
                             </Button>
@@ -138,7 +149,7 @@ export class ReviewsEditingComponent extends React.Component{
                                 </Modal.Header>
                                 <Modal.Body>Success! Thanks!</Modal.Body>
                                 <Modal.Footer>
-                                    <button onClick={this.closeModal}>Close</button>
+                                    <button className="orangeBg btn-success" onClick={this.closeModal}>Close</button>
                                 </Modal.Footer>
                             </Modal>
                         </Col>

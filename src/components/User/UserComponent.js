@@ -2,11 +2,12 @@ import React from "react";
 import {Link} from "react-router-dom";
 import userService from "../../services/UserService";
 
-export class UserComponent extends React.Component{
+export class UserComponent
+    extends React.Component{
 
     state = {
-        profile:{},
-        space:''
+        profile: {},
+        space: ' '
     }
 
     componentDidMount() {
@@ -18,25 +19,26 @@ export class UserComponent extends React.Component{
         console.log("updated? ",this.state.profile)
     }
 
+
     render() {
         return(
             <div>
                 <div className="container">
-                    <h3>Dashboard</h3>
+                    <h3 className="orange">Dashboard</h3>
                     <ul className="list-group text-center">
                         <li className="list-group-item">
-                            <Link to={`/profile`}>
+                            <Link className="orange" to={`/profile`}>
                                 Profile
                             </Link>
                         </li>
                         <li className="list-group-item">
-                            <Link to={{pathname:`/profile/view-my-jobs`,
+                            <Link className="orange" to={{pathname:`/profile/view-my-jobs`,
                                 profileViewProps: {profile: this.state.profile}
                             }}>
                                 My Job Application
                             </Link>
                         </li>
-                        <li className="list-group-item">Schedule</li>
+                        <li className="orange list-group-item">Schedule</li>
                     </ul>
                 </div>
             </div>

@@ -55,7 +55,7 @@ export class BlogsEditingComponent extends React.Component{
             <div className="container">
                 <Form>
 
-                    <button className="form-control-lg btn btn-success"
+                    <button className="greenBg form-control-lg btn btn-success"
                             onClick={() => leadToCorrectLoginUserPage(this.state.profile, this.props.history)}>
                         <i className="fa fa-arrow-left " aria-hidden="true"></i>
                     </button>
