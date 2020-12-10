@@ -99,7 +99,7 @@ export class LoginComponent extends React.Component{
 
         return (
             <div>
-                {isLoggedIn && <ProfileComponent/>}
+                {isLoggedIn && <ProfileComponent {...this.props}/>}
                 {!isLoggedIn &&
                 <div className="container">
                     <h1>Login</h1>

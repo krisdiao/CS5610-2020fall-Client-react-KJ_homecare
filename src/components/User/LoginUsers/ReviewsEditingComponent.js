@@ -2,6 +2,9 @@ import React from "react";
 import {Form,Col,Row,Button, Modal} from 'react-bootstrap';
 import reviewService from "../../../services/ReviewService"
 import StarRatingComponent from "./StarRatingComponent";
+import userService from "../../../services/UserService";
+
+var leadToCorrectLoginUserPage = require('../../../common/util').leadToCorrectLoginUserPage;
 
 
 export class ReviewsEditingComponent extends React.Component{
@@ -11,18 +14,27 @@ export class ReviewsEditingComponent extends React.Component{
         this.state = {
             review: this.props.location.reviewViewProps.review,
             editing: true,
+            profile: '',
             isOpen: false
         }
+    }
+
+    componentDidMount() {
+        userService.profile()
+            .then(profile => this.setState({
+                profile: profile
+            }))
     }
 
     openModal = () => this.setState({ isOpen: true });
     closeModal = () => {
         this.setState({ isOpen: false })
-        this.props.history.push('/update-review')
+        leadToCorrectLoginUserPage(this.state.profile, this.props.history)
     };
 
     handleSaveReview(review){
-        console.log(review);
+        console.log("state: ", this.state);
+        //debugger
         reviewService.updateReview(review.review.id, review.review)
             .then(newReview => {
                 this.openModal();
@@ -48,7 +60,7 @@ export class ReviewsEditingComponent extends React.Component{
 
 
     render() {
-        console.log(this.state.review)
+        console.log(this.state)
         return(
             <div className="container">
                 <Form>
