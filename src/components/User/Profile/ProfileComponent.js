@@ -83,26 +83,39 @@ export default class Profile extends React.Component {
                                         Update My Information
                                     </Link>
                                 </li>
-                                <li className="list-group-item">
-                                    <Link to={{pathname:`/profile/view-my-reviews`,
-                                        profileViewProps: {profile: this.state.profile}
-                                    }}>
-                                        View My Reviews
-                                    </Link>
-                                </li>
-                                <li className="list-group-item">
-                                    <Link to={{pathname:`/profile/view-my-blogs`,
-                                        profileViewProps: {profile: this.state.profile}
-                                    }}>
-                                        View My Blogs                                    </Link>
-                                </li>
-                                <li className="list-group-item">
-                                    <Link to={{pathname:`/profile/view-my-jobs`,
-                                        profileViewProps: {profile: this.state.profile}
-                                    }}>
-                                        View My Job Application
-                                    </Link>
-                                </li>
+                                {
+                                    (this.state.profile.role === "ADMIN" || this.state.profile.role === "LOGIN_USER") &&
+
+                                    <li className="list-group-item">
+                                        <Link to={{pathname:`/profile/view-my-reviews`,
+                                            profileViewProps: {profile: this.state.profile}
+                                        }}>
+                                            View My Reviews
+                                        </Link>
+                                    </li>
+
+                                }
+
+                                {
+                                    (this.state.profile.role === "ADMIN" || this.state.profile.role === "STAFF") &&
+
+                                    <li className="list-group-item">
+                                        <Link to={{pathname:`/profile/view-my-blogs`,
+                                            profileViewProps: {profile: this.state.profile}
+                                        }}>
+                                            View My Blogs
+                                        </Link>
+                                    </li>
+                                }
+
+
+                                {/*<li className="list-group-item">*/}
+                                {/*    <Link to={{pathname:`/profile/view-my-jobs`,*/}
+                                {/*        profileViewProps: {profile: this.state.profile}*/}
+                                {/*    }}>*/}
+                                {/*        View My Job Application*/}
+                                {/*    </Link>*/}
+                                {/*</li>*/}
                                 <li className="list-group-item">
                                     <Link to={`/profile`}>
                                         My Schedule

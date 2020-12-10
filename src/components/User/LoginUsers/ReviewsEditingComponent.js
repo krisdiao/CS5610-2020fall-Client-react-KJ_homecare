@@ -2,6 +2,7 @@ import React from "react";
 import {Form,Col,Row,Button, Modal} from 'react-bootstrap';
 import reviewService from "../../../services/ReviewService"
 import StarRatingComponent from "./StarRatingComponent";
+var leadToCorrectLoginUserPage = require('../../../common/util').leadToCorrectLoginUserPage;
 
 
 export class ReviewsEditingComponent extends React.Component{
@@ -9,6 +10,7 @@ export class ReviewsEditingComponent extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
+            profile: '',
             review: this.props.location.reviewViewProps.review,
             editing: true,
             isOpen: false
@@ -18,7 +20,7 @@ export class ReviewsEditingComponent extends React.Component{
     openModal = () => this.setState({ isOpen: true });
     closeModal = () => {
         this.setState({ isOpen: false })
-        this.props.history.push('/update-review')
+        leadToCorrectLoginUserPage(this.state.profile, this.props.history)
     };
 
     handleSaveReview(review){
