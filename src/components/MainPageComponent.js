@@ -67,11 +67,11 @@ export class MainPageComponent extends React.Component{
                     <div>
                         <Route path="/"
                                exact component={LandingPageComponent}/>
-                        <Route path="/about-KJ"
+                        <Route path="/about/about-KJ"
                                exact component={AboutKJComponent}/>
-                        <Route path="/reviews"
+                        <Route path="/about/reviews"
                                exact component={ReviewsComponent}/>
-                        <Route path="/more-reviews"
+                        <Route path="/about/reviews/more-reviews"
                                exact component={ReviewsViewComponent}/>
                         <Route path="/staff/reviews-for-staffs"
                                exact component={ReviewsListingForStaffsComponent}/>
@@ -89,10 +89,10 @@ export class MainPageComponent extends React.Component{
                                exact component={ReviewsEditingComponent}/>
                         <Route path={["/admin/update-review",]}
                                exact component={ReviewsListingComponent}/>
-                        <Route path="/blogs"
+                        <Route path="/about/blogs"
                                exact component={BlogsComponent}/>
                         <Route path=
-                                   {["/blogs/:blogId",
+                                   {["/about/blogs/:blogId",
                                    ]}
                                exact component={BlogViewComponent}/>
                         <Route path="/admin/create-blog"
@@ -111,7 +111,7 @@ export class MainPageComponent extends React.Component{
                         <Route path=
                                    {["/staff/update-blog-for-staff",]}
                                exact component={BlogsListingForStaffsComponent}/>
-                        <Route path="/client-story"
+                        <Route path="/about/client-story"
                                exact component={ClientStoryComponent}/>
                         <Route path="/care-service/bathing-dressing"
                                exact component={BathingDressingComponent}/>
