@@ -5,7 +5,9 @@ export class PersonalCareComponent extends React.Component{
     render() {
         return(
             <div className="container">
-                <h1>PersonalCare</h1>
+                <a href="/caregiver-resource/job-application">
+                    <h1 className="orange">PersonalCare</h1>
+                </a>
                 <p>
                     A Personal Care Assistant- Another integral and important part of our healthcare team, here at K & J Total Care.
                 </p>

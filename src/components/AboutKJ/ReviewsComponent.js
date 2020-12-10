@@ -34,18 +34,18 @@ export class ReviewsComponent extends React.Component{
                     <Card>
                         <Card.Img src="/shutterstock_128133443.jpg" />
                     </Card>
-                    <Card bg="warning" text="white" className="text-center p-3">
+                    <Card bg="warning" text="white" className="greenBg text-center p-3 background">
                         <blockquote className="blockquote mb-0 card-body">
                             <h1>Our Reviews</h1>
                             <br/>
                             <Form.Group as={Row}>
                                 <Col sm={6}>
-                                <Link  to={`/about/reviews/leave-review`} className="btn form-control btn-success">
+                                <Link  to={`/about/reviews/leave-review`} className="orangeBg btn form-control btn-success">
                                     LEAVE ONE
                                 </Link>
                                 </Col>
-                                <Col sm={6}>
-                                    <Link to={`/about/reviews/more-reviews`} className="btn form-control btn-danger">
+                                <Col sm={6} className="green">
+                                    <Link to={`/about/reviews/more-reviews`} className="orangeBg btn form-control btn-success">
                                         READ MORE
                                     </Link>
                                 </Col>

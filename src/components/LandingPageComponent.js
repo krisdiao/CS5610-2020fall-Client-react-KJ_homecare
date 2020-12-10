@@ -8,13 +8,13 @@ export class LandingPageComponent extends React.Component{
         return (
             <div className="container">
                 <Jumbotron>
-                    <h1>Your Partner Is Here</h1>
+                    <h1 className="orange">Your Partner Is Here</h1>
                     <p>
                         Serving Triad areas.
                     </p>
                     <p>
                         <Nav.Link componentClass={Link} href="/contact">
-                        <Button variant="success">
+                        <Button className="orangeBg" variant="success">
                             CONTACT US
                         </Button>
                         </Nav.Link>
@@ -24,7 +24,7 @@ export class LandingPageComponent extends React.Component{
                     <Row>
                         <Col>
                             <p>
-                            Welcome to K&J Total Care! We are honored that you decided to visit our page to
+                                Welcome to <strong className="orange">K&J Total Care</strong>! We are honored that you decided to visit our page to
                             learn about whom we are and who we serve!
                             Client Centered Approach
                             Clients are the center of our hearts. We start where they are and end when their needs have been met.
@@ -41,10 +41,10 @@ export class LandingPageComponent extends React.Component{
                 <Container>
                     <Row>
                         <Col>
-                            <Card bg="warning" text="white" className="text-center p-3">
+                            <Card bg="warning" text="white" className="greenBg text-center p-3">
                                 <h1>Your Story is Our Story</h1>
                                 <Link to="/reviews">
-                                    <button className="btn form-control-lg btn-success">
+                                    <button className="orangeBg btn form-control-lg btn-success">
                                         Read More
                                     </button>
                                 </Link>

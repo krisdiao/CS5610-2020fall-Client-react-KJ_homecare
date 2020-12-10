@@ -52,6 +52,7 @@ import UpdateInformation from "./User/Profile/UpdateInformation";
 import {ViewMyReviewsComponent} from "./User/Profile/ViewMyReviewsComponent";
 import {ViewMyBlogsComponent} from "./User/Profile/ViewMyBlogsComponent";
 import {ViewMyJobsComponent} from "./User/Profile/ViewMyJobsComponent";
+import ResultItemDetailsComponent from "./SearchContent/ResultItemDetailsComponent";
 
 
 export class MainPageComponent extends React.Component{
@@ -76,6 +77,7 @@ export class MainPageComponent extends React.Component{
                                exact component={ReviewsListingForStaffsComponent}/>
                         <Route path="/staff/reviews-for-staffs/:reviewId"
                                exact component={ReviewsViewForStaffsComponent}/>
+
                         <Route path={["/about/reviews/leave-review",
                                     "/admin/reviews/leave-review"
                         ]}
@@ -157,8 +159,13 @@ export class MainPageComponent extends React.Component{
                                exact component={RegisterComponent}/>
                         <Route path="/contact"
                                exact component={ContactFormComponent}/>
-                        <Route path="/search"
+                        <Route path={[
+                                        "/search",
+                                        "/search/?age=age&sex=gender"
+                                    ]}
                                exact component={SearchContentComponent}/>
+                        <Route path="/search/:resultId/details"
+                               exact component={ResultItemDetailsComponent}/>
                         <Route path="/admin"
                                exact component={AdminComponent}/>
                         <Route path="/staff"

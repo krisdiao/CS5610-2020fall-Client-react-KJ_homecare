@@ -99,7 +99,7 @@ export class LoginComponent extends React.Component{
 
         return (
             <div>
-                {isLoggedIn && <ProfileComponent {...this.props} />}
+                {isLoggedIn && <ProfileComponent {...this.props}/>}
                 {!isLoggedIn &&
                 <div className="container">
                     <h1>Login</h1>
@@ -124,7 +124,7 @@ export class LoginComponent extends React.Component{
                         </Form.Group>
                         <Form.Row>
                             <Form.Group as={Col}>
-                                <Button variant="primary" type="button"
+                                <Button className="orangeBg btn-success" type="button"
                                         disabled={!inEnabled}
                                         onClick={() => this.handleLogin(this.state)}>
                                     Login
@@ -136,9 +136,9 @@ export class LoginComponent extends React.Component{
                                     <Modal.Body>Login Failure</Modal.Body>
                                     <Modal.Body>Have you registered?</Modal.Body>
                                     <Modal.Footer>
-                                        <Button variant="success" onClick={this.closeModal}>Yes</Button>
+                                        <Button variant="success" className="orangeBg btn-success" onClick={this.closeModal}>Yes</Button>
                                         <Link to={`/register`}>
-                                            <Button variant="outline-primary" type="button">
+                                            <Button variant="outline-primary" className="greenBg btn-success" type="button">
                                                 Sign Up
                                             </Button>
                                         </Link>
@@ -166,7 +166,7 @@ export class LoginComponent extends React.Component{
                                     <Modal.Body>An email has been sent with a new password.</Modal.Body>
                                     <Modal.Body>Please check!</Modal.Body>
                                     <Modal.Footer>
-                                        <Button variant="success" onClick={this.closeForgot}>Got it!</Button>
+                                        <Button variant="success" className="orangeBg btn-success"onClick={this.closeForgot}>Got it!</Button>
                                     </Modal.Footer>
                                 </Modal>
                                 {/*<p><a title="Forgot email" type="button"*/}
@@ -186,7 +186,7 @@ export class LoginComponent extends React.Component{
                             </Form.Group>
                             <Form.Group as={Col}>
                                 <Link to={`/register`}>
-                                    <Button variant="success" type="button">
+                                    <Button className="greenBg btn-success" type="button">
                                         Sign Up
                                     </Button>
                                 </Link>

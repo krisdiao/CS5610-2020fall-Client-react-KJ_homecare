@@ -113,6 +113,7 @@ export class BlogsEditingComponent extends React.Component{
                     <Form.Group as={Row}>
                         <Col sm={{ span: 10, offset: 2 }}>
                             <Button type="button"
+                                    className="orangeBg btn-success"
                                     onClick={() => this.handleSaveBlog(this.state)}
                             >Save
                             </Button>
@@ -122,7 +123,7 @@ export class BlogsEditingComponent extends React.Component{
                                 </Modal.Header>
                                 <Modal.Body>Success! Thanks!</Modal.Body>
                                 <Modal.Footer>
-                                    <button onClick={this.closeModal}>Close</button>
+                                    <button className="orangeBg btn-success" onClick={this.closeModal}>Close</button>
                                 </Modal.Footer>
                             </Modal>
                         </Col>

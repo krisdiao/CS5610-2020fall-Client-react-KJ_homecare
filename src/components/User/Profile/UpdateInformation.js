@@ -325,7 +325,7 @@ export default class UpdateInformation extends React.Component {
 
                                 <Form.Group as={Row}>
                                     <Col>
-                                        <Button variant="primary" type="button" className="pull-left"
+                                        <Button variant="primary" type="button" className="greenBg pull-left"
                                                 disabled={!inEnabled}
                                                 onClick={() => this.handleSaveProfile(this.state)}>
                                             Save
@@ -336,7 +336,7 @@ export default class UpdateInformation extends React.Component {
                                             </Modal.Header>
                                             <Modal.Body>Success! Thanks!</Modal.Body>
                                             <Modal.Footer>
-                                                <button onClick={this.closeModal}>Close</button>
+                                                <button className="orangeBg btn-success" onClick={this.closeModal}>Close</button>
                                             </Modal.Footer>
                                         </Modal>
                                     </Col>

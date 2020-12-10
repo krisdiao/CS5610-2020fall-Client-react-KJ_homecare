@@ -15,3 +15,4 @@ export const CONTACT_URL = `${BASE_URL}/api/contacts`
 export const BLOG_URL = `${BASE_URL}/api/blogs`
 
 
+export const TOPIC_URL = "https://health.gov/myhealthfinder/api/v3"

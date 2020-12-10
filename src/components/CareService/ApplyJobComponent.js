@@ -89,7 +89,7 @@ export class ApplyJobComponent extends React.Component{
 
         return(
             <div className="container">
-                <h1>Come to Work @ K&J Total Care! </h1>
+                <h1 className="orange">Come to Work @ <strong>K&J Total Care</strong>! </h1>
                 <br/>
                 <br/>
                 <Form>
@@ -263,7 +263,7 @@ export class ApplyJobComponent extends React.Component{
                                     onChange={(e) => this.handleChange(e)}/>
                     </Form.Group>
 
-                    <Button variant="primary" type="button"
+                    <Button className="orangeBg btn-success" type="button"
                             disabled={!inEnabled}
                             onClick={() => this.handleApplyJob(this.state)}>
                         Submit

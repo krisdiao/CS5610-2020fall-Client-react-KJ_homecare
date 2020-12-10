@@ -159,6 +159,7 @@ export class LeaveReviewsComponent extends React.Component{
                     <Form.Group as={Row}>
                         <Col sm={{ span: 10, offset: 2 }}>
                             <Button type="button"
+                                    className="orangeBg btn-success"
                                     disabled={!inEnabled}
                                     onClick={() => this.handleLeaveReviews(this.state)}>
                                 Share
