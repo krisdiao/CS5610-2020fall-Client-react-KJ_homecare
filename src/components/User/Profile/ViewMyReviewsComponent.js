@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import {Container , Row , Col} from 'react-bootstrap';
 import ProfileComponent from "./ProfileComponent"
 
+
 export class ViewMyReviewsComponent extends React.Component{
 
     constructor(props) {
@@ -47,7 +48,9 @@ export class ViewMyReviewsComponent extends React.Component{
             <div>
                 <Container>
                     <Row>
-                        <Col sm={3}><ProfileComponent profile={this.state.profile}/></Col>
+                        <Col sm={3}><ProfileComponent
+                            {...this.props}
+                            profile={this.state.profile}/></Col>
                         <Col sm={9}>
                             <h1>My Reviews</h1>
                             <br/>

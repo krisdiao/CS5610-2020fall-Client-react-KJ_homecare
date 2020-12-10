@@ -9,7 +9,7 @@
          case "STAFF":
              return history.push('/staff')
          case "LOGIN_USER":
-             return history.push('/profile')
+             return history.push('/user')
          default:
              return history.push('/')
      } }

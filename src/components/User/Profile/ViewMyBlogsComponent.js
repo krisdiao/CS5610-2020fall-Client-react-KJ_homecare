@@ -47,7 +47,7 @@ export class ViewMyBlogsComponent extends React.Component{
             <div>
                 <Container>
                     <Row>
-                        <Col sm={3}><ProfileComponent profile={this.state.profile}/></Col>
+                        <Col sm={3}><ProfileComponent {...this.props} profile={this.state.profile}/></Col>
                         <Col sm={9}>
                             <h1>My Blogs</h1>
                             <br/>

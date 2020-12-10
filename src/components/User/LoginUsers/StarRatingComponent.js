@@ -9,11 +9,12 @@ const StarRatingComponent = (props) => {
     const [hover, setHover] = useState(null);
 
     const onTrigger = (ratingValue) => {
+        // console.log("ratingValue: ", ratingValue)
         props.reivewCallback(ratingValue);
     }
-
-    console.log("editing: ", props.editing)
-    console.log("stars: ", props.stars)
+    //
+    // console.log("editing: ", props.editing)
+    // console.log("stars: ", props.stars)
     return (
         <div>
             {!props.editing &&
@@ -33,17 +34,20 @@ const StarRatingComponent = (props) => {
                         // console.log("ratingValue: ", ratingValue)
                         // console.log("star inside : ", props.stars)
                         return (
+
                             <label>
+
                                 <input
                                     type="radio"
                                     name="rating"
-                                    value={props.stars}
+                                    value={rating}
                                     onClick={() => setRating(ratingValue)}
 
                                 />
+
                                 <FaStar
                                     className="star"
-                                    color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
+                                    color={ratingValue <= (hover || props.stars) ? "#ffc107" : "#e4e5e9"}
                                     size={30}
                                     onMouseEnter={() => setHover(ratingValue)}
                                     onMouseLeave={() => setHover(null)}
