@@ -1,5 +1,5 @@
 import React from "react";
-import {Form,Col,Row} from 'react-bootstrap';
+import {Form,Col,Row,Card} from 'react-bootstrap';
 
 
 export class BlogViewComponent extends React.Component{
@@ -56,7 +56,9 @@ export class BlogViewComponent extends React.Component{
                         </Col>
 
                     </Form.Group>
+
                 </Form>
+
             </div>
         )
     }

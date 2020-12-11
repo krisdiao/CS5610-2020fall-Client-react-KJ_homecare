@@ -2,7 +2,7 @@ import React from 'react';
 import blogService from "../../services/BlogService";
 import {Link} from "react-router-dom";
 import {AdminComponent} from "../User/AdminComponent";
-import {Container , Row , Col} from 'react-bootstrap';
+import {Container , Row , Col ,Card,Button} from 'react-bootstrap';
 
 
 
@@ -79,7 +79,39 @@ export class BlogsComponent extends React.Component{
                             )}
                             </tbody>
 
-                        </table>
+                </table>
+
+                <div>
+                    <br/>
+                    {this.state.blogs.map(blog =>
+
+                    <Card className="text-center">
+
+                            <Card.Body>
+                                <Card.Title>
+                                    <Link to={{
+                                        pathname: `/about/blogs/${blog.id}`,
+                                        blogViewProps: { blog: blog }}}>
+                                        {blog.title}
+                                    </Link>
+                                    </Card.Title>
+                                    <Card.Text>
+                                        {blog.content}
+                                    </Card.Text>
+                                    <footer className="blockquote-footer">
+                                        <cite title="Source Title">{blog.lastName},{blog.firstName} </cite>
+                                    </footer>
+                            </Card.Body>
+                            <Card.Footer className="text-muted">
+                            {blog.timeStamp.toString()}
+                            </Card.Footer>
+
+                            </Card>
+
+                    )}
+
+                </div>
+
             </Container>
         )
     }
