@@ -27,23 +27,24 @@ export const FooterComponent = () => {
                             </a>
 
                             <hr className="green accent-2 mb-4 mt-0 d-inline-block mx-auto" style={{ width: "120px" }} />
-                            <p>
-                                <i className="fa fa-home mr-3" /> Rural Hall, NC, 27045, US
+                            <p className="green">
+                                <i className="orange fa fa-home mr-3" /> Rural Hall, NC, 27045, US
                             </p>
-                            <p>
-                                <i className="fa fa-envelope mr-3" /> kjtotalcare@gmail.com
+                            <p className="green">
+                                <i className="orange fa fa-envelope mr-3" /> kjtotalcare@gmail.com
                             </p>
-                            <p>
-                                <i className="fa fa-phone mr-3" /> 336-457-1167
+                            <p className="green">
+                                <i className="orange fa fa-phone mr-3" /> 336-457-1167
                             </p>
                         </MDBCol>
                         <MDBCol md="4" className="text-center text-md align-top">
                             <a href="/">
-                                <h4 color="green" className="orange text-uppercase font-weight-bold">
+                                <h4 className="orange text-uppercase font-weight-bold">
                                     <strong>K&J Total Care</strong>
                                 </h4>
                             </a>
-                            <p>
+                            <br/>
+                            <p className="green">
                                 Here you can totally trust us!
                             </p>
                         </MDBCol>
