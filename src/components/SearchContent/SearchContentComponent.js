@@ -18,27 +18,31 @@ class SearchContentComponent extends Component {
 
     componentDidMount() {
         console.log(this.props.match.params)
-        // this.setState({
-        //     age: this.props.match.params.age,
-        //     gender: this.props.match.params.gender
-        // })
-        if(this.props.match.params.age && this.props.match.params.title) {
-            this.fetchResult();
+        this.setState({
+            age: this.props.match.params.age,
+            gender: this.props.match.params.gender
+        })
+        //debugger
+        if(this.props.match.params.age && this.props.match.params.gender) {
+            //debugger
+            this.fetchResult(this.props.match.params.age, this.props.match.params.gender);
         }
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        // if(prevProps.match.params.age !== this.props.match.params.age
-        //     && prevProps.match.params.gender !== this.props.match.params.gender
-        // ) {
-        //     this.setState({
-        //         age: this.props.match.params.age,
-        //         gender: this.props.match.params.gender
-        //     })
-        // }
+        if(prevProps.match.params.age !== this.props.match.params.age
+            && prevProps.match.params.gender !== this.props.match.params.gender
+        ) {
+            this.setState({
+                age: this.props.match.params.age,
+                gender: this.props.match.params.gender
+            })
+        }
 
-        if(this.props.match.params.age && this.props.match.params.title) {
-            this.fetchResult();
+        //debugger
+        if(this.props.match.params.age && this.props.match.params.gender) {
+            //debugger
+            this.fetchResult(this.props.match.params.age, this.props.match.params.gender);
         }
     }
 
@@ -85,7 +89,7 @@ class SearchContentComponent extends Component {
     }
 
     searchByAgeGender(age, gender) {
-        this.props.history.push(`/search/?age=${age}&sex=${gender}`);
+        this.props.history.push(`/search/${age}/${gender}`);
         this.fetchResult(age, gender);
     }
 

@@ -161,10 +161,10 @@ export class MainPageComponent extends React.Component{
                                exact component={ContactFormComponent}/>
                         <Route path={[
                                         "/search",
-                                        "/search/?age=age&sex=gender"
+                                        "/search/:age/:gender"
                                     ]}
                                exact component={SearchContentComponent}/>
-                        <Route path="/search/:resultId/details"
+                        <Route path="/details/:resultId"
                                exact component={ResultItemDetailsComponent}/>
                         <Route path="/admin"
                                exact component={AdminComponent}/>
