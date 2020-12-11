@@ -275,7 +275,7 @@ export class ApplyJobComponent extends React.Component{
                         <Modal.Body>Thank you, we will contact you shortly!</Modal.Body>
                         <Modal.Body>May God Bless you!</Modal.Body>
                         <Modal.Footer>
-                            <button onClick={this.closeModal}>Close</button>
+                            <button className="orangeBg btn-success" onClick={this.closeModal}>Close</button>
                         </Modal.Footer>
                     </Modal>
                 </Form>

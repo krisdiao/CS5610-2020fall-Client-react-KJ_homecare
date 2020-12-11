@@ -168,7 +168,7 @@ export class LeaveReviewsComponent extends React.Component{
                                 <Modal.Header>
                                     <Modal.Title>Hi there!</Modal.Title>
                                 </Modal.Header>
-                                <Modal.Body>Thank you, we will contact you shortly!</Modal.Body>
+                                <Modal.Body>Thank you!</Modal.Body>
                                 <Modal.Body>May God Bless you!</Modal.Body>
                                 <Modal.Footer>
                                     <button onClick={this.closeModal}>Close</button>
