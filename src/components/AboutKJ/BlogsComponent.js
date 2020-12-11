@@ -95,8 +95,8 @@ export class BlogsComponent extends React.Component{
 
                                     </Link>
                                     </Card.Title>
-                                    <Card.Text>
-                                        <div dangerouslySetInnerHTML={ {__html: blog.content} }/>
+                                    <Card.Text className="text-left">
+                                        <div dangerouslySetInnerHTML={ {__html: blog.content.substr(0,300)} }/>
                                         {/*{blog.content}*/}
                                     </Card.Text>
                                     <footer className="blockquote-footer">
