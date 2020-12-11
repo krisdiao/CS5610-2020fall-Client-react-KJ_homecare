@@ -69,7 +69,7 @@ export class ViewMyReviewsComponent extends React.Component{
                                     <tr>
                                         <td>
                                             <Link to={{
-                                                pathname: `/update-review/${review.id}`,
+                                                pathname: `/profile/view-my-reviews/update-review/${review.id}`,
                                                 reviewViewProps: { review: review }
                                             }}
                                             > {review.title}</Link>
