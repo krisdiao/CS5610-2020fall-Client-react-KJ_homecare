@@ -1,5 +1,5 @@
 import React from 'react';
-
+// import "../../Background.css"
 
 export class CertifiedNursingComponent extends React.Component{
     render() {
