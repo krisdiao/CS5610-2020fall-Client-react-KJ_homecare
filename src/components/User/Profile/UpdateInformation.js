@@ -96,7 +96,7 @@ export default class UpdateInformation extends React.Component {
                                     </Form.Label>
                                     <Col sm={4}>
                                         <Form.Control
-                                            types="text"
+                                            type="text"
                                             value={this.state.profile.firstName}
                                             onChange={(event) => {
                                                 const newFirstName = event.target.value
@@ -111,7 +111,7 @@ export default class UpdateInformation extends React.Component {
                                     </Form.Label>
                                     <Col sm={4}>
                                         <Form.Control
-                                            types="text"
+                                            type="text"
                                             value={this.state.profile.lastName}
                                             onChange={(event) => {
                                                 const newLastName = event.target.value
@@ -123,13 +123,13 @@ export default class UpdateInformation extends React.Component {
                                     </Col>
                                 </Form.Group>
 
-                                <Form.Group as={Row} controlId="formHorizontalName">
+                                <Form.Group as={Row} controlId="formGridEmail">
                                     <Form.Label column sm={2}>
                                         Email
                                     </Form.Label>
                                     <Col sm={4}>
                                         <Form.Control
-                                            types="text"
+                                            type="text"
                                             value={this.state.profile.email}
                                             onChange={(event) => {
                                                 const newEmail = event.target.value
@@ -139,12 +139,12 @@ export default class UpdateInformation extends React.Component {
                                             }}
                                         />
                                     </Col>
-                                    <Form.Label column sm={2}>
+                                    <Form.Label column sm={2} controlId="formGridPhoneNumber">
                                         Phone Number
                                     </Form.Label>
                                     <Col sm={4}>
                                         <Form.Control
-                                            types="number"
+                                            type="number"
                                             value={this.state.profile.phoneNumber}
                                             onChange={(event) => {
                                                 const newPhoneNumber = event.target.value
@@ -156,13 +156,13 @@ export default class UpdateInformation extends React.Component {
                                     </Col>
                                 </Form.Group>
 
-                                <Form.Group as={Row} controlId="formHorizontalName">
+                                <Form.Group as={Row} controlId="formBasicPassword">
                                     <Form.Label column sm={2}>
                                         Password
                                     </Form.Label>
                                     <Col sm={4}>
                                         <Form.Control
-                                            types="password"
+                                            type="password"
                                             // value={this.state.profile.password}
                                             onChange={(event) => {
                                                 const newPassword = event.target.value
@@ -177,7 +177,7 @@ export default class UpdateInformation extends React.Component {
                                     </Form.Label>
                                     <Col sm={4}>
                                         <Form.Control
-                                            types="password"
+                                            type="password"
                                             // value={this.state.profile.verifyPassword}
                                             onChange={(event) => {
                                                 const newVerifyPassword = event.target.value
@@ -195,7 +195,7 @@ export default class UpdateInformation extends React.Component {
                                     </Form.Label>
                                     <Col sm={4}>
                                         <Form.Control
-                                            types="text"
+                                            type="text"
                                             value={this.state.profile.add1}
                                             onChange={(event) => {
                                                 const newAdd1 = event.target.value
@@ -210,7 +210,7 @@ export default class UpdateInformation extends React.Component {
                                     </Form.Label>
                                     <Col sm={4}>
                                         <Form.Control
-                                            types="text"
+                                            type="text"
                                             value={this.state.profile.add2}
                                             onChange={(event) => {
                                                 const newAdd2 = event.target.value
@@ -225,7 +225,7 @@ export default class UpdateInformation extends React.Component {
                                 <Form.Row>
                                     <Form.Group as={Col} controlId="formGridCity">
                                         <Form.Label>City*</Form.Label>
-                                        <Form.Control types="text" value={this.state.profile.city}
+                                        <Form.Control type="text" value={this.state.profile.city}
                                                       onChange={(event) => {
                                                           const newCity = event.target.value
                                                           this.setState(prevState => ({
