@@ -49,7 +49,7 @@ export class HeaderComponent extends React.Component{
                         </NavDropdown>
                         <Nav.Link componentClass={Link} href="/login">Login/Sign Up</Nav.Link>
                         <Nav.Link componentClass={Link} href="/contact">Contact Us</Nav.Link>
-                        <Nav.Link componentClass={Link} href="/search">Health TIPS Search</Nav.Link>
+                        <Nav.Link componentClass={Link} href="/search">Health Tips Search</Nav.Link>
                         {/*<Nav.Link componentClass={Link} href="/admin">Admin</Nav.Link>*/}
                         {/*<Nav.Link componentClass={Link} href="/staff">Staff</Nav.Link>*/}
                         {/*<Nav.Link componentClass={Link} href="/user">User</Nav.Link>*/}

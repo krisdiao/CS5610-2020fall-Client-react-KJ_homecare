@@ -25,12 +25,12 @@ export class LandingPageComponent extends React.Component{
                         <Col>
                             <p>
                                 Welcome to <strong className="orange">K&J Total Care</strong>! We are honored that you decided to visit our page to
-                            learn about whom we are and who we serve!
-                            Client Centered Approach
-                            Clients are the center of our hearts. We start where they are and end when their needs have been met.
+                                learn about whom we are and who we serve!</p>
+                            <p><strong>Client Centered Approach</strong></p>
+                            <p>Clients are the center of our hearts. We start where they are and end when their needs have been met.
                             We serve diverse populations including children, adolescents, middle aged adults and seniors citizens.
                             Our clients have a wide variety of needs depending on each individual, couple and family to include
-                            pets who know are so important. Our clients have medical, psychiatric diagnosis, dual diagnosis,
+                            pets who we know are so important. Our clients have medical, psychiatric diagnosis, dual diagnosis,
                             special needs and there are times when we have to help people determine what their needs are.
                             </p>
                         </Col>
@@ -43,7 +43,7 @@ export class LandingPageComponent extends React.Component{
                         <Col>
                             <Card bg="warning" text="white" className="greenBg text-center p-3">
                                 <h1>Your Story is Our Story</h1>
-                                <Link to="/reviews">
+                                <Link to="/about/reviews">
                                     <button className="orangeBg btn form-control-lg btn-success">
                                         Read More
                                     </button>

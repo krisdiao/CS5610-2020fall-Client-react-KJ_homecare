@@ -144,7 +144,7 @@ export default class UpdateInformation extends React.Component {
                                     </Form.Label>
                                     <Col sm={4}>
                                         <Form.Control
-                                            types="text"
+                                            types="number"
                                             value={this.state.profile.phoneNumber}
                                             onChange={(event) => {
                                                 const newPhoneNumber = event.target.value
@@ -162,7 +162,7 @@ export default class UpdateInformation extends React.Component {
                                     </Form.Label>
                                     <Col sm={4}>
                                         <Form.Control
-                                            types="text"
+                                            types="password"
                                             // value={this.state.profile.password}
                                             onChange={(event) => {
                                                 const newPassword = event.target.value
@@ -177,7 +177,7 @@ export default class UpdateInformation extends React.Component {
                                     </Form.Label>
                                     <Col sm={4}>
                                         <Form.Control
-                                            types="text"
+                                            types="password"
                                             // value={this.state.profile.verifyPassword}
                                             onChange={(event) => {
                                                 const newVerifyPassword = event.target.value

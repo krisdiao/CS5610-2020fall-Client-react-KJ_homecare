@@ -21,7 +21,7 @@ export class AboutKJComponent extends React.Component{
                                 We start where they are and end when their needs have been met.
                                 We serve diverse populations including children, adolescents, middle aged adults and seniors citizens.
                                 Our clients have a wide variety of needs depending on each individual,
-                                couple and family to include pets who know are so important.
+                                couple and family to include pets who we know are so important.
                                 Our clients have medical, psychiatric diagnosis, dual diagnosis,
                                 special needs and there are times when we have to help people determine what their needs are.
                             </p>
@@ -52,12 +52,12 @@ export class AboutKJComponent extends React.Component{
                                 I served Veterans at the VA Hospitals in Durham and in West Palm Beach.
                                 I worked as a Victim Advocate with Family Services.
                                 Most recently I worked as a Teaching Assistant in the W-S Forsyth County School System in Title I schools with children.
-                                I have worked in various setting including hospitals, nursing homes, and patient homes.
+                                I have worked in various settings including hospitals, nursing homes, and patient homes.
                                 Venturing to unfamiliar realms I served customers within a financial institution setting
                                 as a financial service representative and back-up support.
                                 I have worked in critical care units, pediatrics, dermatology, neurology, cardiology, orthopedics,
                                 general medicine and surgery.
-                                Unbenounced to me I would always found myself back in the helping profession this is where I belong.
+                                Unbenounced to me I would always find myself back in the helping profession, this is where I belong.
                             </p>
                         </Col>
                     </Row>
@@ -65,9 +65,9 @@ export class AboutKJComponent extends React.Component{
                 <br/>
                 <Container>
                     <img src="/shutterstock_1565217376.jpg" alt="Card image cap" height="700" width="1080"/>
-                    <Jumbotron className="text-center p-6">
+                    <Jumbotron className="text-left p-6">
                         <a href="/caregiver-resource/job-application">
-                            <h1 className="orange">
+                            <h1 className="orange text-center">
                                 Join Our Team, Work With Us!
                             </h1>
                         </a>
@@ -80,14 +80,14 @@ export class AboutKJComponent extends React.Component{
                         </p>
                     <br/>
                         <a href="/contact">
-                            <h1 className="orange">
+                            <h1 className="orange text-center">
                                 Join Our Family, Let Us Serve You!
                             </h1>
                         </a>
                         <p>
-                            Why Us? Not only have I been in this field for more than half my life but my spiritual
+                            Why Us? Not only have I been in this field for more than half of my life, but my spiritual
                             and professional journey sets this agency apart.
-                            At K&J we adhere to the 3F’s Faith, Family, Friendship and 3’Cs Commitment, Collaboration and Communication.
+                            At K&J we adhere to the 3F’s <strong>Faith, Family, Friendship</strong> and 3’Cs <strong>Commitment, Collaboration Communication</strong>.
                         </p>
                     </Jumbotron>
                 </Container>
@@ -96,7 +96,7 @@ export class AboutKJComponent extends React.Component{
                         Our Future
                     </h1>
                     <p>
-                        When I created this company it wasn’t just for me and my career.
+                        When I created this company, it wasn’t just for me and my career.
                         It is also my purpose to offer opportunities for  RN’s, LPN’s, CNA’s, PCA’s, Companions/Sitters,
                         and those aspiring to be in the medical field. My long term goal is to offer franchise opportunities
                         and to become a nationwide conglomerate. I would like to expand my management team, staff,

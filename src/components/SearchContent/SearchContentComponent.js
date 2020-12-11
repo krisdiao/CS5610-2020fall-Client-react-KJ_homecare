@@ -114,7 +114,7 @@ class SearchContentComponent extends Component {
         console.log("state: ", this.state)
         return (
             <div className="container">
-                <h3>Please enter your <strong>Date Of Birth</strong> & <strong>Gender</strong> to begin searching for health advice here: </h3>
+                <h3>Please enter your <strong>Date of Birth</strong> & <strong>Gender</strong> to begin searching for health advice here: </h3>
                 <br/>
                 <Form>
                     <Form.Row className="align-items-center">
