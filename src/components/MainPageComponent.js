@@ -61,8 +61,6 @@ export class MainPageComponent extends React.Component{
             <div>
                 <HeaderComponent/>
                 <br/>
-                <br/>
-                <br/>
                 <BrowserRouter>
                     <div>
                         <Route path="/"
@@ -183,12 +181,8 @@ export class MainPageComponent extends React.Component{
                     </div>
                 </BrowserRouter>
                 <br/>
-                <br/>
-                <br/>
                 <FooterComponent/>
             </div>
-
-
         )
 
     }
