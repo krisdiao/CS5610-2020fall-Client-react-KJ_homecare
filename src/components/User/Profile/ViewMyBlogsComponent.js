@@ -66,7 +66,7 @@ export class ViewMyBlogsComponent extends React.Component{
                                     <tr>
                                         <td>
                                             <Link to={{
-                                                pathname: `/update-blog/${blog.id}`,
+                                                pathname: `/profile/view-my-blogs/update-blog/${blog.id}`,
                                                 blogViewProps: { blog: blog }
                                             }}
                                             > {blog.title}</Link>
