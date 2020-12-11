@@ -68,6 +68,55 @@ export class LandingPageComponent extends React.Component{
                     </Row>
                 </Container>
                 <br/>
+                <br/>
+                <Jumbotron>
+                    <h1 className="text-center orange">Let Us Share the Responsibility</h1>
+                    <br/>
+                    <Row>
+                        <Col className="text-center">
+                            <img src="/homemaking-care.png" alt="Card image cap" height="100" width="152"/>
+                            <h5>Homemaking Care</h5>
+                            <p>
+                                Caregivers can assist with laundry, light housekeeping, and meal preparation.
+                            </p>
+                            <p>
+                                <Link to="/care-service/light-housekeeping" className="btn orangeBg">Learn more</Link>
+                            </p>
+                        </Col>
+                        <Col className="text-center">
+                            <img src="/personal-care.png" alt="Card image cap" height="100" width="152"/>
+                            <h5>Personal Care</h5>
+                            <p>
+                                Helping loved ones with personal tasks. Caregivers offer compassionate support.
+                            </p>
+                            <p>
+                                <Link to="/care-service/safety-observation" className="btn orangeBg">Learn more</Link>
+                            </p>
+                        </Col>
+                        <Col className="text-center">
+                            <img src="/homecare.png" alt="Card image cap" height="100" width="152"/>
+                            <h5>Home Care</h5>
+                            <p>
+                                A caregiver can be there to help through the night or live with your family full-time.
+                            </p>
+                            <p>
+                                <Link to="/care-service/light-meal-preparation" className="btn orangeBg">Learn more</Link>
+                            </p>
+                        </Col>
+                        <Col className="text-center">
+                            <img src="/companioncare.png" alt="Card image cap" height="100" width="152"/>
+                            <h5>Companion Care</h5>
+                            <p>
+                                Companion care makes sure your loved one has someone to talk to and interact with.
+                            </p>
+                            <p>
+                                <Link to="/care-service/companionship" className="btn orangeBg">Learn more</Link>
+                            </p>
+                        </Col>
+                    </Row>
+
+                </Jumbotron>
+                <br/>
                 <ContactFormComponent/>
             </div>
         );
