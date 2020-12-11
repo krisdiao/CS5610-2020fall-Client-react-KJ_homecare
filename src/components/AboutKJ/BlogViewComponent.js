@@ -1,5 +1,6 @@
 import React from "react";
 import {Form,Col,Row,Card} from 'react-bootstrap';
+import {Link} from "react-router-dom";
 
 
 export class BlogViewComponent extends React.Component{
@@ -16,49 +17,28 @@ export class BlogViewComponent extends React.Component{
         console.log(this.state.blog)
         return(
             <div className="container">
-                <Form>
-                    <Form.Group as={Row} controlId="formHorizontalName">
-                        <Form.Label column sm={2}>
-                            First Name
-                        </Form.Label>
-                        <Col sm={4}>
-                            <h4>{this.state.blog.firstName}</h4>
-                        </Col>
-                        <Form.Label column sm={2}>
-                            Last Name
-                        </Form.Label>
-                        <Col sm={4}>
-                            <h4>{this.state.blog.lastName}</h4>
-                        </Col>
-                    </Form.Group>
 
-                    <Form.Group as={Row} controlId="formHorizontalTitle">
-                        <Form.Label column sm={2}>
-                            Last Modified
-                        </Form.Label>
-                        <Col sm={10}>
-                            <h4>{this.state.blog.timeStamp.toString()}</h4>
-                        </Col>
-                    </Form.Group>
+                <Card >
 
-                    <Form.Group as={Row} controlId="formHorizontalTitle">
-                        <Form.Label column sm={2}>
-                            Title
-                        </Form.Label>
-                        <Col sm={10}>
-                            <h4>{this.state.blog.title}</h4>
-                        </Col>
-                    </Form.Group>
-                    <Form.Group as={Row} controlId="formHorizontalContent">
-                        <Form.Label  column sm={2}>Content</Form.Label>
-                        <Col sm={10}>
-                            <h4>{this.state.blog.content}</h4>
-                        </Col>
-
-                    </Form.Group>
-
-                </Form>
-
+                    <Card.Body>
+                        <Card.Title>
+                            <h1>
+                                {this.state.blog.title}
+                            </h1>
+                        </Card.Title>
+                        <br/>
+                        <Card.Text>
+                            <div dangerouslySetInnerHTML={ {__html: this.state.blog.content} }/>
+                            {/*{blog.content}*/}
+                        </Card.Text>
+                        <footer className="blockquote-footer">
+                            <cite title="Source Title">{this.state.blog.firstName}&nbsp;{this.state.blog.lastName}</cite>
+                        </footer>
+                    </Card.Body>
+                    <Card.Footer className="text-muted">
+                        {this.state.blog.timeStamp.toString()}
+                    </Card.Footer>
+                </Card>
             </div>
         )
     }
