@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {MainPageComponent} from './components/MainPageComponent'
 import "bootstrap/dist/css/bootstrap.min.css";
+// import "./components/Background.css"
 
 ReactDOM.render(
     <MainPageComponent/>,
