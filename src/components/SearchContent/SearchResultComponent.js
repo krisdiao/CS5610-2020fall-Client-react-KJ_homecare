@@ -19,7 +19,8 @@ class SearchResultComponent extends Component {
 
         return (
             <div>
-                {this.props.results.Result && this.props.results.Result.MyHFHeading}
+                {this.props.results.Result &&
+                <div dangerouslySetInnerHTML={ {__html: this.props.results.Result.MyHFHeading} } />}
                 <ul className="list-group list-group-hover">
                     {
                         this.props.results.Result && this.props.results.Result.Resources.All.Resource.map(result =>
