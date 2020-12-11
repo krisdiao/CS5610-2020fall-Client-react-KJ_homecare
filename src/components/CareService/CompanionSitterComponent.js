@@ -6,7 +6,7 @@ export class CompanionSitterComponent extends React.Component{
         return(
             <div className="container">
                 <a href="/caregiver-resource/job-application">
-                    <h1 className="orange">CompanionSitter</h1>
+                    <h1 className="orange">Companion Sitter</h1>
                 </a>
                 <p>
                     A Companion/Sitter with K & J Total Home care is an integral and most important to our healthcare team. T

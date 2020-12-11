@@ -6,7 +6,7 @@ export class CertifiedNursingComponent extends React.Component{
         return(
             <div className="container">
                 <a href="/caregiver-resource/job-application">
-                    <h1 className="orange">CertifiedNursing</h1>
+                    <h1 className="orange">Certified Nursing</h1>
                 </a>
                 <p>
                     A Nursing Assistants are integral and necessary direct care professionals, who assist Clients with their overall healthcare needs.

@@ -26,7 +26,7 @@ export class LandingPageComponent extends React.Component{
                             <p>
                                 Welcome to <strong className="orange">K&J Total Care</strong>! We are honored that you decided to visit our page to
                                 learn about whom we are and who we serve!</p>
-                            <p><strong>Client Centered Approach</strong></p>
+                            <p className="text-center"><strong>Client Centered Approach</strong></p>
                             <p>Clients are the center of our hearts. We start where they are and end when their needs have been met.
                             We serve diverse populations including children, adolescents, middle aged adults and seniors citizens.
                             Our clients have a wide variety of needs depending on each individual, couple and family to include
