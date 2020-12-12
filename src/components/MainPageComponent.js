@@ -31,6 +31,7 @@ import SearchContentComponent from "./SearchContent/SearchContentComponent";
 import {FooterComponent} from "./header-footer/FooterComponent";
 import {PetCareComponent} from "./CaregiverResource/PetCareComponent";
 import ProfileComponent from "./User/Profile/ProfileComponent";
+import StaffProfileComponent from "./User/Profile/StaffProfileComponent";
 import {LeaveReviewsComponent} from "./User/LoginUsers/LeaveReviewsComponent";
 import {BlogsEditingComponent} from "./User/AdminOrStaffOnly/AdminBlogOperations/BlogsEditingComponent";
 import {ReviewsListingComponent} from "./User/AdminOrStaffOnly/AdminReviewOperations/ReviewsListingComponent";
@@ -147,6 +148,8 @@ export class MainPageComponent extends React.Component{
                                exact component={LoginComponent}/>
                         <Route path="/profile"
                                exact component={ProfileComponent}/>
+                        <Route path="/profiles"
+                               exact component={StaffProfileComponent}/>
                         <Route path="/profile/view-my-reviews"
                                exact component={ViewMyReviewsComponent}/>
                         <Route path="/profile/view-my-blogs"

@@ -71,7 +71,7 @@ export default class Profile extends React.Component {
                         {/*<Col  sm={3}>*/}
                             <ul className="list-group text-center">
                                 <li className="list-group-item">
-                                    <Link className="orange" to={`/profile`}>
+                                    <Link className="orange" to={`/`}>
                                         Main Page
                                     </Link>
                                 </li>
