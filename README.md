@@ -9,5 +9,4 @@
 
 <img
 src=“cs5610UML .png”
-raw=true
 />
