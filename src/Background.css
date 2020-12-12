@@ -1,3 +1,9 @@
-body{
-    background-image: url("bgTree.jpg");
+.imageBG{
+    background-image: url("blurBG.jpg");
+    padding: 100px;
+    background-repeat: no-repeat;
+    background-size: 1500px 1500px;
+    background-size: auto;
+    /*make website grayed*/
+    /*filter: grayscale(100%);*/
 }

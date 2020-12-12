@@ -1,10 +1,10 @@
 import React from 'react';
-// import "../../Background.css"
+import "../../Background.css"
 
 export class CertifiedNursingComponent extends React.Component{
     render() {
         return(
-            <div className="container">
+            <div className="imageBG container">
                 <a href="/caregiver-resource/job-application">
                     <h1 className="orange">Certified Nursing</h1>
                 </a>
