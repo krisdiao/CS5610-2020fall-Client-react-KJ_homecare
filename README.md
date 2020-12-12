@@ -6,3 +6,8 @@
 ![alt text](./cs5610UML .png)
 
 ![alt text](cs5610UML .png)
+
+<img
+src=“cs5610UML .png”
+raw=true
+/>
