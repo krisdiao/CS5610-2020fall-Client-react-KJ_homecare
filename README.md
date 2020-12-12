@@ -5,3 +5,4 @@
 
 ![alt text](./cs5610UML .png)
 
+![alt text](cs5610UML .png)
