@@ -1,7 +1,7 @@
 import React from "react";
 import {AdminComponent} from "../../AdminComponent";
 import {Container , Row , Col} from 'react-bootstrap';
-import userService from "../../../../services/UserService";
+import userService, {updateUser} from "../../../../services/UserService";
 var getUsersRegistrationReport = require('../../../../common/util.js').getUsersRegistrationReport;
 
 
@@ -94,9 +94,32 @@ export class UsersManagementComponent extends React.Component{
                 users: prevState.users.filter(users => users.id !== users.id)
                 })
             ))
-
-
     }
+
+    okay = (user) =>
+        userService.updateUser(user.id, {...user, editing :false})
+            .then(status => this.setState(prevState =>({
+                type:"UPDATE_USER",
+                user: {...user, editing:false }
+            })))
+
+    edit = (user) =>
+        userService.updateUser(user.id, {...user, editing :true})
+            .then(status => this.setState(prevState =>({
+                type:"UPDATE_USER",
+                user: {...user, editing:true }
+            })))
+
+    handleSaveUser(user){
+        userService.updateUser(user.user.id, user.user)
+            .then(newUser => {
+                this.setState({
+                    user: newUser,
+                    editing: false,
+                })
+            })
+    }
+
 
     render() {
         return(
@@ -143,7 +166,56 @@ export class UsersManagementComponent extends React.Component{
                                         <td>{user.city}</td>
                                         <td>{user.state}</td>
                                         <td>{user.zip}</td>
-                                        <td>{user.role}</td>
+                                        {/*<td>{user.role}</td>*/}
+                                        <td>
+                                            <input
+                                                className="form-control-sm"
+                                                type="text"
+                                                value={user.role}
+                                                onChange={(event) => {
+                                                    const newRole = event.target.value
+                                                    this.setState(prevState => ({
+                                                        user: {...prevState.user, role: newRole}
+                                                    }))
+                                                }}
+                                            />
+                                            <button
+                                                className="btn btn-primary pull-right"
+                                                onClick={() => this.handleSaveUser(this.state)}>
+                                                <i className="fa fa-pencil" aria-hidden="true"></i>
+                                            </button>
+                                        </td>
+                                        {/*{*/}
+                                        {/*    user.role !== "ADMIN" && !user.editing &&*/}
+                                        {/*        <span>*/}
+                                        {/*            <td>*/}
+                                        {/*                <button*/}
+                                        {/*                    onClick={ ()=> this.edit(user)}*/}
+                                        {/*                    className="btn btn-primary">*/}
+                                        {/*                    <i className="fa fa-pencil" aria-hidden="true"></i>*/}
+                                        {/*                </button>*/}
+                                        {/*            </td>*/}
+                                        {/*        </span>*/}
+                                        {/*}*/}
+                                        {/*{*/}
+                                        {/*    user.role !== "ADMIN" && user.editing &&*/}
+                                        {/*    <td>*/}
+                                        {/*        <span>*/}
+                                        {/*            <button*/}
+                                        {/*                onClick={ ()=> this.okay(user)}*/}
+                                        {/*                className="btn btn-primary">*/}
+                                        {/*            <i className="fa fa-check" aria-hidden="true"></i>*/}
+                                        {/*            </button>*/}
+                                        {/*            <input*/}
+                                        {/*                onChange={(event) => updateUser({*/}
+                                        {/*                    ...user,*/}
+                                        {/*                    role: event.target.value*/}
+                                        {/*                })}*/}
+                                        {/*                value={user.role}/>*/}
+                                        {/*        </span>*/}
+                                        {/*    </td>*/}
+                                        {/*}*/}
+
                                         <td>
                                             <button
                                                 onClick={ ()=> this.deleteUser(user)}
