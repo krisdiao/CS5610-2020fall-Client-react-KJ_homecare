@@ -22,9 +22,7 @@ class SearchContentComponent extends Component {
             age: this.props.match.params.age,
             gender: this.props.match.params.gender
         })
-        //debugger
         if(this.props.match.params.age && this.props.match.params.gender) {
-            //debugger
             this.fetchResult(this.props.match.params.age, this.props.match.params.gender);
         }
     }
@@ -39,9 +37,7 @@ class SearchContentComponent extends Component {
             })
         }
 
-        //debugger
         if(this.props.match.params.age && this.props.match.params.gender) {
-            //debugger
             this.fetchResult(this.props.match.params.age, this.props.match.params.gender);
         }
     }
@@ -150,8 +146,8 @@ class SearchContentComponent extends Component {
                         </Col>
                         <Col sm={2}>
                             <Button className="orangeBg btn-success"
-                                type = "button"
-                                onClick={() => this.handleSubmit()}>
+                                    type = "button"
+                                    onClick={() => this.handleSubmit()}>
                                 Search
                             </Button>
                         </Col>
@@ -165,5 +161,3 @@ class SearchContentComponent extends Component {
 }
 
 export default SearchContentComponent;
-
-

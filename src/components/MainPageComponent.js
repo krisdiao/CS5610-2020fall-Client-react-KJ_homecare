@@ -77,7 +77,7 @@ export class MainPageComponent extends React.Component{
                                exact component={ReviewsViewForStaffsComponent}/>
 
                         <Route path={["/about/reviews/leave-review",
-                                    "/admin/reviews/leave-review"
+                            "/admin/reviews/leave-review"
                         ]}
                                exact component={LeaveReviewsComponent}/>
                         <Route path=
@@ -160,9 +160,9 @@ export class MainPageComponent extends React.Component{
                         <Route path="/contact"
                                exact component={ContactFormComponent}/>
                         <Route path={[
-                                        "/search",
-                                        "/search/:age/:gender"
-                                    ]}
+                            "/search",
+                            "/search/:age/:gender"
+                        ]}
                                exact component={SearchContentComponent}/>
                         <Route path="/details/:resultId"
                                exact component={ResultItemDetailsComponent}/>
@@ -187,4 +187,3 @@ export class MainPageComponent extends React.Component{
 
     }
 }
-
