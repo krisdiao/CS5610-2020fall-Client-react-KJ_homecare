@@ -4,7 +4,7 @@ import React from 'react';
 export class CompanionSitterComponent extends React.Component{
     render() {
         return(
-            <div className="container">
+            <div className="container imageBG">
                 <a href="/caregiver-resource/job-application">
                     <h1 className="orange">Companion Sitter</h1>
                 </a>

@@ -47,9 +47,11 @@ export class HeaderComponent extends React.Component{
                             <NavDropdown.Item componentClass={Link} href="/caregiver-resource/certified-nursing">Certified Nursing Assistant I & II</NavDropdown.Item>
                             <NavDropdown.Item componentClass={Link} href="/caregiver-resource/personal-care">Personal Care Assistant</NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link componentClass={Link} href="/login">Login/Sign Up</Nav.Link>
                         <Nav.Link componentClass={Link} href="/contact">Contact Us</Nav.Link>
+                        <Nav.Link componentClass={Link} href="/profiles">Care Giver Profile</Nav.Link>
                         <Nav.Link componentClass={Link} href="/search">Health Tips Search</Nav.Link>
+                        <Nav.Link componentClass={Link} href="/">Home Page</Nav.Link>
+                        <Nav.Link componentClass={Link} href="/login">Login/Sign Up/Profile</Nav.Link>
                         {/*<Nav.Link componentClass={Link} href="/admin">Admin</Nav.Link>*/}
                         {/*<Nav.Link componentClass={Link} href="/staff">Staff</Nav.Link>*/}
                         {/*<Nav.Link componentClass={Link} href="/user">User</Nav.Link>*/}

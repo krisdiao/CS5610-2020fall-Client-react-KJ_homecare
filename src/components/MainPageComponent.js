@@ -31,6 +31,7 @@ import SearchContentComponent from "./SearchContent/SearchContentComponent";
 import {FooterComponent} from "./header-footer/FooterComponent";
 import {PetCareComponent} from "./CaregiverResource/PetCareComponent";
 import ProfileComponent from "./User/Profile/ProfileComponent";
+import StaffProfileComponent from "./User/Profile/StaffProfileComponent";
 import {LeaveReviewsComponent} from "./User/LoginUsers/LeaveReviewsComponent";
 import {BlogsEditingComponent} from "./User/AdminOrStaffOnly/AdminBlogOperations/BlogsEditingComponent";
 import {ReviewsListingComponent} from "./User/AdminOrStaffOnly/AdminReviewOperations/ReviewsListingComponent";
@@ -77,7 +78,7 @@ export class MainPageComponent extends React.Component{
                                exact component={ReviewsViewForStaffsComponent}/>
 
                         <Route path={["/about/reviews/leave-review",
-                                    "/admin/reviews/leave-review"
+                            "/admin/reviews/leave-review"
                         ]}
                                exact component={LeaveReviewsComponent}/>
                         <Route path=
@@ -147,6 +148,8 @@ export class MainPageComponent extends React.Component{
                                exact component={LoginComponent}/>
                         <Route path="/profile"
                                exact component={ProfileComponent}/>
+                        <Route path="/profiles"
+                               exact component={StaffProfileComponent}/>
                         <Route path="/profile/view-my-reviews"
                                exact component={ViewMyReviewsComponent}/>
                         <Route path="/profile/view-my-blogs"
@@ -160,11 +163,11 @@ export class MainPageComponent extends React.Component{
                         <Route path="/contact"
                                exact component={ContactFormComponent}/>
                         <Route path={[
-                                        "/search",
-                                        "/search/?age=age&sex=gender"
-                                    ]}
+                            "/search",
+                            "/search/:age/:gender"
+                        ]}
                                exact component={SearchContentComponent}/>
-                        <Route path="/search/:resultId/details"
+                        <Route path="/details/:resultId"
                                exact component={ResultItemDetailsComponent}/>
                         <Route path="/admin"
                                exact component={AdminComponent}/>
@@ -187,4 +190,3 @@ export class MainPageComponent extends React.Component{
 
     }
 }
-

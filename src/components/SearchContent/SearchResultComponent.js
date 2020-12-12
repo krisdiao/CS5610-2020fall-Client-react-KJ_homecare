@@ -7,13 +7,6 @@ class SearchResultComponent extends Component {
         super(props);
     }
 
-    componentDidMount() {
-        console.log("prop : ", this.props)
-        if(this.props.results.Result !== undefined){
-            console.log("Result : ", this.props.results.Result)
-            console.log("Resource : ", this.props.results.Result.Resources.All.Resource[0])
-        }
-    }
 
     render() {
 
@@ -25,7 +18,7 @@ class SearchResultComponent extends Component {
                     {
                         this.props.results.Result && this.props.results.Result.Resources.All.Resource.map(result =>
                             <li key={result.Id} className="list-group-item">
-                                <Link to={`/search/${result.Id}/details`}>
+                                <Link to={`/details/${result.Id}`}>
                                     <p className="orange">Title</p>
                                     <h3 className="align-middle orange">{result.MyHFTitle}</h3>
                                 </Link>
