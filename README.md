@@ -1,2 +1,2 @@
 
-[Contribution guidelines for this project](/cs5610UML .png)
+[Contribution guidelines for this project](cs5610UML .png)
