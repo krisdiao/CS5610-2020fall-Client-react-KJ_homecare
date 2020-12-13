@@ -56,7 +56,8 @@ import {ViewMyReviewsComponent} from "./User/Profile/ViewMyReviewsComponent";
 import {ViewMyBlogsComponent} from "./User/Profile/ViewMyBlogsComponent";
 import {ViewMyJobsComponent} from "./User/Profile/ViewMyJobsComponent";
 import ResultItemDetailsComponent from "./SearchContent/ResultItemDetailsComponent";
-
+import {TermsOfUse} from"./header-footer/TermsOfUse";
+import {PrivacyPolicy} from"./header-footer/PrivacyPolicy";
 
 export class MainPageComponent extends React.Component{
     render(){
@@ -187,6 +188,11 @@ export class MainPageComponent extends React.Component{
                                exact component={UsersManagementComponent}/>
                         <Route path="/admin/users-management/create-staff-profile/:userId"
                                exact component={CreateStaffProfileComponent}/>
+                        <Route path="/terms-of-use"
+                               exact component={TermsOfUse}/>
+                        <Route path="/privacy-policy"
+                               exact component={PrivacyPolicy}/>
+
                     </div>
                 </BrowserRouter>
                 <br/>
