@@ -28,12 +28,24 @@ export const deleteReview = (reviewId) =>
         credentials: "include"
     }).then(response => response.json())
 
-//admin or staff to reply a review, review.reply is the id from backend
+//admin or staff to update
 export const updateReview = (reviewId, review) =>
 
     fetch(`${REVIEW_URL}/${reviewId}`, {
         method: "PUT",
         body: JSON.stringify(review),
+        headers: {
+            "content-type": "application/json"
+        },
+        credentials: "include"
+    }).then(response => response.json())
+
+//admin or staff to reply a review, review.reply is the id from backend
+export const replyReview = (reviewId, reply) =>
+
+    fetch(`${REVIEW_URL}/${reviewId}/reply`, {
+        method: "PUT",
+        body: JSON.stringify(reply),
         headers: {
             "content-type": "application/json"
         },

@@ -248,7 +248,7 @@ export class ApplyJobComponent extends React.Component{
 
                     <Form.Row>
                         <Form.Group as={Col} controlId="formGridResume">
-                            <Form.Label>Resume*</Form.Label>
+                            <Form.Label>Resume</Form.Label>
                             <div id="upload-box">
                                 <input type="file" onChange={(e) => this.handleUpload(e)}/>
                             </div>

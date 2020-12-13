@@ -13,6 +13,7 @@ export const REVIEW_URL = `${BASE_URL}/api/reviews`
 export const APPLICATION_URL = `${BASE_URL}/api/job-applications`
 export const CONTACT_URL = `${BASE_URL}/api/contacts`
 export const BLOG_URL = `${BASE_URL}/api/blogs`
+export const STAFF_URL = `${BASE_URL}/api/staff`
 
 
 export const TOPIC_URL = "https://health.gov/myhealthfinder/api/v3"
