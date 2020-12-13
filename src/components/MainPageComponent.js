@@ -32,6 +32,7 @@ import {FooterComponent} from "./header-footer/FooterComponent";
 import {PetCareComponent} from "./CaregiverResource/PetCareComponent";
 import ProfileComponent from "./User/Profile/ProfileComponent";
 import StaffProfileComponent from "./User/Profile/StaffProfileComponent";
+import StaffProfileDetailsComponent from "./User/Profile/StaffProfileDetailsComponent";
 import {LeaveReviewsComponent} from "./User/LoginUsers/LeaveReviewsComponent";
 import {BlogsEditingComponent} from "./User/AdminOrStaffOnly/AdminBlogOperations/BlogsEditingComponent";
 import {ReviewsListingComponent} from "./User/AdminOrStaffOnly/AdminReviewOperations/ReviewsListingComponent";
@@ -41,6 +42,7 @@ import {BlogsListingComponent} from "./User/AdminOrStaffOnly/AdminBlogOperations
 import {ContactsManagementComponent} from "./User/AdminOrStaffOnly/AdminContactOperations/ContactsManagementComponent";
 import {JobApplicationsComponent} from "./User/AdminOrStaffOnly/AdminJobApplicationsOperations/JobApplicationsComponent";
 import {UsersManagementComponent} from "./User/AdminOrStaffOnly/AdminUserOperations/UsersManagementComponent";
+import {CreateStaffProfileComponent} from "./User/AdminOrStaffOnly/AdminUserOperations/CreateStaffProfileComponent";
 import {BlogViewComponent} from "./AboutKJ/BlogViewComponent"
 import {ReviewsEditingComponent} from "./User/LoginUsers/ReviewsEditingComponent";
 import {StaffComponent} from "./User/StaffComponent";
@@ -150,6 +152,8 @@ export class MainPageComponent extends React.Component{
                                exact component={ProfileComponent}/>
                         <Route path="/profiles"
                                exact component={StaffProfileComponent}/>
+                        <Route path="/profiles/:userId"
+                               exact component={StaffProfileDetailsComponent}/>
                         <Route path="/profile/view-my-reviews"
                                exact component={ViewMyReviewsComponent}/>
                         <Route path="/profile/view-my-blogs"
@@ -181,6 +185,8 @@ export class MainPageComponent extends React.Component{
                                exact component={JobApplicationsComponent}/>
                         <Route path="/admin/users-management"
                                exact component={UsersManagementComponent}/>
+                        <Route path="/admin/users-management/create-staff-profile/:userId"
+                               exact component={CreateStaffProfileComponent}/>
                     </div>
                 </BrowserRouter>
                 <br/>

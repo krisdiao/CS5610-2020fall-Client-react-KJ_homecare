@@ -1,4 +1,4 @@
-import {BASE_URL, REVIEW_URL, USER_URL} from "../common/constants"
+import {BASE_URL, REVIEW_URL, USER_URL, STAFF_URL} from "../common/constants"
 
 //const USER_URL = `${BASE_URL}/api/users`
 
@@ -48,9 +48,9 @@ export const profile = () =>
         .catch(()=>console.log("error"))
 
 //login-user
-export const updateUser = (userId, user) =>
-
-    fetch(`${USER_URL}/${userId}`, {
+export const updateUser = (userId, user) => {
+    //debugger
+    return fetch(`${USER_URL}/${userId}`, {
         method: "PUT",
         body: JSON.stringify(user),
         headers: {
@@ -58,6 +58,8 @@ export const updateUser = (userId, user) =>
         },
         credentials: "include"
     }).then(response => response.json())
+        .catch(()=>console.log("error"))
+}
 
 //admin
 export const findAllUsers = () =>
@@ -84,7 +86,13 @@ export const findUserById = (userId) =>
         .then(response => response.json())
 
 
+//admin
+export const findAllStaff = () =>
+    fetch(STAFF_URL)
+        .then(response => response.json())
+        .catch(()=>console.log("error"))
+
 
 export default {
-    register, login, logout, profile, findAllUsers, deleteUser, findUserById, updateUser
+    register, login, logout, profile, findAllUsers, deleteUser, findUserById, updateUser, findAllStaff
 }
