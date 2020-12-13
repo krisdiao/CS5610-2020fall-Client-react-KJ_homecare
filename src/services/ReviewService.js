@@ -60,5 +60,5 @@ export const findReviewsForUser = (userId) =>
     }).then(response => response.json())
 
 export default {
-    findAllReviews, createReview, deleteReview, updateReview, findReviewsForUser
+    findAllReviews, createReview, deleteReview, updateReview, findReviewsForUser, replyReview
 }
