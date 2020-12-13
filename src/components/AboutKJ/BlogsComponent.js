@@ -57,7 +57,7 @@ export class BlogsComponent extends React.Component{
 
     render() {
         return(
-            <Container className="imageBG">
+            <Container>
                 {/*<table className="table table-hover ">*/}
                 {/*            <thead>*/}
                 {/*            <tr>*/}

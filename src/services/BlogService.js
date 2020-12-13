@@ -1,4 +1,5 @@
 import {BASE_URL, BLOG_URL, USER_URL} from "../common/constants"
+import {findAllStaff} from "./UserService";
 
 //const BLOG_URL = `${BASE_URL}/api/blogs`
 
@@ -44,7 +45,33 @@ export const findBlogsForUser = (userId) =>
         credentials: "include"
     }).then(response => response.json())
 
+//all
+export const findBlogsByBlogsLiked = (userId) =>
+    fetch(`${USER_URL}/${userId}/blogsliked`,{
+        credentials: "include"
+    })
+        .then(response => response.json())
+
+//all
+export const createBlogsLiked = (userId, blog) =>
+    fetch(`${USER_URL}/${userId}/blogsliked`,{
+        method: 'POST',
+        body: JSON.stringify(blog),
+        headers: {
+            'content-type': 'application/json'
+        },
+        credentials: "include"
+    })
+        .then(response => response.json())
+
+
+export const findBlogsByBlogsLikedById = (userId, blog) =>
+    fetch(`${USER_URL}/${userId}/blogsliked/${blog.id}`,{
+        credentials: "include"
+    })
+        .then(response => response.json())
+
 
 export default {
-    findAllBlogs, createBlog, deleteBlog, updateBlog, findBlogsForUser
+    findAllBlogs, createBlog, deleteBlog, updateBlog, findBlogsForUser,findBlogsByBlogsLiked, createBlogsLiked, findBlogsByBlogsLikedById
 }

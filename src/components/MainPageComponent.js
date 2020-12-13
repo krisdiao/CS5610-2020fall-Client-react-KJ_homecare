@@ -56,6 +56,7 @@ import {ViewMyReviewsComponent} from "./User/Profile/ViewMyReviewsComponent";
 import {ViewMyBlogsComponent} from "./User/Profile/ViewMyBlogsComponent";
 import {ViewMyJobsComponent} from "./User/Profile/ViewMyJobsComponent";
 import ResultItemDetailsComponent from "./SearchContent/ResultItemDetailsComponent";
+import {ViewMyLikedBlogsComponent} from "./User/Profile/ViewMyLikedBlogsComponent";
 
 
 export class MainPageComponent extends React.Component{
@@ -95,6 +96,7 @@ export class MainPageComponent extends React.Component{
                                exact component={BlogsComponent}/>
                         <Route path=
                                    {["/about/blogs/:blogId",
+                                       "/profile/view-my-liked-blogs/blog/:blogId"
                                    ]}
                                exact component={BlogViewComponent}/>
                         <Route path="/admin/create-blog"
@@ -158,6 +160,8 @@ export class MainPageComponent extends React.Component{
                                exact component={ViewMyReviewsComponent}/>
                         <Route path="/profile/view-my-blogs"
                                exact component={ViewMyBlogsComponent}/>
+                        <Route path="/profile/view-my-liked-blogs"
+                               exact component={ViewMyLikedBlogsComponent}/>
                         <Route path="/profile/view-my-jobs"
                                exact component={ViewMyJobsComponent}/>
                         <Route path="/profile/update-information"
