@@ -3,17 +3,17 @@ import {BASE_URL, REVIEW_URL, USER_URL} from "../common/constants"
 //const REVIEW_URL = `${BASE_URL}/api/reviews`
 
 //all users
-export const findAllReviews = () =>
-    fetch(REVIEW_URL,{
+export const findAllReliesForReview = (reviewId) =>
+    fetch(`${REVIEW_URL}/${reviewId}/replies`, {
         credentials: "include"
     })
         .then(response => response.json())
 
-//login-user
-export const createReview = (review) =>
-    fetch(REVIEW_URL, {
+//ladmin
+export const createReply = (reviewId, reply) =>
+    fetch(`${REVIEW_URL}/${reviewId}/replies`, {
         method: 'POST',
-        body: JSON.stringify(review),
+        body: JSON.stringify(reply),
         headers: {
             'content-type': 'application/json'
         },
@@ -22,31 +22,32 @@ export const createReview = (review) =>
         .catch(()=>console.log("error"))
 
 //admin
-export const deleteReview = (reviewId) =>
-    fetch(`${REVIEW_URL}/${reviewId}`, {
+export const deleteReply = (reviewId, reply) =>
+    fetch(`${REVIEW_URL}/${reviewId}/replies/${reply.id}`, {
         method: "DELETE",
         credentials: "include"
     }).then(response => response.json())
 
-//admin or staff to update
-export const updateReview = (reviewId, review) =>
+//admin
+export const updateReply = (reviewId, reply) =>
 
-    fetch(`${REVIEW_URL}/${reviewId}`, {
+    fetch(`${REVIEW_URL}/${reviewId}/replies/${reply.id}`, {
         method: "PUT",
-        body: JSON.stringify(review),
+        body: JSON.stringify(reply),
         headers: {
             "content-type": "application/json"
         },
         credentials: "include"
     }).then(response => response.json())
 
-//login user
-export const findReviewsForUser = (userId) =>
-    //    @GetMapping("/api/users/{userId}/reviews")
-    fetch(`${USER_URL}/${userId}/reviews`, {
+//admin
+export const findReviewReplyById = (reviewId, replyId) =>
+
+    fetch(`${REVIEW_URL}/${reviewId}/replies/${replyId}`, {
         credentials: "include"
     }).then(response => response.json())
 
+
 export default {
-    findAllReviews, createReview, deleteReview, updateReview, findReviewsForUser
+    findAllReliesForReview, createReply, deleteReply, updateReply, findReviewReplyById
 }
