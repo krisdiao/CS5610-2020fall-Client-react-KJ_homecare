@@ -1,5 +1,4 @@
 import {BASE_URL, BLOG_URL, USER_URL} from "../common/constants"
-import {findAllStaff} from "./UserService";
 
 //const BLOG_URL = `${BASE_URL}/api/blogs`
 
