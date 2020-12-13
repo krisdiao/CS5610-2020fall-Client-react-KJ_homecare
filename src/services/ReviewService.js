@@ -43,7 +43,7 @@ export const updateReview = (reviewId, review) =>
 //admin or staff to reply a review, review.reply is the id from backend
 export const replyReview = (reviewId, reply) =>
 
-    fetch(`${REVIEW_URL}/${reviewId}/reply`, {
+    fetch(`${REVIEW_URL}/${reviewId}/replies/${reply.id}`, {
         method: "PUT",
         body: JSON.stringify(reply),
         headers: {
@@ -60,5 +60,5 @@ export const findReviewsForUser = (userId) =>
     }).then(response => response.json())
 
 export default {
-    findAllReviews, createReview, deleteReview, updateReview, findReviewsForUser
+    findAllReviews, createReview, deleteReview, updateReview, findReviewsForUser, replyReview
 }
