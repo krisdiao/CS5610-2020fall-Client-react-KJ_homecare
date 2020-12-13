@@ -16,7 +16,7 @@ export class BlogViewComponent extends React.Component{
     render() {
         console.log(this.state.blog)
         return(
-            <div className="container imageBG">
+            <div className="container">
 
                 <Card >
 
