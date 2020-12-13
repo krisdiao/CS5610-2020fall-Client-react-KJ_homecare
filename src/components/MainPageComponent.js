@@ -58,6 +58,8 @@ import {ViewMyJobsComponent} from "./User/Profile/ViewMyJobsComponent";
 import ResultItemDetailsComponent from "./SearchContent/ResultItemDetailsComponent";
 import {TermsOfUse} from"./header-footer/TermsOfUse";
 import {PrivacyPolicy} from"./header-footer/PrivacyPolicy";
+import {ViewMyLikedBlogsComponent} from "./User/Profile/ViewMyLikedBlogsComponent";
+
 
 export class MainPageComponent extends React.Component{
     render(){
@@ -96,6 +98,7 @@ export class MainPageComponent extends React.Component{
                                exact component={BlogsComponent}/>
                         <Route path=
                                    {["/about/blogs/:blogId",
+                                       "/profile/view-my-liked-blogs/blog/:blogId"
                                    ]}
                                exact component={BlogViewComponent}/>
                         <Route path="/admin/create-blog"
@@ -159,6 +162,8 @@ export class MainPageComponent extends React.Component{
                                exact component={ViewMyReviewsComponent}/>
                         <Route path="/profile/view-my-blogs"
                                exact component={ViewMyBlogsComponent}/>
+                        <Route path="/profile/view-my-liked-blogs"
+                               exact component={ViewMyLikedBlogsComponent}/>
                         <Route path="/profile/view-my-jobs"
                                exact component={ViewMyJobsComponent}/>
                         <Route path="/profile/update-information"
