@@ -9,17 +9,19 @@ export class CreateStaffProfileComponent extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            // title: '',
-            // shortDescription: '',
-            // content: '',
-            // yearsOfExperience: '',
-            // profilePicture:'',
-            // certification:'',
             user: this.props.location.userViewProps.user,
             editing: false,
             valid: false,
+            profile: '',
             isOpen: false
         }
+    }
+
+    componentDidMount() {
+        userService.profile()
+            .then(profile => this.setState({
+                profile: profile
+            }))
     }
 
     openModal = () => this.setState({ isOpen: true });
@@ -42,9 +44,9 @@ export class CreateStaffProfileComponent extends React.Component{
     }
 
     handleUpdateUser(user){
-        console.log(user.user.id);
+        console.log(user);
 
-        userService.updateUser(user.user.id, user.user)
+        userService.updateUser(user.id, user)
             .then(newUser => {
                 this.openModal();
 
@@ -57,6 +59,22 @@ export class CreateStaffProfileComponent extends React.Component{
                 })
             })
     }
+
+    //TODO: photo data is not right yet!
+    //for resume field
+    handleUpload(e){
+        this.setState({
+            selectedFile: e.target.files[0]
+        });
+
+        const data = new FormData()
+        data.append('file', this.state.selectedFile)
+
+        this.setState({
+            resume: data
+        });
+    }
+
 
     render() {
         console.log(this.state.user)
@@ -123,24 +141,6 @@ export class CreateStaffProfileComponent extends React.Component{
                     </Form.Group>
 
                     <Form.Group as={Row} controlId="formHorizontalContent">
-                        <Form.Label  column sm={2}>Profile Picture</Form.Label>
-                        <Col sm={10}>
-                            <Form.Control as="picture" rows={5}
-                                          name="shortDescription"
-                                          placeholder="short Description"
-                                          value={this.state.user.profilePicture}
-                                          onChange={(event) => {
-                                              const newProfilePicture= event.target.value
-                                              this.setState(prevState => ({
-                                                  user: {...prevState.user, profilePicture: newProfilePicture}
-                                              }))
-                                          }}
-                            />
-                        </Col>
-
-                    </Form.Group>
-
-                    <Form.Group as={Row} controlId="formHorizontalContent">
                         <Form.Label  column sm={2}>Certification</Form.Label>
                         <Col sm={10}>
                             <Form.Control as="textarea" rows={5}
@@ -176,11 +176,38 @@ export class CreateStaffProfileComponent extends React.Component{
 
                     </Form.Group>
 
+                    <Form.Group as={Row} controlId="formHorizontalPicture">
+                        <Form.Label  column sm={2}>Profile Picture</Form.Label>
+                        <Col sm={10}>
+                            <div id="upload-box">
+                                <input type="file" onChange={(e) => this.handleUpload(e)}/>
+                            </div>
+                        </Col>
+
+                    </Form.Group>
+
+                    {/*<Form.Group as={Row} controlId="formHorizontalPicture">*/}
+                    {/*    <Form.Label  column sm={2}>Profile Picture</Form.Label>*/}
+                    {/*    <Col sm={10}>*/}
+                    {/*        <Form.Control as="picture" rows={5}*/}
+                    {/*                      name="profilePicture"*/}
+                    {/*                      value={this.state.user.profilePicture}*/}
+                    {/*                      onChange={(event) => {*/}
+                    {/*                          const newProfilePicture= event.target.value*/}
+                    {/*                          this.setState(prevState => ({*/}
+                    {/*                              user: {...prevState.user, profilePicture: newProfilePicture}*/}
+                    {/*                          }))*/}
+                    {/*                      }}*/}
+                    {/*        />*/}
+                    {/*    </Col>*/}
+
+                    {/*</Form.Group>*/}
+
                     <Form.Group as={Row}>
                         <Col sm={{ span: 10, offset: 2 }}>
                             <Button type="button"
                                     className="orangeBg btn-success"
-                                    onClick={() => this.handleUpdateUser(this.props.user)}
+                                    onClick={() => this.handleUpdateUser(this.state.user)}
                             >Create
                             </Button>
                             <Modal show={this.state.isOpen} onHide={this.closeModal}>
