@@ -53,7 +53,7 @@ export const findBlogsByBlogsLiked = (userId) =>
 
 //all
 export const createBlogsLiked = (userId, blog) =>
-    fetch(`${USER_URL}/${userId}/blogsliked/`,{
+    fetch(`${USER_URL}/${userId}/blogsliked`,{
         method: 'POST',
         body: JSON.stringify(blog),
         headers: {
