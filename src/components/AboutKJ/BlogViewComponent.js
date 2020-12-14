@@ -47,15 +47,17 @@ export class BlogViewComponent extends React.Component{
             .then(newBlogLiked => {
                 this.openModal();
                 console.log(newBlogLiked);
+                if(newBlogLiked !== undefined) {
 
-                this.setState({
-                    firstName: newBlogLiked.firstName,
-                    lastName: newBlogLiked.lastName,
-                    title: newBlogLiked.title,
-                    content: newBlogLiked.content,
-                    timeStamp: newBlogLiked.timeStamp,
-                    valid: true,
-                })
+                    this.setState({
+                        firstName: newBlogLiked.firstName,
+                        lastName: newBlogLiked.lastName,
+                        title: newBlogLiked.title,
+                        content: newBlogLiked.content,
+                        timeStamp: newBlogLiked.timeStamp,
+                        valid: true,
+                    })
+                }
             })
     }
 

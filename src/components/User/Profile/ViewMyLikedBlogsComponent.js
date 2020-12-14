@@ -19,22 +19,26 @@ export class ViewMyLikedBlogsComponent extends React.Component{
     componentDidMount() {
         blogService.findBlogsByBlogsLiked(this.state.profile.id)
             .then(blogsLiked =>{
-                this.setState( {
-                    blogsLiked
-                })
+                if(blogsLiked !== undefined) {
+                    this.setState({
+                        blogsLiked
+                    })
+                }
             })
     }
 
 
     //this is to try to push to array also works
-
+    //
     // componentDidMount() {
     //     blogService.findBlogsByBlogsLiked(this.state.profile.id)
     //         .then(blogsLikedIds =>{
-    //             this.setState( {
-    //                 blogsLikedIds
-    //             })
-    //             blogsLikedIds.forEach(this.fetchBlogById)
+    //             if(blogsLikedIds !== undefined) {
+    //                 this.setState({
+    //                     blogsLikedIds
+    //                 })
+    //                 blogsLikedIds.forEach(this.fetchBlogById)
+    //             }
     //         })
     // }
     //
