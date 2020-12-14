@@ -47,7 +47,7 @@ export const findBlogsForUser = (userId) =>
 
 //all
 export const findBlogsByBlogsLiked = (userId) =>
-    fetch(`${USER_URL}/${userId}/blogsliked`,{
+    fetch(`${USER_URL}/${userId}/blogs_liked`,{
         credentials: "include"
     })
         .then(response => response.json())
@@ -59,7 +59,7 @@ export const findBlogById = (blogId) =>
 
 //all
 export const createBlogsLiked = (userId, blog) =>
-    fetch(`${USER_URL}/${userId}/blogsliked`,{
+    fetch(`${USER_URL}/${userId}/blogs_liked`,{
         method: 'POST',
         body: JSON.stringify(blog),
         headers: {

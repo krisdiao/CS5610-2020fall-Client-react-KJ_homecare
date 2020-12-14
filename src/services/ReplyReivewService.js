@@ -47,7 +47,13 @@ export const findReviewReplyById = (reviewId, replyId) =>
         credentials: "include"
     }).then(response => response.json())
 
+//all
+export const findReviewssByReviewsReplied = (userId) =>
+    fetch(`${USER_URL}/${userId}/reviews_replied`,{
+        credentials: "include"
+    })
+        .then(response => response.json())
 
 export default {
-    findAllReliesForReview, createReply, deleteReply, updateReply, findReviewReplyById
+    findAllReliesForReview, createReply, deleteReply, updateReply, findReviewReplyById, findReviewssByReviewsReplied
 }

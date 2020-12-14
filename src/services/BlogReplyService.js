@@ -5,7 +5,6 @@ import {BASE_URL, BLOG_URL, USER_URL} from "../common/constants"
 //all users
 export const findAllReliesForBlog= (blogId) =>
     fetch(`${BLOG_URL}/${blogId}/replies`, {
-        credentials: "include"
     })
         .then(response => response.json())
 
@@ -47,7 +46,13 @@ export const findBlogReplyById = (blogId, replyId) =>
         credentials: "include"
     }).then(response => response.json())
 
+//all
+export const findBlogsByBlogsReplied = (userId) =>
+    fetch(`${USER_URL}/${userId}/blogs_replied`,{
+        credentials: "include"
+    })
+        .then(response => response.json())
 
 export default {
-    findAllReliesForBlog, createReply, deleteReply, updateReply, findBlogReplyById
+    findAllReliesForBlog, createReply, deleteReply, updateReply, findBlogsByBlogsReplied, findBlogReplyById
 }
