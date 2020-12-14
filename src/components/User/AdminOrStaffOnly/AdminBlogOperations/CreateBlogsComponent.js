@@ -80,6 +80,7 @@ export class CreateBlogsComponent extends React.Component{
                         <Col sm={10}>
                             <Form.Control as="textarea" rows={5}
                                           name="content"
+                                          type="textarea"
                                           placeholder="I Love K&J"
                                           value={this.state.content}
                                           onChange={(e) => this.handleChange(e)}/>

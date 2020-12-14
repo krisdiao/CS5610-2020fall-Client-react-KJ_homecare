@@ -26,7 +26,7 @@ export class ViewMyLikedBlogsComponent extends React.Component{
     }
 
 
-    //TODO: this is to try to push to array failed, so worked arond it by return array result directly from server
+    //this is to try to push to array also works
 
     // componentDidMount() {
     //     blogService.findBlogsByBlogsLiked(this.state.profile.id)
@@ -39,18 +39,16 @@ export class ViewMyLikedBlogsComponent extends React.Component{
     // }
     //
     //
-    // fetchBlogById(id) {
-    //     console.log("Entered: ", id);
+    // fetchBlogById = (id) =>{
     //     blogService.findBlogById(id)
     //         .then(blog => {
     //
-    //             console.log("blog: ", blog);
+    //             // console.log("blog: ", blog);
     //
     //             this.setState(prevState => ({
     //                 blogsLiked: [...prevState.blogsLiked, blog]
     //             }));
     //         })
-    //
     // }
 
     render() {
