@@ -77,8 +77,8 @@ export class ViewMyLikedBlogsComponent extends React.Component{
                                     <tr>
                                         <td>
                                             <Link to={{
-                                                pathname: `/profile/view-my-liked-blogs/blog/${blogLiked.id}`,
-                                                blogLikedViewProps: { blogLiked: blogLiked }
+                                                pathname: `/profile/view-my-liked-blogs/${blogLiked.id}`,
+                                                blogViewProps: { blog: blogLiked }
                                             }}
                                             > {blogLiked.title}</Link>
                                         </td>
