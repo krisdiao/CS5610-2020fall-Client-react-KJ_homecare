@@ -43,24 +43,27 @@ export const FooterComponent = () => {
                                     <strong>K&J Total Care</strong>
                                 </h4>
                             </a>
-                            <p>
+                            <br/>
+                            <p className="green">
                                 Here you can totally trust us!
                             </p>
                         </MDBCol>
                     </MDBRow>
                 </MDBContainer>
                 <div>
-                    <div>
-                        <p>
-                            <a className="orange" href="/terms-of-use">&nbsp; &nbsp; &nbsp; Terms of Use &nbsp;</a>
-                            <a className="orange" href="/privacy-policy">&nbsp; Privacy Policy</a>
-                        </p>
-                    </div>
-                    <div className="footer-copyright text-center py-3">
-                        <MDBContainer fluid>
-                            &copy; {new Date().getFullYear()} K&J Total Care All Rights Reserved.{" "}
-                        </MDBContainer>
-                    </div>
+                    <MDBRow >
+                        <MDBCol className="footer-copyright text-left py-3">
+                            <p>
+                                <a className="orange" href="/terms-of-use">&nbsp; &nbsp; &nbsp; Terms of Use &nbsp;</a>
+                                <a className="orange" href="/privacy-policy">&nbsp; Privacy Policy</a>
+                            </p>
+                        </MDBCol>
+                        <MDBCol className="footer-copyright text-right py-3">
+                            <MDBContainer fluid>
+                                &copy; {new Date().getFullYear()} K&J Total Care All Rights Reserved.{" "}
+                            </MDBContainer>
+                        </MDBCol>
+                    </MDBRow>
                 </div>
             </MDBFooter>
         </div>
