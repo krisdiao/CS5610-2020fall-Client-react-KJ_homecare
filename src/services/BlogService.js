@@ -52,6 +52,11 @@ export const findBlogsByBlogsLiked = (userId) =>
     })
         .then(response => response.json())
 
+
+export const findBlogById = (blogId) =>
+    fetch(`${BLOG_URL}/${blogId}`)
+        .then(response => response.json())
+
 //all
 export const createBlogsLiked = (userId, blog) =>
     fetch(`${USER_URL}/${userId}/blogsliked`,{
@@ -65,13 +70,7 @@ export const createBlogsLiked = (userId, blog) =>
         .then(response => response.json())
 
 
-export const findBlogsByBlogsLikedById = (userId, blog) =>
-    fetch(`${USER_URL}/${userId}/blogsliked/${blog.id}`,{
-        credentials: "include"
-    })
-        .then(response => response.json())
-
 
 export default {
-    findAllBlogs, createBlog, deleteBlog, updateBlog, findBlogsForUser,findBlogsByBlogsLiked, createBlogsLiked, findBlogsByBlogsLikedById
+    findAllBlogs, createBlog, deleteBlog, updateBlog, findBlogsForUser,findBlogsByBlogsLiked, createBlogsLiked, findBlogById
 }

@@ -3,7 +3,6 @@ import {Form,Col,Row,Button, Modal} from 'react-bootstrap';
 import reviewService from "../../../services/ReviewService";
 import StarRatingComponent from "./StarRatingComponent";
 import userService from "../../../services/UserService";
-import modalsPoppingComponent from "../../../common/modals"
 
 export class LeaveReviewsComponent extends React.Component{
 

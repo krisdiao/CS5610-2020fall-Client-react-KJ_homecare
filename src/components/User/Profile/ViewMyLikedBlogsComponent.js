@@ -9,6 +9,7 @@ export class ViewMyLikedBlogsComponent extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
+            blogsLikedIds:[],
             blogsLiked:[],
             profile: this.props.location.profileViewProps.profile,
             editing: false
@@ -19,13 +20,42 @@ export class ViewMyLikedBlogsComponent extends React.Component{
         blogService.findBlogsByBlogsLiked(this.state.profile.id)
             .then(blogsLiked =>{
                 this.setState( {
-                    blogsLiked: blogsLiked
+                    blogsLiked
                 })
             })
     }
 
+
+    //TODO: this is to try to push to array failed, so worked arond it by return array result directly from server
+
+    // componentDidMount() {
+    //     blogService.findBlogsByBlogsLiked(this.state.profile.id)
+    //         .then(blogsLikedIds =>{
+    //             this.setState( {
+    //                 blogsLikedIds
+    //             })
+    //             blogsLikedIds.forEach(this.fetchBlogById)
+    //         })
+    // }
+    //
+    //
+    // fetchBlogById(id) {
+    //     console.log("Entered: ", id);
+    //     blogService.findBlogById(id)
+    //         .then(blog => {
+    //
+    //             console.log("blog: ", blog);
+    //
+    //             this.setState(prevState => ({
+    //                 blogsLiked: [...prevState.blogsLiked, blog]
+    //             }));
+    //         })
+    //
+    // }
+
     render() {
-        // console.log(this.state.blogs)
+
+        console.log(this.state)
         return(
             <div>
                 <Container>
@@ -45,7 +75,7 @@ export class ViewMyLikedBlogsComponent extends React.Component{
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {this.state.blogsLiked.map(blogLiked =>
+                                {this.state.blogsLiked && this.state.blogsLiked.map(blogLiked =>
                                     <tr>
                                         <td>
                                             <Link to={{
