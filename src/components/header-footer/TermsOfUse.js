@@ -2,7 +2,7 @@ import React from 'react';
 
 export const TermsOfUse = () => {
     return (
-        <div>
+        <div className="container-fluid">
             <h1 className="orange">Terms of Use</h1>
             <br/>
             <h4>Email Terms</h4>
@@ -25,19 +25,19 @@ export const TermsOfUse = () => {
             <h5>THIS NOTICE DESCRIBES HOW MEDICAL INFORMATION ABOUT YOU MAY BE USED AND DISCLOSED AND HOW YOU CAN GET
                     ACCESS TO THIS INFORMATION. PLEASE REVIEW IT CAREFULLY.
             </h5>
-            <p>It is Griswold Home Care’s policy that all protected health information, including demographic and contact data,
+            <p>It is K&J Home Care’s policy that all protected health information, including demographic and contact data,
                     collected and maintained by the company only be used as necessary for treatment, payment, and healthcare
                     operations purposes; to comply with applicable law; as otherwise indicated in this notice; and as
-                    authorized by you. Griswold Home Care will attempt to mitigate, to the extent practicable, any harmful
+                    authorized by you. K&J Home Care will attempt to mitigate, to the extent practicable, any harmful
                     effects from its misuse or inappropriate disclosure of your protected health information.
             </p>
             <p>Pursuant to applicable federal and state laws, all client records shall be maintained for the required number
-                    of years from the date of last service rendered. The Director of your servicing Griswold Home Care Office
+                    of years from the date of last service rendered. The Director of your servicing K&J Home Care Office
                     shall be responsible for maintaining custody and confidentiality of your records.
 
             </p>
             <h4>Uses and Disclosure of Protected Health Information</h4>
-            <p>Griswold Home Care may use and disclose your protected health information for treatment, payment,
+            <p>K&J Home Care may use and disclose your protected health information for treatment, payment,
                     and healthcare operations purposes, as follows:</p>
                 <li>
                         Treatment purposes: to appropriate parties to ensure you receive proper care.
@@ -151,7 +151,7 @@ export const TermsOfUse = () => {
             </p>
             <p>Any uses or disclosures of your protected health information not listed above, or otherwise required by law,
                 will be made only with your written authorization, which you may revoke in writing at any time. Upon receipt
-                of your written revocation of an authorization, Griswold Home Care will cease to use or disclose your protected
+                of your written revocation of an authorization, K&J Home Care will cease to use or disclose your protected
                 health information in the previously authorized manner. The written authorization requirement includes most
                 uses and disclosures of psychotherapy notes, most uses and disclosures of protected health information for
                 marketing purposes, and the sale of protected health information.
@@ -159,7 +159,7 @@ export const TermsOfUse = () => {
 
             <h4>Client Privacy Rights
             </h4>
-            <h5>Griswold Home Care is required to:
+            <h5>K&J Home Care is required to:
             </h5>
 
             <li>
@@ -177,13 +177,13 @@ export const TermsOfUse = () => {
             <li>
                 Obtain a paper copy of this Notice of Privacy Practices.
             </li>
-            <p>You also have the right to complain to Griswold Home Care and to the Secretary of the Department of
+            <p>You also have the right to complain to K&J Home Care and to the Secretary of the Department of
                 Health and Human Services if you believe your privacy rights have been violated.
             </p>
-            <h4>Griswold Home Care’s Duties
+            <h4>K&J Home Care’s Duties
             </h4>
             <p>You have the right to request restrictions on certain uses and disclosures of your protected health
-                information. Griswold Home Care is not required to agree to these requests.
+                information. K&J Home Care is not required to agree to these requests.
             </p>
             <h5>You further have the right to:
 
@@ -206,9 +206,9 @@ export const TermsOfUse = () => {
             </li>
             <li>Abide by the terms of the Notice of Privacy Practices that is in effect.
             </li>
-            <p>Griswold Home Care reserves the right to change the terms of this notice at any time and to immediately
+            <p>K&J Home Care reserves the right to change the terms of this notice at any time and to immediately
                 make the new notice provisions effective for all protected health information that it maintains. If the
-                terms of this notice are materially changed, Griswold Home Care will promptly provide you with the revised
+                terms of this notice are materially changed, K&J Home Care will promptly provide you with the revised
                 notice by mail.
 
             </p>

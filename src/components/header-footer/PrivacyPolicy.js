@@ -2,7 +2,7 @@ import React from 'react';
 
 export const PrivacyPolicy = () => {
     return (
-        <div>
+        <div className="container-fluid">
             <h1 className="orange">Privacy Policy</h1>
             <br/>
             <p>We recognize that you may be concerned about our use and disclosure of your personal information.
