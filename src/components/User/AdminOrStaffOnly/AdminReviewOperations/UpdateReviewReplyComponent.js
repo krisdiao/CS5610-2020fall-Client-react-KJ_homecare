@@ -1,8 +1,6 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import {Form , Row , Col, Button, Modal} from 'react-bootstrap';
 import reviewReplyService from "../../../../services/ReviewReplyService";
-import reviewService from "../../../../services/ReviewService";
 
 export default class UpdateReviewReplyComponent extends React.Component{
 

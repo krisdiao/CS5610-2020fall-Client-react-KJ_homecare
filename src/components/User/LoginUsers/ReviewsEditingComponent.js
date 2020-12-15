@@ -176,7 +176,7 @@ export class ReviewsEditingComponent extends React.Component{
                     <br/>
                     {
                         profile.role === "ADMIN" && hasReply && replies && replies.map(reply =>
-                            <UpdateReviewReplyComponent  reply={reply}/>)
+                            <UpdateReviewReplyComponent  {...this.props} reply={reply}/>)
                     }
                 </Form>
             </div>
