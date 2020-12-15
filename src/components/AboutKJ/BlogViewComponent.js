@@ -2,6 +2,7 @@ import React from "react";
 import {Modal,Card} from 'react-bootstrap';
 import blogService from "../../services/BlogService";
 import userService from "../../services/UserService";
+import BlogReplyService from "../../services/BlogReplyService";
 
 
 export class BlogViewComponent extends React.Component{
@@ -14,6 +15,7 @@ export class BlogViewComponent extends React.Component{
             agreed: false,
             isOpen: false,
             profile: {},
+            reply:{},
             isLoggedIn: false
         }
     }
@@ -24,6 +26,18 @@ export class BlogViewComponent extends React.Component{
                 if(profile !== undefined) {
                     this.setState({
                         profile: profile,
+                        isLoggedIn: true
+                    })
+                }
+            })
+    }
+
+    componentDidMount() {
+        BlogReplyService.findAllReliesForBlog()
+            .then(reply =>  {
+                if(reply !== undefined) {
+                    this.setState({
+                        reply: reply,
                         isLoggedIn: true
                     })
                 }
@@ -46,7 +60,6 @@ export class BlogViewComponent extends React.Component{
         blogService.createBlogsLiked(userId, blog)
             .then(newBlogLiked => {
                 this.openModal();
-                console.log(newBlogLiked);
                 if(newBlogLiked !== undefined) {
 
                     this.setState({
@@ -61,14 +74,29 @@ export class BlogViewComponent extends React.Component{
             })
     }
 
+    handleCreateReply(blogId, reply){
+        BlogReplyService.createReply(blogId, reply)
+            .then(newReply =>{
+                this.openModal();
+                if(newReply !== undefined) {
+                    this.setState({
+                        userId: newReply.userId,
+                        firstName: newReply.firstName,
+                        lastName: newReply.lastName,
+                        title: newReply.title,
+                        content: newReply.content,
+                        timeStamp: newReply.timeStamp,
+                        valid: true,
+                    })}
+            })
+    }
+
 
     render() {
         console.log(this.state.isLoggedIn)
         return(
             <div className="container">
-
                 <Card >
-
                     <Card.Body>
                         <Card.Title>
                             <h1>
@@ -80,6 +108,7 @@ export class BlogViewComponent extends React.Component{
                                     className="btn btn-danger pull-right">
                                     <i className="fa fa-heart-o" aria-hidden="true"></i>
                                 </button>
+
                                 <Modal show={this.state.isOpen} onHide={this.closeModal}>
                                     <Modal.Header>
                                         <Modal.Title>Hi there!</Modal.Title>
@@ -91,7 +120,6 @@ export class BlogViewComponent extends React.Component{
                                     </Modal.Footer>
                                 </Modal>
                             </h1>
-
                         </Card.Title>
                         <br/>
                         <Card.Text>
@@ -112,6 +140,49 @@ export class BlogViewComponent extends React.Component{
                         {this.state.blog.timeStamp.toString()}
                     </Card.Footer>
                 </Card>
+
+
+                <Card>
+                    <Card.Body>
+                        <Card.Text className="text-left">
+                            {this.state.reply.content.split('\n').map(function(item) {
+                                return (
+                                    <span>
+                                {item}
+                                        <br/>
+                                </span>
+                                )
+                            })}
+                        </Card.Text>
+                        <footer className="blockquote-footer">
+                            <cite title="Source Title">{this.state.reply.firstName}&nbsp;{this.state.reply.lastName}</cite>
+                        </footer>
+                    </Card.Body>
+                    <Card.Footer className="text-muted">
+                        {this.state.reply.timeStamp.toString()}
+                    </Card.Footer>
+                </Card>
+
+                <br/>
+                <form>
+                    <div className="form-group">
+                        <label htmlFor="exampleFormControlTextarea1">Welcome to reply this blog!</label>
+                        <textarea
+                            placeholder="I love your blog."
+                            className="form-control"
+                            id="FormControlTextarea"
+                            rows="3">
+                        </textarea>
+                    </div>
+                    <button
+                        onClick={() => this.state.isLoggedIn
+                            ? this.handleCreateReply(this.state.blog.id, this.state.reply)
+                            : this.cannotLikeAlert()}
+                        className="btn orangeBg pull-right">
+                        Reply
+                    </button>
+                    <br/>
+                </form>
             </div>
         )
     }

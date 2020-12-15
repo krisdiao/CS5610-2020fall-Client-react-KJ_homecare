@@ -116,6 +116,15 @@ export default class Profile extends React.Component {
                                     </Link>
                                 </li>
 
+                                <li className="list-group-item">
+                                    <Link className="orange" to={{
+                                        pathname: `/profile/view-my-replied-blogs`,
+                                        profileViewProps: {profile: this.state.profile}
+                                    }}>
+                                        View My Replied Blogs
+                                    </Link>
+                                </li>
+
                                 {
                                     this.state.profile.role === "LOGIN_USER" &&
 

@@ -59,6 +59,7 @@ import ResultItemDetailsComponent from "./SearchContent/ResultItemDetailsCompone
 import {TermsOfUse} from"./header-footer/TermsOfUse";
 import {PrivacyPolicy} from"./header-footer/PrivacyPolicy";
 import {ViewMyLikedBlogsComponent} from "./User/Profile/ViewMyLikedBlogsComponent";
+import {ViewMyRepliedBlogsComponent} from "./User/Profile/ViewMyRepliedBlogsComponent";
 
 
 export class MainPageComponent extends React.Component{
@@ -164,6 +165,8 @@ export class MainPageComponent extends React.Component{
                                exact component={ViewMyBlogsComponent}/>
                         <Route path="/profile/view-my-liked-blogs"
                                exact component={ViewMyLikedBlogsComponent}/>
+                        <Route path="/profile/view-my-replied-blogs"
+                               exact component={ViewMyRepliedBlogsComponent}/>
                         <Route path="/profile/view-my-jobs"
                                exact component={ViewMyJobsComponent}/>
                         <Route path="/profile/update-information"
