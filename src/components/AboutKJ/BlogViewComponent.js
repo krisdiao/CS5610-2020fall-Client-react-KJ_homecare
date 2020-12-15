@@ -15,7 +15,7 @@ export class BlogViewComponent extends React.Component{
             agreed: false,
             isOpen: false,
             profile: {},
-            reply:{},
+            replies:[],
             isLoggedIn: false
         }
     }
@@ -30,18 +30,17 @@ export class BlogViewComponent extends React.Component{
                     })
                 }
             })
-    }
 
-    componentDidMount() {
         BlogReplyService.findAllReliesForBlog()
-            .then(reply =>  {
-                if(reply !== undefined) {
+            .then(replies =>  {
+                if(replies !== undefined) {
                     this.setState({
-                        reply: reply,
+                        replies: replies,
                         isLoggedIn: true
                     })
                 }
             })
+
     }
 
     openModal = () => this.setState({ isOpen: true });
@@ -56,7 +55,6 @@ export class BlogViewComponent extends React.Component{
     }
 
     handleCreateBlogsLiked(userId, blog){
-
         blogService.createBlogsLiked(userId, blog)
             .then(newBlogLiked => {
                 this.openModal();
@@ -142,26 +140,26 @@ export class BlogViewComponent extends React.Component{
                 </Card>
 
 
-                <Card>
-                    <Card.Body>
-                        <Card.Text className="text-left">
-                            {this.state.reply.content.split('\n').map(function(item) {
-                                return (
-                                    <span>
-                                {item}
-                                        <br/>
-                                </span>
-                                )
-                            })}
-                        </Card.Text>
-                        <footer className="blockquote-footer">
-                            <cite title="Source Title">{this.state.reply.firstName}&nbsp;{this.state.reply.lastName}</cite>
-                        </footer>
-                    </Card.Body>
-                    <Card.Footer className="text-muted">
-                        {this.state.reply.timeStamp.toString()}
-                    </Card.Footer>
-                </Card>
+                {/*<Card>*/}
+                {/*    <Card.Body>*/}
+                {/*        <Card.Text className="text-left">*/}
+                {/*            {this.state.replies.content.map(function(item) {*/}
+                {/*                return (*/}
+                {/*                    <span>*/}
+                {/*                {item}*/}
+                {/*                        <br/>*/}
+                {/*                </span>*/}
+                {/*                )*/}
+                {/*            })}*/}
+                {/*        </Card.Text>*/}
+                {/*        <footer className="blockquote-footer">*/}
+                {/*            <cite title="Source Title">{this.state.replies.firstName}&nbsp;{this.state.replies.lastName}</cite>*/}
+                {/*        </footer>*/}
+                {/*    </Card.Body>*/}
+                {/*    <Card.Footer className="text-muted">*/}
+                {/*        {this.state.replies.timeStamp.toString()}*/}
+                {/*    </Card.Footer>*/}
+                {/*</Card>*/}
 
                 <br/>
                 <form>
@@ -176,7 +174,7 @@ export class BlogViewComponent extends React.Component{
                     </div>
                     <button
                         onClick={() => this.state.isLoggedIn
-                            ? this.handleCreateReply(this.state.blog.id, this.state.reply)
+                            ? this.handleCreateReply(this.state.replies.id, this.state.replies)
                             : this.cannotLikeAlert()}
                         className="btn orangeBg pull-right">
                         Reply

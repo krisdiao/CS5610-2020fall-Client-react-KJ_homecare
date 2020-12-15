@@ -51,7 +51,7 @@ export class ViewMyRepliedBlogsComponent extends React.Component{
                     <Row>
                         <Col sm={3}><ProfileComponent {...this.props} profile={this.state.profile}/></Col>
                         <Col sm={9}>
-                            <h1>My Blogs</h1>
+                            <h1>My Replied Blogs</h1>
                             <br/>
                             <br/>
                             <table className="table table-hover ">

@@ -99,7 +99,9 @@ export class MainPageComponent extends React.Component{
                                exact component={BlogsComponent}/>
                         <Route path=
                                    {["/about/blogs/:blogId",
-                                       "/profile/view-my-liked-blogs/:blogId"
+                                       "/profile/view-my-liked-blogs/:blogId",
+                                       "/profile/view-my-replied-blogs/update-reply/:replyId"
+
                                    ]}
                                exact component={BlogViewComponent}/>
                         <Route path="/admin/create-blog"
