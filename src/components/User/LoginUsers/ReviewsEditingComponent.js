@@ -3,6 +3,8 @@ import {Form,Col,Row,Button, Modal} from 'react-bootstrap';
 import reviewService from "../../../services/ReviewService"
 import StarRatingComponent from "./StarRatingComponent";
 import userService from "../../../services/UserService";
+import reviewReplyService from "../../../services/ReviewReplyService";
+import UpdateReviewReplyComponent from"../AdminOrStaffOnly/AdminReviewOperations/UpdateReviewReplyComponent"
 
 var leadToCorrectLoginUserPage = require('../../../common/util').leadToCorrectLoginUserPage;
 
@@ -14,8 +16,11 @@ export class ReviewsEditingComponent extends React.Component{
         this.state = {
             review: this.props.location.reviewViewProps.review,
             editing: true,
+            replies:[],
             profile: '',
-            isOpen: false
+            isOpen: false,
+            hasReply: false
+
         }
     }
 
@@ -24,6 +29,20 @@ export class ReviewsEditingComponent extends React.Component{
             .then(profile => this.setState({
                 profile: profile
             }))
+
+        if(this.state.review !== undefined){
+            reviewReplyService.findAllReliesForReview(this.state.review.id)
+                .then(replies => {
+                    if(replies !== undefined) {
+                        console.log("replies: ", replies)
+
+                        this.setState({
+                            replies,
+                            hasReply: true
+                        })
+                    }
+                })
+        }
     }
 
     openModal = () => this.setState({ isOpen: true });
@@ -60,13 +79,13 @@ export class ReviewsEditingComponent extends React.Component{
 
 
     render() {
-        console.log(this.state)
+        let {hasReply, replies, profile, review, editing, isOpen,  } = this.state;
         return(
             <div className="container">
                 <Form>
 
                     <button className="greenBg form-control-lg btn btn-success"
-                            onClick={() => leadToCorrectLoginUserPage(this.state.profile, this.props.history)}>
+                            onClick={() => leadToCorrectLoginUserPage(profile, this.props.history)}>
                         <i className="fa fa-arrow-left " aria-hidden="true"></i>
                     </button>
 
@@ -75,13 +94,13 @@ export class ReviewsEditingComponent extends React.Component{
                             First Name
                         </Form.Label>
                         <Col sm={4}>
-                            <h4>{this.state.review.firstName}</h4>
+                            <h4>{review.firstName}</h4>
                         </Col>
                         <Form.Label column sm={2}>
                             Last Name
                         </Form.Label>
                         <Col sm={4}>
-                            <h4>{this.state.review.lastName}</h4>
+                            <h4>{review.lastName}</h4>
                         </Col>
                     </Form.Group>
 
@@ -92,7 +111,7 @@ export class ReviewsEditingComponent extends React.Component{
                         <Col sm={10}>
                             <Form.Control
                                           types="text"
-                                          value={this.state.review.title}
+                                          value={review.title}
                                           onChange={(event) => {
                                               const newTitle = event.target.value
                                               this.setState(prevState => ({
@@ -110,9 +129,9 @@ export class ReviewsEditingComponent extends React.Component{
                         <Col sm={10}>
                             <StarRatingComponent
                                 name="stars"
-                                value={this.state.review.stars}
-                                stars={this.state.review.stars}
-                                editing={this.state.editing}
+                                value={review.stars}
+                                stars={review.stars}
+                                editing={editing}
                                 reivewCallback={this.handleCallback}
                                 // onChange={(e) => this.handleChange(e)}
                             />
@@ -124,7 +143,7 @@ export class ReviewsEditingComponent extends React.Component{
                         <Col sm={10}>
                             <Form.Control as="textarea" rows={5}
                                           name="content"
-                                          value={this.state.review.content}
+                                          value={review.content}
                                           onChange={(event) => {
                                               const newContent = event.target.value
                                               this.setState(prevState => ({
@@ -143,7 +162,7 @@ export class ReviewsEditingComponent extends React.Component{
                                     onClick={() => this.handleSaveReview(this.state)}>
                                 Save
                             </Button>
-                            <Modal show={this.state.isOpen} onHide={this.closeModal}>
+                            <Modal show={isOpen} onHide={this.closeModal}>
                                 <Modal.Header>
                                     <Modal.Title>Hi there!</Modal.Title>
                                 </Modal.Header>
@@ -154,6 +173,11 @@ export class ReviewsEditingComponent extends React.Component{
                             </Modal>
                         </Col>
                     </Form.Group>
+                    <br/>
+                    {
+                        profile.role === "ADMIN" && hasReply && replies && replies.map(reply =>
+                            <UpdateReviewReplyComponent  reply={reply}/>)
+                    }
                 </Form>
             </div>
         )
