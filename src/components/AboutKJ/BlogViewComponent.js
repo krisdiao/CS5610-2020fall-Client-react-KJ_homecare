@@ -16,7 +16,8 @@ export class BlogViewComponent extends React.Component{
             isOpen: false,
             profile: {},
             replies:[],
-            isLoggedIn: false
+            isLoggedIn: false,
+            reply: '',
         }
     }
 
@@ -31,9 +32,11 @@ export class BlogViewComponent extends React.Component{
                 }
             })
 
-        BlogReplyService.findAllReliesForBlog()
+        BlogReplyService.findAllReliesForBlog(this.state.blog.id)
             .then(replies =>  {
+                console.log(replies)
                 if(replies !== undefined) {
+
                     this.setState({
                         replies: replies,
                         isLoggedIn: true
@@ -74,6 +77,7 @@ export class BlogViewComponent extends React.Component{
 
     handleCreateReply(blogId, reply){
         BlogReplyService.createReply(blogId, reply)
+            console.log(blogId,reply)
             .then(newReply =>{
                 this.openModal();
                 if(newReply !== undefined) {
@@ -89,6 +93,17 @@ export class BlogViewComponent extends React.Component{
             })
     }
 
+    handleChange(event) {
+        //console.log("new value", event.target.value);
+
+        const isCheckbox = event.target.type === "checkbox";
+
+        this.setState({
+            [event.target.name]: isCheckbox
+                ? event.target.checked
+                : event.target.value
+        });
+    }
 
     render() {
         console.log(this.state.isLoggedIn)
@@ -121,14 +136,7 @@ export class BlogViewComponent extends React.Component{
                         </Card.Title>
                         <br/>
                         <Card.Text>
-                            {this.state.blog.content.split('\n').map(function(item) {
-                                return (
-                                <span>
-                                {item}
-                                <br/>
-                                </span>
-                                )
-                            })}
+                            {this.state.blog.content.split('\n').map(item => <span>{item}</span>)}
                         </Card.Text>
                         <footer className="blockquote-footer">
                             <cite title="Source Title">{this.state.blog.firstName}&nbsp;{this.state.blog.lastName}</cite>
@@ -139,33 +147,32 @@ export class BlogViewComponent extends React.Component{
                     </Card.Footer>
                 </Card>
 
+                {
+                    this.state.replies&&
+                    this.state.replies.map(reply=>
 
-                {/*<Card>*/}
-                {/*    <Card.Body>*/}
-                {/*        <Card.Text className="text-left">*/}
-                {/*            {this.state.replies.content.map(function(item) {*/}
-                {/*                return (*/}
-                {/*                    <span>*/}
-                {/*                {item}*/}
-                {/*                        <br/>*/}
-                {/*                </span>*/}
-                {/*                )*/}
-                {/*            })}*/}
-                {/*        </Card.Text>*/}
-                {/*        <footer className="blockquote-footer">*/}
-                {/*            <cite title="Source Title">{this.state.replies.firstName}&nbsp;{this.state.replies.lastName}</cite>*/}
-                {/*        </footer>*/}
-                {/*    </Card.Body>*/}
-                {/*    <Card.Footer className="text-muted">*/}
-                {/*        {this.state.replies.timeStamp.toString()}*/}
-                {/*    </Card.Footer>*/}
-                {/*</Card>*/}
-
+                <div>
+                <Card>
+                    <Card.Body>
+                        <Card.Text className="text-left">
+                            <span>{reply.content}</span>
+                        </Card.Text>
+                        <footer className="blockquote-footer">
+                            {reply.firstName}&nbsp;{reply.lastName}
+                        </footer>
+                    </Card.Body>
+                    <Card.Footer className="text-muted">
+                        {reply.timeStamp.toString()}
+                    </Card.Footer>
+                </Card>
                 <br/>
+                </div>
+                    )}
                 <form>
                     <div className="form-group">
                         <label htmlFor="exampleFormControlTextarea1">Welcome to reply this blog!</label>
                         <textarea
+                            onChange={(e) => this.setState({reply: e.target.value})}
                             placeholder="I love your blog."
                             className="form-control"
                             id="FormControlTextarea"
@@ -174,13 +181,14 @@ export class BlogViewComponent extends React.Component{
                     </div>
                     <button
                         onClick={() => this.state.isLoggedIn
-                            ? this.handleCreateReply(this.state.replies.id, this.state.replies)
+                            ? this.handleCreateReply(this.state.blog.id, this.state.reply)
                             : this.cannotLikeAlert()}
                         className="btn orangeBg pull-right">
                         Reply
                     </button>
                     <br/>
                 </form>
+
             </div>
         )
     }
