@@ -24,9 +24,7 @@ export class ReviewsEditingComponent extends React.Component{
 
     componentDidMount() {
         userService.profile()
-            .then(profile => this.setState({
-                profile: profile
-            }))
+            .then(profile => this.setState({profile}))
 
         if(this.state.review !== undefined){
             reviewReplyService.findAllReliesForReview(this.state.review.id)
