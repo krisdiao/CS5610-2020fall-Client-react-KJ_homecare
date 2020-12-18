@@ -3,7 +3,6 @@ import {Modal,Card} from 'react-bootstrap';
 import blogService from "../../services/BlogService";
 import userService from "../../services/UserService";
 import BlogReplyService from "../../services/BlogReplyService";
-import contactService from "../../services/ContactService";
 
 
 export class BlogViewComponent extends React.Component{
@@ -48,17 +47,6 @@ export class BlogViewComponent extends React.Component{
 
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        BlogReplyService.findAllReliesForBlog(this.state.blog.id)
-            .then(replies =>{
-                if(replies !== undefined) {
-                    this.setState({
-                        replies: replies
-                    })
-                }
-            })
-    }
-
     openModal = () => this.setState({ isOpen: true });
     closeModal = () => {
         this.setState({ isOpen: false })
@@ -83,14 +71,14 @@ export class BlogViewComponent extends React.Component{
                 this.openModal();
                 if(newBlogLiked !== undefined) {
 
-                    this.setState({
-                        firstName: newBlogLiked.firstName,
-                        lastName: newBlogLiked.lastName,
-                        title: newBlogLiked.title,
-                        content: newBlogLiked.content,
-                        timeStamp: newBlogLiked.timeStamp,
-                        valid: true,
-                    })
+                    // this.setState({
+                    //     firstName: newBlogLiked.firstName,
+                    //     lastName: newBlogLiked.lastName,
+                    //     title: newBlogLiked.title,
+                    //     content: newBlogLiked.content,
+                    //     timeStamp: newBlogLiked.timeStamp,
+                    //     valid: true,
+                    // })
                 }
             })
     }
@@ -168,8 +156,7 @@ export class BlogViewComponent extends React.Component{
                         {this.state.blog.timeStamp.toString()}
                     </Card.Footer>
                 </Card>
-                <br/>
-                <h3>All Replies</h3>
+
                 {
                     this.state.replies&&
                     this.state.replies.map(reply=>
@@ -193,7 +180,7 @@ export class BlogViewComponent extends React.Component{
                     )}
                 <form>
                     <div className="form-group">
-                        <label htmlFor="exampleFormControlTextarea1"><h3>Welcome to reply this blog!</h3></label>
+                        <label htmlFor="exampleFormControlTextarea1">Welcome to reply this blog!</label>
                         <textarea
                             onChange={(e) => this.setState({reply: e.target.value})}
                             placeholder="I love your blog."
