@@ -5,9 +5,7 @@ import StarRatingComponent from "./StarRatingComponent";
 import userService from "../../../services/UserService";
 import reviewReplyService from "../../../services/ReviewReplyService";
 import UpdateReviewReplyComponent from"../AdminOrStaffOnly/AdminReviewOperations/UpdateReviewReplyComponent"
-
-var leadToCorrectLoginUserPage = require('../../../common/util').leadToCorrectLoginUserPage;
-
+import {leadToCorrectLoginUserPage} from "../../../common/util";
 
 export class ReviewsEditingComponent extends React.Component{
 

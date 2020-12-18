@@ -2,9 +2,7 @@ import React from "react";
 import {AdminComponent} from "../../AdminComponent";
 import {Container , Row , Col} from 'react-bootstrap';
 import contactService from "../../../../services/ContactService"
-
-var getContactReport = require('../../../../common/util.js').getContactReport;
-var getOneContactReport = require('../../../../common/util.js').getOneContactReport;
+import {getContactReport} from "../../../../common/util";
 
 export class ContactsManagementComponent extends React.Component{
 

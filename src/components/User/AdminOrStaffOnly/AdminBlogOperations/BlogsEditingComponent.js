@@ -2,8 +2,8 @@ import React from "react";
 import {Form,Col,Row,Button, Modal} from 'react-bootstrap';
 import blogService from "../../../../services/BlogService";
 import userService from "../../../../services/UserService";
+import {leadToCorrectLoginUserPage} from "../../../../common/util";
 
-var leadToCorrectLoginUserPage = require('../../../../common/util').leadToCorrectLoginUserPage;
 
 
 export class BlogsEditingComponent extends React.Component{

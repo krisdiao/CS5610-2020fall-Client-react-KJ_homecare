@@ -2,9 +2,7 @@ import React from "react";
 import userService from "../../../services/UserService";
 import {Container , Row , Col} from 'react-bootstrap';
 import {Link} from "react-router-dom";
-
-var leadToCorrectLoginUserPage = require('../../../common/util').leadToCorrectLoginUserPage;
-
+import {leadToCorrectLoginUserPage} from "../../../common/util";
 
 export default class Profile extends React.Component {
 

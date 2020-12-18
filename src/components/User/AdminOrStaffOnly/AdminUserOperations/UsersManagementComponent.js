@@ -3,7 +3,7 @@ import {AdminComponent} from "../../AdminComponent";
 import {Container , Row , Col, Form} from 'react-bootstrap';
 import userService from "../../../../services/UserService";
 import {Link} from "react-router-dom";
-var getUsersRegistrationReport = require('../../../../common/util.js').getUsersRegistrationReport;
+import {getUsersRegistrationReport} from "../../../../common/util";
 
 
 export class UsersManagementComponent extends React.Component{

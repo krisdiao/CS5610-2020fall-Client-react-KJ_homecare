@@ -203,7 +203,7 @@ export class BlogViewComponent extends React.Component{
                         <Modal.Body>It has been posted!</Modal.Body>
                         <Modal.Body>You can check it in "View My Replied Blogs" under profile!</Modal.Body>
                         <Modal.Footer>
-                            <button onClick={this.closeCreateModal}>Close</button>
+                            <button onClick={this.closeModal}>Close</button>
                         </Modal.Footer>
                     </Modal>
                     <br/>

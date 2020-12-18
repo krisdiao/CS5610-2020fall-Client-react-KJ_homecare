@@ -4,8 +4,8 @@ import {Form,Button,Col, Modal} from 'react-bootstrap';
 import "font-awesome/css/font-awesome.css";
 import userService from "../../services/UserService";
 import {Link} from "react-router-dom";
+import {leadToCorrectLoginUserPage} from "../../common/util";
 
-var leadToCorrectLoginUserPage = require('../../common/util.js').leadToCorrectLoginUserPage;
 
 export class RegisterComponent extends React.Component{
     constructor(props) {
