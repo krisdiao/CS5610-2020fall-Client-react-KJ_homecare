@@ -71,14 +71,14 @@ export class BlogViewComponent extends React.Component{
                 this.openModal();
                 if(newBlogLiked !== undefined) {
 
-                    this.setState({
-                        firstName: newBlogLiked.firstName,
-                        lastName: newBlogLiked.lastName,
-                        title: newBlogLiked.title,
-                        content: newBlogLiked.content,
-                        timeStamp: newBlogLiked.timeStamp,
-                        valid: true,
-                    })
+                    // this.setState({
+                    //     firstName: newBlogLiked.firstName,
+                    //     lastName: newBlogLiked.lastName,
+                    //     title: newBlogLiked.title,
+                    //     content: newBlogLiked.content,
+                    //     timeStamp: newBlogLiked.timeStamp,
+                    //     valid: true,
+                    // })
                 }
             })
     }
@@ -90,15 +90,15 @@ export class BlogViewComponent extends React.Component{
                 debugger
                 this.createModal();
                 if(newReply !== undefined) {
-                    this.setState({
-                        userId: newReply.userId,
-                        firstName: newReply.firstName,
-                        lastName: newReply.lastName,
-                        title: newReply.title,
-                        content: newReply.content,
-                        timeStamp: newReply.timeStamp,
-                        valid: true,
-                    })
+                    // this.setState({
+                    //     userId: newReply.userId,
+                    //     firstName: newReply.firstName,
+                    //     lastName: newReply.lastName,
+                    //     title: newReply.title,
+                    //     content: newReply.content,
+                    //     timeStamp: newReply.timeStamp,
+                    //     valid: true,
+                    // })
                 }
             })
     }
@@ -203,7 +203,7 @@ export class BlogViewComponent extends React.Component{
                         <Modal.Body>It has been posted!</Modal.Body>
                         <Modal.Body>You can check it in "View My Replied Blogs" under profile!</Modal.Body>
                         <Modal.Footer>
-                            <button onClick={this.closeModal}>Close</button>
+                            <button onClick={this.closeCreateModal}>Close</button>
                         </Modal.Footer>
                     </Modal>
                     <br/>
