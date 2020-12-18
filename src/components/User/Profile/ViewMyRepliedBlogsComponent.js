@@ -18,23 +18,25 @@ export class ViewMyRepliedBlogsComponent extends React.Component{
     }
 
     componentDidMount() {
-        BlogReplyService.findBlogsByBlogsReplied(this.state.reply.userId)
-            console.log(this.state.reply)
+        BlogReplyService.findBlogsByBlogsReplied(this.state.profile.userId)
+            // console.log(this.state.profile)
             .then(blogsReplied =>{
-                this.setState( {
-                    blogsReplied: blogsReplied
-                })
+                if(blogsReplied !== undefined) {
+                    this.setState({
+                        blogsReplied: blogsReplied
+                    })
+                }
             })
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        BlogReplyService.findBlogsByBlogsReplied(this.state.reply.userId)
-            .then(blogsReplied =>{
-                this.setState( {
-                    blogsReplied: blogsReplied
-                })
-            })
-    }
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //     BlogReplyService.findBlogsByBlogsReplied(this.state.reply.userId)
+    //         .then(blogsReplied =>{
+    //             this.setState( {
+    //                 blogsReplied: blogsReplied
+    //             })
+    //         })
+    // }
 
     // deleteReply =(blogId,reply)=> {
     //     BlogReplyService.deleteReply(reply.id)
@@ -65,14 +67,16 @@ export class ViewMyRepliedBlogsComponent extends React.Component{
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {this.state.blogsReplied&&this.state.blogsReplied.map(blogReplied =>
+                                {this.state.blogsReplied && this.state.blogsReplied.map(blogReplied =>
                                     <tr>
                                         <td>
                                             <Link to={{
                                                 pathname: `/profile/view-my-replied-blogs/update-reply/${blogReplied.id}`,
                                                 blogRepliedViewProps: { blogReplied: blogReplied }
                                             }}
-                                            > {blogReplied.title}</Link>
+                                            >
+                                                {blogReplied.title}
+                                            </Link>
                                         </td>
                                         <td>{blogReplied.lastName}</td>
                                         <td>{blogReplied.firstName}</td>

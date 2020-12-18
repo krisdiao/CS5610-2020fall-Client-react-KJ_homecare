@@ -3,9 +3,7 @@ import {Container , Row , Col,Form,Button, Modal} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import * as userService from "../../../services/UserService";
 import ProfileComponent from "./ProfileComponent";
-
-var leadToCorrectLoginUserPage = require('../../../common/util').leadToCorrectLoginUserPage;
-
+import {leadToCorrectLoginUserPage} from "../../../common/util";
 
 export default class UpdateInformation extends React.Component {
 

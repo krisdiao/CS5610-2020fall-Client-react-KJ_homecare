@@ -3,9 +3,7 @@ import {Form,Button,Col, Modal} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import ProfileComponent from "./Profile/ProfileComponent"
 import userService from "../../services/UserService";
-
-var leadToCorrectLoginUserPage = require('../../common/util.js').leadToCorrectLoginUserPage;
-
+import {leadToCorrectLoginUserPage} from "../../common/util";
 
 export class LoginComponent extends React.Component{
     constructor(props) {

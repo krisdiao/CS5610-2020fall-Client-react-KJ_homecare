@@ -2,8 +2,7 @@ import React from "react";
 import {AdminComponent} from "../../AdminComponent";
 import {Container , Row , Col} from 'react-bootstrap';
 import jobApplicationService from "../../../../services/JobApplicationService";
-
-var getJobApplicantsReport = require('../../../../common/util.js').getJobApplicantsReport;
+import {getJobApplicantsReport} from "../../../../common/util";
 
 export class JobApplicationsComponent extends React.Component{
 

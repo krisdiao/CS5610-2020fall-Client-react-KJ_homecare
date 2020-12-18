@@ -1,8 +1,7 @@
 import React, { useState }from 'react';
 import {Form,Col,Row,Button, Modal} from 'react-bootstrap';
 import userService from "../../../../services/UserService";
-
-var leadToCorrectLoginUserPage = require('../../../../common/util').leadToCorrectLoginUserPage;
+import {leadToCorrectLoginUserPage} from "../../../../common/util";
 
 export class CreateStaffProfileComponent extends React.Component{
 
