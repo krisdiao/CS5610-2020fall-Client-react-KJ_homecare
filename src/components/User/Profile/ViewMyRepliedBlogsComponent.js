@@ -10,7 +10,7 @@ export class ViewMyRepliedBlogsComponent extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            blogsReplied:[],
+            blogs:[],
             reply:[],
             profile: this.props.location.profileViewProps.profile,
             editing: false
@@ -19,19 +19,18 @@ export class ViewMyRepliedBlogsComponent extends React.Component{
 
     componentDidMount() {
         BlogReplyService.findBlogsByBlogsReplied(this.state.reply.userId)
-            console.log(this.state.reply)
-            .then(blogsReplied =>{
+            .then(blogs =>{
                 this.setState( {
-                    blogsReplied: blogsReplied
+                    blogs: blogs
                 })
             })
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         BlogReplyService.findBlogsByBlogsReplied(this.state.reply.userId)
-            .then(blogsReplied =>{
+            .then(blogs =>{
                 this.setState( {
-                    blogsReplied: blogsReplied
+                    blogs: blogs
                 })
             })
     }
@@ -65,18 +64,18 @@ export class ViewMyRepliedBlogsComponent extends React.Component{
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {this.state.blogsReplied&&this.state.blogsReplied.map(blogReplied =>
+                                {this.state.reply.map(reply =>
                                     <tr>
                                         <td>
                                             <Link to={{
-                                                pathname: `/profile/view-my-replied-blogs/update-reply/${blogReplied.id}`,
-                                                blogRepliedViewProps: { blogReplied: blogReplied }
+                                                pathname: `/profile/view-my-replied-blogs/update-reply/${reply.id}`,
+                                                replyViewProps: { reply: reply }
                                             }}
-                                            > {blogReplied.title}</Link>
+                                            > {reply.title}</Link>
                                         </td>
-                                        <td>{blogReplied.lastName}</td>
-                                        <td>{blogReplied.firstName}</td>
-                                        <td>{blogReplied.timeStamp.toString()}</td>
+                                        <td>{reply.lastName}</td>
+                                        <td>{reply.firstName}</td>
+                                        <td>{reply.timeStamp.toString()}</td>
                                         {/*<td>*/}
                                         {/*    <button*/}
                                         {/*        onClick={ ()=> this.deleteReply(blogId,reply)}*/}
