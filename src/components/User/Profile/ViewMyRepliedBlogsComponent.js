@@ -18,12 +18,12 @@ export class ViewMyRepliedBlogsComponent extends React.Component{
     }
 
     componentDidMount() {
-        BlogReplyService.findBlogsByBlogsReplied(this.state.profile.userId)
+        BlogReplyService.findBlogsByBlogsReplied(this.state.profile.id)
             // console.log(this.state.profile)
             .then(blogsReplied =>{
                 if(blogsReplied !== undefined) {
                     this.setState({
-                        blogsReplied: blogsReplied
+                        blogsReplied
                     })
                 }
             })
@@ -47,7 +47,7 @@ export class ViewMyRepliedBlogsComponent extends React.Component{
     // }
 
     render() {
-        // console.log(this.state.blogs)
+        console.log(this.state)
         return(
             <div>
                 <Container>
