@@ -71,8 +71,8 @@ export class ViewMyRepliedBlogsComponent extends React.Component{
                                     <tr>
                                         <td>
                                             <Link to={{
-                                                pathname: `/profile/view-my-replied-blogs/update-reply/${blogReplied.id}`,
-                                                blogRepliedViewProps: { blogReplied: blogReplied }
+                                                pathname: `/profile/view-my-replied-blogs/${blogReplied.id}`,
+                                                blogViewProps: { blog: blogReplied }
                                             }}
                                             >
                                                 {blogReplied.title}
