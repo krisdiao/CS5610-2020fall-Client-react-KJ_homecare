@@ -2,7 +2,7 @@ import React from "react";
 import {Modal,Card} from 'react-bootstrap';
 import blogService from "../../services/BlogService";
 import userService from "../../services/UserService";
-import blogReplyService from "../../services/BlogReplyService";
+import BlogReplyService from "../../services/BlogReplyService";
 
 
 export class BlogViewComponent extends React.Component{
@@ -10,41 +10,77 @@ export class BlogViewComponent extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            blog: this.props.location.blogViewProps.blog,
+            blog: {content: "",
+                timeStamp: "",
+            },
+            editing: false,
+            agreed: false,
             isOpen: false,
             isCreating: false,
-            profile: '',
+            profile: {},
             replies:[],
             isLoggedIn: false,
             reply: '',
-            hasReply: false
-
         }
     }
 
     componentDidMount() {
+        console.log(this.props.match.params.blogId)
+
+
+        blogService.findBlogById(this.props.match.params.blogId)
+            .then(blog =>{
+                this.setState( {
+                    blog: blog
+                })
+            })
+
         userService.profile()
             .then(profile =>  {
+                console.log(profile)
                 if(profile !== undefined) {
                     this.setState({
-                        profile,
+                        profile: profile,
                         isLoggedIn: true
                     })
                 }
             })
 
-        if(this.state.blog !== undefined) {
-            blogReplyService.findAllReliesForBlog(this.state.blog.id)
-                .then(replies => {
-                    if (replies !== undefined) {
+        BlogReplyService.findAllReliesForBlog(this.props.match.params.blogId)
+            .then(replies =>  {
+                console.log(replies)
+                if(typeof replies !== "undefined") {
+                    this.setState({
+                        replies: replies
+                    })
+                }
+            })
+
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.match.params.blogId !== this.props.match.params.blogId)
+        {
+            blogService.findBlogById(this.props.match.params.blogId)
+                .then(blogs =>{
+                    this.setState( {
+                        blogs: blogs
+                    })
+                })
+
+            BlogReplyService.findAllReliesForBlog(this.props.match.params.blogId)
+                .then(replies =>{
+                    if(replies !== undefined) {
                         this.setState({
-                            replies,
-                            hasReply: true
+                            replies: replies
                         })
                     }
                 })
+
         }
+
     }
+
 
     openModal = () => this.setState({ isOpen: true });
     closeModal = () => {
@@ -55,7 +91,7 @@ export class BlogViewComponent extends React.Component{
     createModal = () => this.setState({ isCreating: true });
     closeCreateModal = () => {
         this.setState({ isCreating: false })
-        this.props.history.push(`/about/blogs/${this.state.blog.id}`)
+        this.props.history.push(`/`)
     };
 
     cannotLikeAlert () {
@@ -67,19 +103,37 @@ export class BlogViewComponent extends React.Component{
         blogService.createBlogsLiked(userId, blog)
             .then(newBlogLiked => {
 
+                this.openModal();
                 if(newBlogLiked !== undefined) {
-                    this.openModal();
+                    this.props.history.push(`/about/blogs/${this.state.blog.id}`)
+                    // this.setState({
+                    //     firstName: newBlogLiked.firstName,
+                    //     lastName: newBlogLiked.lastName,
+                    //     title: newBlogLiked.title,
+                    //     content: newBlogLiked.content,
+                    //     timeStamp: newBlogLiked.timeStamp,
+                    //     valid: true,
+                    // })
                 }
             })
     }
 
-    handleCreateReply(blogId, reply){
-        blogReplyService.createReply(blogId, reply)
+    handleCreateReply(blogId, reply, blog){
+        BlogReplyService.createReply(blogId, reply, blog)
             .then(newReply =>{
-                debugger
                 console.log(newReply)
+                debugger
+                this.createModal();
                 if(newReply !== undefined) {
-                    this.createModal();
+                    // this.setState({
+                    //     userId: newReply.userId,
+                    //     firstName: newReply.firstName,
+                    //     lastName: newReply.lastName,
+                    //     title: newReply.title,
+                    //     content: newReply.content,
+                    //     timeStamp: newReply.timeStamp,
+                    //     valid: true,
+                    // })
                 }
             })
     }
@@ -112,6 +166,7 @@ export class BlogViewComponent extends React.Component{
                                     className="btn btn-danger pull-right">
                                     <i className="fa fa-heart-o" aria-hidden="true"></i>
                                 </button>
+
                                 <Modal show={this.state.isOpen} onHide={this.closeModal}>
                                     <Modal.Header>
                                         <Modal.Title>Hi there!</Modal.Title>
@@ -139,6 +194,8 @@ export class BlogViewComponent extends React.Component{
 
                 {
                     this.state.replies&&
+                    this.state.replies.length>0&&
+
                     this.state.replies.map(reply=>
 
                         <div>
@@ -152,7 +209,6 @@ export class BlogViewComponent extends React.Component{
                                     </footer>
                                 </Card.Body>
                                 <Card.Footer className="text-muted">
-                                    {/*{reply.timeStamp.toString()}*/}
                                     {reply.timeStamp}
                                 </Card.Footer>
                             </Card>
@@ -172,7 +228,7 @@ export class BlogViewComponent extends React.Component{
                     </div>
                     <button
                         onClick={() => this.state.isLoggedIn
-                            ? this.handleCreateReply(this.state.blog.id, this.state.reply)
+                            ? this.handleCreateReply(this.state.blog.id, this.state.reply, this.state.blog)
                             : this.cannotLikeAlert()}
                         className="btn orangeBg pull-right">
                         Reply
