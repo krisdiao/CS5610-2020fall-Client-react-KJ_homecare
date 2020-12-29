@@ -43,11 +43,7 @@ export class ReviewsListingComponent extends React.Component{
     componentDidMount() {
 
         reviewService.findAllReviews()
-            .then(reviews =>{
-                this.setState( {
-                    reviews: reviews
-                })
-            })
+            .then(reviews =>{this.setState( {reviews})})
 
         // reviewReplyService.findReviewsByReviewsReplied(this.state.profile.id)
         //     .then(reviewsReplied =>{
@@ -60,12 +56,10 @@ export class ReviewsListingComponent extends React.Component{
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        reviewService.findAllReviews()
-            .then(reviews =>{
-                this.setState( {
-                    reviews: reviews
-                })
-            })
+        if (prevState.reviews.length !== this.state.reviews.length) {
+            reviewService.findAllReviews()
+                .then(reviews =>{this.setState( {reviews})})
+        }
     }
 
     deleteReview =(review)=> {

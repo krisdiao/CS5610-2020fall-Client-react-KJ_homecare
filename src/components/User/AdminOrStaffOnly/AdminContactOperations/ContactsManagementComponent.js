@@ -37,20 +37,14 @@ export class ContactsManagementComponent extends React.Component{
 
     componentDidMount() {
         contactService.findAllContacts()
-            .then(contacts =>{
-                this.setState( {
-                    contacts: contacts
-                })
-            })
+            .then(contacts =>{this.setState( {contacts})})
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        contactService.findAllContacts()
-            .then(contacts =>{
-                this.setState( {
-                    contacts: contacts
-                })
-            })
+        if (prevState.contacts.length !== this.state.contacts.length) {
+            contactService.findAllContacts()
+                .then(contacts =>{this.setState( {contacts})})
+        }
     }
 
     downloadAllContacts = () => {

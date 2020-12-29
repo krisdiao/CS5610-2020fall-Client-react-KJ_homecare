@@ -2,6 +2,7 @@ import React from "react";
 import {Container , Row , Col} from 'react-bootstrap';
 import ProfileComponent from "./ProfileComponent"
 import jobApplicationService from "../../../services/JobApplicationService";
+import userService from "../../../services/UserService";
 
 export class ViewMyJobsComponent extends React.Component{
 
@@ -9,28 +10,26 @@ export class ViewMyJobsComponent extends React.Component{
         super(props);
         this.state = {
             jobs:[],
-            profile: this.props.location.profileViewProps.profile,
+            profile: '',
             editing: false
         }
     }
 
     componentDidMount() {
-        jobApplicationService.findApplicationsForUser(this.state.profile.id)
-            .then(jobs =>{
-                this.setState( {
-                    jobs: jobs
-                })
-            })
+        userService.profile()
+            .then(profile =>  {this.setState({profile})})
+
+        jobApplicationService.findApplicationsForUser(this.props.match.params.userId)
+            .then(jobs =>{this.setState( {jobs})})
     }
 
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     jobApplicationService.findApplicationsForUser(this.state.profile.id)
-    //         .then(jobs =>{
-    //             this.setState( {
-    //                 jobs: jobs
-    //             })
-    //         })
-    // }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevState.jobs.length !== this.state.jobs.length) {
+
+            jobApplicationService.findApplicationsForUser(this.props.match.params.userId)
+                .then(jobs =>{this.setState( {jobs})})
+        }
+    }
 
     deleteApplication = (job) => {
         jobApplicationService.deleteApplication(job.id)
@@ -41,7 +40,6 @@ export class ViewMyJobsComponent extends React.Component{
     }
 
     render() {
-        // console.log(this.state.jobs)
         return(
             <div>
                 <Container>
@@ -68,7 +66,7 @@ export class ViewMyJobsComponent extends React.Component{
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {this.state.jobs.map(job =>
+                                {this.state.jobs && this.state.jobs.map(job =>
                                     <tr>
                                         <td>{job.lastName}</td>
                                         <td>{job.firstName}</td>

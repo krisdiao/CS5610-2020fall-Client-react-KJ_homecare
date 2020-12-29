@@ -3,6 +3,8 @@ import {Link} from "react-router-dom";
 import {Container , Row , Col} from 'react-bootstrap';
 import ProfileComponent from "./ProfileComponent"
 import reviewReplyService from "../../../services/ReviewReplyService";
+import userService from "../../../services/UserService";
+import reviewService from "../../../services/ReviewService";
 
 export class ViewMyReviewRepliesComponent extends React.Component{
 
@@ -10,13 +12,16 @@ export class ViewMyReviewRepliesComponent extends React.Component{
         super(props);
         this.state = {
             reviewReplied:[],
-            profile: this.props.location.profileViewProps.profile,
+            profile: '',
             editing: false
         }
     }
 
     componentDidMount() {
-        reviewReplyService.findReviewsByReviewsReplied(this.state.profile.id)
+        userService.profile()
+            .then(profile =>  {this.setState({profile})})
+
+        reviewReplyService.findReviewsByReviewsReplied(this.props.match.params.userId)
             .then(reviewsReplied =>{
                 if(reviewsReplied !== undefined) {
                     this.setState({
@@ -24,6 +29,19 @@ export class ViewMyReviewRepliesComponent extends React.Component{
                     })
                 }
             })
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevState.reviewReplied.length !== this.state.reviewReplied.length) {
+            reviewReplyService.findReviewsByReviewsReplied(this.props.match.params.userId)
+                .then(reviewsReplied =>{
+                    if(reviewsReplied !== undefined) {
+                        this.setState({
+                            reviewsReplied
+                        })
+                    }
+                })
+        }
     }
 
     render() {
@@ -55,7 +73,7 @@ export class ViewMyReviewRepliesComponent extends React.Component{
                                     <tr>
                                         <td>
                                             <Link to={{
-                                                pathname: `/profile/view-my-replied-reviews/${ReviewReplied.id}`,
+                                                pathname: `/profile/${this.props.match.params.userId}/view-my-replied-reviews/${ReviewReplied.id}`,
                                                 blogViewProps: { ReviewReplied: ReviewReplied }
                                             }}
                                             > {ReviewReplied.title}</Link>

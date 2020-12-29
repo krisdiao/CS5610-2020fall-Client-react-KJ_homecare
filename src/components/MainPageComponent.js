@@ -90,7 +90,7 @@ export class MainPageComponent extends React.Component{
                         <Route path=
                                    {["/admin/update-review/:reviewId",
                                        "/update-review/:reviewId",
-                                       "/profile/view-my-reviews/update-review/:reviewId"
+                                       "/profile/:userId/view-my-reviews/update-review/:reviewId"
                                    ]}
                                exact component={ReviewsEditingComponent}/>
                         <Route path={["/admin/update-review",]}
@@ -99,8 +99,8 @@ export class MainPageComponent extends React.Component{
                                exact component={BlogsComponent}/>
                         <Route path=
                                    {["/about/blogs/:blogId",
-                                       "/profile/view-my-liked-blogs/:blogId",
-                                       "/profile/view-my-replied-blogs/:blogRepliedId",
+                                       "/profile/:userId/view-my-liked-blogs/:blogId",
+                                       "/profile/:userId/view-my-replied-blogs/:blogId",
                                    ]}
                                exact component={BlogViewComponent}/>
                         <Route path="/admin/create-blog"
@@ -111,7 +111,7 @@ export class MainPageComponent extends React.Component{
                                    {["/admin/update-blog/:blogId",
                                        "/staff/update-blog/:blogId",
                                        "/update-blog/:blogId",
-                                       "/profile/view-my-blogs/update-blog/:blogId"
+                                       "/profile/:userId/view-my-blogs/update-blog/:blogId"
                                    ]}
                                exact component={BlogsEditingComponent}/>
                         <Route path=
@@ -160,17 +160,17 @@ export class MainPageComponent extends React.Component{
                                exact component={StaffProfileComponent}/>
                         <Route path="/profiles/:userId"
                                exact component={StaffProfileDetailsComponent}/>
-                        <Route path="/profile/view-my-reviews"
+                        <Route path="/profile/:userId/view-my-reviews"
                                exact component={ViewMyReviewsComponent}/>
-                        <Route path="/profile/view-my-blogs"
+                        <Route path="/profile/:userId/view-my-blogs"
                                exact component={ViewMyBlogsComponent}/>
-                        <Route path="/profile/view-my-liked-blogs"
+                        <Route path="/profile/:userId/view-my-liked-blogs"
                                exact component={ViewMyLikedBlogsComponent}/>
-                        <Route path="/profile/view-my-replied-blogs"
+                        <Route path="/profile/:userId/view-my-replied-blogs"
                                exact component={ViewMyRepliedBlogsComponent}/>
-                        <Route path="/profile/view-my-jobs"
+                        <Route path="/profile/:userId/view-my-jobs"
                                exact component={ViewMyJobsComponent}/>
-                        <Route path="/profile/update-information"
+                        <Route path="/profile/:userId/update-information"
                                exact component={UpdateInformation}/>
                         <Route path="/register"
                                exact component={RegisterComponent}/>

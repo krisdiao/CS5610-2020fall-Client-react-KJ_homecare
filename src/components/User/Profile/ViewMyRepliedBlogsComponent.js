@@ -2,8 +2,8 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {Container , Row , Col} from 'react-bootstrap';
 import ProfileComponent from "./ProfileComponent"
-import blogService from "../../../services/BlogService";
-import BlogReplyService from "../../../services/BlogReplyService";
+import blogReplyService from "../../../services/BlogReplyService";
+import userService from "../../../services/UserService";
 
 export class ViewMyRepliedBlogsComponent extends React.Component{
 
@@ -12,13 +12,16 @@ export class ViewMyRepliedBlogsComponent extends React.Component{
         this.state = {
             blogsReplied:[],
             reply:[],
-            profile: this.props.location.profileViewProps.profile,
+            profile: '',
             editing: false
         }
     }
 
     componentDidMount() {
-        BlogReplyService.findBlogsByBlogsReplied(this.state.profile.id)
+        userService.profile()
+            .then(profile =>  {this.setState({profile})})
+
+        blogReplyService.findBlogsByBlogsReplied(this.props.match.params.userId)
             // console.log(this.state.profile)
             .then(blogsReplied =>{
                 if(blogsReplied !== undefined) {
@@ -30,7 +33,7 @@ export class ViewMyRepliedBlogsComponent extends React.Component{
     }
 
     // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     BlogReplyService.findBlogsByBlogsReplied(this.state.reply.userId)
+    //     blogReplyService.findBlogsByBlogsReplied(this.state.reply.userId)
     //         .then(blogsReplied =>{
     //             this.setState( {
     //                 blogsReplied: blogsReplied
@@ -47,7 +50,6 @@ export class ViewMyRepliedBlogsComponent extends React.Component{
     // }
 
     render() {
-        console.log(this.state)
         return(
             <div>
                 <Container>
@@ -71,7 +73,7 @@ export class ViewMyRepliedBlogsComponent extends React.Component{
                                     <tr>
                                         <td>
                                             <Link to={{
-                                                pathname: `/profile/view-my-replied-blogs/${blogReplied.id}`,
+                                                pathname: `/profile/${this.props.match.params.userId}/view-my-replied-blogs/${blogReplied.id}`,
                                                 blogViewProps: { blog: blogReplied }
                                             }}
                                             >

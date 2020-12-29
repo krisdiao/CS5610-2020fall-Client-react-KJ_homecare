@@ -3,6 +3,7 @@ import reviewService from "../../../services/ReviewService";
 import {Link} from "react-router-dom";
 import {Container , Row , Col} from 'react-bootstrap';
 import ProfileComponent from "./ProfileComponent"
+import userService from "../../../services/UserService";
 
 
 export class ViewMyReviewsComponent extends React.Component{
@@ -11,27 +12,24 @@ export class ViewMyReviewsComponent extends React.Component{
         super(props);
         this.state = {
             reviews:[],
-            profile: this.props.location.profileViewProps.profile,
+            profile: '',
             editing: false
         }
     }
 
     componentDidMount() {
-        reviewService.findReviewsForUser(this.state.profile.id)
-            .then(reviews =>{
-                this.setState( {
-                    reviews: reviews
-                })
-            })
+        userService.profile()
+            .then(profile =>  {this.setState({profile})})
+
+        reviewService.findReviewsForUser(this.props.match.params.userId)
+            .then(reviews =>{this.setState( {reviews})})
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        reviewService.findReviewsForUser(this.state.profile.id)
-            .then(reviews =>{
-                this.setState( {
-                    reviews: reviews
-                })
-            })
+        if (prevState.reviews.length !== this.state.reviews.length) {
+            reviewService.findReviewsForUser(this.props.match.params.userId)
+                .then(reviews =>{this.setState( {reviews})})
+        }
     }
 
     deleteReview =(review)=> {
@@ -69,7 +67,7 @@ export class ViewMyReviewsComponent extends React.Component{
                                     <tr>
                                         <td>
                                             <Link to={{
-                                                pathname: `/profile/view-my-reviews/update-review/${review.id}`,
+                                                pathname: `/profile/${this.props.match.params.userId}/view-my-reviews/update-review/${review.id}`,
                                                 reviewViewProps: { review: review }
                                             }}
                                             > {review.title}</Link>

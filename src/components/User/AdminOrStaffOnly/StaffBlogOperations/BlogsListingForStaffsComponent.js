@@ -11,47 +11,20 @@ import {StaffComponent} from "../../StaffComponent";
 export class BlogsListingForStaffsComponent extends React.Component{
 
     state ={
-        blogs:[
-            {
-                id:"1",
-                title: "a",
-                firstName: "qqqqq",
-                lastName: "mmmmm",
-                timeStamp: new Date(),
-            },
-            {
-                id:"2",
-                title: "b",
-                firstName: "wwwwwww",
-                lastName: "nnnnnn",
-                timeStamp: new Date(),
-            },
-            {
-                id:"3",
-                title: "c",
-                firstName: "eeeee",
-                lastName: "zzzzz",
-                timeStamp: new Date(),
-            },
-        ],
+        blogs:[],
     }
 
     componentDidMount() {
         blogService.findAllBlogs()
-            .then(blogs =>{
-                this.setState( {
-                    blogs: blogs
-                })
-            })
+            .then(blogs =>{this.setState( {blogs})})
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        blogService.findAllBlogs()
-            .then(blogs =>{
-                this.setState( {
-                    blogs: blogs
-                })
-            })
+
+        if (prevState.blogs.length !== this.state.blogs.length) {
+            blogService.findAllBlogs()
+                .then(blogs =>{this.setState( {blogs})})
+        }
     }
 
 

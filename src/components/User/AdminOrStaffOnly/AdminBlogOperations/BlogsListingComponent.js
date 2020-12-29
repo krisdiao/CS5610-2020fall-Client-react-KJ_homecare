@@ -37,20 +37,14 @@ export class BlogsListingComponent extends React.Component{
 
     componentDidMount() {
         blogService.findAllBlogs()
-            .then(blogs =>{
-                this.setState( {
-                    blogs: blogs
-                })
-            })
+            .then(blogs =>{this.setState( {blogs})})
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        blogService.findAllBlogs()
-            .then(blogs =>{
-                this.setState( {
-                    blogs: blogs
-                })
-            })
+        if (prevState.blogs.length !== this.state.blogs.length) {
+            blogService.findAllBlogs()
+                .then(blogs =>{this.setState( {blogs})})
+        }
     }
 
 

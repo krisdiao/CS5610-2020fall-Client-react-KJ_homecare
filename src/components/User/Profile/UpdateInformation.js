@@ -18,9 +18,7 @@ export default class UpdateInformation extends React.Component {
 
     componentDidMount() {
         userService.profile()
-            .then(profile => this.setState({
-                profile: profile
-            }))
+            .then(profile =>  {this.setState({profile})})
     }
 
     openModal = () => this.setState({ isOpen: true });

@@ -7,69 +7,19 @@ import {getJobApplicantsReport} from "../../../../common/util";
 export class JobApplicationsComponent extends React.Component{
 
     state ={
-        jobs:[
-            // {
-            //     id:"1",
-            //     firstName: "Tom",
-            //     lastName: "mmmmm",
-            //     email: "123456@gmail.com",
-            //     phoneNumber: "987-654321",
-            //     add1:"123 Main St",
-            //     add2:"/",
-            //     city:"New York City",
-            //     state:"New York",
-            //     zip: "022022",
-            //     jobPosition:"Companion Sitter",
-            //     resume:"/",
-            //
-            // },
-            // {
-            //     id:"2",
-            //     firstName: "William",
-            //     lastName: "nnnnnn",
-            //     email: "abcdefg@gmail.com",
-            //     phoneNumber: "456-654789",
-            //     add1:"123 Main St",
-            //     add2:"/",
-            //     city:"New York City",
-            //     state:"New York",
-            //     zip: "022022",
-            //     jobPosition:"Certified Nursing",
-            //     resume:"/",
-            // },
-            // {
-            //     id:"3",
-            //     firstName: "Elisa",
-            //     lastName: "zzzzz",
-            //     email: "abc123@gmail.com",
-            //     phoneNumber: "123-654778",
-            //     add1:"123 Main St",
-            //     add2:"/",
-            //     city:"New York City",
-            //     state:"New York",
-            //     zip: "022022",
-            //     jobPosition:"Personal Care",
-            //     resume:"/",
-            // },
-        ]
+        jobs:[]
     }
 
     componentDidMount() {
         jobApplicationService.findAllJobApplications()
-            .then(jobs => {
-                this.setState( {
-                    jobs: jobs
-                })
-            })
+            .then(jobs => {this.setState( {jobs})})
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        jobApplicationService.findAllJobApplications()
-            .then(jobs =>{
-                this.setState( {
-                    jobs: jobs
-                })
-            })
+        if (prevState.jobs.length !== this.state.jobs.length) {
+            jobApplicationService.findAllJobApplications()
+                .then(jobs => {this.setState( {jobs})})
+        }
     }
 
     downloadAllJobApplicants = () => {

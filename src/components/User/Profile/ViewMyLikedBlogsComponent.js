@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {Container , Row , Col} from 'react-bootstrap';
 import ProfileComponent from "./ProfileComponent"
 import blogService from "../../../services/BlogService";
+import userService from "../../../services/UserService";
 
 export class ViewMyLikedBlogsComponent extends React.Component{
 
@@ -11,13 +12,16 @@ export class ViewMyLikedBlogsComponent extends React.Component{
         this.state = {
             blogsLikedIds:[],
             blogsLiked:[],
-            profile: this.props.location.profileViewProps.profile,
+            profile: '',
             editing: false
         }
     }
 
     componentDidMount() {
-        blogService.findBlogsByBlogsLiked(this.state.profile.id)
+        userService.profile()
+            .then(profile =>  {this.setState({profile})})
+
+        blogService.findBlogsByBlogsLiked(this.props.match.params.userId)
             .then(blogsLiked =>{
                 if(blogsLiked !== undefined) {
                     this.setState({
@@ -25,6 +29,7 @@ export class ViewMyLikedBlogsComponent extends React.Component{
                     })
                 }
             })
+
     }
 
 
@@ -56,8 +61,6 @@ export class ViewMyLikedBlogsComponent extends React.Component{
     // }
 
     render() {
-
-        console.log(this.state)
         return(
             <div>
                 <Container>
@@ -81,7 +84,7 @@ export class ViewMyLikedBlogsComponent extends React.Component{
                                     <tr>
                                         <td>
                                             <Link to={{
-                                                pathname: `/profile/view-my-liked-blogs/${blogLiked.id}`,
+                                                pathname: `/profile/${this.props.match.params.userId}/view-my-liked-blogs/${blogLiked.id}`,
                                                 blogViewProps: { blog: blogLiked }
                                             }}
                                             > {blogLiked.title}</Link>

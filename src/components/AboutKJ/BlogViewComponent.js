@@ -154,7 +154,7 @@ export class BlogViewComponent extends React.Component{
                         </Card.Title>
                         <br/>
                         <Card.Text>
-                            {this.state.blog.content.split('\n').map(item => <span>{item}</span>)}
+                            {this.state.blog && this.state.blog.content.split('\n').map(item => <span>{item}</span>)}
                         </Card.Text>
                         <footer className="blockquote-footer">
                             <cite title="Source Title">{this.state.blog.firstName}&nbsp;{this.state.blog.lastName}</cite>

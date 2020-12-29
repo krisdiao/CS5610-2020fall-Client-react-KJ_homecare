@@ -8,47 +8,19 @@ import {StaffComponent} from "../../StaffComponent";
 export class ReviewsListingForStaffsComponent extends React.Component{
 
     state ={
-        reviews:[
-            {
-                id:"1",
-                title: "a",
-                firstName: "qqqqq",
-                lastName: "mmmmm",
-                timeStamp: new Date(),
-            },
-            {
-                id:"2",
-                title: "b",
-                firstName: "wwwwwww",
-                lastName: "nnnnnn",
-                timeStamp: new Date(),
-            },
-            {
-                id:"3",
-                title: "c",
-                firstName: "eeeee",
-                lastName: "zzzzz",
-                timeStamp: new Date(),
-            },
-        ],
+        reviews:[],
     }
 
     componentDidMount() {
         reviewService.findAllReviews()
-            .then(reviews =>{
-                this.setState( {
-                    reviews: reviews
-                })
-            })
+            .then(reviews =>{this.setState( {reviews})})
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        reviewService.findAllReviews()
-            .then(reviews =>{
-                this.setState( {
-                    reviews: reviews
-                })
-            })
+        if (prevState.reviews.length !== this.state.reviews.length) {
+            reviewService.findAllReviews()
+                .then(reviews =>{this.setState( {reviews})})
+        }
     }
 
     deleteReview =(review)=> {
@@ -57,8 +29,6 @@ export class ReviewsListingForStaffsComponent extends React.Component{
                 reviews: prevState.reviews.filter(reviews => reviews.id !== reviews.id)
                 })
             ))
-
-
     }
 
     render() {

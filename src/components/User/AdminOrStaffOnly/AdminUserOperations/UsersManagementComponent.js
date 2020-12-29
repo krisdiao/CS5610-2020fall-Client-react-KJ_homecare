@@ -9,72 +9,22 @@ import {getUsersRegistrationReport} from "../../../../common/util";
 export class UsersManagementComponent extends React.Component{
 
     state ={
-        users:[
-            // {
-            //     id:"1",
-            //     firstName: "Tom",
-            //     lastName: "mmmmm",
-            //     password: "123456!@#",
-            //     email: "123456@gmail.com",
-            //     phoneNumber: "987-654321",
-            //     add1:"123 Main St",
-            //     add2:"",
-            //     city:"New York City",
-            //     state:"New York",
-            //     zip: "022022",
-            //     role:"Admin",
-            //
-            // },
-            // {
-            //     id:"2",
-            //     firstName: "William",
-            //     lastName: "nnnnnn",
-            //     password: "123456!@#",
-            //     email: "abcdefg@gmail.com",
-            //     phoneNumber: "456-654789",
-            //     add1:"123 Main St",
-            //     add2:"",
-            //     city:"New York City",
-            //     state:"New York",
-            //     zip: "022022",
-            //     role:"User",
-            // },
-            // {
-            //     id:"3",
-            //     firstName: "Elisa",
-            //     lastName: "zzzzz",
-            //     password: "123456!@#",
-            //     email: "abc123@gmail.com",
-            //     phoneNumber: "123-654778",
-            //     add1:"123 Main St",
-            //     add2:"",
-            //     city:"New York City",
-            //     state:"New York",
-            //     zip: "022022",
-            //     role:"Staff",
-            // },
-        ],
+        users:[],
         role: '',
-        editing: false
+        editing: false,
+        roleChanged: false
     }
 
     componentDidMount() {
         userService.findAllUsers()
-            .then(users =>{
-                console.log(users)
-                this.setState( {
-                    users: users
-                })
-            })
+            .then(users =>{this.setState( {users})})
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        userService.findAllUsers()
-            .then(users =>{
-                this.setState( {
-                    users: users
-                })
-            })
+        if (prevState.users.length !== this.state.users.length || this.state.roleChanged) {
+            userService.findAllUsers()
+                .then(users =>{this.setState( {users})})
+        }
     }
 
     downloadAllUsers = () => {
@@ -99,24 +49,20 @@ export class UsersManagementComponent extends React.Component{
             ))
     }
 
+    updateRole = (user, event) => {
+        userService.updateUser(user.id, {
+            ...user,
+            role: event.target.value
+        })
+            .then(user =>{this.setState( {
+                role: user.role,
+                roleChanged: !this.state.roleChanged
+            })})
+        this.forceUpdate();
+    }
+
     editUser = () => this.setState({editing: true})
     okUser = () => this.setState({editing: false})
-
-    // handleSaveUser(user){
-    //     this.setState({editing: false});
-    //     //debugger
-    //
-    //     userService.updateUser(user.id, {
-    //         ...user,
-    //         role: this.state.role
-    //     }).then(newUser => {
-    //         console.log("newUser: ", newUser)
-    //         // this.setState({
-    //         //     user: newUser,
-    //         //     editing: false,
-    //         // })
-    //     })
-    // }
 
 
     render() {
@@ -192,10 +138,11 @@ export class UsersManagementComponent extends React.Component{
                                                     <Form.Control as="select"
                                                                   name="role"
                                                                   value={user.role}
-                                                                  onChange={(event) => userService.updateUser(user.id, {
-                                                                      ...user,
-                                                                      role: event.target.value
-                                                                  })}>
+                                                                  onChange={(event) => this.updateRole(user, event)}>
+                                                                  {/*// onChange={(event) => userService.updateUser(user.id, {*/}
+                                                                  {/*//     ...user,*/}
+                                                                  {/*//     role: event.target.value*/}
+                                                                  {/*// })}>*/}
                                                                     <option value>- Select -</option>
                                                                     <option value="ADMIN">ADMIN</option>
                                                                     <option value="STAFF">STAFF</option>

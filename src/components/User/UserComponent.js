@@ -32,7 +32,7 @@ export class UserComponent
                             </Link>
                         </li>
                         <li className="list-group-item">
-                            <Link className="orange" to={{pathname:`/profile/view-my-jobs`,
+                            <Link className="orange" to={{pathname:`/profile/${this.state.profile.id}/view-my-jobs`,
                                 profileViewProps: {profile: this.state.profile}
                             }}>
                                 My Job Application

@@ -23,25 +23,14 @@ export default class Profile extends React.Component {
             role:'ADMIN',
             // roles: [],
         },
-        space: ' '
-
     }
 
     componentDidMount() {
         userService.profile()
             .then(profile => this.setState({
-                profile: profile
+                profile
             }))
     }
-
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     userService.profile()
-    //         .then(newProfile => this.setState({
-    //             profile: newProfile
-    //         }))
-    //     console.log("updated? ",this.state.profile)
-    //
-    // }
 
     handleLogout = () =>
         userService.logout()
@@ -50,6 +39,7 @@ export default class Profile extends React.Component {
             })
 
     render() {
+        const { firstName, lastName, id, role } = this.state.profile;
         return(
             <div>
                 <Container>
@@ -58,10 +48,7 @@ export default class Profile extends React.Component {
                                   onClick={() => leadToCorrectLoginUserPage(this.state.profile, this.props.history)}>
                                 <i className="fa fa-arrow-left " aria-hidden="true"></i>
                         </button>
-                        Welcome back, my dear {this.state.space}
-                        <strong>
-                            {this.state.profile.firstName} {this.state.profile.lastName}!
-                        </strong>
+                        Welcome back, my dear &nbsp;<strong>{firstName}&nbsp;{lastName}!</strong>
                     </h3>
                     <Row>
                         {/*<Col  sm={3}>*/}
@@ -73,7 +60,7 @@ export default class Profile extends React.Component {
                                 </li>
                                 <li className="list-group-item">
                                     <Link className="orange" to={{
-                                        pathname: `/profile/update-information`,
+                                        pathname: `/profile/${id}/update-information`,
                                         profileViewProps: {profile: this.state.profile}
                                     }}>
                                         Update My Information
@@ -81,9 +68,9 @@ export default class Profile extends React.Component {
                                 </li>
 
                                 {
-                                    this.state.profile.role !== "STAFF" &&
+                                    role !== "STAFF" &&
                                     <li className="list-group-item">
-                                        <Link className="orange" to={{pathname:`/profile/view-my-reviews`,
+                                        <Link className="orange" to={{pathname:`/profile/${id}/view-my-reviews`,
                                             profileViewProps: {profile: this.state.profile}
                                         }}>
                                             View My Reviews
@@ -93,9 +80,9 @@ export default class Profile extends React.Component {
                                 }
 
                                 {
-                                    this.state.profile.role !== "LOGIN_USER" &&
+                                    role !== "LOGIN_USER" &&
                                     <li className="list-group-item">
-                                        <Link className="orange" to={{pathname:`/profile/view-my-blogs`,
+                                        <Link className="orange" to={{pathname:`/profile/${id}/view-my-blogs`,
                                             profileViewProps: {profile: this.state.profile}
                                         }}>
                                             View My Blogs
@@ -105,7 +92,7 @@ export default class Profile extends React.Component {
 
                                 <li className="list-group-item">
                                     <Link className="orange" to={{
-                                        pathname: `/profile/view-my-liked-blogs`,
+                                        pathname: `/profile/${id}/view-my-liked-blogs`,
                                         profileViewProps: {profile: this.state.profile}
                                     }}>
                                         View My Liked Blogs
@@ -114,7 +101,7 @@ export default class Profile extends React.Component {
 
                                 <li className="list-group-item">
                                     <Link className="orange" to={{
-                                        pathname: `/profile/view-my-replied-blogs`,
+                                        pathname: `/profile/${id}/view-my-replied-blogs`,
                                         profileViewProps: {profile: this.state.profile}
                                     }}>
                                         View My Replied Blogs
@@ -122,10 +109,10 @@ export default class Profile extends React.Component {
                                 </li>
 
                                 {
-                                    this.state.profile.role === "LOGIN_USER" &&
+                                    role === "LOGIN_USER" &&
 
                                     <li className="list-group-item">
-                                        <Link className="orange" to={{pathname:`/profile/view-my-jobs`,
+                                        <Link className="orange" to={{pathname:`/profile/${id}/view-my-jobs`,
                                             profileViewProps: {profile: this.state.profile}
                                         }}>
                                             View My Job Application
