@@ -8,7 +8,7 @@ export class CreateStaffProfileComponent extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            user: this.props.location.userViewProps.user,
+            user: '',
             editing: false,
             valid: false,
             profile: '',
@@ -17,6 +17,9 @@ export class CreateStaffProfileComponent extends React.Component{
     }
 
     componentDidMount() {
+        userService.findUserById(this.props.match.params.userId)
+            .then(user =>{this.setState({user})})
+
         userService.profile()
             .then(profile => this.setState({
                 profile: profile
@@ -31,8 +34,6 @@ export class CreateStaffProfileComponent extends React.Component{
 
     //for input variables
     handleChange(event) {
-        //console.log("new value", event.target.value);
-
         const isCheckbox = event.target.type === "checkbox";
 
         this.setState({
@@ -43,15 +44,9 @@ export class CreateStaffProfileComponent extends React.Component{
     }
 
     handleUpdateUser(user){
-        console.log(user);
-
         userService.updateUser(user.id, user)
             .then(newUser => {
                 this.openModal();
-
-                console.log("newUser", newUser)
-
-                //not really need this part
                 this.setState({
                     user: newUser,
                     editing: false,
@@ -76,7 +71,6 @@ export class CreateStaffProfileComponent extends React.Component{
 
 
     render() {
-        console.log(this.state.user)
         return(
             <div className="container">
                 <Form>

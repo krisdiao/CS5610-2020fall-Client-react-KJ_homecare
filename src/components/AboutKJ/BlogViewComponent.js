@@ -25,15 +25,10 @@ export class BlogViewComponent extends React.Component{
     }
 
     componentDidMount() {
-        console.log(this.props.match.params.blogId)
-
+        // console.log(this.props.match.params.blogId)
 
         blogService.findBlogById(this.props.match.params.blogId)
-            .then(blog =>{
-                this.setState( {
-                    blog: blog
-                })
-            })
+            .then(blog =>{this.setState( {blog})})
 
         userService.profile()
             .then(profile =>  {
@@ -55,7 +50,6 @@ export class BlogViewComponent extends React.Component{
                     })
                 }
             })
-
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -76,9 +70,7 @@ export class BlogViewComponent extends React.Component{
                         })
                     }
                 })
-
         }
-
     }
 
 
@@ -91,7 +83,7 @@ export class BlogViewComponent extends React.Component{
     createModal = () => this.setState({ isCreating: true });
     closeCreateModal = () => {
         this.setState({ isCreating: false })
-        this.props.history.push(`/`)
+        this.props.history.push(`/about/blogs/${this.state.blog.id}`)
     };
 
     cannotLikeAlert () {
@@ -106,14 +98,6 @@ export class BlogViewComponent extends React.Component{
                 this.openModal();
                 if(newBlogLiked !== undefined) {
                     this.props.history.push(`/about/blogs/${this.state.blog.id}`)
-                    // this.setState({
-                    //     firstName: newBlogLiked.firstName,
-                    //     lastName: newBlogLiked.lastName,
-                    //     title: newBlogLiked.title,
-                    //     content: newBlogLiked.content,
-                    //     timeStamp: newBlogLiked.timeStamp,
-                    //     valid: true,
-                    // })
                 }
             })
     }
@@ -125,24 +109,13 @@ export class BlogViewComponent extends React.Component{
                 debugger
                 this.createModal();
                 if(newReply !== undefined) {
-                    // this.setState({
-                    //     userId: newReply.userId,
-                    //     firstName: newReply.firstName,
-                    //     lastName: newReply.lastName,
-                    //     title: newReply.title,
-                    //     content: newReply.content,
-                    //     timeStamp: newReply.timeStamp,
-                    //     valid: true,
-                    // })
+                    this.props.history.push(`/about/blogs/${this.state.blog.id}`)
                 }
             })
     }
 
     handleChange(event) {
-        //console.log("new value", event.target.value);
-
         const isCheckbox = event.target.type === "checkbox";
-
         this.setState({
             [event.target.name]: isCheckbox
                 ? event.target.checked
@@ -195,9 +168,7 @@ export class BlogViewComponent extends React.Component{
                 {
                     this.state.replies&&
                     this.state.replies.length>0&&
-
                     this.state.replies.map(reply=>
-
                         <div>
                             <Card>
                                 <Card.Body>
@@ -245,7 +216,6 @@ export class BlogViewComponent extends React.Component{
                     </Modal>
                     <br/>
                 </form>
-
             </div>
         )
     }

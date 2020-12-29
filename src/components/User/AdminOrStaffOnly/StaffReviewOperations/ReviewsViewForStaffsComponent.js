@@ -1,5 +1,6 @@
 import React from "react";
 import {Form,Col,Row} from 'react-bootstrap';
+import reviewService from "../../../../services/ReviewService";
 
 
 export class ReviewsViewForStaffsComponent extends React.Component{
@@ -7,9 +8,18 @@ export class ReviewsViewForStaffsComponent extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            review: this.props.location.reviewViewProps.review,
+            review: '',
             editing: false
         }
+    }
+
+    componentDidMount() {
+        // console.log(this.props.match.params.reviewId)
+
+        reviewService.findReviewById(this.props.match.params.reviewId)
+            .then(review => {
+                this.setState({review})
+            })
     }
 
     render() {

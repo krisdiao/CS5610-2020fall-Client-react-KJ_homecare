@@ -12,7 +12,7 @@ export class ReviewsEditingComponent extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            review: this.props.location.reviewViewProps.review,
+            review: '',
             editing: true,
             replies:[],
             profile: '',
@@ -23,11 +23,16 @@ export class ReviewsEditingComponent extends React.Component{
     }
 
     componentDidMount() {
+        // console.log(this.props.match.params.reviewId)
+
+        reviewService.findReviewById(this.props.match.params.reviewId)
+            .then(review =>{this.setState( {review})})
+
         userService.profile()
             .then(profile => this.setState({profile}))
 
         if(this.state.review !== undefined){
-            reviewReplyService.findAllReliesForReview(this.state.review.id)
+            reviewReplyService.findAllReliesForReview(this.props.match.params.reviewId)
                 .then(replies => {
                     if(replies !== undefined) {
                         console.log("replies: ", replies)

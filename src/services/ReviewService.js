@@ -1,4 +1,4 @@
-import {BASE_URL, REVIEW_URL, USER_URL} from "../common/constants"
+import {BASE_URL, BLOG_URL, REVIEW_URL, USER_URL} from "../common/constants"
 
 //const REVIEW_URL = `${BASE_URL}/api/reviews`
 
@@ -47,6 +47,10 @@ export const findReviewsForUser = (userId) =>
         credentials: "include"
     }).then(response => response.json())
 
+export const findReviewById = (reviewId) =>
+    fetch(`${REVIEW_URL}/${reviewId}`)
+        .then(response => response.json())
+
 export default {
-    findAllReviews, createReview, deleteReview, updateReview, findReviewsForUser
+    findAllReviews, createReview, deleteReview, updateReview, findReviewsForUser, findReviewById
 }

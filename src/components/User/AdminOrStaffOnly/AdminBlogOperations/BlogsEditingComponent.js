@@ -11,7 +11,9 @@ export class BlogsEditingComponent extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            blog: this.props.location.blogViewProps.blog,
+            blog: {content: "",
+                timeStamp: "",
+            },
             editing: false,
             profile: '',
             isOpen: false
@@ -19,6 +21,11 @@ export class BlogsEditingComponent extends React.Component{
     }
 
     componentDidMount() {
+        // console.log(this.props.match.params.blogId)
+
+        blogService.findBlogById(this.props.match.params.blogId)
+            .then(blog =>{this.setState( {blog})})
+
         userService.profile()
             .then(profile => this.setState({
                 profile: profile
@@ -50,7 +57,6 @@ export class BlogsEditingComponent extends React.Component{
 
 
     render() {
-        console.log(this.state.blog)
         return(
             <div className="container">
                 <Form>
